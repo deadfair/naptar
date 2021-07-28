@@ -1,1 +1,163 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$naptar-primary: mat.define-palette(mat.$indigo-palette);
+$naptar-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$naptar-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$naptar-theme: mat.define-light-theme((
+  color: (
+    primary: $naptar-primary,
+    accent: $naptar-accent,
+    warn: $naptar-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($naptar-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+
+$VilágosSzürke:#E5E5E5;
+$Neutral:#CCCCCC;
+
+// event szinek
+$SötétZöld:#006633;
+$Fehér:#FFFFFF;
+
+
+.fc-daygrid-day{
+  background-color: $VilágosSzürke;
+}
+.fc-day-other{
+  background-color: $Neutral;
+}
+
+.fc{
+  .fc-daygrid-event-harness{
+
+    height: 24.5px; //22+5/2 <= 5 px táv a sorok közt
+
+    .fc-daygrid-event.fc-event-end{
+      margin-left: 9px;
+    }
+    .fc-daygrid-event.fc-event-start{
+      margin-right: 9px;
+    }
+    .fc-daygrid-event{  // a
+      //width:114px;
+      height: 22px;
+      background: $SötétZöld;
+      border-color: $SötétZöld;
+      border-radius: 8px;
+      margin-top: 0px;
+
+      .fc-event-main{
+
+        //width:114px;
+        height: 22px;
+        padding: 5px;
+
+        .fc-event-main-frame{
+          height: 12px;
+
+          .fc-event-title-container{
+            height: 12px;
+
+            .fc-event-title{
+              padding: 0;
+              height: 12px;
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 12px;
+              line-height: 12px;
+              color: $Fehér;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.fc-daygrid-day-bottom{
+  .fc-daygrid-more-link{
+  background-color: red;
+  margin-left: 9px;
+  width: 114px;
+  }
+
+}
+
+
+
+
+
+
+:root { // az összes változó a fullcalendarhoz
+  --fc-small-font-size: .85em;
+  --fc-page-bg-color: #fff;
+  --fc-neutral-bg-color: rgba(208, 208, 208, 0.3);
+  --fc-neutral-text-color: #808080;
+  --fc-border-color: #ddd;
+
+  --fc-button-text-color: #fff;
+  --fc-button-bg-color: #2C3E50;
+  --fc-button-border-color: #2C3E50;
+  --fc-button-hover-bg-color: #1e2b37;
+  --fc-button-hover-border-color: #1a252f;
+  --fc-button-active-bg-color: #1a252f;
+  --fc-button-active-border-color: #151e27;
+
+  --fc-event-bg-color: #3788d8;
+  --fc-event-border-color: #3788d8;
+  --fc-event-text-color: #fff;
+  --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
+
+  --fc-more-link-bg-color: #d0d0d0;
+  --fc-more-link-text-color: inherit;
+
+  --fc-event-resizer-thickness: 8px;
+  --fc-event-resizer-dot-total-width: 8px;
+  --fc-event-resizer-dot-border-width: 1px;
+
+  --fc-non-business-color: rgba(215, 215, 215, 0.3);
+  --fc-bg-event-color: rgb(143, 223, 130);
+  --fc-bg-event-opacity: 0.3;
+  --fc-highlight-color: rgba(188, 232, 241, 0.3);
+  --fc-today-bg-color: rgba(255, 220, 40, 0.15);
+  --fc-now-indicator-color: red;
+
+  --fc-daygrid-event-dot-width: 8px;
+
+  --fc-list-event-dot-width: 10px;
+  --fc-list-event-hover-bg-color: #f5f5f5;
+
+}
+
+
+
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

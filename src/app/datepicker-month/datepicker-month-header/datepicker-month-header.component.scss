@@ -1,0 +1,24 @@
+p{
+  display: flex;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #B1DDC4;
+  text-align: center;
+}
+section{
+  background-color: #006633;
+  height: 40px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+*{
+  margin: 0 !important;
+  padding: 0 !important;;
+}
+
+

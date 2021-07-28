@@ -1,0 +1,143 @@
+<div class="stepper-active"></div>
+<section class="stepper">
+<section class="stepper-container">
+  <section class="header">
+    <button mat-icon-button  class="exit-btn">
+      <mat-icon >close_24px</mat-icon>
+    </button>
+  </section>
+  <section class="main">
+    <section class="btn-group">
+      <button mat-raised-button
+        class="green"
+        (click)="stepperValue='reminder'"
+        [ngClass]="{'dark-green':stepperValue!=='reminder'}" >Button</button>
+      <button mat-raised-button
+        class="green"
+        (click)="stepperValue='start-time'"
+        [ngClass]="{'dark-green':stepperValue!=='start-time'}">Button</button>
+      <button mat-raised-button
+        class="green"
+        (click)="stepperValue='people'"
+        [ngClass]="{'dark-green':stepperValue!=='people'}">Button</button>
+      <button mat-raised-button
+        class="green"
+        (click)="stepperValue='place'"
+        [ngClass]="{'dark-green':stepperValue!=='place'}">Button</button>
+      <button mat-raised-button
+        class="green"
+        (click)="stepperValue='colors'"
+        [ngClass]="{'dark-green':stepperValue!=='colors'}">Button</button>
+    </section>
+
+    <section [ngSwitch]="stepperValue">
+      <section *ngSwitchCase="'reminder'">
+          <label for="reminder" class="label">Reminder</label>
+          <input
+            class="input-field"
+            id="reminder"
+            matInput
+            placeholder="15"
+            [(ngModel)]="newEvent.reminder">
+          <mat-selection-list
+            class="selection-list"
+            [multiple]="false"
+            [(ngModel)]="selectedreminders"
+            (ngModelChange)="remInit($event)">
+            <mat-list-option *ngFor="let rem of typeofReminder" [value]="rem">
+              <span class="list-item">{{rem}}</span>
+            </mat-list-option>
+          </mat-selection-list>
+      </section>
+
+      <section *ngSwitchCase="'start-time'">
+        <label for="start-time" class="label">Start time</label>
+        <input
+          class="input-field"
+          id="start-time"
+          matInput
+          placeholder="2:18 PM"
+          [(ngModel)]="newEvent.startTime">
+        <mat-selection-list
+          class="selection-list"
+          [multiple]="false"
+          [(ngModel)]="selectedStartTime"
+          (ngModelChange)="startTimeInit($event)">
+          <mat-list-option *ngFor="let time of typeofStartTime" [value]="time">
+            <span class="list-item">{{time}}</span>
+          </mat-list-option>
+        </mat-selection-list>
+      </section>
+
+      <section class="people-list" *ngSwitchCase="'people'">
+        <label for="people" class="label">Add people</label>
+        <input
+          id="people"
+          class="input-field"
+          matInput
+          placeholder="Add people"
+          [(ngModel)]="newEvent.people">
+
+        <button mat-icon-button class="people-btn" (click)="hibaFgv()" >
+          <mat-icon >close</mat-icon>
+        </button>
+
+        <input
+          matInput
+          class="search-people"
+          placeholder="Search for people">
+        <mat-selection-list
+          class="selection-list "
+          [multiple]="false"
+          [(ngModel)]="selectedPeople"
+          (ngModelChange)="peopleInit($event)">
+          <mat-list-option *ngFor="let people of typeofPeople" [value]="people">
+            <span class="list-item">{{people}}</span>
+          </mat-list-option>
+        </mat-selection-list>
+      </section>
+
+      <section *ngSwitchCase="'place'">
+        <label for="place" class="label">place</label>
+        <input
+          id="place"
+          class="input-field"
+          matInput
+          placeholder="Menu item"
+          [(ngModel)]="newEvent.place">
+        <mat-selection-list
+          class="selection-list"
+          [multiple]="false"
+          [(ngModel)]="selectedPlace"
+          (ngModelChange)="placeInit($event)">
+          <mat-list-option  *ngFor="let place of typeofPlace" [value]="place">
+            <div class="place-box">
+              <mat-icon class="location">location_on_24px</mat-icon>
+              <span class="list-item">{{place}}</span>
+              <mat-icon class="close">close_24px</mat-icon>
+            </div>
+          </mat-list-option>
+        </mat-selection-list>
+      </section>
+
+      <section *ngSwitchCase="'colors'">
+        <section class="colors-bigcontainer">
+          <label for="color" class="label">Colors</label>
+          <section id="color" class="colors-container">
+            <div  *ngFor="let color of colors; index as i"  >
+              <div class="colors" *ngIf="i<15" [ngStyle]="{'background-color':color}" (click)="newEvent.color=color"></div>
+              <div class="colors bonus-color" *ngIf="i===15" >...</div>
+            </div>
+          </section>
+        </section>
+      </section>
+
+    </section>
+
+    <section class="btn-group btn-group2">
+      <button mat-raised-button class="green">Button</button>
+      <button mat-raised-button class="green dark-green">Button</button>
+    </section>
+  </section>
+</section>
+</section>

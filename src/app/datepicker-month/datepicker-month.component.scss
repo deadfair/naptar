@@ -1,0 +1,18 @@
+.mat-calendar{
+  width: 300px;
+}
+
+::ng-deep{
+  .mat-calendar-content{
+    background-color: #B1DDC4;
+    padding: 5px;
+  }
+  td.mat-calendar-body-label[colspan="7"] {
+    display: none;
+  }
+  .mat-calendar-body-label{
+    opacity: 0;
+  }
+
+}
+
