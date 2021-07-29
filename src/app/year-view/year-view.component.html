@@ -1,0 +1,14 @@
+
+<section>
+
+  <app-datepicker-multiple-view [years]="years" (selectedYear)="selectedYearInit($event)"></app-datepicker-multiple-view>
+
+  <app-datepicker-all-month
+  [year]="selectYear"
+  (selectedDate)="selectedDateInit($event)"
+  [years]="years"
+  ></app-datepicker-all-month>
+
+  <app-events-view [selectedDate]="selectedDate"></app-events-view>
+
+</section>

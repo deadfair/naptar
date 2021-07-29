@@ -21,7 +21,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DatepickerMonthHeaderComponent } from './datepicker-month/datepicker-month-header/datepicker-month-header.component';
 import { DatepickerAllMonthComponent } from './datepicker-all-month/datepicker-all-month.component';
 import { EventsViewComponent } from './events-view/events-view.component';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { DatepickerMultipleViewComponent } from './datepicker-multiple-view/datepicker-multiple-view.component'
+import {MatSelectModule} from '@angular/material/select';
+import { YearViewComponent } from './year-view/year-view.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -37,10 +40,13 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CalendarComponent,
     DatepickerMonthHeaderComponent,
     DatepickerAllMonthComponent,
-    EventsViewComponent
+    EventsViewComponent,
+    DatepickerMultipleViewComponent,
+    YearViewComponent
   ],
   imports: [
     MatNativeDateModule,
+    MatSelectModule,
     MatCardModule,
     MatDatepickerModule,
     BrowserModule,

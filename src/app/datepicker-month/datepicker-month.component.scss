@@ -1,5 +1,5 @@
 .mat-calendar{
-  width: 300px;
+  width: 298px;
 }
 
 ::ng-deep{
@@ -12,6 +12,10 @@
   }
   .mat-calendar-body-label{
     opacity: 0;
+  }
+  .mat-card{
+    padding: 0px !important;
+    margin-bottom: 7px;
   }
 
 }

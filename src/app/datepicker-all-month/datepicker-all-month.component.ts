@@ -1,4 +1,4 @@
-import { Component, OnInit ,Output,Input,EventEmitter} from '@angular/core';
+import { Component, OnInit ,Output,Input,EventEmitter,ChangeDetectorRef,ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-datepicker-all-month',
@@ -7,14 +7,15 @@ import { Component, OnInit ,Output,Input,EventEmitter} from '@angular/core';
 })
 export class DatepickerAllMonthComponent implements OnInit {
   @Output() selectedDate = new EventEmitter<Date | null>();
-  @Input() year:string="";
+  @Input() year:number=0;
+  @Input() years:number[]=[];
   constructor() { }
-
   ngOnInit(): void {
   }
 
   selectDate(date:Date | null){
     this.selectedDate.emit(date);
   }
+
 
 }

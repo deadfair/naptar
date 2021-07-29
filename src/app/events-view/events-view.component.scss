@@ -1,0 +1,116 @@
+$Sötétzöld:#006633;
+$Világoszöld:#B1DDC4;
+$Szürke:#BFBFBF;
+$SötétSzürke:#363636;
+.container{
+  max-width:280px ;
+  margin-left: 21px;
+  margin-right: 21px;
+  h1{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: $Sötétzöld;
+    text-align: center;
+    position: relative;
+    margin: 48px 0 26px 0;
+    .line{
+      position: absolute;
+      width: 87.09px;
+      height: 0px;
+      left: calc(50% - 87.09px*3/2 - 7px );
+      top: calc(50% - 0px/2);
+      display: block;
+      border: 0.933522px solid $Világoszöld;
+    }
+    .line:nth-child(1){
+      left: calc(50% + 87.09px/2 + 7px);
+      top: calc(50% - 0px/2);
+    }
+  }
+  .today{
+    width: 268px;
+    height: 20px;
+    font-style: normal;
+    font-family: Roboto;
+    color: $Sötétzöld;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: normal;
+    position: relative;
+
+    span:nth-child(1){
+      margin: 0px 4px;
+      font-weight: bold;
+    }
+
+    span:nth-child(3){
+      font-weight: bold;
+      margin: 0px 0px;
+      color: $Szürke;
+      position: absolute;
+      left: 210px;
+    }
+    span:nth-child(4){
+      margin: 0px 0px;
+      color: $Szürke;
+      font-family: Inter;
+      font-style: normal;
+      position: absolute;
+      left: 231px;
+    }
+  }
+  .events{
+    display: flex;
+    flex-flow: column;
+    .time-container{
+      .close{
+        width: 8.75px;
+        height: 8.75px;
+        color: $Világoszöld;
+      }
+      .time{
+        display: inline-block;
+        margin-left: 20px;
+        margin-right: 7px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 16px;
+        color: $Világoszöld;
+      }
+    }
+    .text{
+      margin: 0 5px 0 20px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: $SötétSzürke
+    }
+    .pictures{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-end;
+    }
+  }
+
+  .noEvents{
+    h1{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+      color: $Sötétzöld;
+    }
+  }
+}
+
+
+
