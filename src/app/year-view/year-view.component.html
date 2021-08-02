@@ -1,4 +1,4 @@
-
+<header></header>
 <section class="big-container">
 
   <app-datepicker-multiple-view
@@ -9,16 +9,16 @@
   </app-datepicker-multiple-view>
 
 <section [ngSwitch]="selectedView">
-<section *ngSwitchCase="'Year'">
-  <app-datepicker-all-month
-    [year]="selectYear"
-    (selectedDate)="selectedDateInit($event)"
-    [years]="years"
-  ></app-datepicker-all-month>
-</section>
-<section *ngSwitchCase="'Month'">
-<app-calendar></app-calendar>
-</section>
+  <section *ngSwitchCase="'Year'">
+    <app-datepicker-all-month
+      [year]="selectYear"
+      (selectedDate)="selectedDateInit($event)"
+      [years]="years"
+    ></app-datepicker-all-month>
+  </section>
+  <section *ngSwitchCase="'Month'">
+  <app-calendar></app-calendar>
+  </section>
 </section>
 
 

@@ -48,11 +48,11 @@
   right: 0%;
   top: 9.07%;
   bottom: 0%;
-  z-index: 998;
+  z-index: 10003 !important;
 }
 
 .stepper{
-  z-index: 998;
+  z-index: 10003 !important;
   position: absolute;
   left: 0%;
   right: 0%;
@@ -76,7 +76,7 @@
       .exit-btn{
         position: absolute;
         right: 0px;
-        color: $Fehér;
+        color: c.$Fehér;
         transform: translate(-4px,-2px);
       }
     }
@@ -98,7 +98,7 @@
       }
 
       .input-field{
-      background: $Fehér;
+      background: c.$Fehér;
       border: 2px solid c.$SötétZöld;
       box-sizing: border-box;
       border-radius: 3px;
@@ -150,7 +150,7 @@
           .mat-list-item, .mat-list-option {
             height: 45px;
             margin-top: 10px;
-            background-color: $Fehér;
+            background-color: c.$Fehér;
           }
           .mat-list-single-selected-option{
             background-color: c.$Szürke;
@@ -161,7 +161,7 @@
       }
 
       .selection-list{
-        background: $Fehér;
+        background: c.$Fehér;
         box-shadow: 0px 3px 5px rgba(9, 30, 66, 0.2), 0px 0px 1px rgba(9, 30, 66, 0.31);
         border-radius: 3px;
 
