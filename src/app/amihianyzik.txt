@@ -4,3 +4,5 @@ datepicker multiple view  választó..
 nth word 1 hiba.. van a
 plusz jel
 event nyila
+
+szerkesztés jel utáni visszalépés nem tüni elk

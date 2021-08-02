@@ -1,0 +1,63 @@
+$SötétZöld:#006633;
+$Sötétszürke:#363636;
+$Fehér:#FFFFFF;
+$Light:#F2F2F2;
+$VilágosSzürke:#E5E5E5;
+$Neutral:#CCCCCC;
+$VilágosZöld:#B1DDC4;
+$Szürke:#BFBFBF;
+$Fekete:#000000;
+$Zöld:#55AE3A;
+$Grey3:#EAEAEA;
+$Grey4:#CCCCCC;
+$Light3: #BDBDBD;
+$Dark3:#828282;
+$Light01: #F2F2F2;
+
+
+@mixin fonts1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px !important;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  }
+
+@mixin fonts2 {
+  font-family: Alata;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px !important;
+  line-height: 24px;
+}
+
+@mixin fonts3{
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px !important;
+  line-height: 14px;
+}
+
+@mixin fonts4{
+  font-family: Chivo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17.7931px;
+  letter-spacing: 0.741379px;
+}
+
+
+@mixin insideAutoLayout($order:0,$marginTop:0px,$marginRight:0px,$marginBottom:0px,$marginLeft:0px){
+  flex: none;
+  order: $order;
+  flex-grow: 0;
+  margin: $marginTop $marginRight $marginBottom $marginLeft;
+}
+
+@mixin autoLayout{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
