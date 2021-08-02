@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Output } from '@angular/core';
+import { Component, OnInit,  EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatListOption } from '@angular/material/list'
 
@@ -8,6 +9,7 @@ import { MatListOption } from '@angular/material/list'
   styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent implements OnInit {
+  @Output() closeStepper:EventEmitter<null>=new EventEmitter();
 
   typeofReminder: string[] = ['Before 5 minute', 'Before 10 minute', 'Before 30 minute', 'Before 1 hour', 'Before 1 day'];
   typeofStartTime:string[] = ['9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 AM', '12:30 AM', '1:00 PM'];
@@ -18,6 +20,9 @@ export class StepperComponent implements OnInit {
   selectedPeople:string[]=[""];
   selectedPlace:string[]=[""];
 
+  close(){
+    this.closeStepper.emit();
+  }
   hibaFgv(){
     console.log("Ez a gomb nem jó")
   }

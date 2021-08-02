@@ -1,0 +1,51 @@
+<mat-card class="infowindow"
+  [ngStyle]="{'top':windowY,'left':windowX}">
+  <mat-card-title>
+    <h1>{{event.name}}</h1>
+      <button mat-icon-button
+        class="delete"
+        (click)="deleteEvent(event.id)">
+        <mat-icon >delete</mat-icon>
+      </button>
+      <button mat-icon-button
+        class="edit"
+        (click)="stepperActive=true">
+        <mat-icon >edit</mat-icon>
+      </button>
+  </mat-card-title>
+  <mat-card-content>
+        <section class="time-container">
+          <span class="time">
+            {{event.start}} - {{event.end}}
+          </span>
+          <span>
+            {{event.date}}
+          </span>
+        </section>
+        <section class="text-container">
+          <div class="rectangle"></div>
+          <section class="text">{{event.text}}</section>
+        </section>
+        <section class="pictures">
+          <section class="pisture"
+            *ngFor="let people of event.peoples">
+            {{people.peopleUrl}}
+          </section>
+        </section>
+  </mat-card-content>
+</mat-card>
+
+<ng-container *ngIf="stepperActive; then stepperComponent"></ng-container>
+<ng-template #stepperComponent>
+<app-stepper (closeStepper)="stepperActive=false"></app-stepper >
+</ng-template>
+
+<ng-container *ngIf="deleteActive; then deleteComponent"></ng-container>
+<ng-template #deleteComponent>
+<app-delete-event
+  [eventId]="selectEventId"
+  (closeDeletetWindow)="closeDeletetWindow()"
+  [aktEvent]="aktEvent"></app-delete-event >
+</ng-template>
+
+

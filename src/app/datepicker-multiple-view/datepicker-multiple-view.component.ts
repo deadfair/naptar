@@ -7,8 +7,13 @@ import { Component, OnInit ,Output,EventEmitter,Input} from '@angular/core';
 })
 export class DatepickerMultipleViewComponent implements OnInit {
   @Output() selectedYear = new EventEmitter<number>();
+  @Output() selectedMode = new EventEmitter<string>();
+
   @Input() years:number[]=[];
+  modes=['Year','Month']
   constructor() { }
+  defaultSelectedModeValue=this.modes[0];
+
   defaultSelectedValue:number|null=null;
   ngOnInit(): void {
     this.defaultSelectedValue=this.years[0];
@@ -19,4 +24,8 @@ export class DatepickerMultipleViewComponent implements OnInit {
     this.selectedYear.emit(year.value);
   }
 
+  selectedModeChange(mode:any){
+    console.log(mode);
+    this.selectedMode.emit(mode.value)
+  }
 }

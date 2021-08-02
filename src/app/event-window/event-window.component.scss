@@ -1,0 +1,92 @@
+
+@use '../../assets/constants' as c;
+
+::ng-deep{
+  .mat-card.infowindow{
+    z-index: 9999 !important;
+    position: absolute;
+    @include c.fonts1;
+    background: c.$Sötétszürke;
+    backdrop-filter: blur(81.5485px);
+    border-radius: 13px !important;
+    width: 456px !important;
+    height: 212.91px !important;
+    transform: translate(-244px,-270.91px);
+    // (456+16+16)/2
+    color: c.$Fehér;
+    .mat-card-title{
+      position: relative;
+      button{
+        position: absolute;
+        right: 0;
+        top: 0;
+        &:nth-child(2){
+          transform: translateX(-40px);
+        }
+      }
+      h1{
+        text-align: center;
+        text-decoration-line: underline;
+      }
+    }
+
+    .mat-card-content{
+      .time-container{
+        @include c.fonts1;
+        position: static;
+        width: 318px;
+        height: 22px;
+        left: 10px;
+        top: 10px;
+      }
+    }
+    .text-container{
+      display: flex;
+      flex-flow: row nowrap;
+      margin-top: 6px;
+      .rectangle{
+        position: static;
+        width: 24px;
+        height: 24px;
+        left: 10px;
+        top: 10px;
+        background: c.$SötétZöld;
+        @include c.insideAutoLayout(0,0,10px,0,10px);
+
+      }
+      .text{
+        margin: 0px 10px;
+        position: static;
+        width: 398px;
+        height: 66px;
+        left: 44px;
+        top: 10px;
+        @include c.fonts1;
+      }
+
+    }
+    .pictures{
+      display: flex;
+      flex-flow: row wrap;
+      .picture{
+        border-radius: 100%;
+        width: 25px ;
+        height: 25px;
+      }
+    }
+  &::after{
+    content: "";
+    position: absolute;
+    width: 47px;
+    height: 13px;
+    left: calc(50% - 47px/2);
+    bottom: -13.08px;
+    background: c.$Sötétszürke;
+    backdrop-filter: blur(81.5485px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 13px;
+    }
+  }
+}
+
+

@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common'
 import {PeopleEvent} from '../interface/event'
 import {People} from '../interface/people'
+import { EventServiceService } from '../services/event-service.service';
 @Component({
   selector: 'app-events-view',
   templateUrl: './events-view.component.html',
@@ -14,9 +15,9 @@ export class EventsViewComponent implements OnInit,OnChanges {
   allEvents:PeopleEvent[]=[];
   selectEvents:PeopleEvent[]=[];
 
-  constructor(public datepipe: DatePipe) { }
+  constructor(public datepipe: DatePipe,private eventServicee:EventServiceService) { }
   ngOnInit(): void {
-    this.allEvents=this.getAllEvents();
+    this.allEvents=this.eventServicee.getAllEvents();
   }
   ngOnChanges(): void {
     this.getActEvent();
@@ -30,33 +31,6 @@ export class EventsViewComponent implements OnInit,OnChanges {
     }
   }
 
-  getAllEvents():PeopleEvent[]{
-    return [
-      {
-        date:"2020-01-01",
-        name:"béla",
-        start:"8:30",
-        end:"11:00 AM",
-        peoples:[],
-        text:"üres"
-      },
-      {
-        date:"2020-03-21",
-        name:"kiki",
-        start:"8:30",
-        end:"11:00 AM",
-        peoples:[
-          {
-          peopleId:"01",
-          peopleUrl:"01.png"
-          },
-          {
-          peopleId:"02",
-          peopleUrl:"02.png"
-          }
-        ],
-        text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
-      }]
-  }
+
 
 }

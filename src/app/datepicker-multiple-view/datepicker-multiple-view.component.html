@@ -1,7 +1,20 @@
 <mat-form-field appearance="fill">
-  <mat-select [(ngModel)]="defaultSelectedValue" (selectionChange)="selectedYearChange($event)" >
+  <mat-select
+    [(ngModel)]="defaultSelectedValue"
+      (selectionChange)="selectedYearChange($event)" >
     <mat-option *ngFor="let year of years" [value]=year >
       {{year}}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-select
+  [(ngModel)]="defaultSelectedModeValue"
+    (selectionChange)="selectedModeChange($event)" >
+    <mat-option *ngFor="let mode of modes" [value]=mode >
+      {{mode}}
     </mat-option>
   </mat-select>
 </mat-form-field>

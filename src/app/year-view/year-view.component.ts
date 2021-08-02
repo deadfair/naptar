@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { yearsPerPage } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-year-view',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class YearViewComponent implements OnInit {
   selectYear:number=0;
   year:number=0;
+  selectedView:string="Year";
   constructor() { }
   years:number[]=[]
   ngOnInit(): void {
@@ -31,12 +33,8 @@ export class YearViewComponent implements OnInit {
     this.selectYear=year;
     this.year=year;
   }
-  fgv(){
 
-    console.log(this.selectYear)
-  }
-  fgv2(){
-    console.log(2)
-    this.year=this.selectYear;
+  SelectedViewInit(view:string){
+    this.selectedView=view;
   }
 }

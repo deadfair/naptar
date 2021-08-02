@@ -25,15 +25,26 @@ import { DatePipe } from '@angular/common';
 import { DatepickerMultipleViewComponent } from './datepicker-multiple-view/datepicker-multiple-view.component'
 import {MatSelectModule} from '@angular/material/select';
 import { YearViewComponent } from './year-view/year-view.component';
+import timeGridPlugin from '@fullcalendar/timegrid'
+//import resourceTimelinePlugin  from '@fullcalendar/resource-timeline'
+import { Calendar } from '@fullcalendar/core';
+import { EventWindowComponent } from './event-window/event-window.component';
+import { EventInfoComponent } from './event-info/event-info.component'
+import { HttpClientModule } from '@angular/common/http';
+import { MoreEventWindowComponent } from './more-event-window/more-event-window.component';
+import { DeleteEventComponent } from './delete/delete-event/delete-event.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
-  interactionPlugin
+  interactionPlugin,
   //momentPlugin
+  timeGridPlugin,
+  //resourceTimelinePlugin
 ]);
 @NgModule({
   declarations: [
+
     AppComponent,
     StepperComponent,
     DatepickerMonthComponent,
@@ -42,7 +53,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     DatepickerAllMonthComponent,
     EventsViewComponent,
     DatepickerMultipleViewComponent,
-    YearViewComponent
+    YearViewComponent,
+    EventWindowComponent,
+    EventInfoComponent,
+    MoreEventWindowComponent,
+    DeleteEventComponent,
   ],
   imports: [
     MatNativeDateModule,
@@ -50,6 +65,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatCardModule,
     MatDatepickerModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FullCalendarModule,
     BrowserAnimationsModule,

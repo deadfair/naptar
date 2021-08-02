@@ -8,9 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title='naptar';
-  selectedDate:Date|null=null;
-  selectedDateInit(date:Date|null){
-    this.selectedDate=date;
-    console.log(this.selectedDate);
-  }
+
 }

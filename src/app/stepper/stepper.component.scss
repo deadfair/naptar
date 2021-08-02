@@ -1,16 +1,7 @@
-$SötétZöld:#006633;
-$Zöld:#55AE3A;
-$Grey3:#EAEAEA;
-$Fehér:#FFFFFF;
-$Szürke:#BFBFBF;
-$Grey4:#CCCCCC;
-$White:#FFFFFF;
-$Light3: #BDBDBD;
-$Dark3:#828282;
-$Light01: #F2F2F2;
+@use '../..//assets/constants' as c;
 
 .green{
-  background: $Zöld;
+  background: c.$Zöld;
   border: 1px solid #FFFFFF;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 1px 2px #B4B4BB, 0px 2px 4px #D2D2D6;
@@ -30,7 +21,7 @@ $Light01: #F2F2F2;
   box-sizing: border-box;
 }
 .dark-green{
-  background-color: $SötétZöld;
+  background-color: c.$SötétZöld;
 }
 
 .btn-group{
@@ -73,13 +64,13 @@ $Light01: #F2F2F2;
 
     width: 930px;
     margin: auto;
-    background: $Grey3;
+    background: c.$Grey3;
     box-sizing: border-box;
 
     .header{
       height: 61.96px;
       padding: 14px 28px 14px 14px;
-      background: $SötétZöld;
+      background: c.$SötétZöld;
       box-sizing: border-box;
       position: relative;
       .exit-btn{
@@ -100,7 +91,7 @@ $Light01: #F2F2F2;
       font-weight: 900;
       font-size: 12px;
       line-height: 16px ;
-      color: $SötétZöld;
+      color: c.$SötétZöld;
       height: 16px ;
       margin-bottom: 4px;
       display: block;
@@ -108,7 +99,7 @@ $Light01: #F2F2F2;
 
       .input-field{
       background: $Fehér;
-      border: 2px solid $SötétZöld;
+      border: 2px solid c.$SötétZöld;
       box-sizing: border-box;
       border-radius: 3px;
       width: 864px;
@@ -116,13 +107,13 @@ $Light01: #F2F2F2;
       margin-bottom: 16px;
       }
       .input-field:focus{
-        outline-color: $SötétZöld;
+        outline-color: c.$SötétZöld;
       }
       .mat-list-item, .mat-list-option{
         height: 32px;
       }
       .mat-list-single-selected-option{
-        background-color: $Szürke;
+        background-color: c.$Szürke;
       }
       .people-list{
         position: relative;
@@ -131,16 +122,16 @@ $Light01: #F2F2F2;
           position: absolute;
           left: 864px/2-636px/2;
           top:56px+53px/2-1px;
-          color: $Light01;
+          color: c.$Light01;
         }
 
         .search-people{
           width: 636px;
           height: 53px;
           margin: auto;
-          background: $Light3;
+          background: c.$Light3;
           padding-left: 32px;
-          border: 2px solid $Dark3;
+          border: 2px solid c.$Dark3;
           box-sizing: border-box;
           border-radius: 4px;
           display: block;
@@ -152,7 +143,7 @@ $Light01: #F2F2F2;
           width: 636px;
           margin: auto;
           padding: 0;
-          background-color: $Grey3;
+          background-color: c.$Grey3;
           border: none;
           box-shadow: none;
 
@@ -162,7 +153,7 @@ $Light01: #F2F2F2;
             background-color: $Fehér;
           }
           .mat-list-single-selected-option{
-            background-color: $Szürke;
+            background-color: c.$Szürke;
           }
 
 
@@ -218,7 +209,7 @@ $Light01: #F2F2F2;
           font-weight: bold;
           font-size: 16.8895px;
           line-height: 20px;
-          color: $Grey4;
+          color: c.$Grey4;
         }
         .colors-container{
           display: flex;
@@ -232,13 +223,13 @@ $Light01: #F2F2F2;
             cursor: pointer;
           }
           .bonus-color{
-            background-color: $Grey4;
+            background-color: c.$Grey4;
             font-family: Roboto;
             font-style: normal;
             font-weight: bold;
             font-size: 16.8895px;
             line-height: 20px;
-            color: $White;
+            color: c.$Fehér;
             text-align: center;
           }
         }
