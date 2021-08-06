@@ -8,20 +8,19 @@ import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 })
 export class DeleteEventComponent implements OnInit {
   @Input() eventId:string="0";
-  @Output() closeDeletetWindow = new EventEmitter();
+  @Output() closeDeletetWindow:EventEmitter<null|string> = new EventEmitter();
   @Input()  aktEvent:any;  // target event
 
   constructor(private eventServices:EventServiceService) { }
 
   ngOnInit(): void {
   }
-  delete(id:string):boolean{
-    this.close();
+  delete(id:string){
+    this.closeDeletetWindow.emit(id);
     this.aktEvent.remove();
-    return this.eventServices.deleteEventById(id);
+    this.eventServices.deleteEventById(id);
   }
-  close():boolean{
+  close(){
     this.closeDeletetWindow.emit();
-    return false;
   }
 }

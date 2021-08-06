@@ -1,13 +1,23 @@
-<mat-card class="onlyevents"[ngStyle]="{'top':windowY,'left':windowX}">
-  <mat-card-header>
-          <button mat-icon-button class="close" (click)=close()>
-            <mat-icon >close</mat-icon>
-          </button>
-  </mat-card-header>
+<mat-card class="onlyevents"
+  [ngStyle]="{'top':renderPoint.y+'px' ,'left':renderPoint.x+'px'}">
+    <button mat-icon-button class="close" (click)=close()>
+      <mat-icon >close</mat-icon>
+    </button>
   <mat-card-content>
-    <section class="event-box" *ngFor="let item of data">
+    <section class="event-box" *ngFor="let item of hiddenEvents"
+      (click)="openEventWindow(item,$event)"
+      [ngStyle]="{'background':item.event.backgroundColor ,
+      'border-color':item.event.borderColor}">
       {{item.event._def.title}}
     </section>
   </mat-card-content>
 </mat-card>
 
+<span *ngIf="eventWindow;then eventWindowOpen"></span>
+<ng-template #eventWindowOpen>
+  <app-event-window
+    [openWindowInfo]="selectEvent"
+    (closeEventWindow)="closeDeleteWindow($event)"
+  ></app-event-window>
+</ng-template>
+-

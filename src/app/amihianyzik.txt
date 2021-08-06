@@ -1,5 +1,5 @@
 eventview-ba a kis ikon x mérete
-datepicker multiple view  választó..
+datepicker multiple view  választó..=> gomb+lista
 összes kép
 nth word 1 hiba.. van a
 plusz jel

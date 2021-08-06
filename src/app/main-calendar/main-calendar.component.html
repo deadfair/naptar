@@ -1,0 +1,34 @@
+<section class="allin-container">
+  <header></header>
+  <section class="main-container"
+  [ngStyle]="{'padding-top':selectedView==='Year'?'59px':'120px'}">
+
+    <app-view-swapper
+      class="swapper"
+      [years]="years"
+      (selectedYear)="selectedYearInit($event)"
+      (selectedMode)="SelectedViewInit($event)"
+      >
+    </app-view-swapper>
+
+    <section [ngSwitch]="selectedView">
+      <section *ngSwitchCase="'Year'">
+        <app-year-view
+          [year]="selectYear"
+          (selectedDate)="selectedDateInit($event)"
+          [years]="years"
+        ></app-year-view>
+      </section>
+      <section *ngSwitchCase="'Month'">
+      <app-calendar></app-calendar>
+      </section>
+    </section>
+
+
+
+
+    <app-events-view [selectedDate]="selectedDate" class="events"></app-events-view>
+
+
+  </section>
+</section>

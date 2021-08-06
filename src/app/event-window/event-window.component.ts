@@ -1,3 +1,5 @@
+import { RenderPoint } from './../interface/point';
+import { TravelEventInfo } from './../interface/travelEventInfo';
 import { Component, Input, OnInit,Output ,EventEmitter} from '@angular/core';
 import {PeopleEvent} from '../interface/event'
 import { EventServiceService } from '../services/event-service.service';
@@ -8,30 +10,29 @@ import { EventServiceService } from '../services/event-service.service';
   styleUrls: ['./event-window.component.scss']
 })
 export class EventWindowComponent implements OnInit {
-  @Input() aktEvent:any;          // target event
-  @Input() windowX:string="40px";
-  @Input() windowY:string="30px";
-  @Input() eventId:string="00";  // target eventID
-  @Output() closeEventWindow = new EventEmitter();
+
+  constructor(private eventServicee:EventServiceService) {}
+  //Inputs
+  @Input() openWindowInfo:TravelEventInfo=new TravelEventInfo();
+  renderPoint:RenderPoint=new RenderPoint();
+  event!: PeopleEvent;
+
+  //Outputs
+  @Output() closeEventWindow:EventEmitter<null|string> = new EventEmitter();
 
   stepperActive:boolean=false;
   deleteActive:boolean=false;
-  selectEventId:string="0";
-  event!: PeopleEvent ;
-  constructor(private eventServicee:EventServiceService) {
-  }
 
-  ngOnInit(): void {
-    this.event=this.eventServicee.getEventById(this.eventId)
-  }
+  ngOnInit(): void {}
 
-  closeDeletetWindow(){
+  ngDoCheck(): void {
+    this.event=this.eventServicee.getEventById(this.openWindowInfo.id)
+    this.renderPoint=new RenderPoint(this.openWindowInfo.jsEvent)
+
+  }
+  closeDeletetWindow(id:null|string){
     this.deleteActive=false;
-    this.closeEventWindow.emit();
+    this.closeEventWindow.emit(id);
   }
 
-  deleteEvent(id:string){
-    this.selectEventId=id;
-    this.deleteActive=true;
-  }
 }

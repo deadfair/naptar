@@ -15,14 +15,22 @@ $Dark3:#828282;
 $Light01: #F2F2F2;
 
 
-@mixin fonts1 {
+
+
+
+@mixin ZIndex($z:0) {
+  z-index: 1000 + $z;
+}
+
+@mixin fonts1 ($fontsize:17px,$letterspacing:-0.408px){
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
-  font-size: 17px !important;
+  font-size: $fontsize !important;
   line-height: 22px;
-  letter-spacing: -0.408px;
-  }
+  letter-spacing: $letterspacing;
+}
+
 
 @mixin fonts2 {
   font-family: Alata;
@@ -44,7 +52,7 @@ $Light01: #F2F2F2;
   font-family: Chivo;
   font-style: normal;
   font-weight: normal;
-  font-size: 17.7931px;
+  font-size: 17.7931px !important;
   letter-spacing: 0.741379px;
 }
 
@@ -56,8 +64,33 @@ $Light01: #F2F2F2;
   margin: $marginTop $marginRight $marginBottom $marginLeft;
 }
 
-@mixin autoLayout{
+@mixin autoLayout($column:column){
   display: flex;
-  flex-direction: column;
+  flex-direction: $column;
   align-items: center;
+}
+
+
+
+// arrow kéne séma
+@mixin arrow() {
+  content: '';
+  position: absolute;
+  left: -16px;
+  width: 28px;
+  height: 13px;
+  background: $Sötétszürke;
+  backdrop-filter: blur(81.5485px);
+  /* Note: backdrop-filter has minimal browser support*/
+  border-radius: 13px;
+  transform: rotate(-36deg);
+}
+
+
+// lista
+@mixin list1 {
+  background: $Fehér;
+  box-shadow: 0px 3px 5px rgba(9, 30, 66, 0.2), 0px 0px 1px rgba(9, 30, 66, 0.31);
+  border-radius: 3px;
+
 }

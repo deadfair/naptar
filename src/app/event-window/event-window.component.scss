@@ -3,23 +3,28 @@
 
 ::ng-deep{
   .mat-card.infowindow{
-    z-index: 9999 !important;
-    position: absolute;
+    @include c.ZIndex(2);
     @include c.fonts1;
     background: c.$Sötétszürke;
+    color: c.$Fehér;
+    box-sizing: border-box;
+    position: absolute;
     backdrop-filter: blur(81.5485px);
-    border-radius: 13px !important;
+    border-radius: 13px ;
     width: 456px !important;
     height: 212.91px !important;
-    transform: translate(-244px,-270.91px);
+    padding: 17px 0 0 0;
+
+    transform: translate(-228px,-248px);
     // (456+16+16)/2
-    color: c.$Fehér;
+
     .mat-card-title{
       position: relative;
+      margin-bottom: 0;
       button{
         position: absolute;
         right: 0;
-        top: 0;
+        top: -6px;
         &:nth-child(2){
           transform: translateX(-40px);
         }
@@ -31,6 +36,7 @@
     }
 
     .mat-card-content{
+      margin:5px 14px 0 8.78px;
       .time-container{
         @include c.fonts1;
         position: static;
@@ -51,11 +57,11 @@
         left: 10px;
         top: 10px;
         background: c.$SötétZöld;
-        @include c.insideAutoLayout(0,0,10px,0,10px);
+        @include c.insideAutoLayout(0,0,10px,0,1.22px);
 
       }
       .text{
-        margin: 0px 10px;
+        margin: 0px;
         position: static;
         width: 398px;
         height: 66px;
@@ -66,6 +72,7 @@
 
     }
     .pictures{
+      margin-left: 43.66px;
       display: flex;
       flex-flow: row wrap;
       .picture{
@@ -74,17 +81,22 @@
         height: 25px;
       }
     }
-  &::after{
+  &::after, &::before{
     content: "";
     position: absolute;
-    width: 47px;
+    width: 28px;
     height: 13px;
-    left: calc(50% - 47px/2);
-    bottom: -13.08px;
+    left: calc(50% - 28px/2 - 4.4px);
+    bottom: -11px;
     background: c.$Sötétszürke;
     backdrop-filter: blur(81.5485px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 13px;
+    transform: rotate(54deg) ;
+  }
+  &::after{
+      left: calc(50% - 28px/2 + 4.4px);
+      transform: rotate(-54deg) ;
     }
   }
 }

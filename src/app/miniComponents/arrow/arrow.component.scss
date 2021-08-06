@@ -1,0 +1,42 @@
+@use '../../../assets/constants' as c;
+
+::ng-deep{
+  .arrow{
+    position: relative;
+    @include c.ZIndex;
+    top:0;
+    left:0;
+    display: inline-block;
+    .arrow-1{
+
+      z-index: inherit;
+      background: c.$Sötétszürke;
+      position: relative;
+      top:0;
+      left: 0;
+      width: 47px;
+      height: 13px ;
+      border-radius: 13px;
+      border: none;
+      transform: rotate(-34deg) translateY(-3.7px);
+    }
+    .arrow-2{
+      transform: rotate(34deg) translateY(3.7px)
+    }
+    .arrow-3{
+      transform: rotate(-51deg) translate(33px,-14.3px);
+    }
+    .arrow-4{
+      transform: rotate(51deg) translate(-10.6px,-18px);
+    }
+  }
+}
+
+/*
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid;
+    margin: 0 4px;
+    */

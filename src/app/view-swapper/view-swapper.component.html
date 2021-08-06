@@ -1,0 +1,47 @@
+<section class="view-swapper">
+
+  <section class="mode-swapper">
+    <mat-button-toggle-group
+    (change)="modevalueChange($event)"
+    aria-label="Font Style">
+    <mat-button-toggle disableRipple value="Year">Év</mat-button-toggle>
+    <mat-button-toggle disableRipple checked value="Month">Hónap</mat-button-toggle>
+    <mat-button-toggle disableRipple value="Week">Hét</mat-button-toggle>
+    <mat-button-toggle disableRipple value="Day">Nap</mat-button-toggle>
+  </mat-button-toggle-group>
+</section>
+
+<button mat-stroked-button
+  [value]="buttonFocused"
+  (click)="buttonFocused=!buttonFocused"
+  [ngClass]="{'focus-button':buttonFocused}"
+>{{defaultSelectedValue}}</button>
+
+<ng-container *ngIf="buttonFocused; then thenTemplate"></ng-container>
+<ng-template #thenTemplate>
+  <mat-selection-list
+    class="selection-list-year"
+    [multiple]="false"
+    (selectionChange)="selectedYearChange($event)">
+    <mat-list-option *ngFor="let year of years"
+      [value]="year"
+      [selected]="defaultSelectedValue===year ? true : false">
+      <span class="list-item">{{year}}</span>
+    </mat-list-option>
+  </mat-selection-list>
+</ng-template>
+
+<!--
+<mat-form-field class="year-selecter" appearance="fill">
+  <mat-select
+    [(value)]="defaultSelectedValue"
+    [panelClass]="panel"
+    (selectionChange)="selectedYearChange($event)" >
+    <mat-option *ngFor="let year of years" [value]=year class="year-select-option">
+      {{year}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+-->
+</section>
+

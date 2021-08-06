@@ -1,21 +1,19 @@
-$Sötétzöld:#006633;
-$Világoszöld:#B1DDC4;
-$Szürke:#BFBFBF;
-$SötétSzürke:#363636;
+@use '../../assets/constants' as c;
+
+
 .container{
   max-width:280px ;
-  margin-left: 21px;
-  margin-right: 21px;
+  margin-top: -10px;
   h1{
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
-    color: $Sötétzöld;
+    color: c.$SötétZöld;
     text-align: center;
     position: relative;
-    margin: 48px 0 26px 0;
+    margin: 0 0 26px 0;
     .line{
       position: absolute;
       width: 87.09px;
@@ -23,7 +21,7 @@ $SötétSzürke:#363636;
       left: calc(50% - 87.09px*3/2 - 7px );
       top: calc(50% - 0px/2);
       display: block;
-      border: 0.933522px solid $Világoszöld;
+      border: 0.933522px solid c.$VilágosZöld;
     }
     .line:nth-child(1){
       left: calc(50% + 87.09px/2 + 7px);
@@ -35,7 +33,7 @@ $SötétSzürke:#363636;
     height: 20px;
     font-style: normal;
     font-family: Roboto;
-    color: $Sötétzöld;
+    color: c.$SötétZöld;
     font-size: 13px;
     line-height: 20px;
     font-weight: normal;
@@ -49,13 +47,13 @@ $SötétSzürke:#363636;
     span:nth-child(3){
       font-weight: bold;
       margin: 0px 0px;
-      color: $Szürke;
+      color: c.$Szürke;
       position: absolute;
       left: 210px;
     }
     span:nth-child(4){
       margin: 0px 0px;
-      color: $Szürke;
+      color: c.$Szürke;
       font-family: Inter;
       font-style: normal;
       position: absolute;
@@ -69,7 +67,7 @@ $SötétSzürke:#363636;
       .close{
         width: 8.75px;
         height: 8.75px;
-        color: $Világoszöld;
+        color: c.$VilágosZöld;
       }
       .time{
         display: inline-block;
@@ -80,7 +78,7 @@ $SötétSzürke:#363636;
         font-weight: 600;
         font-size: 11px;
         line-height: 16px;
-        color: $Világoszöld;
+        color: c.$VilágosZöld;
       }
     }
     .text{
@@ -90,7 +88,7 @@ $SötétSzürke:#363636;
       font-weight: 500;
       font-size: 12px;
       line-height: 16px;
-      color: $SötétSzürke
+      color: c.$Sötétszürke
     }
     .pictures{
       display: flex;
@@ -107,7 +105,7 @@ $SötétSzürke:#363636;
       font-size: 24px;
       line-height: 28px;
       text-align: center;
-      color: $Sötétzöld;
+      color: c.$SötétZöld;
     }
   }
 }

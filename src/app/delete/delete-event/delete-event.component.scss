@@ -4,7 +4,7 @@
 ::ng-deep{
 
   .ignore-bcg{
-    z-index: 10004 !important;
+    @include c.ZIndex(100);
 
     position: absolute;
     left: -0.1%;
@@ -15,14 +15,14 @@
     opacity: 0.4;
   }
   .delete-event.mat-card{
-    z-index: 10004 !important;
+    @include c.ZIndex(100);
     @include c.autoLayout;
     padding: 0px;
     position: absolute;
     width: 300px ;
     height: 111px ;
-    left: 810px;
-    top: 426px;
+    left: calc(50% - 300px/2);
+    top: calc(50% - 111px/2);
     background: c.$Fehér;
     border-radius: 10px;
     .mat-card-title{

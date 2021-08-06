@@ -1,5 +1,7 @@
+import { TravelEventInfo } from './../interface/travelEventInfo';
 import { Component, OnInit } from '@angular/core';
 import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent } from '@fullcalendar/angular';
+import { TravelPlusEventsInfo } from '../interface/travelPlusEventsInfo';
 
 @Component({
   selector: 'app-calendar',
@@ -8,14 +10,17 @@ import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent } from 
 })
 export class CalendarComponent implements OnInit {
   constructor() { }
-  windowX:string="0px";
-  windowY:string="0px";             // koordináták
   eventwindow:boolean=false;        // eventadatok
   moreEventWindow:boolean=false;    // + felnyílófül
   hiddenSegs:any[]=[];              // rejtett napok
-  jsEventInfo:any;
-  aktEvent:any;
+
+  selectEvent:TravelEventInfo=new TravelEventInfo();
+  moreEventWindowInfo:TravelPlusEventsInfo={jsEvent:null,plusEvents:[]};
+
+
   ngOnInit(): void {}
+
+
 
   calendarOptions: CalendarOptions = {
     headerToolbar:{
@@ -67,16 +72,17 @@ export class CalendarComponent implements OnInit {
     moreLinkClick:(info)=>{
       this.eventwindow=false;
       this.moreEventWindow=true;
-      this.hiddenSegs=info.hiddenSegs;
-      this.jsEventInfo=info.jsEvent;
+      this.moreEventWindowInfo={
+          jsEvent:info.jsEvent,
+          plusEvents:info.hiddenSegs
+      }
     },
 
     eventClick: (info) =>{
-      this.windowX=info.jsEvent.x+"px";
-      this.windowY=info.jsEvent.y+"px";
+      console.log(info)
       this.moreEventWindow=false;
       this.eventwindow=true;
-      this.aktEvent=info.event;
+      this.selectEvent= new TravelEventInfo(info);
     },
     eventColor:'#006633',
     firstDay:1, // Monday as first day of week
@@ -88,7 +94,7 @@ export class CalendarComponent implements OnInit {
       { id:"01",title: 'Event', date: '2021-08-01' }, // eventek
       { id:"02",title: 'Event', date: '2021-08-01' }, // eventek
       { id:"03",title: 'Evensd', date: '2021-08-01' }, // eventek
-      { id:"04",title: 'Evenasdt', date: '2021-08-01' }, // eventek
+      { id:"04",title: 'Evenasdt', date: '2021-08-01', backgroundColor:'green' }, // eventek
       { id:"05",title: 'Eveffdnt', date: '2021-08-01' }, // eventek
       { id:"06",title: 'Event', date: '2021-08-01' }, // eventek
       { id:"07",title: 'Eventttt', start: '2021-08-01' ,end:'2021-08-10'}, // eventek

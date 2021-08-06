@@ -19,7 +19,6 @@ import {MatCardModule} from '@angular/material/card';
 import { CalendarComponent } from './calendar/calendar.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatepickerMonthHeaderComponent } from './datepicker-month/datepicker-month-header/datepicker-month-header.component';
-import { DatepickerAllMonthComponent } from './datepicker-all-month/datepicker-all-month.component';
 import { EventsViewComponent } from './events-view/events-view.component';
 import { DatePipe } from '@angular/common';
 import { DatepickerMultipleViewComponent } from './datepicker-multiple-view/datepicker-multiple-view.component'
@@ -29,11 +28,14 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 //import resourceTimelinePlugin  from '@fullcalendar/resource-timeline'
 import { Calendar } from '@fullcalendar/core';
 import { EventWindowComponent } from './event-window/event-window.component';
-import { EventInfoComponent } from './event-info/event-info.component'
 import { HttpClientModule } from '@angular/common/http';
 import { MoreEventWindowComponent } from './more-event-window/more-event-window.component';
 import { DeleteEventComponent } from './delete/delete-event/delete-event.component';
-
+import { ArrowComponent } from './miniComponents/arrow/arrow.component';
+import { MainCalendarComponent } from './main-calendar/main-calendar.component';
+import { ViewSwapperComponent } from './view-swapper/view-swapper.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -44,20 +46,20 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 @NgModule({
   declarations: [
-
     AppComponent,
     StepperComponent,
     DatepickerMonthComponent,
     CalendarComponent,
     DatepickerMonthHeaderComponent,
-    DatepickerAllMonthComponent,
     EventsViewComponent,
     DatepickerMultipleViewComponent,
     YearViewComponent,
     EventWindowComponent,
-    EventInfoComponent,
     MoreEventWindowComponent,
     DeleteEventComponent,
+    ArrowComponent,
+    MainCalendarComponent,
+    ViewSwapperComponent,
   ],
   imports: [
     MatNativeDateModule,
@@ -74,6 +76,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatListModule,
     FormsModule,
     MatIconModule,
+    MatButtonToggleModule,
+    ReactiveFormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

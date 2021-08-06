@@ -8,10 +8,10 @@ $tdmarginx:9px;
   .fc-theme-standard td, .fc-theme-standard th{
     border: none !important;
   }
-  .fc{
-    margin: 20px;
-    width: 1088px + $tdmarginx*2;
 
+  .fc{
+    margin: -66px auto 0 auto;
+    width: 1088px + $tdmarginx*2;
 
     .fc-popover{
       visibility: hidden;

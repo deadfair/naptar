@@ -1,14 +1,12 @@
 <full-calendar
+class="calendar-mid"
 [options]="calendarOptions">
 </full-calendar>
 
 <span *ngIf="eventwindow;then eventWindowOpen"></span>
 <ng-template #eventWindowOpen>
   <app-event-window
-    [windowX]="windowX"
-    [windowY]="windowY"
-    [aktEvent]="aktEvent"
-    [eventId]="aktEvent.id"
+    [openWindowInfo]="selectEvent"
     (closeEventWindow)="eventwindow=false"
   ></app-event-window>
 </ng-template>
@@ -16,11 +14,9 @@
 <span *ngIf="moreEventWindow;then moreEventWindowOpen"></span>
 <ng-template #moreEventWindowOpen>
   <app-more-event-window
-    [windowX]="windowX"
-    [windowY]="windowY"
-    [data]='hiddenSegs'
-    (btnClick)="moreEventWindow=false"
-    [jsEvent]="jsEventInfo"></app-more-event-window>
+    [openWindowInfo]="moreEventWindowInfo"
+    (closeBtnClick)="moreEventWindow=false"
+    ></app-more-event-window>
 </ng-template>
 
 

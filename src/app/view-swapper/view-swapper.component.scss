@@ -1,0 +1,169 @@
+@use '../../assets/constants' as c;
+
+
+::ng-deep{
+
+  //-----------------------------------------
+.view-swapper{
+  margin: auto;
+  width: 298px;
+// year választó
+  .mat-selection-list.selection-list-year{
+    @include c.list1;
+    .mat-list-option{
+      width: 100%;
+      height: 32px;
+    }
+    .mat-list-option.mat-list-single-selected-option{
+      background-color: c.$Szürke;
+    }
+  }
+  button[mat-stroked-button]{
+    width: 100%;
+    height: 32px;
+    margin: 8px 0 3px 0;
+    background: c.$Fehér;
+    color: c.$VilágosSzürke;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+    border-radius: 2px;
+    @include c.fonts1(14px,normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    // mód választó
+    .mode-swapper{
+      .mat-button-toggle-group{
+        width: 100%;
+        height: 32px;
+        flex-flow: row  nowrap;
+        justify-content: center;
+        border: none;
+        border-radius: 0;
+        .mat-button-toggle-checked.mat-button-toggle{
+          color: c.$Zöld;
+          border: 1px solid c.$Zöld;
+        }
+        .mat-button-toggle{
+          background: c.$Fehér;
+          color: c.$VilágosSzürke;
+          box-sizing: border-box;
+          border: 1px solid c.$VilágosSzürke;
+          @include c.autoLayout(row);
+          @include c.fonts1(14px,normal);
+        }
+        .mat-button-toggle:nth-child(1){
+          border-radius: 2px 0px 0px 2px;
+          min-width: 60px;
+        }
+        .mat-button-toggle:nth-child(2){
+          min-width: 95px;
+        }
+        .mat-button-toggle:nth-child(3){
+          min-width: 69px;
+          border-radius: 0px 2px 2px 0px;
+        }
+        .mat-button-toggle:nth-child(4){
+          min-width: 74px;
+          border-radius: 0px 2px 2px 0px;
+        }
+      }
+    }
+  }
+}
+.focus-button{
+  border: 1px solid c.$Zöld;
+  color: c.$Zöld !important;
+}
+
+
+
+
+
+  // lenyíló ablak
+  /*
+  .year-select-panel{
+    transform: translate(15px,35px) !important;
+    min-width: 298px !important;
+    background: c.$Fehér !important;
+    box-shadow: 0px 3px 5px rgba(9, 30, 66, 0.2), 0px 0px 1px rgba(9, 30, 66, 0.31) !important;
+    border-radius: 3px  !important;
+  }
+  .mat-option.year-select-option.mat-selected{
+    background-color: c.$Szürke !important;
+    color: c.$Fekete !important;
+  }
+  .mat-option.year-select-option{
+    height: 32px !important;
+  }
+  */
+
+    /*
+    .mat-form-field.year-selecter.mat-focused{
+      .mat-form-field-flex{
+        border: 1px solid c.$Zöld !important;
+        .mat-select-value{
+          color: c.$Zöld !important ;
+        }
+      }
+    }
+
+    .mat-form-field.year-selecter{
+      *{
+        box-sizing: border-box !important;
+      }
+      width: 100%;
+      margin-top: 8px;
+      height: 32px;
+      .mat-form-field-wrapper{
+        height: inherit;
+        padding: 0;
+        .mat-form-field-underline{
+          display: none;
+        }
+        .mat-form-field-flex{
+          background: c.$Fehér;
+          border: 1px solid c.$VilágosSzürke;
+          box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+          border-radius: 2px;
+          height: inherit;
+          padding: inherit;
+          .mat-form-field-infix{
+            padding: inherit;
+            height: inherit;
+            border: none;
+            .mat-select{
+              height: inherit;
+              padding: inherit;
+              .mat-select-trigger{
+                height: inherit;
+                padding: inherit;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                align-items: center;
+                .mat-select-value{
+                  @include c.fonts1(14px,normal);
+                  color: c.$VilágosSzürke;
+                  overflow: visible;
+                  min-width: 32px;
+                }
+                .mat-select-arrow-wrapper{
+                  width: 8.48px;
+                  transform: none;
+                  .mat-select-arrow{
+                    border-left: 15px solid transparent !important;
+                    border-right: none !important;
+                    border-top: 15px solid transparent !important;
+                    border-image-source: url('../../assets/keyboard_arrow_down_black_24dp.svg') !important;
+                    border-image-repeat: stretch !important;
+                    width: 8.48px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }*/

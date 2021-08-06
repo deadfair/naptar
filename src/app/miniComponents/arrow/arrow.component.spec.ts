@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventInfoComponent } from './event-info.component';
+import { ArrowComponent } from './arrow.component';
 
-describe('EventInfoComponent', () => {
-  let component: EventInfoComponent;
-  let fixture: ComponentFixture<EventInfoComponent>;
+describe('ArrowComponent', () => {
+  let component: ArrowComponent;
+  let fixture: ComponentFixture<ArrowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EventInfoComponent ]
+      declarations: [ ArrowComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventInfoComponent);
+    fixture = TestBed.createComponent(ArrowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,34 @@
+@use '../../assets/constants' as c;
+
+
+
+.allin-container{
+  display: flex;
+  flex-flow: column nowrap;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top:0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.main-container{
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+header{
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 85px;
+  background: c.$SötétZöld;
+}
+.swapper{
+  margin-left: 21px;
+  margin-right: 15px;
+}
+.events{
+  margin-left: 18px;
+  margin-right: 23px;
+}

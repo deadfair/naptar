@@ -1,10 +1,10 @@
 <mat-card class="infowindow"
-  [ngStyle]="{'top':windowY,'left':windowX}">
+  [ngStyle]="{'top':renderPoint.y+'px' ,'left':renderPoint.x+'px'  }">
   <mat-card-title>
     <h1>{{event.name}}</h1>
       <button mat-icon-button
         class="delete"
-        (click)="deleteEvent(event.id)">
+        (click)="deleteActive=true">
         <mat-icon >delete</mat-icon>
       </button>
       <button mat-icon-button
@@ -43,9 +43,9 @@
 <ng-container *ngIf="deleteActive; then deleteComponent"></ng-container>
 <ng-template #deleteComponent>
 <app-delete-event
-  [eventId]="selectEventId"
-  (closeDeletetWindow)="closeDeletetWindow()"
-  [aktEvent]="aktEvent"></app-delete-event >
+  [eventId]="openWindowInfo.id"
+  (closeDeletetWindow)="closeDeletetWindow($event)"
+  [aktEvent]="openWindowInfo.calendarEvent"></app-delete-event >
 </ng-template>
 
 
