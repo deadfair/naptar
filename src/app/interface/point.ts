@@ -9,8 +9,10 @@ export class RenderPoint{
       this._x=0;
       this._y=0;
     }else{
-      this._x=jsEvent.x;
-      this._y=jsEvent.y;
+      //this._x=jsEvent.x;
+      //this._y=jsEvent.y;
+      this._x=(jsEvent.pageX-jsEvent.offsetX); //koordináta számolás
+      this._y=(jsEvent.pageY-jsEvent.offsetY);
     }
   }
   public get x():number{
@@ -21,6 +23,4 @@ export class RenderPoint{
   }
 }
 /*
-this._x=(jsEvent.pageX-jsEvent.offsetX); //koordináta számolás
-this._y=(jsEvent.pageY-jsEvent.offsetY);
 */

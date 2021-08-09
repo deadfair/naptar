@@ -26,7 +26,6 @@ export class MainCalendarComponent implements OnInit {
 
   selectedDateInit(date:Date|null){
     this.selectedDate=date;
-    console.log(this.selectedDate);
   }
   selectedYearInit(year:number){
     this.selectYear=year;

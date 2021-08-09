@@ -22,12 +22,12 @@ $Light01: #F2F2F2;
   z-index: 1000 + $z;
 }
 
-@mixin fonts1 ($fontsize:17px,$letterspacing:-0.408px){
+@mixin fonts1 ($fontsize:17px,$letterspacing:-0.408px,$lineh:22px,$fweight:normal){
   font-family: Roboto;
   font-style: normal;
-  font-weight: normal;
+  font-weight: $fweight;
   font-size: $fontsize !important;
-  line-height: 22px;
+  line-height: $lineh;
   letter-spacing: $letterspacing;
 }
 
@@ -72,6 +72,7 @@ $Light01: #F2F2F2;
 
 
 
+
 // arrow kéne séma
 @mixin arrow() {
   content: '';
@@ -84,6 +85,8 @@ $Light01: #F2F2F2;
   /* Note: backdrop-filter has minimal browser support*/
   border-radius: 13px;
   transform: rotate(-36deg);
+  //      &::after{top: 16px;}   &::before{top: 25px; transform: rotate(36deg)}
+  //      topok közti különbség 9
 }
 
 

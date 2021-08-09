@@ -16,7 +16,10 @@ export class EventWindowComponent implements OnInit {
   @Input() openWindowInfo:TravelEventInfo=new TravelEventInfo();
   renderPoint:RenderPoint=new RenderPoint();
   event!: PeopleEvent;
-
+  openPosition={
+    'event-window-open-up':true,
+    'event-window-open-right':false,
+  };
   //Outputs
   @Output() closeEventWindow:EventEmitter<null|string> = new EventEmitter();
 
@@ -28,11 +31,23 @@ export class EventWindowComponent implements OnInit {
   ngDoCheck(): void {
     this.event=this.eventServicee.getEventById(this.openWindowInfo.id)
     this.renderPoint=new RenderPoint(this.openWindowInfo.jsEvent)
-
+    this.eventWindowPositionChange();
   }
   closeDeletetWindow(id:null|string){
     this.deleteActive=false;
     this.closeEventWindow.emit(id);
   }
-
+  eventWindowPositionChange(){
+    if (this.openWindowInfo.openPosition==="RIGHT") {
+      this.openPosition={
+        'event-window-open-up':false,
+        'event-window-open-right':true,
+      }
+    } else { //===UP
+      this.openPosition={
+        'event-window-open-up':true,
+        'event-window-open-right':false,
+      }
+    }
+  }
 }

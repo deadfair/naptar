@@ -1,5 +1,6 @@
 <mat-card class="infowindow"
-  [ngStyle]="{'top':renderPoint.y+'px' ,'left':renderPoint.x+'px'  }">
+  [ngStyle]="{'top':renderPoint.y+'px' ,'left':renderPoint.x+'px'  }"
+  [ngClass]="openPosition">
   <mat-card-title>
     <h1>{{event.name}}</h1>
       <button mat-icon-button

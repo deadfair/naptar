@@ -1,0 +1,44 @@
+<section class="mini-month-picker-child">
+
+
+<section class="mini-month-picker-btns">
+  <button mat-button class="play-btn">
+    <mat-icon class="play-btn-icon play-btn-icon2">play_circle_filled</mat-icon>
+  </button>
+  <button mat-flat-button  class="tuday-btn">Ma</button>
+  <button mat-button class="play-btn">
+    <mat-icon class="play-btn-icon ">play_circle_filled</mat-icon>
+  </button>
+</section>
+
+<section class="minimonth-container">
+    <div class="minimonth-rows">
+      <div class="minimonth-minicontainer"  *ngFor="let month of months.slice(0,3)" >
+        <p>
+          {{month}}
+        </p>
+      </div>
+    </div>
+    <div class="minimonth-rows" >
+      <div class="minimonth-minicontainer" *ngFor="let month of months.slice(3,6)">
+        <p>
+          {{month}}
+        </p>
+      </div>
+    </div>
+    <div class="minimonth-rows" >
+      <div class="minimonth-minicontainer" *ngFor="let month of months.slice(6,9)" >
+        <p>
+          {{month}}
+        </p>
+      </div>
+    </div>
+    <div class="minimonth-rows" >
+      <div class="minimonth-minicontainer" *ngFor="let month of months.slice(9,12)" >
+        <p>
+          {{month}}
+        </p>
+      </div>
+    </div>
+</section>
+</section>

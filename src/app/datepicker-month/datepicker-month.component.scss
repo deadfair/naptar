@@ -1,27 +1,99 @@
 @use '../../assets/constants' as c;
 
-.mat-calendar{
-  width: 298px;
-}
+
 
 ::ng-deep{
   .datepicker-month{
-    .mat-calendar-content{
-      background-color: c.$VilágosZöld;
-      padding: 5px;
-    }
-    td.mat-calendar-body-label[colspan="7"] {
-      display: none;
-    }
-    .mat-calendar-body-label{
-      opacity: 0;
-    }
-    .mat-card{
-      padding: 0px !important;
-      margin-bottom: 7px;
-    }
+    padding: 0px !important;
+    box-shadow: none !important;
+    width: 298px;
+    .mat-calendar{
+      .mat-calendar-content{
+        padding-bottom: 30px;
+        background-color: c.$VilágosZöld;
+        padding: 8px;
+        box-sizing: border-box;
+        box-shadow: inset 0px 1px 0px #F0F0F0;
+        height: 226px !important;
+        .mat-calendar-table{
+          thead{
+            tr{
+              height: 30px;
+              th{
+                padding: 0;
+                .mat-calendar-abbr{
+                  @include c.fonts1(14px,normal,28px);
+                  color: c.$SötétZöld;
+                }
+              }
+            }
+            tr:nth-child(2){
+            display: none;
+            }
+          }
+          tbody{
+            tr{
+
+              td:hover .mat-calendar-body-cell-content, td:hover .mat-calendar-body-cell-preview{
+                background-color: c.$VilágosSzürke;
+                border-radius: 2px;
+              }
+              td{
+                padding: 3px 0 3px 0 !important;
+                box-sizing: border-box;
+                height: 30px;
+               // width: 35.14px;
+               // margin-right: 20px;
+               // max-height: 30px !important;
+
+                @include c.fonts1(14px,normal);
+                //width:35.14px;
+
+                .mat-calendar-body-today, .mat-calendar-body-selected{
+                  left: calc(50% - 24px/2 + 0.43px);
+                  box-sizing: border-box;
+                  width: 24px;
+                  height: 24px;
+                  border: 1px solid c.$Zöld;
+                  border-radius: 2px;
+                  top: calc(50% - 24px/2);
+                }
+                .mat-calendar-body-selected{
+                  background-color: c.$Fehér;
+                }
+                .mat-calendar-body-cell-content{
+                  top: calc(50% - 24px/2);
+                  left: calc(50% - 24px/2 + 0.43px);
+                  height: 24px;
+                  width: 24px;
+                }
+
+
+                .mat-calendar-body-cell-preview{
+                  display: none;
+                }
+              }
+              td > *{
+                @include c.fonts1(14px,normal);
+                color: c.$SötétZöld;
+              }
+
+            }
+            .mat-calendar-body-label{
+              opacity: 0;
+              padding: 0px !important;
+            }
+          }
+
+        }
+      }
+
 
   }
-
+  }
 }
-
+/*
+.datepicker-cell-class{
+  background-color: red !important;
+  color: #55AE3A;
+}*/

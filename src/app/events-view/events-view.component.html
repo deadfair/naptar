@@ -1,4 +1,4 @@
-<section class="container">
+<section class="events-view-container-child">
 <section>
   <h1>
     <div class="line"></div>
@@ -32,13 +32,13 @@
 <ng-template #haveEvents>
   <section class="events" *ngFor="let event of selectEvents">
     <section class="time-container">
-      <button mat-icon-button class="close" >
+      <button mat-icon-button disableRipple class="close" >
         <mat-icon >close</mat-icon>
       </button>
       <section class="time">
         {{event.start}} - {{event.end}}
       </section>
-      <button mat-icon-button class="close" >
+      <button mat-icon-button disableRipple class="close" >
         <mat-icon >close</mat-icon>
       </button>
     </section>
@@ -48,6 +48,8 @@
     </section>
   </section>
 </ng-template>
+
+
 
 
 

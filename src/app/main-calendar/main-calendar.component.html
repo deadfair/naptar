@@ -3,13 +3,15 @@
   <section class="main-container"
   [ngStyle]="{'padding-top':selectedView==='Year'?'59px':'120px'}">
 
+  <section class="left-side">
+    <app-mini-month-picker></app-mini-month-picker>
     <app-view-swapper
       class="swapper"
       [years]="years"
       (selectedYear)="selectedYearInit($event)"
-      (selectedMode)="SelectedViewInit($event)"
-      >
+      (selectedMode)="SelectedViewInit($event)">
     </app-view-swapper>
+  </section>
 
     <section [ngSwitch]="selectedView">
       <section *ngSwitchCase="'Year'">
@@ -27,7 +29,7 @@
 
 
 
-    <app-events-view [selectedDate]="selectedDate" class="events"></app-events-view>
+    <app-events-view [selectedDate]="selectedDate" class="events-view-parent"></app-events-view>
 
 
   </section>

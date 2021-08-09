@@ -1,0 +1,77 @@
+@use '../../assets/constants' as c;
+
+
+::ng-deep{
+
+  .mini-month-picker-child{
+    transform: translateY(-28px - 7px); // btn heightjével + marginja
+    margin-bottom: -28px;
+    .minimonth-container{
+      width: 298px;
+      height: 312px;
+      display: flex;
+      flex-flow: column nowrap;
+      padding: 21px 31px;
+      box-sizing: border-box;
+      justify-content: space-between;
+      background-color: c.$VilágosZöld;
+      box-shadow: inset 0px 1px 0px #F0F0F0;
+      margin: 0;
+      .minimonth-rows{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        @include c.fonts1(14px,normal);
+        color: c.$SötétZöld;
+        .minimonth-minicontainer{
+          width: 44px;
+          height: 22px;
+          display: flex;
+          justify-content: center;
+          p{
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .mini-month-picker-btns{
+      margin-bottom: 7px;
+      display: flex;
+      flex-flow: row;
+      .tuday-btn{
+        margin-left: 8px;
+        margin-right: 9px;
+        box-sizing: border-box;
+        width: 67px;
+        height: 28px;
+        background: c.$SötétZöld !important;
+        border-radius: 20px !important;
+        color: c.$Light01;
+        @include c.fonts1(12px,normal,12px);
+      }
+      .play-btn{
+        border-radius: 100px;
+        min-width: 0px;
+        height: 28px;
+        width: 28px;
+        line-height: normal;
+        padding: 0;
+      .play-btn-icon{
+        width: 28px;
+        height: 28px;
+        /* SötétZöld */
+        font-size:33px;
+        color: #006633;
+        vertical-align:baseline;
+        transform:translate(-2.5px,-2.5px);
+      }
+      .play-btn-icon2{
+        transform: matrix(-1, 0, 0, 1, 0, 0) translate(-2.5px,-2.5px);
+
+      }
+
+    }
+
+    }
+  }
+}

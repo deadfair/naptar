@@ -1,11 +1,12 @@
 
-<section class="datepicker-month">
-  <mat-card >
+<section >
+  <mat-card class="datepicker-month">
     <mat-calendar
       (selectedChange)="selectChange($event)"
-      [startAt]="startAt"
+      [startAt]="startDate"
       matSuffix
       [headerComponent]="datepickerMonthComponent"
+      [(selected)]="clickedDate"
   ></mat-calendar>
   </mat-card>
 </section>

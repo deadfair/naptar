@@ -2,6 +2,40 @@
 @use '../../assets/constants' as c;
 
 ::ng-deep{
+
+  .event-window-open-up{
+
+    transform: translate(calc(-456px/2 + 115px/2),calc(-212.91px - 23px));
+    //         width/2 + Eventwidth/2, -height - Nyilheight
+    &::after, &::before{
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 13px;
+      left: calc(50% - 28px/2 - 4.4px);
+      bottom: -11px;
+      background: c.$Sötétszürke;
+      backdrop-filter: blur(81.5485px);
+      /* Note: backdrop-filter has minimal browser support */
+      border-radius: 13px;
+      transform: rotate(54deg) ;
+    }
+    &::after{
+      left: calc(50% - 28px/2 + 4.4px);
+      transform: rotate(-54deg) ;
+    }
+  }
+  .event-window-open-right{
+    transform: translate(calc(140px + 18px - 14px),calc(-212.91px/2 + 22px/2));
+    &::after, &::before{
+      @include c.arrow;
+      top: 97px;
+    }
+    &::before{
+      top: 106px;
+      transform: rotate(36deg)
+    }
+  }
   .mat-card.infowindow{
     @include c.ZIndex(2);
     @include c.fonts1;
@@ -14,9 +48,6 @@
     width: 456px !important;
     height: 212.91px !important;
     padding: 17px 0 0 0;
-
-    transform: translate(-228px,-248px);
-    // (456+16+16)/2
 
     .mat-card-title{
       position: relative;
@@ -81,23 +112,7 @@
         height: 25px;
       }
     }
-  &::after, &::before{
-    content: "";
-    position: absolute;
-    width: 28px;
-    height: 13px;
-    left: calc(50% - 28px/2 - 4.4px);
-    bottom: -11px;
-    background: c.$Sötétszürke;
-    backdrop-filter: blur(81.5485px);
-    /* Note: backdrop-filter has minimal browser support */
-    border-radius: 13px;
-    transform: rotate(54deg) ;
-  }
-  &::after{
-      left: calc(50% - 28px/2 + 4.4px);
-      transform: rotate(-54deg) ;
-    }
+
   }
 }
 

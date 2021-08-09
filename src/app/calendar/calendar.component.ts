@@ -20,8 +20,25 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  closeDeleteWindow(id:string|null){
+    this.eventwindow=false;
+    let newhiddenEvents:any[]=[];
+    if (id!==null) {
+      for (let index = 0,j=0; index < this.moreEventWindowInfo.plusEvents.length ; index++,j++) {
+        if (this.moreEventWindowInfo.plusEvents[index].event._def.publicId!==id) {
+          newhiddenEvents[j]=this.moreEventWindowInfo.plusEvents[index];
+        }else{
+          j--;
+        }
+      }
+    }
+    this.moreEventWindowInfo.plusEvents=newhiddenEvents;
+  }
 
-
+  eventInfoFromMoreEventWindow(selectedEventFromMoreEventWindow:TravelEventInfo){
+    this.selectEvent=selectedEventFromMoreEventWindow;
+    this.eventwindow=true;
+  }
   calendarOptions: CalendarOptions = {
     headerToolbar:{
       left:'title',
@@ -45,7 +62,6 @@ export class CalendarComponent implements OnInit {
         if (!arg.el.innerHTML.endsWith(button,arg.el.innerHTML.length)) {
           console.log(arg.el.innerHTML);
           console.log(arg.el.innerHTML.length);
-
           arg.el.innerHTML +=button;
         }else{
           console.log("else")
@@ -79,7 +95,6 @@ export class CalendarComponent implements OnInit {
     },
 
     eventClick: (info) =>{
-      console.log(info)
       this.moreEventWindow=false;
       this.eventwindow=true;
       this.selectEvent= new TravelEventInfo(info);

@@ -10,10 +10,10 @@
     backdrop-filter: blur(81.5485px);
     border-radius: 13px ;
     width: 140px !important;
-    transform: translate(50px,-28px);
     color: c.$Fehér;
     min-height: 40px;
     padding: 26px 0 11px 0;
+    transform: translate(calc(140px + 18px - 9px), calc(22px/2 - 25px));
 
 
     .close{

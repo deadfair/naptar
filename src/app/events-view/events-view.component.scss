@@ -1,8 +1,8 @@
 @use '../../assets/constants' as c;
 
 
-.container{
-  max-width:280px ;
+.events-view-container-child{
+  width:301px ;
   margin-top: -10px;
   h1{
     font-family: Roboto;
@@ -37,6 +37,7 @@
     font-size: 13px;
     line-height: 20px;
     font-weight: normal;
+    margin-left: 11px;
     position: relative;
 
     span:nth-child(1){
@@ -63,15 +64,29 @@
   .events{
     display: flex;
     flex-flow: column;
+    margin: 0 0 7px 0;
     .time-container{
+      height: 16px;
+      margin-top: -3px;
+      padding-bottom: 3px;
       .close{
         width: 8.75px;
         height: 8.75px;
         color: c.$VilágosZöld;
+        line-height: normal;
+        min-width: 8.75px;
+        padding: 0;
+        .mat-icon{
+
+          width: 16px !important;
+          font-size: 16px !important;
+          height: 16px !important;
+          line-height: 1;
+        }
       }
       .time{
         display: inline-block;
-        margin-left: 20px;
+        margin-left: 16px;
         margin-right: 7px;
         font-family: Inter;
         font-style: normal;
@@ -98,12 +113,11 @@
   }
 
   .noEvents{
+    width: 298px;
+    height: 56px;
+    margin-top: 21px;
     h1{
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 24px;
-      line-height: 28px;
+      @include c.fonts1(24px,normal,28px,bold);
       text-align: center;
       color: c.$SötétZöld;
     }

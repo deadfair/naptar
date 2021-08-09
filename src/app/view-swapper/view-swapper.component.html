@@ -17,8 +17,8 @@
   [ngClass]="{'focus-button':buttonFocused}"
 >{{defaultSelectedValue}}</button>
 
-<ng-container *ngIf="buttonFocused; then thenTemplate"></ng-container>
-<ng-template #thenTemplate>
+<ng-container *ngIf="buttonFocused; then thenFocused"></ng-container>
+<ng-template #thenFocused>
   <mat-selection-list
     class="selection-list-year"
     [multiple]="false"

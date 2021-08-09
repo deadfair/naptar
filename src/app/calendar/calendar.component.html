@@ -7,13 +7,14 @@ class="calendar-mid"
 <ng-template #eventWindowOpen>
   <app-event-window
     [openWindowInfo]="selectEvent"
-    (closeEventWindow)="eventwindow=false"
+    (closeEventWindow)="closeDeleteWindow($event)"
   ></app-event-window>
 </ng-template>
 
 <span *ngIf="moreEventWindow;then moreEventWindowOpen"></span>
 <ng-template #moreEventWindowOpen>
   <app-more-event-window
+    (selectedEvent)="eventInfoFromMoreEventWindow($event)"
     [openWindowInfo]="moreEventWindowInfo"
     (closeBtnClick)="moreEventWindow=false"
     ></app-more-event-window>

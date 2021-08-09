@@ -4,7 +4,7 @@
       <mat-icon >close</mat-icon>
     </button>
   <mat-card-content>
-    <section class="event-box" *ngFor="let item of hiddenEvents"
+    <section class="event-box" *ngFor="let item of openWindowInfo.plusEvents"
       (click)="openEventWindow(item,$event)"
       [ngStyle]="{'background':item.event.backgroundColor ,
       'border-color':item.event.borderColor}">
@@ -13,11 +13,5 @@
   </mat-card-content>
 </mat-card>
 
-<span *ngIf="eventWindow;then eventWindowOpen"></span>
-<ng-template #eventWindowOpen>
-  <app-event-window
-    [openWindowInfo]="selectEvent"
-    (closeEventWindow)="closeDeleteWindow($event)"
-  ></app-event-window>
-</ng-template>
+
 -
