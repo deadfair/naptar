@@ -40,8 +40,8 @@
       </button>
     </section>
 
-    <section [ngSwitch]="stepperValue">
-      <section *ngSwitchCase="'reminder'">
+    <section [ngSwitch]="stepperValue" >
+      <section *ngSwitchCase="'reminder'" class="reminder-container">
           <label for="reminder" class="label">
             Reminder
           </label>
@@ -63,7 +63,7 @@
           </mat-selection-list>
       </section>
 
-      <section *ngSwitchCase="'start-time'">
+      <section *ngSwitchCase="'start-time'" class="start-time-container">
         <label for="start-time" class="label">Start time</label>
         <input
           class="input-field"
@@ -84,9 +84,9 @@
       </section>
 
       <section class="people-list" *ngSwitchCase="'people'">
-        <label for="people" class="label">Add people</label>
+  <!--  <label for="people" class="label">Add people</label>-->
+  <!--    id="people" -->
         <input
-          id="people"
           class="input-field"
           matInput
           placeholder="Add people"
@@ -113,10 +113,10 @@
         </mat-selection-list>
       </section>
 
-      <section *ngSwitchCase="'place'">
-        <label for="place" class="label">place</label>
+      <section *ngSwitchCase="'place'" class="placeMenuitem-list">
+  <!--  <label for="place" class="label">place</label>
+          id="place"-->
         <input
-          id="place"
           class="input-field"
           matInput
           placeholder="Menu item"

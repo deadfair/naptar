@@ -1,5 +1,7 @@
 @use '../..//assets/constants' as c;
 
+
+
 .green{
   background: c.$Zöld;
   border: 1px solid #FFFFFF;
@@ -23,7 +25,6 @@
 .dark-green{
   background-color: c.$SötétZöld;
 }
-
 .btn-group{
   display: flex;
   flex-direction: row;
@@ -40,204 +41,251 @@
 }
 
 
-.stepper-active{
-  background: linear-gradient(0deg, #1E2025, #1E2025);
-  opacity: 0.4;
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 9.07%;
-  bottom: 0%;
-  z-index: 10003 !important;
-}
 
-.stepper{
-  z-index: 10003 !important;
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  bottom: 0%;
-  top:15%;
-  padding: 0px;
+//-------------------------------------------
+::ng-deep{
+  .stepper-active{
+    background: linear-gradient(0deg, #1E2025, #1E2025);
+    opacity: 0.4;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 9.07%;
+    bottom: 0%;
+    min-width: 930px;
+    @include c.ZIndex(100);
+  }
 
-  .stepper-container{
-
-    width: 930px;
-    margin: auto;
-    background: c.$Grey3;
-    box-sizing: border-box;
-
-    .header{
-      height: 61.96px;
-      padding: 14px 28px 14px 14px;
-      background: c.$SötétZöld;
+  .stepper{
+    min-width: 930px;
+    @include c.ZIndex(100);
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    top:15%;
+    padding: 0px;
+    .stepper-container{
+      width: 930px;
+      margin: auto;
+      background: c.$Grey3;
       box-sizing: border-box;
-      position: relative;
-      .exit-btn{
-        position: absolute;
-        right: 0px;
-        color: c.$Fehér;
-        transform: translate(-4px,-2px);
-      }
-    }
-    .main{
-      padding: 0 33px 20.8px 33px;
-      box-sizing: border-box;
-
-
-      .label{
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: 900;
-      font-size: 12px;
-      line-height: 16px ;
-      color: c.$SötétZöld;
-      height: 16px ;
-      margin-bottom: 4px;
-      display: block;
-      }
-
-      .input-field{
-      background: c.$Fehér;
-      border: 2px solid c.$SötétZöld;
-      box-sizing: border-box;
-      border-radius: 3px;
-      width: 864px;
-      height: 40px;
-      margin-bottom: 16px;
-      }
-      .input-field:focus{
-        outline-color: c.$SötétZöld;
-      }
-      .mat-list-item, .mat-list-option{
-        height: 32px;
-      }
-      .mat-list-single-selected-option{
-        background-color: c.$Szürke;
-      }
-      .people-list{
+      .header{
+        height: 61.96px;
+        padding: 14px 28px 14px 14px;
+        background: c.$SötétZöld;
+        box-sizing: border-box;
         position: relative;
-
-        .people-btn{
+        .exit-btn{
           position: absolute;
-          left: 864px/2-636px/2;
-          top:56px+53px/2-1px;
-          color: c.$Light01;
-        }
-
-        .search-people{
-          width: 636px;
-          height: 53px;
-          margin: auto;
-          background: c.$Light3;
-          padding-left: 32px;
-          border: 2px solid c.$Dark3;
-          box-sizing: border-box;
-          border-radius: 4px;
-          display: block;
-
-        }
-
-
-        .mat-list-base{
-          width: 636px;
-          margin: auto;
-          padding: 0;
-          background-color: c.$Grey3;
-          border: none;
-          box-shadow: none;
-
-          .mat-list-item, .mat-list-option {
-            height: 45px;
-            margin-top: 10px;
-            background-color: c.$Fehér;
-          }
-          .mat-list-single-selected-option{
-            background-color: c.$Szürke;
-          }
-
-
+          right: 0px;
+          color: c.$Fehér;
+          transform: translate(-4px,-2px);
         }
       }
+      .main{
+        padding: 0 33px 20.8px 33px;
+        box-sizing: border-box;
+        .mat-list-single-selected-option{
+          background-color: c.$Szürke;
+        }
+        .input-field{
+          width: 864px;
+          box-sizing: border-box;
+        }
+        .selection-list{
+          @include c.list1;
+          .list-item{
+            @include c.fonts1(14px,normal,20px,normal);
+            height: 20px;
+            margin-left: 16px;
+          }
+        }
+//-----------------------------------------------------------
+        .people-list{
+          position: relative;
+          .input-field{
+            height: 56.3px;
+            width: 864.18px;
+            border: none;
+            outline: none;
+            padding: 14.7px;
+            @include c.fonts1(19.7044px,normal,28px);
+            color: c.$Grey7;
+            background-color: c.$Grey1;
+            margin-top: 26.57px - 12.5px;
+            margin-bottom: 14.04px;
+            border-radius: 0;
 
-      .selection-list{
-        @include c.list1;
-
-
+          }
+          .input-field::placeholder{
+            color: c.$Grey7;
+          }
+          .people-btn{
+            position: absolute;
+            left: 864px/2 - 636px/2 - 3px;
+            top:   56.29px + 14.07px + 14.04px + 47.02px/2 - 40px/2 + 1px;
+            color: c.$Light01;
+          }
+          .search-people{
+            width: 636px;
+            height: 53px;
+            margin: 0px auto 19px auto;
+            background: c.$Light3;
+            padding-left: 32px;
+            border: 2px solid c.$Dark3;
+            box-sizing: border-box;
+            border-radius: 4px;
+            display: block;
+          }
+          .mat-list-base{
+            width: 636px;
+            margin: auto;
+            padding: 0;
+            background-color: c.$Grey3;
+            border: none;
+            box-shadow: none;
+            .mat-list-item, .mat-list-option {
+              height: 45px;
+              margin-top: 10px;
+              background-color: c.$Fehér;
+            }
+          }
+        }
+//------------------------------------------------------------
+        .placeMenuitem-list{
+          .input-field{
+            padding: 14.07px;
+            border: 2.81491px solid #0172CB !important;
+            background-color: c.$Grey1 !important;
+            height: 56.3px !important;
+            border-radius: 0 !important;
+            margin-bottom: 7.04px !important;
+            margin-top: 0;
+            @include c.fonts1(19.7044px,normal,28px);
+            color: c.$Grey7;
+            &:focus{
+              outline: none;
+            }
+          }
+          .mat-list-base{
+            padding-top: 0 ;
+          }
+          .mat-list-item{
+            height: 56.3px !important;
+            .mat-list-text{
+              .place-box{
+                .list-item{
+                  @include c.fonts5 ;
+                  margin-left: 50.67px !important;
+                  color: c.$Black;
+                }
+              }
+            }
+          }
           .place-box{
             position: relative;
             .location{
               position: absolute;
-              left: 8px;
+              left: 12px;
               color: rgba(0, 0, 0, 0.54);
-              transform: translateY(-2px);
+              top:5%;
+              height: 28.15px !important;
+              width: 19.7px !important;
+              line-height: 28.15px !important;
+              font-size: 28px !important;
             }
             .close{
-              transform: translateY(-2px);
+              top:17%;
               position: absolute;
               right: 0px;
               color: rgba(0, 0, 0, 0.54);
+              height: 19.7px !important;
+              width: 19.7px !important;
+              line-height: 19.7px !important;
+              font-size:28px !important;
             }
             .list-item{
               margin-left: 38px;
             }
           }
-
-
-        .list-item{
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 14px;
-          line-height: 20px;
-          height: 20px;
-          margin-left: 16px;
         }
-      }
-      .colors-bigcontainer{
-        width: 292px;
-        height: 98px;
-        margin: auto;
-        .label{
-          margin-top: 7.04px;
-          margin-left: 9.85px;
-          height: 19.7px;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 16.8895px;
-          line-height: 20px;
-          color: c.$Grey4;
-        }
-        .colors-container{
-          display: flex;
-          justify-content: center;
-          flex-flow: row wrap;
-          .colors{
-            width: 25.33px;
-            height: 25.33px;
-            border-radius: 5.62px;
-            margin:4px;
-            cursor: pointer;
-          }
-          .bonus-color{
-            background-color: c.$Grey4;
-            font-family: Roboto;
-            font-style: normal;
+//---------------------------------------------
+        .colors-bigcontainer{
+          width: 292px;
+          height: 98px;
+          margin: auto;
+          margin-top: 47.6px - 12.5px;
+          margin-bottom: 73.2px - 40px;
+          box-sizing: border-box;
+          .label{
+            margin-left: 17.85px;
+            height: 19.7px;
+            @include c.fonts1(16.8895px,normal,20px);
             font-weight: bold;
-            font-size: 16.8895px;
-            line-height: 20px;
-            color: c.$Fehér;
-            text-align: center;
+            color: c.$Grey4;
+          }
+          .colors-container{
+            display: flex;
+            justify-content: center;
+            flex-flow: row wrap;
+            .colors{
+              width: 25.33px;
+              height: 25.33px;
+              border-radius: 5.62983px;
+              margin:4px;
+              cursor: pointer;
+            }
+            .bonus-color{
+              @include c.fonts1(16.8895px,normal,20px);
+              background-color: c.$Grey4;
+              font-weight: bold;
+              color: c.$Fehér;
+              text-align: center;
+            }
           }
         }
+//---------------------------------------------
+        .start-time-container, .reminder-container{
+          .label{
+            @include c.fonts1(12px,normal,16px,900);
+            color: c.$SötétZöld;
+            height: 16px ;
+            margin-bottom: 4px;
+            display: block;
+            .mat-list-item, .mat-list-option{
+              height: 32px;
+            }
+          }
+          .input-field{
+            height: 40px;
+            padding-left: 9px;
+            margin-bottom: 16px;
+            background: c.$Fehér;
+            border: 2px solid c.$SötétZöld;
+            border-radius: 3px;
+            &:focus{
+              outline-color: c.$SötétZöld;
+            }
+          }
+        }
+
+//---------------------------------------------
+//---------------------------------------------
+//---------------------------------------------
+
+
+
+
+
+
+
+
+
       }
     }
   }
 }
-
-
-
 
 :host ::ng-deep .mat-list-item-content {
   padding: 0!important;

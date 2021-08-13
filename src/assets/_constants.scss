@@ -13,9 +13,9 @@ $Grey4:#CCCCCC;
 $Light3: #BDBDBD;
 $Dark3:#828282;
 $Light01: #F2F2F2;
-
-
-
+$Grey7: #2D2F30;
+$Grey1: #F9F8F9;
+$Black:#1A202C;
 
 
 @mixin ZIndex($z:0) {
@@ -54,6 +54,16 @@ $Light01: #F2F2F2;
   font-weight: normal;
   font-size: 17.7931px !important;
   letter-spacing: 0.741379px;
+}
+
+@mixin fonts5 {
+  font-family: Inter !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-size: 22.5193px  !important;
+  line-height: 34px !important;
+
+  font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
 }
 
 

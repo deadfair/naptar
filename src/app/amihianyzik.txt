@@ -1,7 +1,20 @@
-eventview-ba a kis ikon x mérete
 összes kép
 nth word 1 hiba.. van a
 plusz jel
-event nyila
+szerkesztés jel utáni visszalépés nem tüni el v mikor tünjön el?
+reszponzív
+stepper 3,4
+kis szám a naptárba
+tegnap és a ma események plusz a kis x oda
 
-szerkesztés jel utáni visszalépés nem tüni elk
+
+
+összes kép,
+nth word ami vmiért nem jó,
+plusz jel(az se olyan mint neten írják),
+szerkesztés jel utáni visszalépés (tünjön el? mikor?),
+reszponzívitás,
+kis szám a naptárba,
+tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
+stepper pontosítása(ezt fele kész , este meló után ez meglesz),
+(meg a figma legfelső 2 sekció az 0 mégmindig)
