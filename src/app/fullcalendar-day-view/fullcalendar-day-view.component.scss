@@ -1,0 +1,137 @@
+
+$tdmarginy:3.5px;
+$tdmarginx:9px;
+
+::ng-deep{
+.fullcalendar-day-view{
+  width: 1116px;
+
+// header
+  .fc-scrollgrid-sync-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a.fc-col-header-cell-cushion {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      width: 141px;
+      height: 72px;
+      background: #B1DDC4;
+      border-radius: 50px;
+
+      margin: 17px 0px;
+      font-family: Chivo;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 17.7931px;
+      line-height: 39px;
+
+      text-align: center;
+      letter-spacing: 0.741379px;
+
+      color: #006633;
+      }
+    }
+    .fc-header-toolbar.fc-toolbar.fc-toolbar-ltr {
+      display: none;
+    }
+    .fc-view-harness.fc-view-harness-active{
+      .fc-timegrid.fc-timeGridDay-view.fc-view{
+        table.fc-scrollgrid.fc-scrollgrid-liquid{
+          border: none;
+          thead{
+            *{
+              border: none !important;
+              outline: none !important;
+              overflow: hidden !important;
+            }
+          }
+          tbody{
+            *{
+              background-color: white;
+              border: none;
+              overflow: visible;
+              outline: none;
+
+            }
+            tr.fc-scrollgrid-section.fc-scrollgrid-section-body{
+              td{
+                .fc-scroller-harness{
+                  .fc-scroller{
+                    .fc-daygrid-body.fc-daygrid-body-unbalanced.fc-daygrid-body-natural{
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+            tr.fc-scrollgrid-section{
+              td.fc-timegrid-divider.fc-cell-shaded{
+                display: none;
+              }
+            }
+//-----------------------------------------------
+            tr.fc-scrollgrid-section.fc-scrollgrid-section-body.fc-scrollgrid-section-liquid{
+
+              td{
+                .fc-scroller-harness.fc-scroller-harness-liquid{
+                  .fc-scroller.fc-scroller-liquid-absolute{
+                    .fc-timegrid-body{
+                      .fc-timegrid-slots, .fc-timegrid-cols{
+                        table{
+                          colgroup{
+                            col{
+                              width: 69px !important;
+                            }
+                          }
+                          tbody{
+                            tr{
+                              td.fc-timegrid-slot.fc-timegrid-slot-label.fc-scrollgrid-shrink{
+                                .fc-timegrid-slot-label-frame.fc-scrollgrid-shrink-frame{
+                                  margin-right: 20px;
+                                  .fc-timegrid-slot-label-cushion.fc-scrollgrid-shrink-cushion{
+                                    font-family: Roboto;
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                    /* identical to box height, or 123% */
+                                    transform: translateY(-9px);
+
+                                    display: flex;
+                                    align-items: center;
+                                    padding-left: 10px;
+                                    /* SötétZöld */
+
+                                    color: #006633;
+                                  }
+                                }
+                              }
+                              td.fc-timegrid-slot.fc-timegrid-slot-lane{
+                                height: 24.47px;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+
+
+
+          }
+        }
+      }
+    }
+
+
+
+  }
+}

@@ -1,0 +1,210 @@
+@use '../../assets/constants' as c;
+
+::ng-deep{
+  .fullcalendar-week-view-container{
+    position: relative;
+    margin: auto;
+    width: 1222px;
+
+    .fullcalendar-week-view.fc{
+    width: 1222px;
+    *{
+      border: none !important;
+    }
+    table{
+      border-collapse: unset;
+      border-spacing: 18px 0;
+    }
+    .fc-timegrid-col-events{
+      margin: 2px 1.17px 0 1.26px;
+    }
+
+    .fc-view-harness.fc-view-harness-active{
+      .fc-timegrid.fc-timeGridWeek-view.fc-view{
+        table.fc-scrollgrid.fc-scrollgrid-liquid{
+          thead{
+            tr{
+              table{
+                tbody{
+                  tr{
+                    th{
+                      .fc-scrollgrid-sync-inner{
+                        height: 72px;
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 0 7.41379px;
+
+                        a{
+                          @include c.fonts4;
+                          color: c.$SötétZöld;
+                        }
+                      }
+
+                    }
+                    th:nth-child(2){
+                      .fc-scrollgrid-sync-inner{
+                        background-color: c.$VilágosZöld;
+                        border-radius: 50px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          tbody{
+            tr.fc-scrollgrid-section:nth-child(3){
+              td{
+                table{
+                  tbody{
+                    tr{
+                      height: 25px;
+                      td:nth-child(1){
+                        visibility: hidden;
+                      }
+                    }
+                  }
+                }
+              }
+
+            }
+            tr.fc-scrollgrid-section:nth-child(2){
+              height: 17px;
+              visibility: hidden;
+            }
+            tr.fc-scrollgrid-section:nth-child(1){
+              display: none;
+
+            }
+          }
+        }
+      }
+    }
+
+    .fc-timegrid-event-harness.fc-timegrid-event-harness-inset {
+      margin-bottom: 3px;
+      border-style: solid !important;
+      border-color: #28A138 !important;
+      border-left-width: 8px !important;
+      border-top-width: 0px !important;
+      border-bottom-width: 0px !important;
+      border-right-width: 0 !important;
+      outline: none;
+      border-radius: 0px !important;
+      a.fc-timegrid-event.fc-v-event.fc-event{
+        box-shadow: none;
+        margin-bottom: 0;
+        border-radius: 0;
+
+        background-color: rgba(40, 161, 56, 0.4) !important;
+
+            .fc-event-main-frame{
+              flex-direction: row-reverse !important;
+              opacity: 1;
+              .fc-event-title-container{
+                width: 62%;
+                .fc-event-title.fc-sticky{
+                  text-align:center;
+                  font-family: Chivo;
+                  font-style: normal;
+                  font-weight: normal;
+                  font-size: 12px;
+                  //line-height: 30px;
+                  /* or 250% */
+                  letter-spacing: 0.4px;
+
+                  /* Neutral / Grey 7 */
+
+                  color: #2D2F30;
+
+                  opacity: 0.88;
+                }
+              }
+              .fc-event-time{
+                width: 38%;
+                text-align: center;
+                font-family: Chivo;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 9px;
+                //line-height: 20px;
+                /* or 222% */
+
+                letter-spacing: 0.4px;
+
+                /* Neutral / Grey 6 */
+
+                color: #4F4F4F;
+
+                opacity: 0.48;
+              }
+        }
+      }
+  }
+  }
+
+
+  .background-cells{
+    z-index: -1;
+    position: absolute;
+    left: 29px;
+    top: 110px;
+    display: flex;
+    flex-flow: row nowrap;
+    box-sizing: border-box;
+    .col{
+      box-sizing: border-box;
+      min-width: 140px !important;
+      margin-left:18px;
+      height: 1200px;
+      display: flex;
+      flex-flow: column nowrap;
+      .row{
+        box-sizing: border-box;
+        height: 25px;
+        border: 0.74px solid #B1DDC4 !important;
+      }
+      .row:nth-child(2n+1){
+        border-bottom: 1px solid rgba(177, 221, 196, 0.4) !important;
+      }
+      .row:nth-child(2n){
+        border-top: 1px solid rgba(177, 221, 196, 0.4) !important;
+      }
+      .row:first-child{
+        border-top: 0.74px solid #B1DDC4 !important;
+      }
+      .row:last-child{
+        border-bottom: 0.74px solid #B1DDC4 !important;
+      }
+    }
+    .col:nth-child(2){
+    }
+    .col:nth-child(1){
+      margin-left: 0;
+      transform: translateY(-12.5px);
+      min-width: 51px !important; // 31 volt
+      .row{
+        border: none !important;
+        justify-content: center;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 16px;
+        /* identical to box height, or 123% */
+
+        display: flex;
+        align-items: center;
+        /* SötétZöld */
+
+        color: #006633;
+      }
+      .row:last-child{
+        transform: translateY(25px);
+      }
+    }
+  }
+}
+}

@@ -16,5 +16,4 @@ szerkesztés jel utáni visszalépés (tünjön el? mikor?),
 reszponzívitás,
 kis szám a naptárba,
 tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
-stepper pontosítása(ezt fele kész , este meló után ez meglesz),
 (meg a figma legfelső 2 sekció az 0 mégmindig)
