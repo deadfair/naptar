@@ -16,7 +16,9 @@ export class FullcalendarDayViewComponent implements OnInit {
 
   selectEvent:TravelEventInfo=new TravelEventInfo();
   moreEventWindowInfo:TravelPlusEventsInfo={jsEvent:null,plusEvents:[]};
-
+  numSequence(n: number): Array<number> {
+    return Array(n).fill(1);
+  }
 
   ngOnInit(): void {}
 
@@ -47,6 +49,9 @@ export class FullcalendarDayViewComponent implements OnInit {
       right:""
     },
     initialView: 'timeGridDay',
+    eventDidMount: function(info) {
+      console.log(info)
+    },
     editable: true,
     moreLinkClick:(info)=>{
       this.eventwindow=false;
@@ -65,7 +70,7 @@ export class FullcalendarDayViewComponent implements OnInit {
     firstDay:1, // Monday as first day of week
     weekends: true, // a hétvégét nem mutatja
     dayMaxEvents:true,
-    contentHeight: 1285, // (144+14)*6 // ez csak a táblázat magassága
+    contentHeight: 1302, // (144+14)*6 // ez csak a táblázat magassága
     aspectRatio: 1, // a magasság/szélesség arány contentHeight/contentWidth
     events: [
       { id:"01",title: 'Event', date: '2021-08-01' }, // eventek
@@ -74,7 +79,7 @@ export class FullcalendarDayViewComponent implements OnInit {
       { id:"04",title: 'Evenasdt', date: '2021-08-01', backgroundColor:'green' }, // eventek
       { id:"05",title: 'Eveffdnt', date: '2021-08-01' }, // eventek
       { id:"06",title: 'Event', date: '2021-08-01' }, // eventek
-      { id:"07",title: 'Eventttt', start: '2021-08-14T14:30:00' ,end:'2021-08-14T17:30:00'}, // eventek
+      { id:"07",title: 'Eventttt', start: '2021-08-15T14:30:00' ,end:'2021-08-15T17:30:00'}, // eventek
       { id:"08",title: 'Event', date: '2021-08-01' }, // eventek
       { id:"09",title: 'Event', date: '2021-08-01' }, // eventek
       { id:"10",title: 'Event', date: '2021-08-01' }, // eventek

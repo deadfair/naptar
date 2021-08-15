@@ -49,6 +49,8 @@ export class FullcalendarWeekViewComponent implements OnInit {
       center:'',
       right:""
     },
+
+
     initialView: 'timeGridWeek',
     editable: true,
     moreLinkClick:(info)=>{
@@ -59,6 +61,9 @@ export class FullcalendarWeekViewComponent implements OnInit {
           plusEvents:info.hiddenSegs
       }
     },
+    // ez NEM működik vmiért :(
+    titleFormat: { weekday: 'long' },
+
     eventClick: (info) =>{
       this.moreEventWindow=false;
       this.eventwindow=true;

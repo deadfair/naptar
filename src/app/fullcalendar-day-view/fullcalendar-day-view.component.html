@@ -1,5 +1,21 @@
-<full-calendar
-class="fullcalendar-day-view"
-[options]="calendarOptions"
->
-</full-calendar>
+<section class="fullcalendar-day-view-container">
+
+  <full-calendar
+  class="fullcalendar-day-view"
+  [options]="calendarOptions"
+  >
+  </full-calendar>
+
+  <section class="background-cells">
+    <div *ngFor="let col of numSequence(8);index as i" class="col">
+      <div *ngFor="let row of numSequence(48);index as j"
+        class="row">
+        <div *ngIf="i===0 && j%2===0">
+          {{col}} PM
+        </div>
+        <div *ngIf="i===0 && j===47">
+          {{col}} PM
+        </div>
+      </div>
+    </div>
+  </section>

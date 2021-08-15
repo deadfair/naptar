@@ -21,3 +21,10 @@
   </section>
 
 </section>
+<span *ngIf="eventwindow;then eventWindowOpen"></span>
+<ng-template #eventWindowOpen>
+  <app-event-window
+    [openWindowInfo]="selectEvent"
+    (closeEventWindow)="closeDeleteWindow($event)"
+  ></app-event-window>
+</ng-template>

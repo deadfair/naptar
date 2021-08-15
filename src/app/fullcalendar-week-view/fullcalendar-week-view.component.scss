@@ -18,6 +18,9 @@
     .fc-timegrid-col-events{
       margin: 2px 1.17px 0 1.26px;
     }
+    .fc-timegrid-col.fc-day-today{
+      background-color: inherit !important;
+    }
 
     .fc-view-harness.fc-view-harness-active{
       .fc-timegrid.fc-timeGridWeek-view.fc-view{
@@ -94,6 +97,9 @@
       outline: none;
       border-radius: 0px !important;
       a.fc-timegrid-event.fc-v-event.fc-event{
+        *{
+          pointer-events: none;
+        }
         box-shadow: none;
         margin-bottom: 0;
         border-radius: 0;
@@ -142,7 +148,7 @@
               }
         }
       }
-  }
+    }
   }
 
 
