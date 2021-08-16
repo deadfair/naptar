@@ -1,12 +1,3 @@
-összes kép
-nth word 1 hiba.. van a
-plusz jel
-szerkesztés jel utáni visszalépés nem tüni el v mikor tünjön el?
-reszponzív
-stepper 3,4
-kis szám a naptárba
-tegnap és a ma események plusz a kis x oda
-
 
 
 összes kép,
@@ -16,4 +7,5 @@ szerkesztés jel utáni visszalépés (tünjön el? mikor?),
 reszponzívitás,
 kis szám a naptárba,
 tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
-(meg a figma legfelső 2 sekció az 0 mégmindig)
+nap view ha tul kicsi a magassága
+

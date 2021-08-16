@@ -1,6 +1,23 @@
 <section class="fullcalendar-day-view-container">
 
+
+<div class="arrow-btn">
+  <button mat-icon-button
+  class=""
+  (click)="nextDay()">
+  <mat-icon >forward</mat-icon>
+  </button>
+</div>
+<div class="arrow-btn arrow-btn-left">
+  <button mat-icon-button
+  class=""
+  (click)="backDay()">
+  <mat-icon >forward</mat-icon>
+  </button>
+</div>
+
   <full-calendar
+  #calendar
   class="fullcalendar-day-view"
   [options]="calendarOptions"
   >
