@@ -3,6 +3,7 @@ import { TravelEventInfo } from './../interface/travelEventInfo';
 import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent, FullCalendarComponent } from '@fullcalendar/angular';
 import { TravelPlusEventsInfo } from '../interface/travelPlusEventsInfo';
 import { ViewChild } from '@angular/core';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-fullcalendar-day-view',
@@ -36,6 +37,13 @@ export class FullcalendarDayViewComponent implements OnInit {
   nextDay() {
       const calendarApi = this.calendarComponent.getApi();
       calendarApi.next()
+
+
+      calendarApi.changeView('timeGridWeek');
+      calendarApi.setOption('contentHeight', 650);
+      let elem:any=document.querySelectorAll(".event-text-container")[0]
+      elem.style.display="none"
+
   }
 
   closeDeleteWindow(id:string|null){

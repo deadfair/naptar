@@ -16,6 +16,10 @@
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-evenly;
+      .calendar-container{
+        width: 1246px;
+
+      }
     }
     header{
       box-sizing: border-box;

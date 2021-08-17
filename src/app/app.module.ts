@@ -39,6 +39,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MiniMonthPickerComponent } from './mini-month-picker/mini-month-picker.component';
 import { FullcalendarDayViewComponent } from './fullcalendar-day-view/fullcalendar-day-view.component';
 import { FullcalendarWeekViewComponent } from './fullcalendar-week-view/fullcalendar-week-view.component';
+import { FullcalendarComponent } from './fullcalendar/fullcalendar.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -66,6 +67,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MiniMonthPickerComponent,
     FullcalendarDayViewComponent,
     FullcalendarWeekViewComponent,
+    FullcalendarComponent,
   ],
   imports: [
     MatNativeDateModule,

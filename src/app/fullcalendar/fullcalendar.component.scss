@@ -1,0 +1,571 @@
+@use '../../assets/constants' as c;
+
+$tdmarginy:3.5px;
+$tdmarginx:9px;
+
+::ng-deep{
+
+  .fullcalendar-month-view-container, .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+    margin:  auto;
+    width: 1222px;
+    transform: translate(32px,-114px);
+
+}
+
+// event szöveg day nézetbe  ---------------------------------------------------
+
+  .fullcalendar-day-view-container{
+  .fc-event-main{
+    position: relative;
+    .event-text-container{
+      position: absolute;
+      border-radius: 5px;
+      height: 75%;
+      width: 98%;
+      top:20%;
+      left: 1%;
+      background-color: #B1DDC4;
+      .mat-icon{
+        position: relative;
+        top: 12px;
+        left: calc(100% - 15.17px - 11.18px);
+        width: 14px !important;
+        height: 14px !important;
+        line-height: 14px !important;
+        font-size: 14px !important;
+        transform: scaleY(1.25);
+        color: #006633;
+      }
+      .mat-icon:nth-child(2){
+        transform: scaleY(1.25) translateX(-33px);
+
+      }
+      .event-text{
+        width: 93.5%;
+        margin-left: 1.5%;
+        margin-top: 14.88px;
+        color: #006633;
+
+      }
+    }
+  }
+}
+.fullcalendar-week-view-container, .fullcalendar-month-view-container{
+  .event-text-container{
+    display: none;
+  }
+}
+//---------------------------------------------------
+
+  .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+    position: relative;
+    transform: translateY(-114px);
+
+
+// 2 Arrow  ---------------------------------------------------
+    .arrow-btn{
+      @include c.ZIndex(100);
+      height: 80px;
+      width: 80px;
+      position: absolute;
+      top: 16px;
+      left: 752px;
+      background: #006633;
+      border-radius: 50%;
+      .mat-icon-button{
+        width: inherit;
+        height: inherit;
+        span.mat-button-wrapper{
+          .mat-icon{
+            height: 48px !important;
+            width: 48px !important;
+            font-size: 48px !important;
+            line-height: 48px !important;
+            color: white;
+          }
+        }
+      }
+    }
+    .arrow-btn.arrow-btn-left{
+      top: 16px;
+      left: 449px;
+      .mat-icon-button{
+        width: inherit;
+        height: inherit;
+        span.mat-button-wrapper{
+          .mat-icon{
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+//----------------------------------------------------------------------------
+    .fc{
+      width: 1222px;
+      *{
+        border: none !important;
+      }
+      table{
+        border-collapse: unset;
+        border-spacing: 18px 0;
+      }
+      .fc-timegrid-col-events{
+        margin: 2px 1.17px 0 1.26px;
+      }
+      .fc-timegrid-col.fc-day-today{
+        background-color: inherit !important;
+      }
+      .fc-header-toolbar.fc-toolbar.fc-toolbar-ltr{
+        .fc-toolbar-chunk{
+          display: none;
+        }
+      }
+      .fc-view-harness.fc-view-harness-active{
+        .fc-timeGridDay-view, .fc-timeGridWeek-view{
+          table.fc-scrollgrid.fc-scrollgrid-liquid{
+            thead{
+              tr{
+                table{
+                  tbody{
+                    tr{
+                      th{
+                        .fc-scrollgrid-sync-inner{
+                          margin:auto ;
+                          height: 72px;
+                          width: 140px;
+                          display: flex;
+                          flex-flow: row wrap;
+                          justify-content: center;
+                          align-items: center;
+
+                          a{
+                            @include c.fonts4;
+                            color: c.$SötétZöld;
+                          }
+                        }
+
+                      }
+                      th:nth-child(2){
+                        .fc-scrollgrid-sync-inner{
+                          background-color: c.$VilágosZöld;
+                          border-radius: 50px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            tbody{
+              tr.fc-scrollgrid-section:nth-child(3){
+                td{
+                  table{
+                    tbody{
+                      tr{
+                        height: 25px;
+                        td:nth-child(1){
+                          visibility: hidden;
+                        }
+                      }
+                    }
+                  }
+                }
+
+              }
+              tr.fc-scrollgrid-section:nth-child(2){
+                height: 17px;
+                visibility: hidden;
+              }
+              tr.fc-scrollgrid-section:nth-child(1){
+                display: none;
+
+              }
+            }
+          }
+        }
+      }
+
+
+      .fc-timegrid-event-harness.fc-timegrid-event-harness-inset {
+        margin-bottom: 3px;
+        border-style: solid !important;
+        border-color: #28A138 !important;
+        border-left-width: 8px !important;
+        border-top-width: 0px !important;
+        border-bottom-width: 0px !important;
+        border-right-width: 0 !important;
+        outline: none;
+        border-radius: 0px !important;
+        a.fc-timegrid-event.fc-v-event.fc-event{
+
+          /*
+                  *{
+          pointer-events: none;
+        }
+          */
+          box-shadow: none;
+          margin-bottom: 0;
+          border-radius: 0;
+
+          background-color: rgba(40, 161, 56, 0.4) !important;
+          .fc-event-main{
+
+            .fc-event-main-frame{
+              flex-direction: row-reverse !important;
+              opacity: 1;
+              .fc-event-title-container{
+                width: 62%;
+                .fc-event-title.fc-sticky{
+                  text-align:left;
+                  margin-left: 16px;
+                  font-family: Chivo;
+                  font-style: normal;
+                  font-weight: normal;
+                  font-size: 12px;
+                  //line-height: 30px;
+                  /* or 250% */
+                  letter-spacing: 0.4px;
+
+                  /* Neutral / Grey 7 */
+
+                  color: #2D2F30;
+
+                  opacity: 0.88;
+                }
+              }
+              .fc-event-time{
+                width: 38%;
+                margin-right: 6px;
+                text-align: right;
+                font-family: Chivo;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 9px;
+                line-height: 20px;
+                letter-spacing: 0.4px;
+                color: #4F4F4F;
+                opacity: 0.48;
+              }
+        }
+          }
+        }
+      }
+    }
+//-------------------------háttér--------------------------------
+    .background-cells{
+      z-index: -1;
+      position: absolute;
+      left: 29px;
+      top: 110px;
+      display: flex;
+      flex-flow: row nowrap;
+      box-sizing: border-box;
+      .col{
+        box-sizing: border-box;
+        min-width: 140px !important;
+        margin-left:18px;
+        height: 1200px;
+        display: flex;
+        flex-flow: column nowrap;
+        .row{
+          box-sizing: border-box;
+          height: 25px;
+          border: 0.74px solid #B1DDC4 !important;
+        }
+        .row:nth-child(2n+1){
+          border-bottom: 1px solid rgba(177, 221, 196, 0.4) !important;
+        }
+        .row:nth-child(2n){
+          border-top: 1px solid rgba(177, 221, 196, 0.4) !important;
+        }
+        .row:first-child{
+          border-top: 0.74px solid #B1DDC4 !important;
+        }
+        .row:last-child{
+          border-bottom: 0.74px solid #B1DDC4 !important;
+        }
+      }
+      .col:nth-child(1){
+        margin-left: 0;
+        transform: translateY(-12.5px);
+        min-width: 51px !important; // 31 volt
+        .row{
+          border: none !important;
+          justify-content: center;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 16px;
+          /* identical to box height, or 123% */
+
+          display: flex;
+          align-items: center;
+          /* SötétZöld */
+
+          color: #006633;
+        }
+        .row:last-child{
+          transform: translateY(25px);
+        }
+      }
+    }
+  }
+  //---------------------------------------------------------
+
+  .fullcalendar-month-view-container{
+
+    table{
+      .fc-daygrid-body.fc-daygrid-body-balanced{
+        width: 1106px !important;
+        height: 732px !important;
+        table.fc-scrollgrid-sync-table{
+          height: 732px !important;
+          width: 1106px !important;
+          tbody{
+            tr{
+              td.fc-daygrid-day.fc-day.fc-day-tue.fc-day-today{
+                background: none !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .fc-theme-standard td, .fc-theme-standard th{
+      border: none !important;
+    }
+
+    .fc{
+      margin:  22px + 21px auto 0 auto;
+      width: 1088px + $tdmarginx*2;
+
+      .fc-popover{
+        visibility: hidden;
+      }
+
+      .fc-header-toolbar{
+        height: 64px;
+        background: c.$VilágosZöld;
+        margin-left: 16px + $tdmarginx;
+        margin-bottom: 24px - $tdmarginy !important;
+        margin-right: $tdmarginx;
+        transform: translateY(72px);
+        .fc-toolbar-chunk{
+          .fc-toolbar-title{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 24px;
+            color: c.$SötétZöld;
+          }
+
+          h2.fc-toolbar-title[--nth-word="1"]{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 32px;
+            line-height: 32px;
+            color: c.$SötétZöld;
+          }/*valamiért nem jó*/
+
+        }
+      }
+
+      .fc-dayGridMonth-view{
+        .fc-daygrid-day{
+          .fc-daygrid-day-frame{
+          background-color: c.$VilágosSzürke;
+        }
+        }
+        .fc-day-other{
+          .fc-daygrid-day-frame{
+            .fc-daygrid-day-top{
+              a{
+                color: c.$Fekete !important;
+              }
+              padding-top: 0px;
+            }
+          background-color: c.$Neutral;
+        }
+        }
+        table{
+          border: none;
+          thead{
+            transform: translateY(-107px);
+            margin-left: $tdmarginx;
+            margin-right: $tdmarginx;
+            tbody{
+              height: 72px;
+              tr{
+                th:nth-child(1){
+                  .fc-scrollgrid-sync-inner{
+                  background-color: c.$VilágosZöld;
+                  border-radius: 50px;
+                }
+              }
+            }
+              .fc-scrollgrid-sync-inner{
+                height: 72px;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                align-items: center;
+                margin: 0 7.41379px;
+
+                a{
+                  @include c.fonts4;
+                  color: c.$SötétZöld;
+                }
+              }
+            }
+          }
+        }
+
+
+        tbody{
+          tbody{
+            tr{
+              td{
+                padding: $tdmarginy $tdmarginx;
+                .dayButton{
+                  position: absolute;
+                  height: 0;
+                  width: 0;
+                  display: none;
+                }
+
+                .fc-daygrid-day-frame{
+                  .fc-daygrid-day-top{
+                    display: block;
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 22px;
+                    color: c.$Fekete !important;
+                    a{
+                    margin: 0 10px
+                  }
+                  padding-top: 6px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+      }
+
+
+
+      .fc-daygrid-day-events{
+        height: 76px !important;
+        .fc-daygrid-event-harness{
+          height: 22px + 5px; //22+5/2 <= 5 px táv a sorok közt
+          .fc-daygrid-event.fc-event-end{
+            margin-left: 0px;
+            margin-right: 9px;
+            border-radius: 0px 8px 8px 0px;
+            pointer-events: auto;
+          }
+          .fc-daygrid-event.fc-event-start{
+            margin-left: 9px;
+            margin-right: 0px;
+            border-radius: 8px 0 0px 8px;
+            padding-left: 5px;
+            pointer-events: auto;
+          }
+          .fc-daygrid-event.fc-event-start.fc-event-end{
+            margin-right: 9px;
+            margin-left: 9px;
+            border-radius: 8px;
+            padding-left: 5px;
+            pointer-events: auto;
+
+
+          }
+          .fc-daygrid-block-event{
+            pointer-events: auto !important;
+
+          }
+            .fc-daygrid-event{  // a
+            padding-left: 15px;
+            //width:114px;
+            height: 22px;
+            border-radius: 0px;
+            margin-top: 0px;
+            pointer-events: auto ;
+            .fc-event-resizer.fc-event-resizer-end{
+              pointer-events: none ;
+
+            }
+            .fc-event-main{
+
+              pointer-events: none ;
+              //width:114px;
+              height: 22px;
+
+              padding: 5px 5px 5px 0;
+              .fc-event-main-frame{
+                height: 12px;
+                pointer-events: none;
+                .fc-event-title-container{
+                  height: 12px;
+                  pointer-events: none;
+                  .fc-event-title{
+                    padding: 0;
+                    height: 12px;
+                    @include c.fonts1(12px,normal,12px);
+                    pointer-events: none;
+                    color: c.$Fehér;
+                  }
+                }
+              }
+            }
+          }
+          }
+
+
+
+          .fc-daygrid-day-bottom{
+            padding: 0 0 0 0;
+            .fc-daygrid-more-link{
+              display: block;
+              margin-left: 9px;
+              margin-right: 9px;
+              background: c.$VilágosSzürke;
+              border-radius: 8px;
+              box-shadow: inset 0px 2px 0px #F0F0F0;
+              padding: 3.5px 8px 0px;
+              height: 22px;
+              font-weight: 500;
+              font-size: 12px;
+              line-height: 12px;
+              padding-left: 5px;
+              color: c.$Szürke;
+              border: 2px solid c.$Szürke;
+            }
+
+          }
+
+        }
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+}
+
+

@@ -13,17 +13,18 @@
     </app-view-swapper>
   </section>
 
-    <section [ngSwitch]="selectedView">
-      <section *ngSwitchCase="'Year'">
+    <section class="calendar-container" >
+      <section *ngIf="'Year'=== selectedView">
         <app-year-view
           [year]="selectYear"
           (selectedDate)="selectedDateInit($event)"
           [years]="years"
         ></app-year-view>
       </section>
-      <section *ngSwitchCase="'Month'">
-      <app-calendar></app-calendar>
-      </section>
+      <app-fullcalendar
+        [ngStyle]="{'display': selectedView==='Year' ? 'none' : 'block'}"
+        [selectedView]='selectedView' >
+      </app-fullcalendar>
     </section>
 
 
