@@ -2,18 +2,18 @@
 
   <section *ngFor="let item of years">
 
-    <section class="container" *ngSwitchCase="item">
+    <section class="year-view-container-from-child" *ngSwitchCase="item">
+
       <app-datepicker-month *ngFor="let db of ['01','02','03','04','05','06','07','08','09','10','11','12']; index as i"
         [startAt]="year+'-'+db+'-01'"
-        class="element"
+        class="year-view-month-element"
         [clickedDate]="clickedDate"
         (selectedDate)="selectDate($event)"
         >
       </app-datepicker-month>
+
     </section>
 
   </section>
-
-
 
 </section>

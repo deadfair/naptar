@@ -10,3 +10,4 @@ tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
 nap view ha tul kicsi a magassága
 pointerevent felülvizsgálata a fullcalender view ba tágitás miatt
 event a windowhoz van viszonyítva  bekell tenni a fullcalendarContainer-be ésúgy kikalkulálni a pointereventel
+perces eventek javitása

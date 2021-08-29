@@ -1,43 +1,42 @@
 @use '../../assets/constants' as c;
 
 ::ng-deep{
-    .allin-container{
-      display: flex;
-      flex-flow: column nowrap;
+  .from-child-body{
+    display: flex;
+    flex-flow: column nowrap;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top:0;
+    min-width: 100vw;
+    min-height: 100vh;
+    header{
       box-sizing: border-box;
-      position: absolute;
-      left: 0;
-      top:0;
-      min-width: 100vw;
-      min-height: 100vh;
+      width: 100%;
+      height: 85px;
+      background: c.$SötétZöld;
     }
-    .main-container{
+    .body-main-container{
       box-sizing: border-box;
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-evenly;
+      .body-left-side{
+        display: flex;
+        flex-flow: column;
+        margin-left: 21px;
+        margin-right: 18px; // Mert year view-ba ennyit kér
+        .swapper{
+          margin-top: 8px;
+        }
+      }
       .calendar-container{
-        width: 1246px;
-
+        width: 298px*4 + 18px*3;    // year view mérete
+      }
+      .events-view{
+        margin-left: 18px;    // Mert year view-ba ennyit kér
+        margin-right: 18px;   // Mert year view-ba ennyit kér
       }
     }
-    header{
-      box-sizing: border-box;
-      width: 100%;
-      min-height: 85px;
-      background: c.$SötétZöld;
-    }
-    .left-side{
-      display: flex;
-      flex-flow: column;
-      margin-left: 21px;
-      margin-right: 15px;
-    }
-    .swapper{
-      margin-top: 13px;
-    }
-    .events-view-parent{
-      margin-left: 18px;
-      margin-right: 23px;
-    }
+  }
 }

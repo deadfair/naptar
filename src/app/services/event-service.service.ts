@@ -11,7 +11,7 @@ export class EventServiceService {
   allEvent:PeopleEvent[]=[
     { id:"01",
       date:"2020-01-01",
-      name:"béla",
+      name:"Event title1",
       start:"8:30",
       end:"11:00 AM",
       peoples:[],
@@ -20,7 +20,7 @@ export class EventServiceService {
     {
       id:"02",
       date:"2020-03-21",
-      name:"kiki",
+      name:"Event title2",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -37,7 +37,7 @@ export class EventServiceService {
     },    {
       id:"03",
       date:"2020-03-21",
-      name:"kgfiki",
+      name:"Event title3",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -54,7 +54,7 @@ export class EventServiceService {
     },    {
       id:"04",
       date:"2020-03-21",
-      name:"sdadkiki",
+      name:"Event title4",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -71,7 +71,7 @@ export class EventServiceService {
     },    {
       id:"05",
       date:"2020-03-21",
-      name:"ksddsiki",
+      name:"Event title5",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -88,7 +88,7 @@ export class EventServiceService {
     },    {
       id:"06",
       date:"2020-03-21",
-      name:"kiki",
+      name:"Event title6",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -105,7 +105,7 @@ export class EventServiceService {
     },    {
       id:"07",
       date:"2020-03-21",
-      name:"kiksdsdsi",
+      name:"Event title7",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -122,7 +122,7 @@ export class EventServiceService {
     },    {
       id:"08",
       date:"2020-03-21",
-      name:"kikiasddsada",
+      name:"Event title8",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -139,7 +139,7 @@ export class EventServiceService {
     },    {
       id:"09",
       date:"2020-03-21",
-      name:"kikidsadas",
+      name:"Event title9",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -156,7 +156,7 @@ export class EventServiceService {
     },    {
       id:"10",
       date:"2020-03-21",
-      name:"kiki",
+      name:"Event title10",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -173,7 +173,7 @@ export class EventServiceService {
     },    {
       id:"11",
       date:"2020-03-21",
-      name:"kiki",
+      name:"Event title11",
       start:"8:30",
       end:"11:00 AM",
       peoples:[
@@ -190,7 +190,7 @@ export class EventServiceService {
     },    {
       id:"12",
       date:"2020-03-21",
-      name:"kiki",
+      name:"Event title12",
       start:"8:30",
       end:"11:00 AM",
       peoples:[

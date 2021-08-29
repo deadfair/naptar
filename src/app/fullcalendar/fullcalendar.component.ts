@@ -148,12 +148,11 @@ export class FullcalendarComponent implements OnInit {
       node.className="event-text-container"
       node.innerHTML=`<mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">close_24px</mat-icon>
                       <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">close_24px</mat-icon>
-      <div class="event-text">${info.event.extendedProps.eventText}</div>`    // szülő szélessége - x
-      // az event kerüljön bele
-      // klasszz adódjon hozzá
+      <div class="event-text">${info.event.extendedProps.eventText}</div>`
+
       info.el.children[0].appendChild(node)
     },
-    editable: true,
+    editable: false,
     moreLinkClick:(info)=>{
       this.eventwindow=false;
       this.moreEventWindow=true;
@@ -168,26 +167,26 @@ export class FullcalendarComponent implements OnInit {
       this.selectEvent= new TravelEventInfo(info);
     },
     eventColor:'#006633',
-    firstDay:1, // Monday as first day of week
+    firstDay:1,     // Monday as first day of week
     weekends: true, // a hétvégét nem mutatja
     dayMaxEvents:true,
-    contentHeight: 1302, // (144+14)*6 // ez csak a táblázat magassága
+    contentHeight: 1302, // ez csak a táblázat magassága
     aspectRatio: 1, // a magasság/szélesség arány contentHeight/contentWidth
     events: [
-      { id:"01",title: 'Event', date: '2021-08-01' }, // eventek
-      { id:"02",title: 'Event', date: '2021-08-01' }, // eventek
-      { id:"03",title: 'Evensd', date: '2021-08-01' }, // eventek
-      { id:"04",title: 'Evenasdt', date: '2021-08-01', backgroundColor:'green' }, // eventek
-      { id:"05",title: 'Eveffdnt', date: '2021-08-01' }, // eventek
-      { id:"06",title: 'Event', date: '2021-08-01' }, // eventek
+      { id:"01",title: 'Event1', date: '2021-08-01' }, // eventek
+      { id:"02",title: 'Event2', date: '2021-08-01' }, // eventek
+      { id:"03",title: 'Event3', date: '2021-08-01' }, // eventek
+      { id:"04",title: 'Event4', date: '2021-08-01', backgroundColor:'green' }, // eventek
+      { id:"05",title: 'Event5', date: '2021-08-01' }, // eventek
+      { id:"06",title: 'Event6', date: '2021-08-01' }, // eventek
       { id:"07",title: 'Eventttt', backgroundColor:'green', start: '2021-08-16T14:30:00' ,end:'2021-08-16T17:30:00',
       extendedProps: {eventText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies quam et fringilla convallis mauris. Fermentum tempor nunc, faucibus adipiscing gravida suspendisse. Iaculis in sit a lectus dolor massa pretium ut. Orci blandit nunc ut cum felis arcu. Dictum aliquet quisque imperdiet purus, vitae accumsan posuere amet.'}}, // eventek
-      { id:"08",title: 'Event', date: '2021-08-01' }, // eventek
-      { id:"09",title: 'Event', date: '2021-08-01' }, // eventek
-      { id:"10",title: 'Event', date: '2021-08-01' }, // eventek
-      { id:"11",title: 'Event', date: '2021-08-01' }, // eventek
-      { id:"12",title: 'Event 2', date: '2021-08-02' },
-      { id:"13",title: 'Eventttt', backgroundColor:'green', start: '2021-08-16T10:30:00' ,end:'2021-08-16T12:30:00',
+      { id:"08",title: 'Event7', date: '2021-08-01' }, // eventek
+      { id:"09",title: 'Event8', date: '2021-08-01' }, // eventek
+      { id:"10",title: 'Event9', date: '2021-08-01' }, // eventek
+      { id:"11",title: 'Event10', date: '2021-08-01' }, // eventek
+      { id:"12",title: 'Event11', date: '2021-08-02' },
+      { id:"13",title: 'Event12', backgroundColor:'green', start: '2021-08-16T10:30:00' ,end:'2021-08-16T12:30:00',
       extendedProps: {eventText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies quam et fringilla convallis mauris. Fermentum tempor nunc, faucibus adipiscing gravida suspendisse. Iaculis in sit a lectus dolor massa pretium ut. Orci blandit nunc ut cum felis arcu. Dictum aliquet quisque imperdiet purus, vitae accumsan posuere amet.'}}, // eventek
     ]
   };
