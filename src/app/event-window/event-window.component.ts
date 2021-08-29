@@ -1,8 +1,6 @@
 import { RenderPoint } from './../interface/point';
 import { TravelEventInfo } from './../interface/travelEventInfo';
 import { Component, Input, OnInit,Output ,EventEmitter} from '@angular/core';
-import {PeopleEvent} from '../interface/event'
-import { EventServiceService } from '../services/event-service.service';
 
 @Component({
   selector: 'app-event-window',
@@ -11,11 +9,11 @@ import { EventServiceService } from '../services/event-service.service';
 })
 export class EventWindowComponent implements OnInit {
 
-  constructor(private eventServicee:EventServiceService) {}
+  constructor() {}
   //Inputs
   @Input() openWindowInfo:TravelEventInfo=new TravelEventInfo();
   renderPoint:RenderPoint=new RenderPoint();
-  event!: PeopleEvent;
+  event: any;
   openPosition={
     'event-window-open-up':true,
     'event-window-open-right':false,
@@ -29,7 +27,7 @@ export class EventWindowComponent implements OnInit {
   ngOnInit(): void {}
 
   ngDoCheck(): void {
-    this.event=this.eventServicee.getEventById(this.openWindowInfo.id)
+    this.event=this.openWindowInfo.calendarEvent;
     this.renderPoint=new RenderPoint(this.openWindowInfo.jsEvent)
     this.eventWindowPositionChange();
   }

@@ -1,6 +1,5 @@
 
 
-összes kép,
 nth word ami vmiért nem jó,
 plusz jel(az se olyan mint neten írják),
 szerkesztés jel utáni visszalépés (tünjön el? mikor?),
@@ -11,3 +10,9 @@ nap view ha tul kicsi a magassága
 pointerevent felülvizsgálata a fullcalender view ba tágitás miatt
 event a windowhoz van viszonyítva  bekell tenni a fullcalendarContainer-be ésúgy kikalkulálni a pointereventel
 perces eventek javitása
+
+
+
+
+
+event-windowba         overflow-y:hidden; re tettem ha sok a szöveg ???

@@ -4,6 +4,7 @@ import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent, FullCa
 import { TravelPlusEventsInfo } from '../interface/travelPlusEventsInfo';
 import { ViewChild } from '@angular/core';
 import { style } from '@angular/animations';
+import { EventServiceService } from '../services/event-service.service';
 
 @Component({
   selector: 'app-fullcalendar',
@@ -14,7 +15,7 @@ export class FullcalendarComponent implements OnInit {
   @Input() selectedView:string="";
   previousSelectedView:string="";
   firstInitView:string="dayGridMonth";
-  constructor() { }
+  constructor(private eventService:EventServiceService) { }
   eventwindow:boolean=false;        // eventadatok
   moreEventWindow:boolean=false;    // + felnyílófül
   hiddenSegs:any[]=[];              // rejtett napok
@@ -172,7 +173,9 @@ export class FullcalendarComponent implements OnInit {
     dayMaxEvents:true,
     contentHeight: 1302, // ez csak a táblázat magassága
     aspectRatio: 1, // a magasság/szélesség arány contentHeight/contentWidth
-    events: [
+    events: this.eventService.getAllEvents()
+
+    /*[
       { id:"01",title: 'Event1', date: '2021-08-01' }, // eventek
       { id:"02",title: 'Event2', date: '2021-08-01' }, // eventek
       { id:"03",title: 'Event3', date: '2021-08-01' }, // eventek
@@ -188,7 +191,7 @@ export class FullcalendarComponent implements OnInit {
       { id:"12",title: 'Event11', date: '2021-08-02' },
       { id:"13",title: 'Event12', backgroundColor:'green', start: '2021-08-16T10:30:00' ,end:'2021-08-16T12:30:00',
       extendedProps: {eventText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies quam et fringilla convallis mauris. Fermentum tempor nunc, faucibus adipiscing gravida suspendisse. Iaculis in sit a lectus dolor massa pretium ut. Orci blandit nunc ut cum felis arcu. Dictum aliquet quisque imperdiet purus, vitae accumsan posuere amet.'}}, // eventek
-    ]
+    ]*/
   };
 
 }

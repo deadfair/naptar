@@ -2,7 +2,7 @@
   [ngStyle]="{'top':renderPoint.y+'px' ,'left':renderPoint.x+'px'  }"
   [ngClass]="openPosition">
   <mat-card-title>
-    <h1>{{event.name}}</h1>
+    <h1>{{event.title}}</h1>
       <button mat-icon-button
         class="delete"
         (click)="deleteActive=true">
@@ -17,19 +17,20 @@
   <mat-card-content>
         <section class="time-container">
           <span class="time">
-            {{event.start}} - {{event.end}}
+            {{event.start | date:'HH:mm'}} -
+            {{event.end === null ? (event.start | date:'HH:mm') : event.end | date:'HH:mm'}}
           </span>
           <span>
-            {{event.date}}
+            {{event.start | date:'y.MM.dd'}}
           </span>
         </section>
         <section class="text-container">
-          <div class="rectangle"></div>
-          <section class="text">{{event.text}}</section>
+          <div class="rectangle" [ngStyle]="{'background':event.backgroundColor}"></div>
+          <section class="text">{{event.extendedProps.eventText}}</section>
         </section>
         <section class="pictures">
           <section
-            *ngFor="let people of event.peoples">
+            *ngFor="let people of event.extendedProps.peoples">
             <img src="{{people.peopleUrl}}" alt="pplimage">
           </section>
         </section>

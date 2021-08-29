@@ -503,6 +503,7 @@ $tdmarginx:9px;
 
             }
             .fc-event-main{
+              color: c.$Fehér; // így lesz felülírható a fullcalenderes szinekkel
 
               pointer-events: none ;
               //width:114px;
@@ -520,7 +521,6 @@ $tdmarginx:9px;
                     height: 12px;
                     @include c.fonts1(12px,normal,12px);
                     pointer-events: none;
-                    color: c.$Fehér;
                   }
                 }
               }

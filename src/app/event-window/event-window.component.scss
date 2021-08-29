@@ -99,6 +99,7 @@
         left: 44px;
         top: 10px;
         @include c.fonts1;
+        overflow-y:hidden;
       }
 
     }

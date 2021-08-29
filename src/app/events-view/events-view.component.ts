@@ -15,9 +15,9 @@ export class EventsViewComponent implements OnInit,OnChanges {
   allEvents:PeopleEvent[]=[];
   selectEvents:PeopleEvent[]=[];
 
-  constructor(public datepipe: DatePipe,private eventServicee:EventServiceService) { }
+  constructor(public datepipe: DatePipe,private eventService:EventServiceService) { }
   ngOnInit(): void {
-    this.allEvents=this.eventServicee.getAllEvents();
+    this.allEvents=this.eventService.getAllEvents();
   }
   ngOnChanges(): void {
     this.getActEvent();
