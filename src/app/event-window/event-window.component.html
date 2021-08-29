@@ -28,9 +28,9 @@
           <section class="text">{{event.text}}</section>
         </section>
         <section class="pictures">
-          <section class="pisture"
+          <section
             *ngFor="let people of event.peoples">
-            {{people.peopleUrl}}
+            <img src="{{people.peopleUrl}}" alt="pplimage">
           </section>
         </section>
   </mat-card-content>

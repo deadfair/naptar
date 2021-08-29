@@ -103,13 +103,15 @@
 
     }
     .pictures{
-      margin-left: 43.66px;
+      margin-left: 43.66px - 8.78px;
+      margin-top: 8.9px;
       display: flex;
       flex-flow: row wrap;
-      .picture{
-        border-radius: 100%;
+      img{
+        border-radius: 50%;
         width: 25px ;
         height: 25px;
+        margin-right: 5px;
       }
     }
 

@@ -9,8 +9,9 @@ import { Observable } from 'rxjs';
 export class EventServiceService {
   constructor() { }
   allEvent:PeopleEvent[]=[
-    { id:"01",
-      date:"2020-01-01",
+    {
+      id:"01",
+      date:"2020-03-21",
       name:"Event title1",
       start:"8:30",
       end:"11:00 AM",
@@ -228,7 +229,7 @@ export class EventServiceService {
                 },
                 {
                 peopleId:"00",
-                peopleUrl:"00.png"
+                peopleUrl:"0.png"
                 }
               ],
               text:""

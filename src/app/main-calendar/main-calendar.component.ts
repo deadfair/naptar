@@ -13,7 +13,6 @@ export class MainCalendarComponent implements OnInit {
   years:number[]=[]
   ngOnInit(): void {
     this.yearsCreat(2020,2023);
-
   }
 
   selectedDate:Date|null=null;
