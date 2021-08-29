@@ -87,12 +87,18 @@ export class EventServiceService {
     {
       id:"05",
       title: 'Event5',
-      date: '2021-08-01'
+      date: '2021-08-01',
+      extendedProps: {
+        eventText: ``
+      }
     },
     {
       id:"06",
       title: 'Event6',
-      date: '2021-08-01'
+      date: '2021-08-01',
+      extendedProps: {
+        eventText: ``
+      }
     },
     {
       id:"07",
@@ -113,7 +119,10 @@ export class EventServiceService {
     {
       id:"08",
       title: 'Event7',
-      date: '2021-08-01'
+      date: '2021-08-01',
+      extendedProps: {
+        eventText: ``
+      }
     },
     {
       id:"09",
@@ -136,7 +145,10 @@ export class EventServiceService {
     {
       id:"10",
       title: 'Event9',
-      date: '2021-08-01'
+      date: '2021-08-01',
+      extendedProps: {
+        eventText: ``
+      }
     }, // eventek
     {
       id:"11",
@@ -164,7 +176,10 @@ export class EventServiceService {
       title: 'Event11',
       borderColor :'red',
       backgroundColor:'red',
-      date: '2021-08-02'
+      date: '2021-08-02',
+      extendedProps: {
+        eventText: ``
+      }
     },
     {
       id:"13",

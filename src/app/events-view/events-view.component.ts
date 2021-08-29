@@ -13,7 +13,7 @@ export class EventsViewComponent implements OnInit,OnChanges {
   aktevent={};
   currentDate=new Date();
   allEvents:PeopleEvent[]=[];
-  selectEvents:PeopleEvent[]=[];
+  selectEvents:any[]=[];
 
   constructor(public datepipe: DatePipe,private eventService:EventServiceService) { }
   ngOnInit(): void {
@@ -29,6 +29,7 @@ export class EventsViewComponent implements OnInit,OnChanges {
         this.selectEvents.push(event);
       }
     }
+    console.log(this.selectEvents)
   }
 
 

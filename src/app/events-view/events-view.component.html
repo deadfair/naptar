@@ -37,15 +37,16 @@
         <mat-icon >close</mat-icon>
       </button>
       <section class="time">
-        {{event.start}} - {{event.end}}
+        {{event.start | date:'h:mm a'}} -
+        {{event.end === null ? (event.start | date:'h:mm a') : event.end | date:'h:mm a'}}
       </section>
       <button mat-icon-button disableRipple class="close" >
         <mat-icon >close</mat-icon>
       </button>
     </section>
-    <section class="text">{{event.text}}</section>
+    <section class="text">{{event.extendedProps.eventText}}</section>
     <section class="pictures">
-      <section *ngFor="let people of event.peoples">
+      <section *ngFor="let people of event.extendedProps.peoples">
         <img src={{people.peopleUrl}} alt="pplimage">
       </section>
     </section>
