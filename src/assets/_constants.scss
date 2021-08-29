@@ -22,6 +22,28 @@ $Black:#1A202C;
   z-index: 1000 + $z;
 }
 
+@mixin robotoNormal_fs_ls_lh_fw($fontsize:17px,$letterspacing:-0.408px,$lineh:22px,$fweight:normal){
+  font-family: Roboto;
+  font-style: normal;
+  font-size: $fontsize;
+  letter-spacing: $letterspacing;
+  line-height: $lineh;
+  font-weight: $fweight;
+}
+
+@mixin interNormal_fs_ls_lh_fw($fontsize:22.5193px,$letterspacing:normal,$lineh:34px,$fweight:normal){
+  font-family: Inter;
+  font-style: normal;
+  font-size: $fontsize;
+  letter-spacing: $letterspacing;
+  line-height: $lineh;
+  font-weight: $fweight;
+}
+
+
+
+
+
 @mixin fonts1 ($fontsize:17px,$letterspacing:-0.408px,$lineh:22px,$fweight:normal){
   font-family: Roboto;
   font-style: normal;
@@ -55,6 +77,8 @@ $Black:#1A202C;
   font-size: 17.7931px !important;
   letter-spacing: 0.741379px;
 }
+
+
 
 @mixin fonts5 {
   font-family: Inter !important;

@@ -1,15 +1,11 @@
 @use '../../assets/constants' as c;
 
 
-.events-view-container-child{
+.events-view-container-from-child{
   width:301px ;
   margin-top: -10px;
   h1{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
+    @include c.robotoNormal_fs_ls_lh_fw(16px,normal,24px,normal);
     color: c.$SötétZöld;
     text-align: center;
     position: relative;
@@ -18,7 +14,7 @@
       position: absolute;
       width: 87.09px;
       height: 0px;
-      left: calc(50% - 87.09px*3/2 - 7px );
+      left: calc(50% - 87.09px*3/2 - 7px);
       top: calc(50% - 0px/2);
       display: block;
       border: 0.933522px solid c.$VilágosZöld;
@@ -31,12 +27,8 @@
   .today{
     width: 268px;
     height: 20px;
-    font-style: normal;
-    font-family: Roboto;
     color: c.$SötétZöld;
-    font-size: 13px;
-    line-height: 20px;
-    font-weight: normal;
+    @include c.robotoNormal_fs_ls_lh_fw(13px,normal,20px,normal);
     margin-left: 11px;
     position: relative;
 
@@ -56,7 +48,6 @@
       margin: 0px 0px;
       color: c.$Szürke;
       font-family: Inter;
-      font-style: normal;
       position: absolute;
       left: 231px;
     }
@@ -77,7 +68,6 @@
         min-width: 8.75px;
         padding: 0;
         .mat-icon{
-
           width: 16px !important;
           font-size: 16px !important;
           height: 16px !important;
@@ -88,27 +78,25 @@
         display: inline-block;
         margin-left: 16px;
         margin-right: 7px;
-        font-family: Inter;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 11px;
-        line-height: 16px;
+        @include c.interNormal_fs_ls_lh_fw(11px,normal,16px,600);
         color: c.$VilágosZöld;
       }
     }
     .text{
       margin: 0 5px 0 20px;
-      font-family: Inter;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 16px;
-      color: c.$Sötétszürke
+      @include c.interNormal_fs_ls_lh_fw(12px,normal,16px,500);
+      color: c.$Sötétszürke;
     }
     .pictures{
       display: flex;
       flex-flow: row wrap;
       justify-content: flex-end;
+      img{
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        margin-left: 3px;
+      }
     }
   }
 
@@ -117,9 +105,14 @@
     height: 56px;
     margin-top: 21px;
     h1{
-      @include c.fonts1(24px,normal,28px,bold);
+      @include c.robotoNormal_fs_ls_lh_fw(24px,normal,28px,bold);
       text-align: center;
       color: c.$SötétZöld;
+      margin-bottom: 48px;
+    }
+    img{
+      width: 297px;
+      height: 233px;
     }
   }
 }

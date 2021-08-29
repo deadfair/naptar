@@ -1,4 +1,4 @@
-<section class="events-view-container-child">
+<section class="events-view-container-from-child">
 <section>
   <h1>
     <div class="line"></div>
@@ -27,6 +27,7 @@
     <h1>
       Erre a napra nincs semmi teendőd!
     </h1>
+    <img src="../../assets/nincsSemmi.png" alt="nincsSemmikép">
   </section>
 </ng-template>
 <ng-template #haveEvents>
@@ -44,7 +45,9 @@
     </section>
     <section class="text">{{event.text}}</section>
     <section class="pictures">
-      <section *ngFor="let people of event.peoples">{{people.peopleUrl}}</section>
+      <section *ngFor="let people of event.peoples">
+        <img src={{people.peopleUrl}} alt="pplimage">
+      </section>
     </section>
   </section>
 </ng-template>

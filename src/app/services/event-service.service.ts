@@ -26,11 +26,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -43,11 +43,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -60,11 +60,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -77,11 +77,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -94,11 +94,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -111,11 +111,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -128,11 +128,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -145,11 +145,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -162,11 +162,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -179,11 +179,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
@@ -196,11 +196,11 @@ export class EventServiceService {
       peoples:[
         {
         peopleId:"01",
-        peopleUrl:"01.png"
+        peopleUrl:"../../assets/01.png"
         },
         {
         peopleId:"02",
-        peopleUrl:"02.png"
+        peopleUrl:"../../assets/02.png"
         }
       ],
       text:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
