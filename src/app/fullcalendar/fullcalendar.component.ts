@@ -5,7 +5,7 @@ import { TravelPlusEventsInfo } from '../interface/travelPlusEventsInfo';
 import { ViewChild } from '@angular/core';
 import { style } from '@angular/animations';
 import { EventServiceService } from '../services/event-service.service';
-import { myFullCalendarController } from '../interface/fullCalendarViewController';
+import { FullCalendarViewController } from '../interface/fullCalendarViewController';
 @Component({
   selector: 'app-fullcalendar',
   templateUrl: './fullcalendar.component.html',
@@ -13,23 +13,16 @@ import { myFullCalendarController } from '../interface/fullCalendarViewControlle
 })
 export class FullcalendarComponent implements OnInit {
   @Input() selectedView:string="";
-  previousSelectedView:string="";
-  firstInitView:string="dayGridMonth";
   constructor(private eventService:EventServiceService) { }
-  eventwindow:boolean=false;        // eventadatok
-  moreEventWindow:boolean=false;    // + felnyílófül
   hiddenSegs:any[]=[];              // rejtett napok
-  fullcalendarContainer={
-    'fullcalendar-day-view-container':false,
-    'fullcalendar-week-view-container':false,
-    'fullcalendar-month-view-container':true
-  }
+  firstInitView:string="dayGridMonth";
+
+
+  fullCalendarViewController!: FullCalendarViewController;
 
   @ViewChild('calendar')
   calendarComponent!: FullCalendarComponent;
-
   calendarApi!:Calendar;
-
   selectEvent:TravelEventInfo=new TravelEventInfo();
   moreEventWindowInfo:TravelPlusEventsInfo={jsEvent:null,plusEvents:[]};
 
@@ -38,72 +31,35 @@ export class FullcalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.previousSelectedView=this.selectedView;
-    this.firstInitView=this.getNewViewName(this.selectedView);
+    this.fullCalendarViewController=new FullCalendarViewController(this.selectedView);
   }
   ngAfterViewInit(): void {
     this.calendarApi = this.calendarComponent.getApi();
-
   }
+
   ngDoCheck(): void {
-    if (this.previousSelectedView!==this.selectedView) {
-      if (this.selectedView!=='Year') {
-        this.fullcalendarContainer=this.getFullcalendaContainer(this.selectedView);
-        this.changeView(this.selectedView);
-      }
-      this.previousSelectedView=this.selectedView;
+    if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
+        && this.selectedView!=='Year') {
+        this.fullCalendarViewController.setView(this.selectedView);
+        this.changeView();
     }
+    if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
+        && this.selectedView==='Year'){
+          this.fullCalendarViewController.setView(this.selectedView);
+        }
 
   }
 
 
-  getFullcalendaContainer(view:string):any{
-    let result={
-      'fullcalendar-day-view-container':false,
-      'fullcalendar-week-view-container':false,
-      'fullcalendar-month-view-container':false
-    }
-    switch (view) {
-      case 'Day':  result['fullcalendar-day-view-container']=true;
-        break;
-      case "Week":  result['fullcalendar-week-view-container']=true;
-        break;
-      case "Month":  result['fullcalendar-month-view-container']=true;
-        break;
-      default:
-        break;
-    }
-    return result;
-  }
-
-  getNewViewName(view:string){
-
-    let result:string='';
-
-    switch (view) {
-      case 'Day':  result='timeGridDay';
-        break;
-      case "Week":  result='timeGridWeek';
-        break;
-      case "Month":  result='dayGridMonth';
-        break;
-      default:
-        break;
-    }
-    return result;
-  }
-
-  changeView(view:string){
-    const viewName=this.getNewViewName(view);
-    const calendarApi = this.calendarComponent.getApi();
-    if (viewName==='dayGridMonth') {
-      calendarApi.setOption('contentHeight', 807);
+  changeView(){
+    if (this.fullCalendarViewController.fullcalendarViewName==='dayGridMonth') {
+      this.calendarApi.setOption('contentHeight', 807);
     } else {
-      calendarApi.setOption('contentHeight', 1302);
+      this.calendarApi.setOption('contentHeight', 1302);
     }
-    calendarApi.changeView(viewName);
+    this.calendarApi.changeView(this.fullCalendarViewController.fullcalendarViewName);
     // mert nem akart így => calendarApi.updateSize(); működni
-    setTimeout(()=>calendarApi.updateSize(), 0.00000000000000000001);
+    setTimeout(()=>this.calendarApi.updateSize(), 0.00000000000000000001);
   }
 
 
@@ -115,7 +71,7 @@ export class FullcalendarComponent implements OnInit {
   }
 
   closeDeleteWindow(id:string|null){
-    this.eventwindow=false;
+    this.fullCalendarViewController.eventwindow=false;
     let newhiddenEvents:any[]=[];
     if (id!==null) {
       for (let index = 0,j=0; index < this.moreEventWindowInfo.plusEvents.length ; index++,j++) {
@@ -131,8 +87,11 @@ export class FullcalendarComponent implements OnInit {
 
   eventInfoFromMoreEventWindow(selectedEventFromMoreEventWindow:TravelEventInfo){
     this.selectEvent=selectedEventFromMoreEventWindow;
-    this.eventwindow=true;
+    this.fullCalendarViewController.eventwindow=true;
   }
+
+
+
 
 
   calendarOptions: CalendarOptions = {
@@ -154,19 +113,18 @@ export class FullcalendarComponent implements OnInit {
     },
     editable: false,
     moreLinkClick:(info)=>{
-      this.eventwindow=false;
-      this.moreEventWindow=true;
+      this.fullCalendarViewController.eventwindow=false;
+      this.fullCalendarViewController.moreEventWindow=true;
       this.moreEventWindowInfo={
           jsEvent:info.jsEvent,
           plusEvents:info.hiddenSegs
       }
     },
     eventClick: (info) =>{
-      this.moreEventWindow=false;
-      this.eventwindow=true;
+      this.fullCalendarViewController.moreEventWindow=false;
+      this.fullCalendarViewController.eventwindow=true;
       this.selectEvent= new TravelEventInfo(info);
-      let asd=new myFullCalendarController("Day");
-      console.log(asd);
+
 
     },
     eventColor:'#006633',
@@ -176,24 +134,6 @@ export class FullcalendarComponent implements OnInit {
     contentHeight: 1302, // ez csak a táblázat magassága
     aspectRatio: 1, // a magasság/szélesség arány contentHeight/contentWidth
     events: this.eventService.getAllEvents()
-
-    /*[
-      { id:"01",title: 'Event1', date: '2021-08-01' }, // eventek
-      { id:"02",title: 'Event2', date: '2021-08-01' }, // eventek
-      { id:"03",title: 'Event3', date: '2021-08-01' }, // eventek
-      { id:"04",title: 'Event4', date: '2021-08-01', backgroundColor:'green' }, // eventek
-      { id:"05",title: 'Event5', date: '2021-08-01' }, // eventek
-      { id:"06",title: 'Event6', date: '2021-08-01' }, // eventek
-      { id:"07",title: 'Eventttt', backgroundColor:'green', start: '2021-08-16T14:30:00' ,end:'2021-08-16T17:30:00',
-      extendedProps: {eventText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies quam et fringilla convallis mauris. Fermentum tempor nunc, faucibus adipiscing gravida suspendisse. Iaculis in sit a lectus dolor massa pretium ut. Orci blandit nunc ut cum felis arcu. Dictum aliquet quisque imperdiet purus, vitae accumsan posuere amet.'}}, // eventek
-      { id:"08",title: 'Event7', date: '2021-08-01' }, // eventek
-      { id:"09",title: 'Event8', date: '2021-08-01' }, // eventek
-      { id:"10",title: 'Event9', date: '2021-08-01' }, // eventek
-      { id:"11",title: 'Event10', date: '2021-08-01' }, // eventek
-      { id:"12",title: 'Event11', date: '2021-08-02' },
-      { id:"13",title: 'Event12', backgroundColor:'green', start: '2021-08-16T10:30:00' ,end:'2021-08-16T12:30:00',
-      extendedProps: {eventText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies quam et fringilla convallis mauris. Fermentum tempor nunc, faucibus adipiscing gravida suspendisse. Iaculis in sit a lectus dolor massa pretium ut. Orci blandit nunc ut cum felis arcu. Dictum aliquet quisque imperdiet purus, vitae accumsan posuere amet.'}}, // eventek
-    ]*/
   };
 
 }

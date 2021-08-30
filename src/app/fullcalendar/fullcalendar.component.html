@@ -1,6 +1,6 @@
-<section [ngClass]="fullcalendarContainer">
+<section [ngClass]="fullCalendarViewController.fullcalendarClassContainer">
 
-<section *ngIf="fullcalendarContainer['fullcalendar-day-view-container']">
+<section *ngIf="fullCalendarViewController.fullcalendarClassContainer['fullcalendar-day-view-container']">
   <div class="arrow-btn">
     <button mat-icon-button
     class=""
@@ -23,7 +23,7 @@
   >
   </full-calendar>
 
-  <section class="background-cells" *ngIf="!fullcalendarContainer['fullcalendar-month-view-container']">
+  <section class="background-cells" *ngIf="!fullCalendarViewController.fullcalendarClassContainer['fullcalendar-month-view-container']">
      <div *ngFor="let col of numSequence(8);index as i" class="col">
        <div *ngFor="let row of numSequence(48);index as j"
         class="row">
@@ -40,7 +40,7 @@
 
 </section>
 
-<span *ngIf="eventwindow;then eventWindowOpen"></span>
+<span *ngIf="fullCalendarViewController.eventwindow;then eventWindowOpen"></span>
 <ng-template #eventWindowOpen>
   <app-event-window
     [openWindowInfo]="selectEvent"
@@ -48,12 +48,12 @@
   ></app-event-window>
 </ng-template>
 
-<span *ngIf="moreEventWindow;then moreEventWindowOpen"></span>
+<span *ngIf="fullCalendarViewController.moreEventWindow;then moreEventWindowOpen"></span>
 <ng-template #moreEventWindowOpen>
   <app-more-event-window
     (selectedEvent)="eventInfoFromMoreEventWindow($event)"
     [openWindowInfo]="moreEventWindowInfo"
-    (closeBtnClick)="moreEventWindow=false"
+    (closeBtnClick)="fullCalendarViewController.moreEventWindow=false"
     ></app-more-event-window>
 </ng-template>
 

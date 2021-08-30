@@ -1,5 +1,5 @@
 
-export class myFullCalendarController{
+export class FullCalendarViewController{
 
   private _dataMap:any={
     'Day':{
@@ -20,28 +20,55 @@ export class myFullCalendarController{
 
   }
   private _fullcalendarClassContainer:any;
-  private _previousSelectedView:string;
-  private _SelectedView:string;
-  private _fullcalendarViewName:string;
+  private _fullcalendarViewName:string="";
+  private _previousSelectedView:string="";
+  private _eventwindow:boolean=false;        // eventadatok
+  private _moreEventWindow:boolean=false;    // + felnyílófül
 
-  constructor(view:string){
-    this._fullcalendarClassContainer=this.setFullcalendarClassContainer(view);
-    this._previousSelectedView="";
-    this._SelectedView=view;
-    this._fullcalendarViewName=this.setFullcalendarViewName(view);
-
+  get fullcalendarClassContainer():any{
+    return this._fullcalendarClassContainer;
+  }
+  get previousSelectedView():string{
+    return this._previousSelectedView;
+  }
+  get fullcalendarViewName():string{
+    return this._fullcalendarViewName;
+  }
+  get moreEventWindow():boolean{
+    return this._moreEventWindow;
+  }
+  get eventwindow():boolean{
+    return this._eventwindow;
+  }
+  set moreEventWindow(value:boolean){
+    this._moreEventWindow=value;
+  }
+  set eventwindow(value:boolean){
+    this._eventwindow=value;
   }
 
-  public setFullcalendarClassContainer(view:string):any{
-    let result={
+  constructor(view:string){
+    this.setFullcalendarClassContainer(view);
+    this._previousSelectedView=view;
+    this.setFullcalendarViewName(view);
+  }
+
+  public setView(view:string){
+    this.setFullcalendarClassContainer(view);
+    this.setFullcalendarViewName(view);
+    this.eventWindowsChangeToFalseIfNeed(view);
+    this._previousSelectedView=view;
+  }
+
+  private setFullcalendarClassContainer(view:string):any{
+    this._fullcalendarClassContainer={
       [this._dataMap['Day'].class]:   view===this._dataMap['Day'].viewName    ? true:false,
       [this._dataMap['Week'].class]:  view===this._dataMap['Week'].viewName   ? true:false,
       [this._dataMap['Month'].class]: view===this._dataMap['Month'].viewName  ? true:false,
     }
-    return result;
   }
 
-  public setFullcalendarViewName(view:string){
+  private setFullcalendarViewName(view:string){
     let result:string='';
     switch (view) {
       case this._dataMap['Day'].viewName:  result=this._dataMap['Day'].fullcalendarViewName;
@@ -53,20 +80,18 @@ export class myFullCalendarController{
       default:
         break;
     }
-    return result;
-
+    this._fullcalendarViewName=result;
   }
 
-  public get fullcalendarClassContainer():any{
-    return this._fullcalendarClassContainer;
+
+  private eventWindowsChangeToFalseIfNeed(newView:string):void{
+    if(!this.isSelectedView(newView)){
+      this._eventwindow=false;
+      this._moreEventWindow=false;
+    }
   }
-  public get previousSelectedView():string{
-    return this._previousSelectedView;
-  }
-  public get SelectedView():string{
-    return this._SelectedView;
-  }
-  public get fullcalendarViewName():string{
-    return this._fullcalendarViewName;
+
+  private isSelectedView(newView:string):boolean{
+    return newView===this.previousSelectedView;
   }
 }
