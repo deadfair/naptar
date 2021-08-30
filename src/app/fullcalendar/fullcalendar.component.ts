@@ -5,7 +5,7 @@ import { TravelPlusEventsInfo } from '../interface/travelPlusEventsInfo';
 import { ViewChild } from '@angular/core';
 import { style } from '@angular/animations';
 import { EventServiceService } from '../services/event-service.service';
-
+import { myFullCalendarController } from '../interface/fullCalendarViewController';
 @Component({
   selector: 'app-fullcalendar',
   templateUrl: './fullcalendar.component.html',
@@ -74,7 +74,6 @@ export class FullcalendarComponent implements OnInit {
         break;
     }
     return result;
-
   }
 
   getNewViewName(view:string){
@@ -166,6 +165,9 @@ export class FullcalendarComponent implements OnInit {
       this.moreEventWindow=false;
       this.eventwindow=true;
       this.selectEvent= new TravelEventInfo(info);
+      let asd=new myFullCalendarController("Day");
+      console.log(asd);
+
     },
     eventColor:'#006633',
     firstDay:1,     // Monday as first day of week

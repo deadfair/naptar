@@ -23,10 +23,6 @@
   >
   </full-calendar>
 
-
-
-
-
   <section class="background-cells" *ngIf="!fullcalendarContainer['fullcalendar-month-view-container']">
      <div *ngFor="let col of numSequence(8);index as i" class="col">
        <div *ngFor="let row of numSequence(48);index as j"
@@ -40,8 +36,9 @@
       </div>
     </div>
   </section>
-</section>
 
+
+</section>
 
 <span *ngIf="eventwindow;then eventWindowOpen"></span>
 <ng-template #eventWindowOpen>
@@ -59,4 +56,5 @@
     (closeBtnClick)="moreEventWindow=false"
     ></app-more-event-window>
 </ng-template>
+
 

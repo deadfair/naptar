@@ -29,7 +29,6 @@ export class EventsViewComponent implements OnInit,OnChanges {
         this.selectEvents.push(event);
       }
     }
-    console.log(this.selectEvents)
   }
 
 

@@ -38,7 +38,7 @@
   }
   .mat-card.infowindow{
     @include c.ZIndex(2);
-    @include c.fonts1;
+    @include c.robotoNormal_fs_ls_lh_fw;
     background: c.$Sötétszürke;
     color: c.$Fehér;
     box-sizing: border-box;
@@ -69,12 +69,15 @@
     .mat-card-content{
       margin:5px 14px 0 8.78px;
       .time-container{
-        @include c.fonts1;
+        @include c.robotoNormal_fs_ls_lh_fw;
         position: static;
         width: 318px;
         height: 22px;
         left: 10px;
         top: 10px;
+        span:nth-child(2){
+          font-size: 12px;
+        }
       }
     }
     .text-container{
@@ -98,7 +101,7 @@
         height: 66px;
         left: 44px;
         top: 10px;
-        @include c.fonts1;
+        @include c.robotoNormal_fs_ls_lh_fw;
         overflow-y:hidden;
       }
 
