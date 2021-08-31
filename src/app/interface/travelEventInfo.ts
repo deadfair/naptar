@@ -1,3 +1,4 @@
+import { Direction } from './direction';
 import { RenderPoint } from "./point";
 
 export class TravelEventInfo{
@@ -9,7 +10,7 @@ export class TravelEventInfo{
   private _renderPoint:RenderPoint;
   private _openPosition:string; //RIGHT UP
 
-  constructor(calendarObject?:any,jsEvent?:any){
+  constructor(direction:Direction,calendarObject?:any,jsEvent?:any){
     // 1 bemenettel
     if (calendarObject===undefined && jsEvent===undefined) {
       this._jsEvent=undefined;
@@ -19,11 +20,10 @@ export class TravelEventInfo{
     }else{
       if (jsEvent!==undefined) {
         this._jsEvent=jsEvent;
-        this._openPosition="RIGHT"
       }else{
         this._jsEvent=calendarObject.jsEvent;
-        this._openPosition="UP"
       }
+      this._openPosition=direction;
       this._calendarEvent=calendarObject.event;
       this._id=calendarObject.event.id;
     }

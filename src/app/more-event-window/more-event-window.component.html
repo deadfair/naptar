@@ -7,7 +7,8 @@
     <section class="event-box" *ngFor="let item of openWindowInfo.plusEvents"
       (click)="openEventWindow(item,$event)"
       [ngStyle]="{'background':item.event.backgroundColor ,
-      'border-color':item.event.borderColor}">
+                  'border-color':item.event.borderColor,
+                  'color':item.event.textColor}">
       {{item.event._def.title}}
     </section>
   </mat-card-content>

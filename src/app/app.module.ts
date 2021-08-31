@@ -16,7 +16,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { DatepickerMonthComponent } from './datepicker-month/datepicker-month.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
-import { CalendarComponent } from './calendar/calendar.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatepickerMonthHeaderComponent } from './datepicker-month/datepicker-month-header/datepicker-month-header.component';
 import { EventsViewComponent } from './events-view/events-view.component';
@@ -37,9 +36,8 @@ import { ViewSwapperComponent } from './view-swapper/view-swapper.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MiniMonthPickerComponent } from './mini-month-picker/mini-month-picker.component';
-import { FullcalendarDayViewComponent } from './fullcalendar-day-view/fullcalendar-day-view.component';
-import { FullcalendarWeekViewComponent } from './fullcalendar-week-view/fullcalendar-week-view.component';
 import { FullcalendarComponent } from './fullcalendar/fullcalendar.component';
+
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -53,7 +51,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     AppComponent,
     StepperComponent,
     DatepickerMonthComponent,
-    CalendarComponent,
     DatepickerMonthHeaderComponent,
     EventsViewComponent,
     DatepickerMultipleViewComponent,
@@ -65,8 +62,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MainCalendarComponent,
     ViewSwapperComponent,
     MiniMonthPickerComponent,
-    FullcalendarDayViewComponent,
-    FullcalendarWeekViewComponent,
     FullcalendarComponent,
   ],
   imports: [

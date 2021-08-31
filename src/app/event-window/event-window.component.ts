@@ -11,7 +11,7 @@ export class EventWindowComponent implements OnInit {
 
   constructor() {}
   //Inputs
-  @Input() openWindowInfo:TravelEventInfo=new TravelEventInfo();
+  @Input() openWindowInfo!:TravelEventInfo;
   renderPoint:RenderPoint=new RenderPoint();
   event: any;
   openPosition={

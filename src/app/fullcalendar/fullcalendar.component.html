@@ -52,7 +52,7 @@
   <app-more-event-window
     (selectedEvent)="eventInfoFromMoreEventWindow($event)"
     [openWindowInfo]="moreEventWindowInfo"
-    (closeBtnClick)="fullCalendarViewController.moreEventWindow=false"
+    (closeBtnClick)="fullCalendarViewController.moreEventWindow=false; fullCalendarViewController.eventwindow=false "
     ></app-more-event-window>
 </ng-template>
 

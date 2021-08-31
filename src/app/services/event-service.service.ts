@@ -13,7 +13,7 @@ export class EventServiceService {
     {
       id:"01",
       title: 'Event1',
-      date: '2021-08-01',
+      date: '2021-08-06',
       extendedProps: {
         peoples:[
           {
@@ -31,7 +31,7 @@ export class EventServiceService {
     {
       id:"02",
       title: 'Event2',
-      date: '2021-08-01',
+      date: '2021-08-06',
       extendedProps: {
         peoples:[
           {
@@ -87,7 +87,7 @@ export class EventServiceService {
     {
       id:"05",
       title: 'Event5',
-      date: '2021-08-01',
+      date: '2021-08-06',
       extendedProps: {
         eventText: ``
       }
@@ -95,7 +95,7 @@ export class EventServiceService {
     {
       id:"06",
       title: 'Event6',
-      date: '2021-08-01',
+      date: '2021-08-06',
       extendedProps: {
         eventText: ``
       }
@@ -119,7 +119,7 @@ export class EventServiceService {
     {
       id:"08",
       title: 'Event7',
-      date: '2021-08-01',
+      date: '2021-08-06',
       extendedProps: {
         eventText: ``
       }
@@ -127,7 +127,7 @@ export class EventServiceService {
     {
       id:"09",
       title: 'Event8',
-      date: '2021-08-01',
+      date: '2021-08-06',
       extendedProps: {
         peoples:[
           {
@@ -145,7 +145,7 @@ export class EventServiceService {
     {
       id:"10",
       title: 'Event9',
-      date: '2021-08-01',
+      date: '2021-08-06',
       extendedProps: {
         eventText: ``
       }
@@ -156,7 +156,7 @@ export class EventServiceService {
       borderColor :'yellow',
       backgroundColor:'yellow',
       textColor :'red',
-      date: '2021-08-01',
+      date: '2021-08-06',
       extendedProps: {
         peoples:[
           {

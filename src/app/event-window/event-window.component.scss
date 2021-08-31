@@ -19,6 +19,7 @@
       /* Note: backdrop-filter has minimal browser support */
       border-radius: 13px;
       transform: rotate(54deg) ;
+      z-index: -1;
     }
     &::after{
       left: calc(50% - 28px/2 + 4.4px);
@@ -28,6 +29,7 @@
   .event-window-open-right{
     transform: translate(calc(140px + 18px - 14px),calc(-212.91px/2 + 22px/2));
     &::after, &::before{
+      z-index: -1;
       @include c.arrow;
       top: 97px;
     }

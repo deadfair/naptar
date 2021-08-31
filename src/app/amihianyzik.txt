@@ -1,30 +1,37 @@
 
-megoldások:
+megoldások, kérdések:
 event-windowba         overflow-y:hidden; re tettem ha sok a szöveg ???
 event a windowhoz van viszonyítva  bekell tenni a fullcalendarContainer-be ésúgy kikalkulálni a pointereventel
 ekvetve, resizra nemhiszem hogy felkell készíteni + soakt szívtam vele
 resizekor ujraszámolás esetleg bezárás?
-
+szerkesztés jel utáni visszalépés (tünjön el? mikor?),
+mikor tünjön el az event window?
 
 
 problémák:
-nth word ami vmiért nem jó,
-plusz jel(az se olyan mint neten írják),
 
+next:
 
-szerkesztés jel utáni visszalépés (tünjön el? mikor?),
-reszponzívitás,
-kis szám a naptárba,
-nap view ha tul kicsi a magassága
 pointerevent felülvizsgálata a fullcalender view ba tágitás miatt
-
-
-mondthviewcomntainer: igy lesz jo a deletescreennel de a méreteit megvizsgálni
-transform: translate(77px, -106px);
-176-18-9 =149
-(1222-1106) /2 =58
-
-
+pointerevent a hét és nap nézetbe nem ugy jelenik meg
 
 
 tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
+
+
+
+moreeventwindow ha sszombat v vasárnap vis a nap osztási maradék 6 v 7 akkor jobbra jelenjen meg
+
+
+
+next next:
+
+reszponzívitás,
+kis szám a naptárba,
+nap view ha tul kicsi a magassága
+
+
+next next next:
+
+nth word ami vmiért nem jó,
+plusz jel(az se olyan mint neten írják),

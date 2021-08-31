@@ -1,3 +1,4 @@
+import { Direction } from './../interface/direction';
 import { Component, Input, OnInit } from '@angular/core';
 import { TravelEventInfo } from './../interface/travelEventInfo';
 import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent, FullCalendarComponent } from '@fullcalendar/angular';
@@ -22,7 +23,7 @@ export class FullcalendarComponent implements OnInit {
   calendarComponent!: FullCalendarComponent;
   calendarApi!:Calendar;
 
-  selectEvent:TravelEventInfo=new TravelEventInfo();
+  selectEvent!:TravelEventInfo;
   moreEventWindowInfo:TravelPlusEventsInfo={jsEvent:null,plusEvents:[]};
   hiddenSegs:any[]=[];
 
@@ -135,7 +136,7 @@ export class FullcalendarComponent implements OnInit {
     eventClick: (info) =>{
       this.fullCalendarViewController.moreEventWindow=false;
       this.fullCalendarViewController.eventwindow=true;
-      this.selectEvent= new TravelEventInfo(info);
+      this.selectEvent= new TravelEventInfo(Direction.Up,info);
     },
     eventColor:'#006633',
     firstDay:1,           // Monday as first day of week

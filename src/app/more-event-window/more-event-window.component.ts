@@ -1,3 +1,4 @@
+import { Direction } from './../interface/direction';
 import { TravelPlusEventsInfo } from './../interface/travelPlusEventsInfo';
 import { TravelEventInfo } from './../interface/travelEventInfo';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
@@ -33,6 +34,6 @@ export class MoreEventWindowComponent implements OnInit {
   }
 
   openEventWindow(calendarEvent:any,jsEvent:any){
-    this.selectedEvent.emit(new TravelEventInfo(calendarEvent,jsEvent))
+    this.selectedEvent.emit(new TravelEventInfo(Direction.Right,calendarEvent,jsEvent))
   }
 }
