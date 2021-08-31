@@ -18,9 +18,9 @@ export class TravelEventInfo{
     this._calendarEvent=undefined;
 
     if (calendarObject!==undefined) {
+      this._id=calendarObject.event.id;
       this._jsEvent=calendarObject.jsEvent;
       this._calendarEvent=calendarObject.event;
-      this._id=calendarObject.event.id;
     }
 
     if (jsEvent!==undefined) {

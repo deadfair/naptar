@@ -16,8 +16,10 @@ $tdmarginx:9px;
 
   .fullcalendar-day-view-container{
   .fc-event-main{
+    cursor: pointer;
     position: relative;
     .event-text-container{
+      pointer-events: none;
       position: absolute;
       border-radius: 5px;
       height: 75%;
@@ -209,8 +211,10 @@ $tdmarginx:9px;
 
           background-color: rgba(40, 161, 56, 0.4) !important;
           .fc-event-main{
+            cursor: pointer;
 
             .fc-event-main-frame{
+              pointer-events: none;
               flex-direction: row-reverse !important;
               opacity: 1;
               .fc-event-title-container{
@@ -234,6 +238,7 @@ $tdmarginx:9px;
                 }
               }
               .fc-event-time{
+                pointer-events: none;
                 width: 38%;
                 margin-right: 6px;
                 text-align: right;
@@ -499,6 +504,7 @@ $tdmarginx:9px;
             border-radius: 0px;
             margin-top: 0px;
             pointer-events: auto ;
+            cursor: pointer;
             .fc-event-resizer.fc-event-resizer-end{
               pointer-events: none ;
 

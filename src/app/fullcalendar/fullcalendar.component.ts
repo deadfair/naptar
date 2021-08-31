@@ -107,6 +107,17 @@ export class FullcalendarComponent implements OnInit {
       timeGrid: {
         // options apply to timeGridWeek and timeGridDay views
         displayEventTime:true,
+
+        eventDidMount: function(info) {
+          let node = document.createElement("div");
+          node.className="event-text-container"
+          node.innerHTML=`<mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">close_24px</mat-icon>
+                          <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">close_24px</mat-icon>
+          <div class="event-text">${info.event.extendedProps.eventText}</div>`
+          info.el.children[0].appendChild(node);
+          let minuteDiference=Math.round((Number(info.event.end)-Number(info.event.start))/1000/60);
+          info.el.children[0].children[0].children[0].innerHTML=minuteDiference+" min";
+        },
       },
       week: {
         // options apply to dayGridWeek and timeGridWeek views
@@ -116,14 +127,7 @@ export class FullcalendarComponent implements OnInit {
       }
     },
     initialView: this.firstInitView,
-    eventDidMount: function(info) {
-      var node = document.createElement("div");
-      node.className="event-text-container"
-      node.innerHTML=`<mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">close_24px</mat-icon>
-                      <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">close_24px</mat-icon>
-      <div class="event-text">${info.event.extendedProps.eventText}</div>`
-      info.el.children[0].appendChild(node)
-    },
+
     editable: false,
     moreLinkClick:(info)=>{
       this.fullCalendarViewController.eventwindow=false;

@@ -34,6 +34,11 @@ export class MoreEventWindowComponent implements OnInit {
   }
 
   openEventWindow(calendarEvent:any,jsEvent:any){
+    console.log(calendarEvent.start.getDay())
+  if (calendarEvent.start.getDay() === 6 || calendarEvent.start.getDay() === 0) {
+    this.selectedEvent.emit(new TravelEventInfo(Direction.Left,calendarEvent,jsEvent))
+  } else {
     this.selectedEvent.emit(new TravelEventInfo(Direction.Right,calendarEvent,jsEvent))
+  }
   }
 }

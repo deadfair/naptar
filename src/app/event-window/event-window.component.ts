@@ -1,3 +1,4 @@
+import { Direction } from './../interface/direction';
 import { RenderPoint } from './../interface/point';
 import { TravelEventInfo } from './../interface/travelEventInfo';
 import { Component, Input, OnInit,Output ,EventEmitter} from '@angular/core';
@@ -15,8 +16,10 @@ export class EventWindowComponent implements OnInit {
   renderPoint:RenderPoint=new RenderPoint();
   event: any;
   openPosition={
-    'event-window-open-up':true,
+    'event-window-open-up':false,
     'event-window-open-right':false,
+    'event-window-open-left':false,
+
   };
   //Outputs
   @Output() closeEventWindow:EventEmitter<null|string> = new EventEmitter();
@@ -36,16 +39,27 @@ export class EventWindowComponent implements OnInit {
     this.closeEventWindow.emit(id);
   }
   eventWindowPositionChange(){
-    if (this.openWindowInfo.openPosition==="RIGHT") {
-      this.openPosition={
-        'event-window-open-up':false,
-        'event-window-open-right':true,
-      }
-    } else { //===UP
+    if (this.openWindowInfo.openPosition===Direction.Up) {
       this.openPosition={
         'event-window-open-up':true,
         'event-window-open-right':false,
+        'event-window-open-left':false,
       }
     }
+    if (this.openWindowInfo.openPosition===Direction.Right) {
+      this.openPosition={
+        'event-window-open-up':false,
+        'event-window-open-right':true,
+        'event-window-open-left':false,
+      }
+    }
+    if (this.openWindowInfo.openPosition===Direction.Left) {
+      this.openPosition={
+        'event-window-open-up':false,
+        'event-window-open-right':false,
+        'event-window-open-left':true,
+      }
+    }
+
   }
 }

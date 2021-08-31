@@ -14,18 +14,15 @@ next:
 
 pointerevent felülvizsgálata a fullcalender view ba tágitás miatt
 pointerevent a hét és nap nézetbe nem ugy jelenik meg
+ha idő bevamn állítva akkor tol igig irjuk ki az időt
+eventwindow margo jobb bal az idők közti margók
+font size. minden stilus ujranézése
 
-
-tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
-
-
-
-moreeventwindow ha sszombat v vasárnap vis a nap osztási maradék 6 v 7 akkor jobbra jelenjen meg
 
 
 
 next next:
-
+tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
 reszponzívitás,
 kis szám a naptárba,
 nap view ha tul kicsi a magassága

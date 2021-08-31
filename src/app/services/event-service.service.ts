@@ -13,7 +13,7 @@ export class EventServiceService {
     {
       id:"01",
       title: 'Event1',
-      date: '2021-08-06',
+      date: '2021-09-06',
       extendedProps: {
         peoples:[
           {
@@ -31,7 +31,7 @@ export class EventServiceService {
     {
       id:"02",
       title: 'Event2',
-      date: '2021-08-06',
+      date: '2021-09-12',
       extendedProps: {
         peoples:[
           {
@@ -49,8 +49,8 @@ export class EventServiceService {
     {
       id:"03",
       title: 'Event3',
-      start: '2021-08-05',
-      end:'2021-08-16',
+      start: '2021-09-05',
+      end:'2021-09-16',
       extendedProps: {
         peoples:[
           {
@@ -68,7 +68,7 @@ export class EventServiceService {
     {
       id:"04",
       title: 'Event4',
-      date: '2021-08-30',
+      date: '2021-09-30',
       backgroundColor:'green',
       extendedProps: {
         peoples:[
@@ -87,7 +87,7 @@ export class EventServiceService {
     {
       id:"05",
       title: 'Event5',
-      date: '2021-08-06',
+      date: '2021-09-12',
       extendedProps: {
         eventText: ``
       }
@@ -95,7 +95,7 @@ export class EventServiceService {
     {
       id:"06",
       title: 'Event6',
-      date: '2021-08-06',
+      date: '2021-09-12',
       extendedProps: {
         eventText: ``
       }
@@ -104,8 +104,8 @@ export class EventServiceService {
       id:"07",
       title: 'Eventttt',
       backgroundColor:'green',
-      start: '2021-08-16T14:30:00' ,
-      end:'2021-08-16T17:30:00',
+      start: '2021-08-31T14:30:00' ,
+      end:'2021-08-31T17:30:00',
       extendedProps: {
         eventText: `Lorem ipsum dolor sit amet,
         consectetur adipiscing elit. Ultricies quam et
@@ -119,7 +119,7 @@ export class EventServiceService {
     {
       id:"08",
       title: 'Event7',
-      date: '2021-08-06',
+      date: '2021-09-12',
       extendedProps: {
         eventText: ``
       }
@@ -127,7 +127,7 @@ export class EventServiceService {
     {
       id:"09",
       title: 'Event8',
-      date: '2021-08-06',
+      date: '2021-09-06',
       extendedProps: {
         peoples:[
           {
@@ -145,7 +145,7 @@ export class EventServiceService {
     {
       id:"10",
       title: 'Event9',
-      date: '2021-08-06',
+      date: '2021-09-06',
       extendedProps: {
         eventText: ``
       }
@@ -156,7 +156,7 @@ export class EventServiceService {
       borderColor :'yellow',
       backgroundColor:'yellow',
       textColor :'red',
-      date: '2021-08-06',
+      date: '2021-09-06',
       extendedProps: {
         peoples:[
           {
@@ -176,7 +176,7 @@ export class EventServiceService {
       title: 'Event11',
       borderColor :'red',
       backgroundColor:'red',
-      date: '2021-08-02',
+      date: '2021-09-02',
       extendedProps: {
         eventText: ``
       }
@@ -185,9 +185,9 @@ export class EventServiceService {
       id:"13",
       title: 'Event12',
       backgroundColor:'black',
-      date: '2021-08-16',
-      start: '2021-08-30T10:30:00',
-      end:'2021-08-30T12:30:00',
+      date: '2021-09-16',
+      start: '2021-09-30T10:30:00',
+      end:'2021-09-30T12:30:00',
       extendedProps: {
         eventText: `Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Ultricies quam et fringilla convallis
@@ -196,6 +196,96 @@ export class EventServiceService {
         massa pretium ut. Orci blandit nunc ut cum felis arcu.
         Dictum aliquet quisque imperdiet purus, vitae accumsan
         posuere amet.`,
+      }
+    },
+    {
+      id:"14",
+      title: 'Event14',
+      date: '2021-09-07',
+      extendedProps: {
+        peoples:[
+          {
+          peopleId:"01",
+          peopleUrl:"../../assets/01.png"
+          },
+          {
+          peopleId:"02",
+          peopleUrl:"../../assets/02.png"
+          }
+        ],
+        eventText:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
+      }
+    },
+    {
+      id:"15",
+      title: 'Event15',
+      date: '2021-09-0',
+      extendedProps: {
+        peoples:[
+          {
+          peopleId:"01",
+          peopleUrl:"../../assets/01.png"
+          },
+          {
+          peopleId:"02",
+          peopleUrl:"../../assets/02.png"
+          }
+        ],
+        eventText:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
+      }
+    },
+    {
+      id:"16",
+      title: 'Event16',
+      date: '2021-09-0',
+      extendedProps: {
+        peoples:[
+          {
+          peopleId:"01",
+          peopleUrl:"../../assets/01.png"
+          },
+          {
+          peopleId:"02",
+          peopleUrl:"../../assets/02.png"
+          }
+        ],
+        eventText:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
+      }
+    },
+    {
+      id:"17",
+      title: 'Event17',
+      date: '2021-09-0',
+      extendedProps: {
+        peoples:[
+          {
+          peopleId:"01",
+          peopleUrl:"../../assets/01.png"
+          },
+          {
+          peopleId:"02",
+          peopleUrl:"../../assets/02.png"
+          }
+        ],
+        eventText:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
+      }
+    },
+    {
+      id:"18",
+      title: 'Event18',
+      date: '2021-09-0',
+      extendedProps: {
+        peoples:[
+          {
+          peopleId:"01",
+          peopleUrl:"../../assets/01.png"
+          },
+          {
+          peopleId:"02",
+          peopleUrl:"../../assets/02.png"
+          }
+        ],
+        eventText:"Visit to discuss improvements, and also dont forget to bring the ID card, as discused. https://zoom.us/i/1983475281"
       }
     },
   ]
