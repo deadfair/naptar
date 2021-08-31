@@ -1,32 +1,16 @@
 
 megoldások, kérdések:
 event-windowba         overflow-y:hidden; re tettem ha sok a szöveg ???
-event a windowhoz van viszonyítva  bekell tenni a fullcalendarContainer-be ésúgy kikalkulálni a pointereventel
-ekvetve, resizra nemhiszem hogy felkell készíteni + soakt szívtam vele
-resizekor ujraszámolás esetleg bezárás?
 szerkesztés jel utáni visszalépés (tünjön el? mikor?),
 mikor tünjön el az event window?
+nap view ha tul kicsi a magassága mi történjen, hogy jelenjen meg?
 
 
 problémák:
 
-next:
-
-pointerevent felülvizsgálata a fullcalender view ba tágitás miatt
-pointerevent a hét és nap nézetbe nem ugy jelenik meg
-ha idő bevamn állítva akkor tol igig irjuk ki az időt
-eventwindow margo jobb bal az idők közti margók
-font size. minden stilus ujranézése
-
-
-
-
 next next:
 tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
 reszponzívitás,
-kis szám a naptárba,
-nap view ha tul kicsi a magassága
-
 
 next next next:
 

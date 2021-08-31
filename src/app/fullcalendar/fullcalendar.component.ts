@@ -106,8 +106,7 @@ export class FullcalendarComponent implements OnInit {
       },
       timeGrid: {
         // options apply to timeGridWeek and timeGridDay views
-        displayEventTime:true,
-
+        displayEventTime:true, // azért kell mert ha van akkor a info.el.children[0].children[0].children[0] elemnek az innerHTMLjét kell csak átírni
         eventDidMount: function(info) {
           let node = document.createElement("div");
           node.className="event-text-container"
@@ -115,6 +114,7 @@ export class FullcalendarComponent implements OnInit {
                           <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">close_24px</mat-icon>
           <div class="event-text">${info.event.extendedProps.eventText}</div>`
           info.el.children[0].appendChild(node);
+
           let minuteDiference=Math.round((Number(info.event.end)-Number(info.event.start))/1000/60);
           info.el.children[0].children[0].children[0].innerHTML=minuteDiference+" min";
         },
