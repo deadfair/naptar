@@ -8,25 +8,25 @@ export class TravelEventInfo{
   private _calendarEvent:any;
   private _id:string;
   private _renderPoint:RenderPoint;
-  private _openPosition:string; //RIGHT UP
+  private _openPosition:Direction; //RIGHT UP
 
   constructor(direction:Direction,calendarObject?:any,jsEvent?:any){
-    // 1 bemenettel
-    if (calendarObject===undefined && jsEvent===undefined) {
-      this._jsEvent=undefined;
-      this._calendarEvent=undefined;
-      this._id="";
-      this._openPosition=""
-    }else{
-      if (jsEvent!==undefined) {
-        this._jsEvent=jsEvent;
-      }else{
-        this._jsEvent=calendarObject.jsEvent;
-      }
-      this._openPosition=direction;
+
+    this._openPosition=direction;
+    this._id="";
+    this._jsEvent=undefined;
+    this._calendarEvent=undefined;
+
+    if (calendarObject!==undefined) {
+      this._jsEvent=calendarObject.jsEvent;
       this._calendarEvent=calendarObject.event;
       this._id=calendarObject.event.id;
     }
+
+    if (jsEvent!==undefined) {
+      this._jsEvent=jsEvent;
+    }
+
     this._renderPoint=new RenderPoint(this.jsEvent)
   }
 
