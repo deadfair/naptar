@@ -5,7 +5,7 @@
 
   .event-window-open-up{
 
-    transform: translate(calc(-456px/2 + 115px/2),calc(-212.91px - 23px));
+    transform: translate(calc(-456px/2 + 115px/2),calc(-212.91px - 26px));
     //         width/2 + Eventwidth/2, -height - Nyilheight
     &::after, &::before{
       content: "";

@@ -9,7 +9,7 @@
     position: absolute;
     left: -0.1%;
     right: 0%;
-    top: 9.07%;
+    top: 85px;
     bottom: 0%;
     background: linear-gradient(0deg, #1E2025, #1E2025);
     opacity: 0.4;
@@ -22,7 +22,7 @@
     width: 300px ;
     height: 111px ;
     left: calc(50% - 300px/2);
-    top: calc(50% - 111px/2);
+    top: calc(85px + 341px);
     background: c.$Fehér;
     border-radius: 10px;
     .mat-card-title{

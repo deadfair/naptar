@@ -68,7 +68,7 @@ export class EventServiceService {
     {
       id:"04",
       title: 'Event4',
-      date: '2021-08-01',
+      date: '2021-08-30',
       backgroundColor:'green',
       extendedProps: {
         peoples:[
@@ -184,10 +184,10 @@ export class EventServiceService {
     {
       id:"13",
       title: 'Event12',
-      backgroundColor:'green',
+      backgroundColor:'black',
       date: '2021-08-16',
-      start: '2021-08-16T10:30:00',
-      end:'2021-08-16T12:30:00',
+      start: '2021-08-30T10:30:00',
+      end:'2021-08-30T12:30:00',
       extendedProps: {
         eventText: `Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Ultricies quam et fringilla convallis

@@ -1,18 +1,30 @@
 
+megoldások:
+event-windowba         overflow-y:hidden; re tettem ha sok a szöveg ???
+event a windowhoz van viszonyítva  bekell tenni a fullcalendarContainer-be ésúgy kikalkulálni a pointereventel
+ekvetve, resizra nemhiszem hogy felkell készíteni + soakt szívtam vele
+resizekor ujraszámolás esetleg bezárás?
 
+
+
+problémák:
 nth word ami vmiért nem jó,
 plusz jel(az se olyan mint neten írják),
+
+
 szerkesztés jel utáni visszalépés (tünjön el? mikor?),
 reszponzívitás,
 kis szám a naptárba,
-tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
 nap view ha tul kicsi a magassága
 pointerevent felülvizsgálata a fullcalender view ba tágitás miatt
-event a windowhoz van viszonyítva  bekell tenni a fullcalendarContainer-be ésúgy kikalkulálni a pointereventel
-perces eventek javitása
+
+
+mondthviewcomntainer: igy lesz jo a deletescreennel de a méreteit megvizsgálni
+transform: translate(77px, -106px);
+176-18-9 =149
+(1222-1106) /2 =58
 
 
 
 
-
-event-windowba         overflow-y:hidden; re tettem ha sok a szöveg ???
+tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,

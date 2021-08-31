@@ -8,7 +8,7 @@ $tdmarginx:9px;
   .fullcalendar-month-view-container, .fullcalendar-day-view-container, .fullcalendar-week-view-container{
     margin:  auto;
     width: 1222px;
-    transform: translate(32px,-114px);
+    transform: translate(79px,-105px); //31=>79
 
 }
 
@@ -59,7 +59,7 @@ $tdmarginx:9px;
 
   .fullcalendar-day-view-container, .fullcalendar-week-view-container{
     position: relative;
-    transform: translateY(-114px);
+    transform: translate(48px,-105px);   //79-31=48
 
 
 // 2 Arrow  ---------------------------------------------------
@@ -409,6 +409,7 @@ $tdmarginx:9px;
             }
               .fc-scrollgrid-sync-inner{
                 height: 72px;
+                width: 140px;
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: center;

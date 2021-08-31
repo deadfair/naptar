@@ -22,8 +22,8 @@ export class FullCalendarViewController{
   private _fullcalendarClassContainer:any;
   private _fullcalendarViewName:string="";
   private _previousSelectedView:string="";
-  private _eventwindow:boolean=false;        // eventadatok
-  private _moreEventWindow:boolean=false;    // + felnyílófül
+  private _eventwindow:boolean=false;
+  private _moreEventWindow:boolean=false;
 
   get fullcalendarClassContainer():any{
     return this._fullcalendarClassContainer;

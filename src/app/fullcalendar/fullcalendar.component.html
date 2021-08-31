@@ -39,7 +39,6 @@
 
 
 </section>
-
 <span *ngIf="fullCalendarViewController.eventwindow;then eventWindowOpen"></span>
 <ng-template #eventWindowOpen>
   <app-event-window
@@ -56,5 +55,6 @@
     (closeBtnClick)="fullCalendarViewController.moreEventWindow=false"
     ></app-more-event-window>
 </ng-template>
+
 
 

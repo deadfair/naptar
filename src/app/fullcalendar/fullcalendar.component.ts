@@ -14,42 +14,41 @@ import { FullCalendarViewController } from '../interface/fullCalendarViewControl
 export class FullcalendarComponent implements OnInit {
   @Input() selectedView:string="";
   constructor(private eventService:EventServiceService) { }
-  hiddenSegs:any[]=[];              // rejtett napok
   firstInitView:string="dayGridMonth";
-
 
   fullCalendarViewController!: FullCalendarViewController;
 
   @ViewChild('calendar')
   calendarComponent!: FullCalendarComponent;
   calendarApi!:Calendar;
+
   selectEvent:TravelEventInfo=new TravelEventInfo();
   moreEventWindowInfo:TravelPlusEventsInfo={jsEvent:null,plusEvents:[]};
-
-  numSequence(n: number): Array<number> {
-    return Array(n).fill(1);
-  }
+  hiddenSegs:any[]=[];
 
   ngOnInit(): void {
     this.fullCalendarViewController=new FullCalendarViewController(this.selectedView);
   }
+
+  ngDoCheck(): void {
+    if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
+    && this.selectedView!=='Year') {
+      this.fullCalendarViewController.setView(this.selectedView);
+      this.changeView();
+    }
+    if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
+    && this.selectedView==='Year'){
+      this.fullCalendarViewController.setView(this.selectedView);
+    }
+  }
+
   ngAfterViewInit(): void {
     this.calendarApi = this.calendarComponent.getApi();
   }
 
-  ngDoCheck(): void {
-    if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
-        && this.selectedView!=='Year') {
-        this.fullCalendarViewController.setView(this.selectedView);
-        this.changeView();
-    }
-    if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
-        && this.selectedView==='Year'){
-          this.fullCalendarViewController.setView(this.selectedView);
-        }
-
+  numSequence(n: number): Array<number> {
+    return Array(n).fill(1);
   }
-
 
   changeView(){
     if (this.fullCalendarViewController.fullcalendarViewName==='dayGridMonth') {
@@ -62,12 +61,11 @@ export class FullcalendarComponent implements OnInit {
     setTimeout(()=>this.calendarApi.updateSize(), 0.00000000000000000001);
   }
 
-
   backDay(){
     this.calendarApi.prev()
   }
   nextDay() {
-      this.calendarApi.next()
+    this.calendarApi.next()
   }
 
   closeDeleteWindow(id:string|null){
@@ -92,14 +90,29 @@ export class FullcalendarComponent implements OnInit {
 
 
 
-
-
   calendarOptions: CalendarOptions = {
 
     headerToolbar:{
       left:'title',
       center:'',
       right:""
+    },
+    eventDisplay:"block",
+    views: {
+      dayGrid: {
+        // options apply to dayGridMonth, dayGridWeek, and dayGridDay views
+        displayEventTime:false,
+      },
+      timeGrid: {
+        // options apply to timeGridWeek and timeGridDay views
+        displayEventTime:true,
+      },
+      week: {
+        // options apply to dayGridWeek and timeGridWeek views
+      },
+      day: {
+        // options apply to dayGridDay and timeGridDay views
+      }
     },
     initialView: this.firstInitView,
     eventDidMount: function(info) {
@@ -108,7 +121,6 @@ export class FullcalendarComponent implements OnInit {
       node.innerHTML=`<mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">close_24px</mat-icon>
                       <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">close_24px</mat-icon>
       <div class="event-text">${info.event.extendedProps.eventText}</div>`
-
       info.el.children[0].appendChild(node)
     },
     editable: false,
@@ -124,15 +136,13 @@ export class FullcalendarComponent implements OnInit {
       this.fullCalendarViewController.moreEventWindow=false;
       this.fullCalendarViewController.eventwindow=true;
       this.selectEvent= new TravelEventInfo(info);
-
-
     },
     eventColor:'#006633',
-    firstDay:1,     // Monday as first day of week
-    weekends: true, // a hétvégét nem mutatja
+    firstDay:1,           // Monday as first day of week
+    weekends: true,       // a hétvégét nem mutatja
     dayMaxEvents:true,
-    contentHeight: 1302, // ez csak a táblázat magassága
-    aspectRatio: 1, // a magasság/szélesség arány contentHeight/contentWidth
+    contentHeight: 1302,  // ez CSAK a táblázat magassága
+    aspectRatio: 1,       // a magasság/szélesség arány contentHeight/contentWidth
     events: this.eventService.getAllEvents()
   };
 
