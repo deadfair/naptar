@@ -11,8 +11,8 @@ problémák:
 next next:
 tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
 reszponzívitás,
+plusz jel(az se olyan mint neten írják),
 
 next next next:
 
 nth word ami vmiért nem jó,
-plusz jel(az se olyan mint neten írják),

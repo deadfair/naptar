@@ -42,6 +42,7 @@
 <span *ngIf="fullCalendarViewController.eventwindow;then eventWindowOpen"></span>
 <ng-template #eventWindowOpen>
   <app-event-window
+    (stepperActive)="stepperActive=$event"
     [openWindowInfo]="selectEvent"
     (closeEventWindow)="closeDeleteWindow($event)"
   ></app-event-window>
@@ -56,5 +57,9 @@
     ></app-more-event-window>
 </ng-template>
 
+<ng-container *ngIf="stepperActive; then stepperComponent"></ng-container>
+<ng-template #stepperComponent>
+<app-stepper (closeStepper)="stepperActive=false"></app-stepper >
+</ng-template>
 
 

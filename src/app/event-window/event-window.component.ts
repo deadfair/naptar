@@ -23,8 +23,11 @@ export class EventWindowComponent implements OnInit {
   };
   //Outputs
   @Output() closeEventWindow:EventEmitter<null|string> = new EventEmitter();
+  @Output() stepperActive:EventEmitter<boolean> = new EventEmitter();
 
-  stepperActive:boolean=false;
+  stepperActiveToTrue(){
+    this.stepperActive.emit(true)
+  }
   deleteActive:boolean=false;
 
   ngOnInit(): void {}

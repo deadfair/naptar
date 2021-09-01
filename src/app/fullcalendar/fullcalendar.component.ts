@@ -17,6 +17,7 @@ export class FullcalendarComponent implements OnInit {
   constructor(private eventService:EventServiceService) { }
   firstInitView:string="dayGridMonth";
 
+  stepperActive:boolean=false;
   fullCalendarViewController!: FullCalendarViewController;
 
   @ViewChild('calendar')
@@ -90,7 +91,6 @@ export class FullcalendarComponent implements OnInit {
   }
 
 
-
   calendarOptions: CalendarOptions = {
 
     headerToolbar:{
@@ -103,6 +103,21 @@ export class FullcalendarComponent implements OnInit {
       dayGrid: {
         // options apply to dayGridMonth, dayGridWeek, and dayGridDay views
         displayEventTime:false,
+        dayCellDidMount:(info)=> {
+          let node = document.createElement("button");
+          node.className="event-plus-icon mat-focus-indicator mat-icon-button add_circle mat-button-base"
+          node.innerHTML=`
+          <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
+                aria-hidden="true" data-mat-icon-type="font">add_circle</mat-icon>
+          `
+          node.setAttribute('value',info.date.toString())
+          node.onclick=(e:any)=> {
+            console.log(new Date(e.target.value),this.stepperActive);
+            this.stepperActive=true;
+            console.log(this.stepperActive)
+          }
+          info.el.children[0].children[0].appendChild(node)
+        }
       },
       timeGrid: {
         // options apply to timeGridWeek and timeGridDay views
