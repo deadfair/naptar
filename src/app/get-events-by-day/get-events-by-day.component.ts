@@ -14,6 +14,7 @@ export class GetEventsByDayComponent implements OnInit {
 
   @Input() selectedDate:Date|null=null;
   @Input() events:any[]=[];
+  @Input() dayName:string="";
 
 
   currentDate=new Date();
