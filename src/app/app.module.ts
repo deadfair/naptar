@@ -37,6 +37,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MiniMonthPickerComponent } from './mini-month-picker/mini-month-picker.component';
 import { FullcalendarComponent } from './fullcalendar/fullcalendar.component';
+import { GetEventsByDayComponent } from './get-events-by-day/get-events-by-day.component';
+import { EventsViewSectionComponent } from './events-view-section/events-view-section.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -63,6 +65,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ViewSwapperComponent,
     MiniMonthPickerComponent,
     FullcalendarComponent,
+    GetEventsByDayComponent,
+    EventsViewSectionComponent,
   ],
   imports: [
     MatNativeDateModule,

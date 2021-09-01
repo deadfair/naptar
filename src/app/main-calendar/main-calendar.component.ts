@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent, FullCalendarComponent } from '@fullcalendar/angular';
 
 @Component({
   selector: 'app-main-calendar',
@@ -6,16 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-calendar.component.scss']
 })
 export class MainCalendarComponent implements OnInit {
+  calendarApi!:Calendar;
   selectYear:number=0;
   year:number=0;
+  asd=new Date();
   selectedView:string="";
   constructor() { }
-  years:number[]=[]
+  years:number[]=[];
+  selectedDate:Date|null=new Date();
   ngOnInit(): void {
     this.yearsCreat(2020,2023);
   }
 
-  selectedDate:Date|null=null;
 
   yearsCreat(start:number,end:number){
     for (let i = start,j=0; i < end+1; i++,j++) {

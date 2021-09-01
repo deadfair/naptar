@@ -1,0 +1,15 @@
+<section class="events-view-container-from-child">
+  <section>
+    <h1>
+      <div class="line"></div>
+      Események
+      <div class="line line2"></div>
+    </h1>
+  </section>
+
+  <app-get-events-by-day
+    [selectedDate]='selectedDate'
+    [calendarApi]="calendarApi">
+  </app-get-events-by-day>
+
+</section>

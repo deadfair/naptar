@@ -1,5 +1,5 @@
 import { Direction } from './../interface/direction';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { TravelEventInfo } from './../interface/travelEventInfo';
 import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent, FullCalendarComponent } from '@fullcalendar/angular';
 import { TravelPlusEventsInfo } from '../interface/travelPlusEventsInfo';
@@ -7,6 +7,7 @@ import { ViewChild } from '@angular/core';
 import { style } from '@angular/animations';
 import { EventServiceService } from '../services/event-service.service';
 import { FullCalendarViewController } from '../interface/fullCalendarViewController';
+import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-fullcalendar',
   templateUrl: './fullcalendar.component.html',
@@ -14,6 +15,8 @@ import { FullCalendarViewController } from '../interface/fullCalendarViewControl
 })
 export class FullcalendarComponent implements OnInit {
   @Input() selectedView:string="";
+  @Output() calendarApiOut:EventEmitter<Calendar>=new EventEmitter();
+
   constructor(private eventService:EventServiceService) { }
   firstInitView:string="dayGridMonth";
 
@@ -37,6 +40,7 @@ export class FullcalendarComponent implements OnInit {
     && this.selectedView!=='Year') {
       this.fullCalendarViewController.setView(this.selectedView);
       this.changeView();
+      // + ma és tegnap események beállítása
     }
     if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
     && this.selectedView==='Year'){
@@ -46,6 +50,9 @@ export class FullcalendarComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.calendarApi = this.calendarComponent.getApi();
+    setTimeout(()=>{
+      this.calendarApiOut.emit(this.calendarApi);
+    },0)
   }
 
   numSequence(n: number): Array<number> {

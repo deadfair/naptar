@@ -11,8 +11,12 @@ problémák:
 next next:
 tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
 reszponzívitás,
-plusz jel(az se olyan mint neten írják),
+
+
+
+
 
 next next next:
-
+dayCellDidMount + eventDidMount optimaliuzálása.. ez igy ahogy  van sztem nem jo
 nth word ami vmiért nem jó,
+minden button felülvizsgálása
