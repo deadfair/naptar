@@ -26,7 +26,7 @@
       <app-fullcalendar
         [ngStyle]="{'display': selectedView==='Year' ? 'none' : 'block'}"
         [selectedView]='selectedView'
-        (calendarApiOut)="calendarApi=$event">
+        (eventsOut)="events=$event">
       </app-fullcalendar>
     </section>
 <!--
@@ -35,7 +35,8 @@
     <app-events-view-section
       [selectedDate]="selectedDate"
       class="events-view"
-      [calendarApi]="calendarApi"></app-events-view-section>
+      [events]=events>
+    </app-events-view-section>
 
   </section>
 

@@ -15,7 +15,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class FullcalendarComponent implements OnInit {
   @Input() selectedView:string="";
-  @Output() calendarApiOut:EventEmitter<Calendar>=new EventEmitter();
+  @Output() eventsOut:EventEmitter<any[]>=new EventEmitter();
 
   constructor(private eventService:EventServiceService) { }
   firstInitView:string="dayGridMonth";
@@ -33,6 +33,7 @@ export class FullcalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.fullCalendarViewController=new FullCalendarViewController(this.selectedView);
+    this.eventsOut.emit(this.eventService.getAllEvents())
   }
 
   ngDoCheck(): void {
@@ -50,9 +51,6 @@ export class FullcalendarComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.calendarApi = this.calendarComponent.getApi();
-    setTimeout(()=>{
-      this.calendarApiOut.emit(this.calendarApi);
-    },0)
   }
 
   numSequence(n: number): Array<number> {

@@ -8,7 +8,7 @@ import { Calendar} from '@fullcalendar/angular';
 })
 export class EventsViewSectionComponent implements OnInit {
   @Input() selectedDate:Date|null=null;
-  @Input() calendarApi!:Calendar;
+  @Input() events:any[]=[];
   constructor() { }
   ngOnInit(): void {}
 }

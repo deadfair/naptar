@@ -13,11 +13,10 @@ import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent, FullCa
 export class GetEventsByDayComponent implements OnInit {
 
   @Input() selectedDate:Date|null=null;
-  @Input() calendarApi!:Calendar;
+  @Input() events:any[]=[];
 
 
   currentDate=new Date();
-  allEvents:any[]=[];
   selectEvents:any[]=[];
 
   constructor(public datepipe: DatePipe) { }
@@ -25,16 +24,12 @@ export class GetEventsByDayComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnChanges(): void {
-    if (this.calendarApi!==undefined) {
-      this.allEvents=this.calendarApi.getEvents();
       this.getEventsBySelectedDay();
-      console.log(this.selectedDate,this.allEvents,this.selectEvents)
-    }
   }
   getEventsBySelectedDay(){
     this.selectEvents=[];
-    for (const event of this.allEvents) {
-      if (this.datepipe.transform(event.start, 'yyyy-MM-dd')===this.datepipe.transform(this.selectedDate, 'yyyy-MM-dd')) {
+    for (const event of this.events) {
+      if (this.datepipe.transform(event.date, 'yyyy-MM-dd')===this.datepipe.transform(this.selectedDate, 'yyyy-MM-dd')) {
         this.selectEvents.push(event);
       }
     }

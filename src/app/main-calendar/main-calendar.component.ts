@@ -7,10 +7,9 @@ import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent, FullCa
   styleUrls: ['./main-calendar.component.scss']
 })
 export class MainCalendarComponent implements OnInit {
-  calendarApi!:Calendar;
+  events:any[]=[];
   selectYear:number=0;
   year:number=0;
-  asd=new Date();
   selectedView:string="";
   constructor() { }
   years:number[]=[];
@@ -36,5 +35,8 @@ export class MainCalendarComponent implements OnInit {
 
   SelectedViewInit(view:string){
     this.selectedView=view;
+    if (view!=='Year') {
+      this.selectedDate=new Date();
+    }
   }
 }
