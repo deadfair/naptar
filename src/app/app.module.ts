@@ -18,7 +18,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatepickerMonthHeaderComponent } from './datepicker-month/datepicker-month-header/datepicker-month-header.component';
-import { EventsViewComponent } from './events-view/events-view.component';
 import { DatePipe } from '@angular/common';
 import { DatepickerMultipleViewComponent } from './datepicker-multiple-view/datepicker-multiple-view.component'
 import {MatSelectModule} from '@angular/material/select';
@@ -54,7 +53,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     StepperComponent,
     DatepickerMonthComponent,
     DatepickerMonthHeaderComponent,
-    EventsViewComponent,
     DatepickerMultipleViewComponent,
     YearViewComponent,
     EventWindowComponent,
