@@ -18,6 +18,13 @@ $Grey1: #F9F8F9;
 $Black:#1A202C;
 
 
+$datapickerRate_767px:233.3/298;
+$datapickerRate_992px:233.3/298;
+$datapickerRate_1200px:200/298;
+$datapickerRate_1400px:233.3/298;
+$datapickerRate_1800px:298/298;
+
+
 @mixin ZIndex($z:0) {
   z-index: 1000 + $z;
 }

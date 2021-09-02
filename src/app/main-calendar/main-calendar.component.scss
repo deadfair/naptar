@@ -1,7 +1,36 @@
 @use '../../assets/constants' as c;
 
+@mixin rate($multiple,$col){
+  ::ng-deep{
+    .main-calendar-body-from-child{
+      .body-main-container{
+        .calendar-container{
+          width: (298px*$col + 18px*($col - 1))*$multiple;
+        }
+      }
+    }
+  }
+}
+@include rate(233.3/298,3);
+
+@media (min-width:767px) {
+  @include rate(c.$datapickerRate_767px,3);
+}
+@media (min-width:992px) {
+  @include rate(c.$datapickerRate_992px,4);
+}
+@media (min-width:1200px) {
+  @include rate(c.$datapickerRate_1200px,4)
+}
+@media (min-width:1400px) {
+  @include rate(c.$datapickerRate_1400px,4)
+}
+@media (min-width:1800px) {
+  @include rate(c.$datapickerRate_1800px,4)
+}
+
 ::ng-deep{
-  .from-child-body{
+  .main-calendar-body-from-child{
     display: flex;
     flex-flow: column nowrap;
     box-sizing: border-box;
@@ -29,9 +58,6 @@
         .swapper{
           margin-top: 8px;
         }
-      }
-      .calendar-container{
-        width: 298px*4 + 18px*3;    // year view mérete
       }
       .events-view{
         margin-left: 18px;    // Mert year view-ba ennyit kér

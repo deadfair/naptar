@@ -1,24 +1,46 @@
-p{
-  display: flex;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 22px;
-  color: #B1DDC4;
-  text-align: center;
-}
-section{
-  background-color: #006633;
-  height: 40px;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-}
-*{
-  margin: 0 !important;
-  padding: 0 !important;;
+@use '../../../assets/constants' as c;
+
+@mixin rate($multiple){
+  ::ng-deep{
+    .datepicker-header-from-child{
+      height: 40px *$multiple;
+      p{
+        @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,22px*$multiple,normal);
+      }
+    }
+  }
 }
 
+@include rate(233.3/298);
+
+@media (min-width:767px) {
+  @include rate(c.$datapickerRate_767px);
+}
+@media (min-width:992px) {
+  @include rate(c.$datapickerRate_992px);
+}
+@media (min-width:1200px) {
+  @include rate(c.$datapickerRate_1200px)
+}
+@media (min-width:1400px) {
+  @include rate(c.$datapickerRate_1400px)
+}
+@media (min-width:1800px) {
+  @include rate(c.$datapickerRate_1800px)
+}
+
+::ng-deep{
+  .datepicker-header-from-child{
+    background-color: c.$SötétZöld;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    p{
+      color: c.$VilágosZöld;
+      margin: 0 !important;
+      padding: 0 !important;;
+    }
+  }
+}
 

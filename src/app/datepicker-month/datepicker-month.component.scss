@@ -1,28 +1,92 @@
 @use '../../assets/constants' as c;
 
+@mixin rate($multiple){
+  $datepickerMonthWidth: 298px*$multiple;
+  $cellHeight:30px*$multiple;
+  $calendarContentPaddingTop:8px*$multiple;
+  $calendarContentPaddingLeft:((298px/7 - 24px)*$multiple/2 - $calendarContentPaddingTop);
+  $calendarContentHeight: $cellHeight*7+2*$calendarContentPaddingTop;
+  ::ng-deep{
+    .datepicker-month{
+      width: $datepickerMonthWidth;
+      .mat-calendar{
+        .mat-calendar-content{
+          padding: $calendarContentPaddingTop $calendarContentPaddingLeft;
+          height: $calendarContentHeight !important;
+          .mat-calendar-table{
+            thead{
+              tr{
+                height: $cellHeight;
+                th{
+                  .mat-calendar-abbr{
+                    @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,28px*$multiple);
+                  }
+                }
+              }
+            }
+            tbody{
+              tr{
+                td{
+                  padding: 3px*$multiple 0 3px*$multiple 0 !important;
+                  height: $cellHeight;
+                  .mat-calendar-body-today, .mat-calendar-body-selected{
+                    top: calc(50% - (24px*#{$multiple}/2));
+                    left: calc(50% - (24px/2*#{$multiple}  + 0.43px*#{$multiple}));
+                    width: 24px*$multiple;
+                    height: 24px*$multiple;
+                  }
+                  .mat-calendar-body-cell-content{
+                    top: calc(50% - (24px*#{$multiple}/2));
+                    left: calc(50% - (24px/2*#{$multiple} + 0.43px*#{$multiple}));
+                    height: 24px*$multiple;
+                    width: 24px*$multiple;
+                  }
+                }
+                td > *{
+                  @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,22px*$multiple);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
+@include rate(233.3/298);
+
+@media (min-width:767px) {
+  @include rate(c.$datapickerRate_767px);
+}
+@media (min-width:992px) {
+  @include rate(c.$datapickerRate_992px);
+}
+@media (min-width:1200px) {
+  @include rate(c.$datapickerRate_1200px)
+}
+@media (min-width:1400px) {
+  @include rate(c.$datapickerRate_1400px)
+}
+@media (min-width:1800px) {
+  @include rate(c.$datapickerRate_1800px)
+}
 
 ::ng-deep{
   .datepicker-month{
     padding: 0px !important;
     box-shadow: none !important;
-    width: 298px;
     .mat-calendar{
       .mat-calendar-content{
-        padding-bottom: 30px;
         background-color: c.$VilágosZöld;
-        padding: 8px;
         box-sizing: border-box;
         box-shadow: inset 0px 1px 0px #F0F0F0;
-        height: 226px !important;
         .mat-calendar-table{
           thead{
             tr{
-              height: 30px;
               th{
                 padding: 0;
                 .mat-calendar-abbr{
-                  @include c.fonts1(14px,normal,28px);
                   color: c.$SötétZöld;
                 }
               }
@@ -33,67 +97,36 @@
           }
           tbody{
             tr{
-
+              td > *{
+                color: c.$SötétZöld;
+              }
               td:hover .mat-calendar-body-cell-content, td:hover .mat-calendar-body-cell-preview{
                 background-color: c.$VilágosSzürke;
                 border-radius: 2px;
               }
               td{
-                padding: 3px 0 3px 0 !important;
                 box-sizing: border-box;
-                height: 30px;
-               // width: 35.14px;
-               // margin-right: 20px;
-               // max-height: 30px !important;
-
-                @include c.fonts1(14px,normal);
-                //width:35.14px;
-
                 .mat-calendar-body-today, .mat-calendar-body-selected{
-                  left: calc(50% - 24px/2 + 0.43px);
                   box-sizing: border-box;
-                  width: 24px;
-                  height: 24px;
                   border: 1px solid c.$Zöld;
                   border-radius: 2px;
-                  top: calc(50% - 24px/2);
                 }
                 .mat-calendar-body-selected{
                   background-color: c.$Fehér;
                 }
-                .mat-calendar-body-cell-content{
-                  top: calc(50% - 24px/2);
-                  left: calc(50% - 24px/2 + 0.43px);
-                  height: 24px;
-                  width: 24px;
-                }
-
-
                 .mat-calendar-body-cell-preview{
                   display: none;
                 }
               }
-              td > *{
-                @include c.fonts1(14px,normal);
-                color: c.$SötétZöld;
-              }
-
             }
             .mat-calendar-body-label{
               opacity: 0;
               padding: 0px !important;
             }
           }
-
         }
       }
-
-
-  }
+    }
   }
 }
-/*
-.datepicker-cell-class{
-  background-color: red !important;
-  color: #55AE3A;
-}*/
+

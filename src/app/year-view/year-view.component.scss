@@ -1,3 +1,31 @@
+@use '../../assets/constants' as c;
+
+@mixin rate($multiple){
+  ::ng-deep{
+    .year-view-month-element{
+      flex-basis: 298px*$multiple;
+      margin-bottom: 7px*$multiple;
+    }
+  }
+}
+
+@include rate(233.3/298);
+
+@media (min-width:767px) {
+  @include rate(c.$datapickerRate_767px);
+}
+@media (min-width:992px) {
+  @include rate(c.$datapickerRate_992px);
+}
+@media (min-width:1200px) {
+  @include rate(c.$datapickerRate_1200px)
+}
+@media (min-width:1400px) {
+  @include rate(c.$datapickerRate_1400px)
+}
+@media (min-width:1800px) {
+  @include rate(c.$datapickerRate_1800px)
+}
 
 ::ng-deep{
   .year-view-container-from-child{
@@ -5,8 +33,6 @@
     flex-flow: row wrap;
     justify-content: space-between;
   }
-  .year-view-month-element{
-    flex-basis: 298px;
-    margin-bottom: 7px;
-  }
 }
+
+
