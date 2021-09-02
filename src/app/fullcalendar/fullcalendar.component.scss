@@ -1,18 +1,27 @@
 @use '../../assets/constants' as c;
 
 $tdmarginy:3.5px;
-$tdmarginx:9px;
+$tdmarginx:9px; // ezek mik?
 
+$dayAndWeekviewLeftMargin:48px;
 ::ng-deep{
-
-  .fullcalendar-month-view-container, .fullcalendar-day-view-container, .fullcalendar-week-view-container{
-    margin:  auto;
+  .fullcalendar-day-view-container, .fullcalendar-week-view-container, .fullcalendar-month-view-container{
     width: 1222px;
-    transform: translate(79px,-105px); //31=>79
-
-}
-
-// event szöveg day nézetbe  ---------------------------------------------------
+    margin-top: -105px;
+  }
+  .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+    margin-left:  $dayAndWeekviewLeftMargin;
+    position: relative;
+  }
+  .fullcalendar-month-view-container{
+    margin-left: $dayAndWeekviewLeftMargin + 31px;
+  }
+  .fullcalendar-week-view-container, .fullcalendar-month-view-container{
+    .event-text-container{
+      display: none;
+    }
+  }
+  // event szöveg day nézetbe  ---------------------------------------------------
 
   .fullcalendar-day-view-container{
   .fc-event-main{
@@ -52,16 +61,9 @@ $tdmarginx:9px;
     }
   }
 }
-.fullcalendar-week-view-container, .fullcalendar-month-view-container{
-  .event-text-container{
-    display: none;
-  }
-}
 //---------------------------------------------------
 
   .fullcalendar-day-view-container, .fullcalendar-week-view-container{
-    position: relative;
-    transform: translate(48px,-105px);   //79-31=48
 
 
 // 2 Arrow  ---------------------------------------------------

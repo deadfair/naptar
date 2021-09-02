@@ -4,12 +4,12 @@ event-windowba         overflow-y:hidden; re tettem ha sok a szöveg ???
 szerkesztés jel utáni visszalépés (tünjön el? mikor?),
 mikor tünjön el az event window?
 nap view ha tul kicsi a magassága mi történjen, hogy jelenjen meg?
+tegnap és a ma események kis x oda, kell az oda? nem mindig van ott
 
 
 problémák:
 
 next next:
-tegnap és a ma események ha nem kattintotam napra plusz a kis x oda,
 reszponzívitás,
 
 
@@ -20,3 +20,10 @@ next next next:
 dayCellDidMount + eventDidMount optimaliuzálása.. ez igy ahogy  van sztem nem jo
 nth word ami vmiért nem jó,
 minden button felülvizsgálása
+
+
+
+
+month view:
+21-298-175-1112-21-301-18=1946
+kontent: 1711
