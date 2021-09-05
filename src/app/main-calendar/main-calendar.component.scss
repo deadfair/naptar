@@ -7,26 +7,38 @@
         .calendar-container{
           width: (298px*$col + 18px*($col - 1))*$multiple;
         }
+        .body-left-side{
+          margin-bottom: 18px*$multiple;
+          .view-swapper{
+            margin-top: 8px*$multiple;
+          }
+        }
+        .events-view{
+          width:337px*$multiple;
+        }
       }
     }
   }
 }
-@include rate(233.3/298,3);
-
-@media (min-width:767px) {
-  @include rate(c.$datapickerRate_767px,3);
+@mixin eventsViewRate($multiple){
+  ::ng-deep{
+    .main-calendar-body-from-child{
+      .body-main-container{
+        .events-view{
+          width:337px*$multiple;
+        }
+      }
+    }
+  }
 }
-@media (min-width:992px) {
-  @include rate(c.$datapickerRate_992px,4);
-}
-@media (min-width:1200px) {
-  @include rate(c.$datapickerRate_1200px,4)
-}
-@media (min-width:1400px) {
-  @include rate(c.$datapickerRate_1400px,4)
-}
-@media (min-width:1800px) {
-  @include rate(c.$datapickerRate_1800px,4)
+@mixin bodyMainContainerFlexDirection($direction){
+  ::ng-deep{
+    .main-calendar-body-from-child{
+      .body-main-container{
+        flex-direction: $direction;
+      }
+    }
+  }
 }
 
 ::ng-deep{
@@ -37,7 +49,7 @@
     position: absolute;
     left: 0;
     top:0;
-    min-width: 100vw;
+    min-width: 100%;
     min-height: 100vh;
     header{
       box-sizing: border-box;
@@ -48,21 +60,45 @@
     .body-main-container{
       box-sizing: border-box;
       display: flex;
-      flex-flow: row nowrap;
+      flex-wrap: nowrap;
       justify-content: space-evenly;
+      width: 100%;
+      .calendar-container{
+        margin: auto;
+      }
       .body-left-side{
+        margin-left: auto;
+        margin-right: auto;
         display: flex;
         flex-flow: column;
-        margin-left: 21px;
-        margin-right: 18px; // Mert year view-ba ennyit kér
-        .swapper{
-          margin-top: 8px;
-        }
       }
       .events-view{
-        margin-left: 18px;    // Mert year view-ba ennyit kér
-        margin-right: 18px;   // Mert year view-ba ennyit kér
+        margin-left: auto;
+        margin-right: auto;
       }
     }
   }
 }
+  @include rate(c.$datapickerRate_1946px,3);
+  @include bodyMainContainerFlexDirection(column);
+  @include eventsViewRate(c.$datapickerRate_1946px);
+  @media (min-width:767px) {
+    @include rate(c.$datapickerRate_767px,3);
+    @include eventsViewRate(c.$datapickerRate_1946px);
+  }
+  @media (min-width:992px) {
+    @include rate(c.$datapickerRate_992px,4);
+    @include eventsViewRate(c.$datapickerRate_1946px);
+  }
+  @media (min-width:1200px) {
+    @include rate(c.$datapickerRate_1200px,4);
+    @include bodyMainContainerFlexDirection(row);
+
+  }
+  @media (min-width:1400px) {
+    @include rate(c.$datapickerRate_1400px,4);
+
+  }
+  @media (min-width:1946px) {
+    @include rate(c.$datapickerRate_1946px,4);
+  }

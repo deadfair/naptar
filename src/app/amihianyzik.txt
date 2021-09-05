@@ -22,7 +22,8 @@ nth word ami vmiért nem jó,
 minden button felülvizsgálása
 
 
-
+1246->933,3933
+->  975,5
 
 month view:
 21-298-175-1112-21-301-18=1946
@@ -41,7 +42,7 @@ minwith logika:
 
 767px tablet
 1:
-4:
+3:
 1:
 
 
@@ -57,3 +58,7 @@ minwith logika:
 
 1400px
 233.3:933.3:233.3
+
+
+
+337->233.3

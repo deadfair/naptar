@@ -1,28 +1,67 @@
 @use '../../assets/constants' as c;
 
+@mixin rate($multiple){
+  ::ng-deep{
+    .events-view-container-from-child{
+      width:301px*$multiple ;
+      margin-top: -10px*$multiple;
+      h1{
+        @include c.robotoNormal_fs_ls_lh_fw(16px*$multiple,normal,24px*$multiple,normal);
+        margin: 0 0 26px*$multiple 0;
+        .line{
+          width: 87.09px*$multiple;
+          left: calc(50% - 87.09px*3/2*#{$multiple} - 7px*#{$multiple});
+          top: calc(50% - 0px/2);
+          border: 0.933522px*$multiple solid c.$VilágosZöld;
+        }
+        .line:nth-child(1){
+          left: calc(50% + 87.09px/2*#{$multiple} + 7px*#{$multiple});
+          top: calc(50% - 0px/2);
+        }
+      }
+    }
+  }
+}
+@mixin eventsViewContainerFromChildMarginTop(){
+  ::ng-deep{
+    .events-view-container-from-child{
+      margin-top: 18px;
+    }
+  }
+}
+@include rate(c.$datapickerRate_1946px);
+@include eventsViewContainerFromChildMarginTop();
+@media (min-width:767px) {
+  @include rate(c.$datapickerRate_1946px);
+  @include eventsViewContainerFromChildMarginTop();
+}
+@media (min-width:992px) {
+  @include rate(c.$datapickerRate_1946px);
+  @include eventsViewContainerFromChildMarginTop();
+
+}
+@media (min-width:1200px) {
+  @include rate(c.$datapickerRate_1200px)
+}
+@media (min-width:1400px) {
+  @include rate(c.$datapickerRate_1400px)
+}
+@media (min-width:1946px) {
+  @include rate(c.$datapickerRate_1946px)
+}
 
 ::ng-deep{
   .events-view-container-from-child{
-    width:301px ;
-    margin-top: -10px;
+    margin-left: auto;
+    margin-right: auto;
     h1{
-      @include c.robotoNormal_fs_ls_lh_fw(16px,normal,24px,normal);
       color: c.$SötétZöld;
       text-align: center;
       position: relative;
-      margin: 0 0 26px 0;
       .line{
         position: absolute;
-        width: 87.09px;
         height: 0px;
-        left: calc(50% - 87.09px*3/2 - 7px);
-        top: calc(50% - 0px/2);
         display: block;
-        border: 0.933522px solid c.$VilágosZöld;
-      }
-      .line:nth-child(1){
-        left: calc(50% + 87.09px/2 + 7px);
-        top: calc(50% - 0px/2);
       }
     }
   }

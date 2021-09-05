@@ -65,7 +65,7 @@ export class FullcalendarComponent implements OnInit {
     }
     this.calendarApi.changeView(this.fullCalendarViewController.fullcalendarViewName);
     // mert nem akart így => calendarApi.updateSize(); működni
-    setTimeout(()=>this.calendarApi.updateSize(), 0.00000000000000000001);
+    setTimeout(()=>this.calendarApi.updateSize(), 0);
   }
 
   backDay(){
@@ -148,7 +148,7 @@ export class FullcalendarComponent implements OnInit {
     },
     initialView: this.firstInitView,
 
-    editable: false,
+    editable: true,
     moreLinkClick:(info)=>{
       this.fullCalendarViewController.eventwindow=false;
       this.fullCalendarViewController.moreEventWindow=true;
@@ -158,9 +158,9 @@ export class FullcalendarComponent implements OnInit {
       }
     },
     eventClick: (info) =>{
+      this.selectEvent= new TravelEventInfo(Direction.Up,info);
       this.fullCalendarViewController.moreEventWindow=false;
       this.fullCalendarViewController.eventwindow=true;
-      this.selectEvent= new TravelEventInfo(Direction.Up,info);
     },
     eventColor:'#006633',
     firstDay:1,           // Monday as first day of week

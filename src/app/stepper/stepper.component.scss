@@ -1,44 +1,245 @@
 @use '../..//assets/constants' as c;
 
+@mixin btns($multiple){
+  .green{
+    background: c.$Zöld;
+    border: 1px*$multiple solid c.$Fehér;
+    box-sizing: border-box;
+    box-shadow: 0px 4px*$multiple 4px*$multiple rgba(0, 0, 0, 0.25), 0px 1px*$multiple 2px*$multiple #B4B4BB, 0px 2px*$multiple 4px*$multiple #D2D2D6;
+    border-radius: 8px*$multiple;
+    padding: 8px*$multiple 16px*$multiple;
+    height: 40px*$multiple;
+    width: 116px*$multiple;
+    @include c.workSansNormal_fs_ls_lh_fw(20px*$multiple,normal,23px*$multiple,800);
+    text-align: center;
+    text-transform: uppercase;
+    color: c.$Fehér;
+    margin: 0 7.5px*$multiple;
+    box-sizing: border-box;
+  }
+  .dark-green{
+    background-color: c.$SötétZöld;
+  }
+  .btn-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 12.5px*$multiple 0;
+    box-sizing: border-box;
+  }
+  .btn-group2{
+    justify-content: flex-end;
+    margin:  30px*$multiple 0 0 0;
+    box-sizing: border-box;
+  }
+}
+
+@mixin rate($multiple){
+  ::ng-deep{
+    .stepper-active{
+      min-width: 930px*$multiple;
+    }
+    .stepper{
+      min-width: 930px*$multiple;
+      top:176px*$multiple + 85px;
+      .stepper-container{
+        width: 930px*$multiple;
+        .header{
+          height: 61.96px*$multiple;
+          padding: 14px*$multiple 28px*$multiple 14px*$multiple 14px*$multiple;
+          .exit-btn{
+            line-height: 24px*$multiple !important;
+            font-size: 24px*$multiple !important;
+            height: 24px*$multiple !important;
+            width: 24px*$multiple !important;
+          }
+        }
+        .main{
+          padding: 0 33px*$multiple 20.8px*$multiple 33px*$multiple;
+          .input-field{
+            width: 864.18px*$multiple;
+          }
+          .selection-list{
+            box-shadow: 0px 3px*$multiple 5px*$multiple rgba(9, 30, 66, 0.2), 0px 0px 1px*$multiple rgba(9, 30, 66, 0.31);
+            border-radius: 3px*$multiple;
+            .list-item{
+              @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,20px*$multiple,normal);
+              height: 20px*$multiple;
+              margin-left: 16px*$multiple;
+            }
+          }
+  //-----------------------------------------------------------
+          .people-list{
+            .input-field{
+              height: 56.3px*$multiple;
+              width: 864.18px*$multiple;
+              padding: 14.7px*$multiple;
+              @include c.robotoNormal_fs_ls_lh_fw(19.7044px*$multiple,normal,28px*$multiple);
+              margin-top: 26.57px*$multiple - 12.5px*$multiple;
+              margin-bottom: 14.04px*$multiple;
+            }
+            .people-btn{
+              line-height: 24px*$multiple !important;
+              font-size: 24px*$multiple !important;
+              height: 24px*$multiple !important;
+              width: 24px*$multiple !important;
+
+            }
+            .search-people{
+              width: 636px*$multiple;
+              height: 53px*$multiple;
+              margin: 0px auto 19px*$multiple auto;
+              padding-left: 32px*$multiple;
+              border: 2px*$multiple solid c.$Dark3;
+              border-radius: 4px*$multiple;
+            }
+            .mat-list-base{
+              width: 636px*$multiple;
+              .mat-list-item, .mat-list-option {
+                height: 45px*$multiple;
+                margin-top: 10px*$multiple;
+              }
+            }
+          }
+  //------------------------------------------------------------
+          .placeMenuitem-list{
+            .input-field{
+              padding: 14.07px*$multiple;
+              border: 2.81491px*$multiple solid #0172CB !important;
+              height: 56.3px*$multiple !important;
+              margin-bottom: 7.04px*$multiple !important;
+              @include c.robotoNormal_fs_ls_lh_fw(19.7044px*$multiple,normal,28px*$multiple);
+            }
+            .mat-list-item{
+              height: 56.3px*$multiple !important;
+              .mat-list-text{
+                .place-box{
+                  .list-item{
+                    @include c.interNormal_fs_ls_lh_fw(22.5193px*$multiple,normal,34px*$multiple,normal) ;
+                    font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
+                    margin-left: 50.67px*$multiple !important;
+                  }
+                }
+              }
+            }
+            .place-box{
+              .location{
+                left: 12px*$multiple;
+                top:5%*$multiple;
+                height: 28.15px*$multiple !important;
+                width: 19.7px*$multiple !important;
+                line-height: 28.15px*$multiple !important;
+                font-size: 28px*$multiple !important;
+              }
+              .close{
+                top:17%*$multiple;
+                height: 19.7px*$multiple !important;
+                width: 19.7px*$multiple !important;
+                line-height: 19.7px*$multiple !important;
+                font-size:28px*$multiple !important;
+              }
+              .list-item{
+                margin-left: 38px*$multiple;
+              }
+            }
+          }
+  //---------------------------------------------
+          .colors-bigcontainer{
+            width: 292px*$multiple;
+            height: 98px*$multiple;
+            margin-top: 47.6px*$multiple - 12.5px*$multiple;
+            margin-bottom: 73.2px*$multiple - 40px*$multiple;
+            .label{
+              margin-left: 17.85px*$multiple;
+              height: 19.7px*$multiple;
+              @include c.robotoNormal_fs_ls_lh_fw(16.8895px*$multiple,normal,20px*$multiple,bold);
+            }
+            .colors-container{
+              .colors{
+                width: 25.33px*$multiple;
+                height: 25.33px*$multiple;
+                border-radius: 5.62983px*$multiple;
+                margin:4px*$multiple;
+              }
+              .bonus-color{
+                @include c.robotoNormal_fs_ls_lh_fw(16.8895px*$multiple,normal,20px*$multiple,bold);
+              }
+            }
+          }
+  //---------------------------------------------
+          .start-time-container, .reminder-container{
+            .label{
+              @include c.robotoNormal_fs_ls_lh_fw(12px*$multiple,normal,16px*$multiple,900);
+              height: 16px*$multiple ;
+              margin-bottom: 4px*$multiple;
+              .mat-list-item, .mat-list-option{
+                height: 32px*$multiple;
+              }
+            }
+            .input-field{
+              height: 40px*$multiple;
+              padding-left: 9px*$multiple;
+              margin-bottom: 16px*$multiple;
+              border: 2px*$multiple solid c.$SötétZöld;
+              border-radius: 3px*$multiple;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@mixin exitbtn($x,$y){
+  ::ng-deep{
+    .stepper .stepper-container .header .exit-btn {
+
+    transform: translate($x, $y);
+    }
+  }
+}
+
+@mixin peoplebtn992px(){
+  ::ng-deep{
+    .stepper .stepper-container .main .people-list .people-btn {
+      left: 118px;
+      top: 96.91px;
+    }
+  }
+}
+@mixin peoplebtn767px(){
+  ::ng-deep{
+    .stepper .stepper-container .main .people-list .people-btn {
+      left: 82.892px;
+      top: 67.719px;
+    }
+  }
+}
+
+@include btns(c.$datapickerRate_1400px);
+@include rate(c.$datapickerRate_1400px);
+@include exitbtn(-11.878px, -0.439px);
+@include peoplebtn767px();
 
 
-.green{
-  background: c.$Zöld;
-  border: 1px solid #FFFFFF;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 1px 2px #B4B4BB, 0px 2px 4px #D2D2D6;
-  border-radius: 8px;
-  padding: 8px 16px;
-  height: 40px;
-  width: 116px;
-  font-family: Work Sans;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 23px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  margin: 0 7.5px;
-  box-sizing: border-box;
+@media (min-width:767px) {
+  @include btns(c.$datapickerRate_1400px);
+  @include rate(c.$datapickerRate_1400px);
+  @include exitbtn(-11.878px, -0.439px);
+  @include peoplebtn767px();
+
 }
-.dark-green{
-  background-color: c.$SötétZöld;
+
+@media (min-width:992px) {
+  @include btns(c.$datapickerRate_1946px);
+  @include rate(c.$datapickerRate_1946px);
+  @include exitbtn(-12px,3px);
+  @include peoplebtn992px();
+
 }
-.btn-group{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 12.5px 0;
-  box-sizing: border-box;
-}
-.btn-group2{
-  justify-content: flex-end;
-  margin:  30px 0 0 0;
-  box-sizing: border-box;
-}
+
+
 
 
 
@@ -52,27 +253,21 @@
     right: 0%;
     top: 85px;
     bottom: 0%;
-    min-width: 930px;
     @include c.ZIndex(100);
   }
 
   .stepper{
-    min-width: 930px;
     @include c.ZIndex(100);
     position: absolute;
     left: 0%;
     right: 0%;
     bottom: 0%;
-    top:176px + 85px;
     padding: 0px;
     .stepper-container{
-      width: 930px;
       margin: auto;
       background: c.$Grey3;
       box-sizing: border-box;
       .header{
-        height: 61.96px;
-        padding: 14px 28px 14px 14px;
         background: c.$SötétZöld;
         box-sizing: border-box;
         position: relative;
@@ -80,74 +275,48 @@
           position: absolute;
           right: 0px;
           color: c.$Fehér;
-          transform: translate(-4px,-2px);
         }
       }
       .main{
-        padding: 0 33px 20.8px 33px;
         box-sizing: border-box;
         .mat-list-single-selected-option{
           background-color: c.$Szürke;
         }
         .input-field{
-          width: 864.18px;
           box-sizing: border-box;
         }
         .selection-list{
-          @include c.list1;
-          .list-item{
-            @include c.fonts1(14px,normal,20px,normal);
-            height: 20px;
-            margin-left: 16px;
-          }
+          background: c.$Fehér;
         }
 //-----------------------------------------------------------
         .people-list{
           position: relative;
           .input-field{
-            height: 56.3px;
-            width: 864.18px;
             border: none;
             outline: none;
-            padding: 14.7px;
-            @include c.fonts1(19.7044px,normal,28px);
             color: c.$Grey7;
             background-color: c.$Grey1;
-            margin-top: 26.57px - 12.5px;
-            margin-bottom: 14.04px;
             border-radius: 0;
-
           }
           .input-field::placeholder{
             color: c.$Grey7;
           }
           .people-btn{
             position: absolute;
-            left: 864px/2 - 636px/2 - 3px;
-            top:   56.29px + 14.07px + 14.04px + 47.02px/2 - 40px/2 + 1px;
             color: c.$Light01;
           }
           .search-people{
-            width: 636px;
-            height: 53px;
-            margin: 0px auto 19px auto;
             background: c.$Light3;
-            padding-left: 32px;
-            border: 2px solid c.$Dark3;
             box-sizing: border-box;
-            border-radius: 4px;
             display: block;
           }
           .mat-list-base{
-            width: 636px;
             margin: auto;
             padding: 0;
             background-color: c.$Grey3;
             border: none;
             box-shadow: none;
             .mat-list-item, .mat-list-option {
-              height: 45px;
-              margin-top: 10px;
               background-color: c.$Fehér;
             }
           }
@@ -155,14 +324,9 @@
 //------------------------------------------------------------
         .placeMenuitem-list{
           .input-field{
-            padding: 14.07px;
-            border: 2.81491px solid #0172CB !important;
             background-color: c.$Grey1 !important;
-            height: 56.3px !important;
             border-radius: 0 !important;
-            margin-bottom: 7.04px !important;
             margin-top: 0;
-            @include c.fonts1(19.7044px,normal,28px);
             color: c.$Grey7;
             &:focus{
               outline: none;
@@ -172,12 +336,9 @@
             padding-top: 0 ;
           }
           .mat-list-item{
-            height: 56.3px !important;
             .mat-list-text{
               .place-box{
                 .list-item{
-                  @include c.fonts5 ;
-                  margin-left: 50.67px !important;
                   color: c.$Black;
                 }
               }
@@ -187,42 +348,21 @@
             position: relative;
             .location{
               position: absolute;
-              left: 12px;
               color: rgba(0, 0, 0, 0.54);
-              top:5%;
-              height: 28.15px !important;
-              width: 19.7px !important;
-              line-height: 28.15px !important;
-              font-size: 28px !important;
             }
             .close{
-              top:17%;
               position: absolute;
               right: 0px;
               color: rgba(0, 0, 0, 0.54);
-              height: 19.7px !important;
-              width: 19.7px !important;
-              line-height: 19.7px !important;
-              font-size:28px !important;
             }
-            .list-item{
-              margin-left: 38px;
-            }
+
           }
         }
 //---------------------------------------------
         .colors-bigcontainer{
-          width: 292px;
-          height: 98px;
           margin: auto;
-          margin-top: 47.6px - 12.5px;
-          margin-bottom: 73.2px - 40px;
           box-sizing: border-box;
           .label{
-            margin-left: 17.85px;
-            height: 19.7px;
-            @include c.fonts1(16.8895px,normal,20px);
-            font-weight: bold;
             color: c.$Grey4;
           }
           .colors-container{
@@ -230,16 +370,10 @@
             justify-content: center;
             flex-flow: row wrap;
             .colors{
-              width: 25.33px;
-              height: 25.33px;
-              border-radius: 5.62983px;
-              margin:4px;
               cursor: pointer;
             }
             .bonus-color{
-              @include c.fonts1(16.8895px,normal,20px);
               background-color: c.$Grey4;
-              font-weight: bold;
               color: c.$Fehér;
               text-align: center;
             }
@@ -248,40 +382,16 @@
 //---------------------------------------------
         .start-time-container, .reminder-container{
           .label{
-            @include c.fonts1(12px,normal,16px,900);
             color: c.$SötétZöld;
-            height: 16px ;
-            margin-bottom: 4px;
             display: block;
-            .mat-list-item, .mat-list-option{
-              height: 32px;
-            }
           }
           .input-field{
-            height: 40px;
-            padding-left: 9px;
-            margin-bottom: 16px;
             background: c.$Fehér;
-            border: 2px solid c.$SötétZöld;
-            border-radius: 3px;
             &:focus{
               outline-color: c.$SötétZöld;
             }
           }
         }
-
-//---------------------------------------------
-//---------------------------------------------
-//---------------------------------------------
-
-
-
-
-
-
-
-
-
       }
     }
   }

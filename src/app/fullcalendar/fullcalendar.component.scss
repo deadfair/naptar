@@ -1,20 +1,273 @@
 @use '../../assets/constants' as c;
 
-$tdmarginy:3.5px;
-$tdmarginx:9px; // ezek mik?
+$monthViewTdmarginy:3.5px;
+$monthViewTdmarginx:9px; // ezek mik?
 
-$dayAndWeekviewLeftMargin:48px;
+
+@mixin dayAndWeekViewRate($multiple){
+  $dayAndWeekviewLeftMargin:48px*$multiple;
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container, .fullcalendar-month-view-container{
+      width: 1222px*$multiple;
+      margin-top: -105px*$multiple;
+    }
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      margin-left:  $dayAndWeekviewLeftMargin;
+// 2 Arrow  ---------------------------------------------------
+      .arrow-btn{
+        height: 80px*$multiple;
+        width: 80px*$multiple;
+        top: 16px;
+        left: calc(50% - 7px*#{$multiple}*#{$multiple}*#{$multiple} + 2px + 146px*#{$multiple});
+        .mat-icon-button{
+          span.mat-button-wrapper{
+            .mat-icon{
+              height: 48px*$multiple !important;
+              width: 48px*$multiple !important;
+              font-size: 48px*$multiple !important;
+              line-height: 48px*$multiple !important;
+            }
+          }
+        }
+      }
+      .arrow-btn.arrow-btn-left{
+        left: calc(50% - 7px*#{$multiple}*#{$multiple}*#{$multiple} + 2px - 146px*#{$multiple});
+      }
+//----------------------------------------------------------------------------
+      .fc{
+        width: 1222px*$multiple;
+        table{
+          border-spacing: 18px*$multiple 0;
+        }
+        .fc-timegrid-col-events{
+          margin: 2px*$multiple 1.17px*$multiple 0 1.26px*$multiple;
+        }
+//   heti napi nézet----------------------------------------------------------------------------
+        .fc-view-harness {
+          height: 1200px*$multiple;
+          .fc-timeGridDay-view, .fc-timeGridWeek-view{
+            .fc-scrollgrid-section{
+              height: 17px*$multiple;
+            }
+            .fc-scrollgrid-section.fc-scrollgrid-section-header{
+              .fc-col-header{
+                th.fc-col-header-cell{
+                  .fc-scrollgrid-sync-inner{
+                    height: 72px*$multiple;
+                    width: 140px*$multiple;
+                    a{
+                      @include c.chivoNormal_fs_ls_fw(17.7931px*$multiple,0.741379px*$multiple,normal);
+                    }
+                  }
+                }
+                th.fc-col-header-cell:nth-child(2){
+                  .fc-scrollgrid-sync-inner{
+                    border-radius: 50px*$multiple;
+                  }
+                }
+              }
+            }
+            .fc-scrollgrid-section.fc-scrollgrid-section-body.fc-scrollgrid-section-liquid{
+              td{
+                table{
+                  tbody{
+                    line-height: 25px*$multiple;
+                    tr{
+                      height: 25px*$multiple ;
+                      .fc-timegrid-slot{
+                        height: 25px*$multiple ;
+                        line-height: 25px*$multiple ;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .fc-timegrid-event-harness.fc-timegrid-event-harness-inset {
+          margin-bottom: 3px*$multiple;
+          border-left-width: 8px*$multiple !important;
+          a.fc-timegrid-event.fc-v-event.fc-event{
+            .fc-event-main{
+              .fc-event-main-frame{
+                .fc-event-title-container{
+                  width: 62%;
+                  .fc-event-title.fc-sticky{
+                    margin-left: 16px*$multiple;
+                    @include c.chivoNormal_fs_ls_fw(12px*$multiple,0.4px*$multiple,normal);
+                  }
+                }
+                .fc-event-time{
+                  width: 38%;
+                  margin-right: 6px*$multiple;
+                  @include c.chivoNormal_fs_ls_fw(9px*$multiple,0.4px*$multiple,normal);
+                  line-height: 20px*$multiple;
+                }
+              }
+            }
+          }
+        }
+      }
+//-------------------------háttér--------------------------------
+      .background-cells{
+        .col{
+          height: 1200px*$multiple;
+          .row{
+            height: 25px*$multiple;
+            border: 0.74px solid #B1DDC4 !important;
+          }
+          .row:nth-child(2n+1){
+            border-bottom: 1px*$multiple solid rgba(177, 221, 196, 0.4) !important;
+          }
+          .row:nth-child(2n){
+            border-top: 1px*$multiple solid rgba(177, 221, 196, 0.4) !important;
+          }
+          .row:first-child{
+            border-top: 0.74px*$multiple solid #B1DDC4 !important;
+          }
+          .row:last-child{
+            border-bottom: 0.74px*$multiple solid #B1DDC4 !important;
+          }
+
+        }
+        .col:nth-child(1){
+          transform: translateY(-12.5px*$multiple);
+          min-width: 51px*$multiple !important; // 31 volt
+          .row{
+            @include c.robotoNormal_fs_ls_lh_fw(13px*$multiple,normal,16px*$multiple,500);
+          }
+          .row:last-child{
+            transform: translateY(25px*$multiple);
+          }
+        }
+      }
+
+    }
+
+
+    .fullcalendar-month-view-container{
+      margin-left: $dayAndWeekviewLeftMargin + 31px;
+    }
+  }
+}
+
+@mixin manualBackgroundWidth_992px(){
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      .background-cells{
+        left: 32.863px;
+        top: 77.137px;
+        .col{
+          min-width: 82.719px;
+          margin-left: 12.3px;
+        }
+      }
+    }
+  }
+}
+@mixin manualBackgroundWidth_1200px(){
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      .background-cells{
+        left: 32.863px;
+        top: 77.137px;
+        .col{
+          min-width: 82.719px;
+          margin-left: 12.3px;
+        }
+      }
+    }
+  }
+}
+
+@mixin manualBackgroundWidth_1400px(){
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      .background-cells{
+        left: 31.863px;
+        top: 85.137px;
+        .col{
+          min-width: 97.719px ;
+          margin-left: 14.3px;
+        }
+      }
+    }
+  }
+}
+
+
+@mixin manualBackgroundWidth_1946px(){
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      .background-cells{
+        left: 29px;
+        top: 110px;
+        .col{
+          min-width: 140px ;
+          margin-left:18px;
+        }
+      }
+    }
+  }
+}
+
+@mixin DayAndWeekViewContainerLess1200px(){
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      margin:10px auto 0 auto;
+      transform: translateX(-29px);
+      height: 1000px;
+    }
+  }
+}
+@mixin DayAndWeekViewContainerLess992px(){
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      transform: translateX(-104px);
+    }
+  }
+}
+
+
+
+
+
+@include dayAndWeekViewRate(c.$datapickerRate_1400px);
+@include manualBackgroundWidth_1400px();
+@include DayAndWeekViewContainerLess1200px();
+@include DayAndWeekViewContainerLess992px();
+
+@media (min-width:767px) {
+  @include dayAndWeekViewRate(c.$datapickerRate_1400px);
+  @include manualBackgroundWidth_1400px();
+  @include DayAndWeekViewContainerLess1200px();
+  @include DayAndWeekViewContainerLess992px();
+}
+@media (min-width:992px) {
+  @include dayAndWeekViewRate(c.$datapickerRate_1400px);
+  @include manualBackgroundWidth_1400px();
+  @include DayAndWeekViewContainerLess1200px();
+}
+@media (min-width:1200px) {
+  @include dayAndWeekViewRate(c.$datapickerRate_1200px);
+  @include manualBackgroundWidth_1200px();
+}
+@media (min-width:1400px) {
+  @include dayAndWeekViewRate(c.$datapickerRate_1400px);
+  @include manualBackgroundWidth_1400px();
+
+}
+@media (min-width:1946px) {
+  @include dayAndWeekViewRate(c.$datapickerRate_1946px);
+  @include manualBackgroundWidth_1946px();
+}
+
+
 ::ng-deep{
-  .fullcalendar-day-view-container, .fullcalendar-week-view-container, .fullcalendar-month-view-container{
-    width: 1222px;
-    margin-top: -105px;
-  }
   .fullcalendar-day-view-container, .fullcalendar-week-view-container{
-    margin-left:  $dayAndWeekviewLeftMargin;
     position: relative;
-  }
-  .fullcalendar-month-view-container{
-    margin-left: $dayAndWeekviewLeftMargin + 31px;
   }
   .fullcalendar-week-view-container, .fullcalendar-month-view-container{
     .event-text-container{
@@ -65,15 +318,10 @@ $dayAndWeekviewLeftMargin:48px;
 
   .fullcalendar-day-view-container, .fullcalendar-week-view-container{
 
-
 // 2 Arrow  ---------------------------------------------------
     .arrow-btn{
       @include c.ZIndex(100);
-      height: 80px;
-      width: 80px;
       position: absolute;
-      top: 16px;
-      left: 752px;
       background: #006633;
       border-radius: 50%;
       .mat-icon-button{
@@ -81,18 +329,12 @@ $dayAndWeekviewLeftMargin:48px;
         height: inherit;
         span.mat-button-wrapper{
           .mat-icon{
-            height: 48px !important;
-            width: 48px !important;
-            font-size: 48px !important;
-            line-height: 48px !important;
             color: white;
           }
         }
       }
     }
     .arrow-btn.arrow-btn-left{
-      top: 16px;
-      left: 449px;
       .mat-icon-button{
         width: inherit;
         height: inherit;
@@ -105,16 +347,11 @@ $dayAndWeekviewLeftMargin:48px;
     }
 //----------------------------------------------------------------------------
     .fc{
-      width: 1222px;
       *{
         border: none !important;
       }
       table{
         border-collapse: unset;
-        border-spacing: 18px 0;
-      }
-      .fc-timegrid-col-events{
-        margin: 2px 1.17px 0 1.26px;
       }
       .fc-timegrid-col.fc-day-today{
         background-color: inherit !important;
@@ -124,136 +361,85 @@ $dayAndWeekviewLeftMargin:48px;
           display: none;
         }
       }
-      .fc-view-harness.fc-view-harness-active{
-        .fc-timeGridDay-view, .fc-timeGridWeek-view{
-          table.fc-scrollgrid.fc-scrollgrid-liquid{
-            thead{
-              tr{
-                table{
-                  tbody{
-                    tr{
-                      th{
-                        .fc-scrollgrid-sync-inner{
-                          margin:auto ;
-                          height: 72px;
-                          width: 140px;
-                          display: flex;
-                          flex-flow: row wrap;
-                          justify-content: center;
-                          align-items: center;
-
-                          a{
-                            @include c.fonts4;
-                            color: c.$SötétZöld;
-                          }
-                        }
-
-                      }
-                      th:nth-child(2){
-                        .fc-scrollgrid-sync-inner{
-                          background-color: c.$VilágosZöld;
-                          border-radius: 50px;
-                        }
-                      }
-                    }
-                  }
+//   heti napi nézet----------------------------------------------------------------------------
+      .fc-timeGridDay-view, .fc-timeGridWeek-view{
+        .fc-scrollgrid-section{
+          visibility: hidden;
+        }
+        .fc-scrollgrid-section.fc-scrollgrid-section-header{
+          visibility:visible;
+          .fc-col-header{
+            th.fc-col-header-cell{ //.fc-col-header-cell
+              .fc-scrollgrid-sync-inner{
+                margin:auto ;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                align-items: center;
+                a{
+                  color: c.$SötétZöld;
                 }
               }
             }
-            tbody{
-              tr.fc-scrollgrid-section:nth-child(3){
-                td{
-                  table{
-                    tbody{
-                      tr{
-                        height: 25px;
-                        td:nth-child(1){
-                          visibility: hidden;
-                        }
-                      }
-                    }
+            th.fc-col-header-cell:nth-child(2){
+              .fc-scrollgrid-sync-inner{
+                background-color: c.$VilágosZöld;
+              }
+            }
+          }
+        }
+        .fc-scrollgrid-section.fc-scrollgrid-section-body{
+          display: none;
+        }
+        .fc-scrollgrid-section.fc-scrollgrid-section-body.fc-scrollgrid-section-liquid{
+          visibility:visible;
+          display: table-row;
+          td{
+            table{
+              tbody{
+                tr{
+                  td:nth-child(1){
+                    visibility: hidden;
                   }
                 }
-
-              }
-              tr.fc-scrollgrid-section:nth-child(2){
-                height: 17px;
-                visibility: hidden;
-              }
-              tr.fc-scrollgrid-section:nth-child(1){
-                display: none;
-
               }
             }
           }
         }
       }
-
-
       .fc-timegrid-event-harness.fc-timegrid-event-harness-inset {
-        margin-bottom: 3px;
         border-style: solid !important;
         border-color: #28A138 !important;
-        border-left-width: 8px !important;
         border-top-width: 0px !important;
         border-bottom-width: 0px !important;
         border-right-width: 0 !important;
         outline: none;
         border-radius: 0px !important;
         a.fc-timegrid-event.fc-v-event.fc-event{
-
-          /*
-                  *{
-          pointer-events: none;
-        }
-          */
           box-shadow: none;
           margin-bottom: 0;
           border-radius: 0;
-
           background-color: rgba(40, 161, 56, 0.4) !important;
           .fc-event-main{
             cursor: pointer;
-
             .fc-event-main-frame{
               pointer-events: none;
               flex-direction: row-reverse !important;
               opacity: 1;
               .fc-event-title-container{
-                width: 62%;
                 .fc-event-title.fc-sticky{
                   text-align:left;
-                  margin-left: 16px;
-                  font-family: Chivo;
-                  font-style: normal;
-                  font-weight: normal;
-                  font-size: 12px;
-                  //line-height: 30px;
-                  /* or 250% */
-                  letter-spacing: 0.4px;
-
-                  /* Neutral / Grey 7 */
-
-                  color: #2D2F30;
-
+                  color: c.$Grey7;
                   opacity: 0.88;
                 }
               }
               .fc-event-time{
                 pointer-events: none;
-                width: 38%;
-                margin-right: 6px;
                 text-align: right;
-                font-family: Chivo;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 9px;
-                line-height: 20px;
-                letter-spacing: 0.4px;
                 color: #4F4F4F;
                 opacity: 0.48;
               }
-        }
+            }
           }
         }
       }
@@ -262,63 +448,34 @@ $dayAndWeekviewLeftMargin:48px;
     .background-cells{
       z-index: -1;
       position: absolute;
-      left: 29px;
-      top: 110px;
       display: flex;
       flex-flow: row nowrap;
       box-sizing: border-box;
       .col{
         box-sizing: border-box;
-        min-width: 140px !important;
-        margin-left:18px;
-        height: 1200px;
         display: flex;
         flex-flow: column nowrap;
         .row{
           box-sizing: border-box;
-          height: 25px;
-          border: 0.74px solid #B1DDC4 !important;
-        }
-        .row:nth-child(2n+1){
-          border-bottom: 1px solid rgba(177, 221, 196, 0.4) !important;
-        }
-        .row:nth-child(2n){
-          border-top: 1px solid rgba(177, 221, 196, 0.4) !important;
-        }
-        .row:first-child{
-          border-top: 0.74px solid #B1DDC4 !important;
-        }
-        .row:last-child{
-          border-bottom: 0.74px solid #B1DDC4 !important;
         }
       }
       .col:nth-child(1){
         margin-left: 0;
-        transform: translateY(-12.5px);
-        min-width: 51px !important; // 31 volt
         .row{
           border: none !important;
           justify-content: center;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: 500;
-          font-size: 13px;
-          line-height: 16px;
-          /* identical to box height, or 123% */
-
           display: flex;
           align-items: center;
-          /* SötétZöld */
-
-          color: #006633;
-        }
-        .row:last-child{
-          transform: translateY(25px);
+          color: c.$SötétZöld;
         }
       }
     }
   }
   //---------------------------------------------------------
+
+
+
+
 
   .fullcalendar-month-view-container{
 
@@ -346,7 +503,7 @@ $dayAndWeekviewLeftMargin:48px;
 
     .fc{
       margin:  22px + 21px auto 0 auto;
-      width: 1088px + $tdmarginx*2;
+      width: 1088px + $monthViewTdmarginx*2;
 
       .fc-popover{
         visibility: hidden;
@@ -355,9 +512,9 @@ $dayAndWeekviewLeftMargin:48px;
       .fc-header-toolbar{
         height: 64px;
         background: c.$VilágosZöld;
-        margin-left: 16px + $tdmarginx;
-        margin-bottom: 24px - $tdmarginy !important;
-        margin-right: $tdmarginx;
+        margin-left: 16px + $monthViewTdmarginx;
+        margin-bottom: 24px - $monthViewTdmarginy !important;
+        margin-right: $monthViewTdmarginx;
         transform: translateY(72px);
         .fc-toolbar-chunk{
           .fc-toolbar-title{
@@ -408,8 +565,8 @@ $dayAndWeekviewLeftMargin:48px;
           border: none;
           thead{
             transform: translateY(-107px);
-            margin-left: $tdmarginx;
-            margin-right: $tdmarginx;
+            margin-left: $monthViewTdmarginx;
+            margin-right: $monthViewTdmarginx;
             tbody{
               height: 72px;
               tr{
@@ -443,7 +600,7 @@ $dayAndWeekviewLeftMargin:48px;
           tbody{
             tr{
               td{
-                padding: $tdmarginy $tdmarginx;
+                padding: $monthViewTdmarginy $monthViewTdmarginx;
                 .dayButton{
                   position: absolute;
                   height: 0;
@@ -517,7 +674,7 @@ $dayAndWeekviewLeftMargin:48px;
             height: 22px;
             border-radius: 0px;
             margin-top: 0px;
-            pointer-events: auto ;
+            pointer-events: auto;
             cursor: pointer;
             .fc-event-resizer.fc-event-resizer-end{
               pointer-events: none ;

@@ -1,16 +1,97 @@
 @use '../../assets/constants' as c;
 
+@mixin rate($multiple){
+  ::ng-deep{
+    .today{
+      width: 268px*$multiple;
+      height: 20px*$multiple;
+      @include c.robotoNormal_fs_ls_lh_fw(13px*$multiple,normal,20px*$multiple,normal);
+      margin-left: 11px*$multiple;
+      span:nth-child(1){
+        margin: 0px 4px*$multiple;
+      }
+
+      span:nth-child(3){
+        left: 210px*$multiple;
+      }
+      span:nth-child(4){
+        left: 231px*$multiple;
+      }
+    }
+    .events{
+      margin: 0 0 7px*$multiple 0;
+      .time-container{
+        height: 16px*$multiple;
+        margin-top: -3px*$multiple;
+        padding-bottom: 3px*$multiple;
+        .close{
+          width: 8.75px*$multiple;
+          height: 8.75px*$multiple;
+          min-width: 8.75px*$multiple;
+          .mat-icon{
+            width: 16px*$multiple !important;
+            font-size: 16px*$multiple !important;
+            height: 16px*$multiple !important;
+            line-height: 1;
+          }
+        }
+        .time{
+          margin-left: 16px*$multiple;
+          margin-right: 7px*$multiple;
+          @include c.interNormal_fs_ls_lh_fw(11px*$multiple,normal,16px*$multiple,600);
+        }
+      }
+      .text{
+        margin: 0 5px*$multiple 0 20px*$multiple;
+        @include c.interNormal_fs_ls_lh_fw(12px*$multiple,normal,16px*$multiple,500);
+      }
+      .pictures{
+        img{
+          height: 25px*$multiple;
+          width: 25px*$multiple;
+          margin-left: 3px*$multiple;
+        }
+      }
+    }
+
+    .noEvents{
+      width: 298px*$multiple;
+      margin-top: 21px*$multiple;
+      h1{
+        @include c.robotoNormal_fs_ls_lh_fw(24px*$multiple,normal,28px*$multiple,bold);
+        margin-bottom: 48px*$multiple;
+      }
+      img{
+        width: 297px*$multiple;
+        height: 233px*$multiple;
+      }
+    }
+  }
+}
+@include rate(c.$datapickerRate_1946px);
+
+@media (min-width:767px) {
+  @include rate(c.$datapickerRate_1946px);
+}
+@media (min-width:992px) {
+  @include rate(c.$datapickerRate_1946px);
+}
+@media (min-width:1200px) {
+  @include rate(c.$datapickerRate_1200px)
+}
+@media (min-width:1400px) {
+  @include rate(c.$datapickerRate_1400px)
+}
+@media (min-width:1946px) {
+  @include rate(c.$datapickerRate_1946px)
+}
+
 ::ng-deep{
   .today{
-    width: 268px;
-    height: 20px;
     color: c.$SötétZöld;
-    @include c.robotoNormal_fs_ls_lh_fw(13px,normal,20px,normal);
-    margin-left: 11px;
     position: relative;
 
     span:nth-child(1){
-      margin: 0px 4px;
       font-weight: bold;
     }
 
@@ -19,49 +100,29 @@
       margin: 0px 0px;
       color: c.$Szürke;
       position: absolute;
-      left: 210px;
     }
     span:nth-child(4){
       margin: 0px 0px;
       color: c.$Szürke;
       font-family: Inter;
       position: absolute;
-      left: 231px;
     }
   }
   .events{
     display: flex;
     flex-flow: column;
-    margin: 0 0 7px 0;
     .time-container{
-      height: 16px;
-      margin-top: -3px;
-      padding-bottom: 3px;
       .close{
-        width: 8.75px;
-        height: 8.75px;
         color: c.$VilágosZöld;
         line-height: normal;
-        min-width: 8.75px;
         padding: 0;
-        .mat-icon{
-          width: 16px !important;
-          font-size: 16px !important;
-          height: 16px !important;
-          line-height: 1;
-        }
       }
       .time{
         display: inline-block;
-        margin-left: 16px;
-        margin-right: 7px;
-        @include c.interNormal_fs_ls_lh_fw(11px,normal,16px,600);
         color: c.$VilágosZöld;
       }
     }
     .text{
-      margin: 0 5px 0 20px;
-      @include c.interNormal_fs_ls_lh_fw(12px,normal,16px,500);
       color: c.$Sötétszürke;
     }
     .pictures{
@@ -69,26 +130,15 @@
       flex-flow: row wrap;
       justify-content: flex-end;
       img{
-        height: 25px;
-        width: 25px;
         border-radius: 50%;
-        margin-left: 3px;
       }
     }
   }
 
   .noEvents{
-    width: 298px;
-    margin-top: 21px;
     h1{
-      @include c.robotoNormal_fs_ls_lh_fw(24px,normal,28px,bold);
       text-align: center;
       color: c.$SötétZöld;
-      margin-bottom: 48px;
-    }
-    img{
-      width: 297px;
-      height: 233px;
     }
   }
 }

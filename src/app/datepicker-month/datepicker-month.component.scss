@@ -54,7 +54,7 @@
   }
 }
 
-@include rate(233.3/298);
+@include rate(c.$datapickerRate_1946px);
 
 @media (min-width:767px) {
   @include rate(c.$datapickerRate_767px);
@@ -62,14 +62,16 @@
 @media (min-width:992px) {
   @include rate(c.$datapickerRate_992px);
 }
+
+
 @media (min-width:1200px) {
   @include rate(c.$datapickerRate_1200px)
 }
 @media (min-width:1400px) {
   @include rate(c.$datapickerRate_1400px)
 }
-@media (min-width:1800px) {
-  @include rate(c.$datapickerRate_1800px)
+@media (min-width:1946px) {
+  @include rate(c.$datapickerRate_1946px)
 }
 
 ::ng-deep{

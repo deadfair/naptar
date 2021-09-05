@@ -16,7 +16,6 @@ export class EventsViewSectionComponent implements OnInit {
   constructor(public datepipe: DatePipe) { }
   ngOnInit(): void {}
   ngDoCheck(): void {
-    console.log(this.selectedDate,this.tuday)
     if (this.datepipe.transform(this.tuday, 'yyyy-MM-dd')===this.datepipe.transform(this.selectedDate, 'yyyy-MM-dd')) {
       this.isYesterday=true;
     }else{

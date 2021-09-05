@@ -29,7 +29,6 @@ export class ViewSwapperComponent implements OnInit {
 
   selectedYearChange(year:any){
     this.selectedYear.emit(year.option.value);
-    console.log(year)
     this.defaultSelectedValue=year.option.value;
   }
 

@@ -20,9 +20,10 @@ $Black:#1A202C;
 
 $datapickerRate_767px:233.3/298;
 $datapickerRate_992px:233.3/298;
-$datapickerRate_1200px:200/298;
-$datapickerRate_1400px:233.3/298;
-$datapickerRate_1800px:298/298;
+
+$datapickerRate_1200px:1200/1946;
+$datapickerRate_1400px:1400/1946;
+$datapickerRate_1946px:1;
 
 
 @mixin ZIndex($z:0) {
@@ -47,8 +48,23 @@ $datapickerRate_1800px:298/298;
   font-weight: $fweight;
 }
 
+@mixin chivoNormal_fs_ls_fw($fontsize:17.7931px,$letterspacing:0.741379px,$fweight:normal){
+  font-family: Chivo;
+  font-style: normal;
+  font-size: $fontsize;
+  letter-spacing: $letterspacing;
+  font-weight: $fweight;
+}
 
 
+@mixin workSansNormal_fs_ls_lh_fw($fontsize:12px,$letterspacing:normal,$lineh:14px,$fweight:bold){
+  font-family: Work Sans;
+  font-style: normal;
+  font-size: $fontsize;
+  letter-spacing: $letterspacing;
+  line-height: $lineh;
+  font-weight: $fweight;
+}
 
 
 @mixin fonts1 ($fontsize:17px,$letterspacing:-0.408px,$lineh:22px,$fweight:normal){
