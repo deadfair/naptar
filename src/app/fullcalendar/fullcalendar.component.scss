@@ -1,18 +1,18 @@
 @use '../../assets/constants' as c;
 
 $monthViewTdmarginy:3.5px;
-$monthViewTdmarginx:9px; // ezek mik?
+$monthViewTdmarginx:9px;
+$dayAndWeekviewLeftMargin:48px;
 
 
 @mixin dayAndWeekViewRate($multiple){
-  $dayAndWeekviewLeftMargin:48px*$multiple;
   ::ng-deep{
-    .fullcalendar-day-view-container, .fullcalendar-week-view-container, .fullcalendar-month-view-container{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
       width: 1222px*$multiple;
       margin-top: -105px*$multiple;
     }
     .fullcalendar-day-view-container, .fullcalendar-week-view-container{
-      margin-left:  $dayAndWeekviewLeftMargin;
+      margin-left:  $dayAndWeekviewLeftMargin*$multiple;
 // 2 Arrow  ---------------------------------------------------
       .arrow-btn{
         height: 80px*$multiple;
@@ -143,12 +143,6 @@ $monthViewTdmarginx:9px; // ezek mik?
           }
         }
       }
-
-    }
-
-
-    .fullcalendar-month-view-container{
-      margin-left: $dayAndWeekviewLeftMargin + 31px;
     }
   }
 }
@@ -230,38 +224,328 @@ $monthViewTdmarginx:9px; // ezek mik?
   }
 }
 
+@mixin eventAddIconByRate($multiple){
+  ::ng-deep{
+    .event-plus-icon{
+      border-radius: 50%;
+      cursor: pointer;
+      width: 20px*$multiple !important;
+      height: 20px*$multiple !important;
+      font-size: 20px*$multiple !important;
+      line-height: 20px*$multiple !important;
+      margin-right: 13px*$multiple !important;
+      & *{
+        width: 24px*$multiple !important;
+        height: 24px*$multiple !important;
+        font-size: 24px*$multiple !important;
+        line-height: 24px*$multiple !important;
+        color:c.$Szürke;
+        transform: translate(-2px, -2px );
+        pointer-events: none;
+      }
+    }
+  }
+}
 
+@mixin monthViewHeader($multiple){
+  .fc-header-toolbar{
+    height: 64px*$multiple;
+    background: c.$VilágosZöld;
+    margin-left: 16px*$multiple + $monthViewTdmarginx*$multiple;
+    margin-bottom: 24px*$multiple - $monthViewTdmarginy*$multiple !important;
+    margin-right: $monthViewTdmarginx*$multiple;
+    transform: translateY(72px*$multiple);
+    .fc-toolbar-chunk{
+      .fc-toolbar-title{
+        @include c.robotoNormal_fs_ls_lh_fw(24px*$multiple,normal,24px*$multiple,normal);
+        color: c.$SötétZöld;
+      }
+      h2.fc-toolbar-title[--nth-word="1"]{
+        @include c.robotoNormal_fs_ls_lh_fw(32px*$multiple,normal,32px*$multiple,900);
+      }/*valamiért nem jó*/
+    }
+  }
+  .fc-dayGridMonth-view{
+    table{
+      border: none;
+      .fc-scrollgrid-section.fc-scrollgrid-section-header {
+        transform: translateY(-107px*$multiple);
+        margin-left: $monthViewTdmarginx*$multiple;
+        margin-right: $monthViewTdmarginx*$multiple;
+        .fc-col-header{
+          tbody{
+            height: 72px*$multiple;
+            tr{
+              th:nth-child(1){
+                .fc-scrollgrid-sync-inner{
+                background-color: c.$VilágosZöld;
+                border-radius: 50px*$multiple;
+              }
+            }
+          }
+            .fc-scrollgrid-sync-inner{
+              height: 72px*$multiple;
+              width: 140px*$multiple;
+              display: flex;
+              flex-flow: row wrap;
+              justify-content: center;
+              align-items: center;
+              margin: 0 7.41379px*$multiple;
+              a{
+                @include c.chivoNormal_fs_ls_fw(17.7931px*$multiple,0.741379px*$multiple,normal);
+                color: c.$SötétZöld;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
+@mixin monthViewCell($multiple){
+  .fc-dayGridMonth-view{
+    .fc-daygrid-day-frame{
+    background-color: c.$VilágosSzürke;
+    min-height: 115px*$multiple;
+    position: relative;
+    }
+    .fc-day-other{
+      .fc-daygrid-day-frame{
+        .fc-daygrid-day-top{
+          opacity: 1;
+          display: flex;
+          flex-flow: row nowrap ;
+          justify-content: space-between;
+          height: 20px*$multiple ;
+          margin-bottom: 6px*$multiple;
+          margin-top: 6px*$multiple;
+          padding: 0;
+          a{
+            color: c.$Fekete !important;
+          }
+        }
+        background-color: c.$Neutral;
+      }
+    }
+  }
+  .fc-dayGridMonth-view{
+    tbody{
+      tbody{
+        tr{
+          td{
+            padding: $monthViewTdmarginy*$multiple $monthViewTdmarginx*$multiple;
+            .dayButton{
+              position: absolute;
+              height: 0;
+              width: 0;
+              display: none;
+            }
+            .fc-daygrid-day-frame{
+              .fc-daygrid-day-top{
+                display: flex;
+                flex-flow: row nowrap ;
+                justify-content: space-between;
+                @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,22px*$multiple,normal);
+                color: c.$Fekete !important;
+                height: 20px*$multiple ;
+                margin-bottom: 6px*$multiple;
+                margin-top: 6px*$multiple;
+                padding: 0;
+                a{
+                margin: 0 10px*$multiple
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@mixin monthViewEvents($multiple){
+  .fc-daygrid-day-events{
+    height: 76px*$multiple !important;
+    .fc-daygrid-event-harness{
+      height: 22px*$multiple + 5px*$multiple; //22+5/2 <= 5 px táv a sorok közt
+      .fc-daygrid-event.fc-event-end{
+        margin-left: 0px;
+        margin-right: 9px*$multiple;
+        border-radius: 0px 8px*$multiple 8px*$multiple 0px;
+        pointer-events: auto;
+      }
+      .fc-daygrid-event.fc-event-start{
+        margin-left: 9px*$multiple;
+        margin-right: 0px;
+        border-radius: 8px*$multiple 0 0px 8px*$multiple;
+        padding-left: 5px*$multiple;
+        pointer-events: auto;
+      }
+      .fc-daygrid-event.fc-event-start.fc-event-end{
+        margin-right: 9px*$multiple;
+        margin-left: 9px*$multiple;
+        border-radius: 8px*$multiple;
+        padding-left: 5px*$multiple;
+        pointer-events: auto;
+      }
+      .fc-daygrid-block-event{
+        pointer-events: auto !important;
+      }
+        .fc-daygrid-event{  // a
+        padding-left: 15px*$multiple;
+        //width:114px;
+        height: 22px*$multiple;
+        border-radius: 0px;
+        margin-top: 0px;
+        pointer-events: auto;
+        cursor: pointer;
+        .fc-event-resizer.fc-event-resizer-end{
+          pointer-events: none ;
+        }
+        .fc-event-main{
+          color: c.$Fehér; // így lesz felülírható a fullcalenderes szinekkel
+          pointer-events: none ;
+          //width:114px;
+          height: 22px*$multiple;
+          padding: 5px*$multiple 5px*$multiple 5px*$multiple 0;
+          .fc-event-main-frame{
+            height: 12px*$multiple;
+            pointer-events: none;
+            .fc-event-title-container{
+              height: 12px*$multiple;
+              pointer-events: none;
+              .fc-event-title{
+                padding: 0;
+                height: 12px*$multiple;
+                @include c.robotoNormal_fs_ls_lh_fw(12px*$multiple,normal,12px*$multiple);
+                pointer-events: none;
+              }
+            }
+          }
+        }
+      }
+    }
+      .fc-daygrid-day-bottom{
+        padding: 0 0 0 0;
+        .fc-daygrid-more-link{
+          display: block;
+          margin-left: 9px*$multiple;
+          margin-right: 9px*$multiple;
+          background: c.$VilágosSzürke;
+          border-radius: 8px*$multiple;
+          box-shadow: inset 0px 2px*$multiple 0px #F0F0F0;
+          padding: 3.5px*$multiple 8px*$multiple 0px;
+          height: 22px*$multiple;
+          font-weight: 500;
+          font-size: 12px*$multiple;
+          line-height: 12px*$multiple;
+          padding-left: 5px*$multiple;
+          color: c.$Szürke;
+          border: 2px*$multiple solid c.$Szürke;
+      }
+    }
+  }
+}
 
+@mixin monthView($multiple){
+  @include eventAddIconByRate($multiple);
+  ::ng-deep{
+    .fullcalendar-month-view-container{
+      width: 1222px*$multiple;
+      margin-top: -105px*$multiple;
+      margin-left: $dayAndWeekviewLeftMargin*$multiple + 31px;
+      .fc-scrollgrid-sync-table{
+        height: 732px*$multiple !important; // kissebnek kell lenni mint a kis cellák magassága eggyütt v egyenlő
+        width: 1106px*$multiple !important; // a meghatározó szélesség
+        .fc-daygrid-day.fc-day-today{
+          background: none ;
+        }
+      }
+      .fc-theme-standard td, .fc-theme-standard th{
+        border: none !important;
+      }
+      .fc{
+        // height számítás !!!! KELL
+        margin:  22px*$multiple + 21px*$multiple auto 0 auto;
+        width: 1088px*$multiple + $monthViewTdmarginx*2*$multiple; // ==!!!! a tablek szélességével
+        .fc-popover{
+          visibility: hidden;
+        }
+        @include monthViewHeader($multiple);
+        @include monthViewCell($multiple);
+        @include monthViewEvents($multiple)
+      }
+    }
+  }
+}
+@mixin monthViewSizeAndPozitionLess1200px($multiple){
+  ::ng-deep{
+    .fullcalendar-month-view-container{
+      margin-top: 40px;
+      .fc-scrollgrid-sync-table{
+        height: 732px*$multiple !important; // kissebnek kell lenni mint a kis cellák magassága eggyütt v egyenlő
+        width: 1106px*$multiple !important; // a meghatározó szélesség
+      }
+      .fc{
+        // height számítás !!!! KELL
+        margin:  0 auto 0 auto;
+        width: 1088px*$multiple + $monthViewTdmarginx*2*$multiple; // ==!!!! a tablek szélességével
+      }
+    }
+  }
+}
+@mixin monthMarginAndWidthLess992px(){
+::ng-deep{
+  .fullcalendar-month-view-container{
+    margin-left: 0;
+    width: 734.546px;
+    }
+  }
+}
 
 @include dayAndWeekViewRate(c.$datapickerRate_1400px);
 @include manualBackgroundWidth_1400px();
 @include DayAndWeekViewContainerLess1200px();
 @include DayAndWeekViewContainerLess992px();
+@include monthView(c.$datapickerRate_1400px);
+@include monthViewSizeAndPozitionLess1200px(c.$datapickerRate_1400px);
 
 @media (min-width:767px) {
   @include dayAndWeekViewRate(c.$datapickerRate_1400px);
   @include manualBackgroundWidth_1400px();
   @include DayAndWeekViewContainerLess1200px();
   @include DayAndWeekViewContainerLess992px();
+  @include monthView(c.$datapickerRate_1200px);
+  @include monthViewSizeAndPozitionLess1200px(c.$datapickerRate_1200px);
+  @include monthMarginAndWidthLess992px();
+
 }
 @media (min-width:992px) {
   @include dayAndWeekViewRate(c.$datapickerRate_1400px);
   @include manualBackgroundWidth_1400px();
   @include DayAndWeekViewContainerLess1200px();
+  @include monthView(c.$datapickerRate_1400px);
+  @include monthViewSizeAndPozitionLess1200px(c.$datapickerRate_1400px);
+
 }
 @media (min-width:1200px) {
   @include dayAndWeekViewRate(c.$datapickerRate_1200px);
   @include manualBackgroundWidth_1200px();
+  @include monthView(c.$datapickerRate_1200px);
+
 }
 @media (min-width:1400px) {
   @include dayAndWeekViewRate(c.$datapickerRate_1400px);
   @include manualBackgroundWidth_1400px();
+  @include monthView(c.$datapickerRate_1400px);
+
 
 }
 @media (min-width:1946px) {
   @include dayAndWeekViewRate(c.$datapickerRate_1946px);
   @include manualBackgroundWidth_1946px();
+  @include monthView(c.$datapickerRate_1946px);
+
 }
 
 
@@ -469,297 +753,6 @@ $monthViewTdmarginx:9px; // ezek mik?
           color: c.$SötétZöld;
         }
       }
-    }
-  }
-  //---------------------------------------------------------
-
-
-
-
-
-  .fullcalendar-month-view-container{
-
-    table{
-      .fc-daygrid-body.fc-daygrid-body-balanced{
-        width: 1106px !important;
-        height: 732px !important;
-        table.fc-scrollgrid-sync-table{
-          height: 732px !important;
-          width: 1106px !important;
-          tbody{
-            tr{
-              td.fc-daygrid-day.fc-day.fc-day-tue.fc-day-today{
-                background: none !important;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .fc-theme-standard td, .fc-theme-standard th{
-      border: none !important;
-    }
-
-    .fc{
-      margin:  22px + 21px auto 0 auto;
-      width: 1088px + $monthViewTdmarginx*2;
-
-      .fc-popover{
-        visibility: hidden;
-      }
-
-      .fc-header-toolbar{
-        height: 64px;
-        background: c.$VilágosZöld;
-        margin-left: 16px + $monthViewTdmarginx;
-        margin-bottom: 24px - $monthViewTdmarginy !important;
-        margin-right: $monthViewTdmarginx;
-        transform: translateY(72px);
-        .fc-toolbar-chunk{
-          .fc-toolbar-title{
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 24px;
-            line-height: 24px;
-            color: c.$SötétZöld;
-          }
-
-          h2.fc-toolbar-title[--nth-word="1"]{
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: 900;
-            font-size: 32px;
-            line-height: 32px;
-            color: c.$SötétZöld;
-          }/*valamiért nem jó*/
-
-        }
-      }
-
-      .fc-dayGridMonth-view{
-        .fc-daygrid-day{
-          .fc-daygrid-day-frame{
-          background-color: c.$VilágosSzürke;
-        }
-        }
-        .fc-day-other{
-          .fc-daygrid-day-frame{
-            .fc-daygrid-day-top{
-              display: flex;
-              flex-flow: row nowrap ;
-              justify-content: space-between;
-              height: 20px ;
-              margin-bottom: 6px;
-              margin-top: 6px;
-              padding: 0;
-              a{
-                color: c.$Fekete !important;
-              }
-            }
-          background-color: c.$Neutral;
-        }
-        }
-        table{
-          border: none;
-          thead{
-            transform: translateY(-107px);
-            margin-left: $monthViewTdmarginx;
-            margin-right: $monthViewTdmarginx;
-            tbody{
-              height: 72px;
-              tr{
-                th:nth-child(1){
-                  .fc-scrollgrid-sync-inner{
-                  background-color: c.$VilágosZöld;
-                  border-radius: 50px;
-                }
-              }
-            }
-              .fc-scrollgrid-sync-inner{
-                height: 72px;
-                width: 140px;
-                display: flex;
-                flex-flow: row wrap;
-                justify-content: center;
-                align-items: center;
-                margin: 0 7.41379px;
-
-                a{
-                  @include c.fonts4;
-                  color: c.$SötétZöld;
-                }
-              }
-            }
-          }
-        }
-
-
-        tbody{
-          tbody{
-            tr{
-              td{
-                padding: $monthViewTdmarginy $monthViewTdmarginx;
-                .dayButton{
-                  position: absolute;
-                  height: 0;
-                  width: 0;
-                  display: none;
-                }
-
-                .fc-daygrid-day-frame{
-                  .fc-daygrid-day-top{
-                    display: flex;
-                    flex-flow: row nowrap ;
-                    justify-content: space-between;
-                    //display: block;
-                    font-family: Roboto;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 14px;
-                    line-height: 22px;
-                    color: c.$Fekete !important;
-                    height: 20px ;
-                    margin-bottom: 6px;
-                    margin-top: 6px;
-                    padding: 0;
-                    a{
-                    margin: 0 10px
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-
-      }
-
-
-
-      .fc-daygrid-day-events{
-        height: 76px !important;
-        .fc-daygrid-event-harness{
-          height: 22px + 5px; //22+5/2 <= 5 px táv a sorok közt
-          .fc-daygrid-event.fc-event-end{
-            margin-left: 0px;
-            margin-right: 9px;
-            border-radius: 0px 8px 8px 0px;
-            pointer-events: auto;
-          }
-          .fc-daygrid-event.fc-event-start{
-            margin-left: 9px;
-            margin-right: 0px;
-            border-radius: 8px 0 0px 8px;
-            padding-left: 5px;
-            pointer-events: auto;
-          }
-          .fc-daygrid-event.fc-event-start.fc-event-end{
-            margin-right: 9px;
-            margin-left: 9px;
-            border-radius: 8px;
-            padding-left: 5px;
-            pointer-events: auto;
-
-
-          }
-          .fc-daygrid-block-event{
-            pointer-events: auto !important;
-
-          }
-            .fc-daygrid-event{  // a
-            padding-left: 15px;
-            //width:114px;
-            height: 22px;
-            border-radius: 0px;
-            margin-top: 0px;
-            pointer-events: auto;
-            cursor: pointer;
-            .fc-event-resizer.fc-event-resizer-end{
-              pointer-events: none ;
-
-            }
-            .fc-event-main{
-              color: c.$Fehér; // így lesz felülírható a fullcalenderes szinekkel
-
-              pointer-events: none ;
-              //width:114px;
-              height: 22px;
-
-              padding: 5px 5px 5px 0;
-              .fc-event-main-frame{
-                height: 12px;
-                pointer-events: none;
-                .fc-event-title-container{
-                  height: 12px;
-                  pointer-events: none;
-                  .fc-event-title{
-                    padding: 0;
-                    height: 12px;
-                    @include c.fonts1(12px,normal,12px);
-                    pointer-events: none;
-                  }
-                }
-              }
-            }
-          }
-          }
-
-
-
-          .fc-daygrid-day-bottom{
-            padding: 0 0 0 0;
-            .fc-daygrid-more-link{
-              display: block;
-              margin-left: 9px;
-              margin-right: 9px;
-              background: c.$VilágosSzürke;
-              border-radius: 8px;
-              box-shadow: inset 0px 2px 0px #F0F0F0;
-              padding: 3.5px 8px 0px;
-              height: 22px;
-              font-weight: 500;
-              font-size: 12px;
-              line-height: 12px;
-              padding-left: 5px;
-              color: c.$Szürke;
-              border: 2px solid c.$Szürke;
-            }
-
-          }
-
-        }
-    }
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-  .event-plus-icon{
-    border-radius: 50%;
-    cursor: pointer;
-    width: 20px !important;
-    height: 20px !important;
-    font-size: 20px !important;
-    line-height: 20px !important;
-    margin-right: 13px !important;
-    & *{
-      width: 24px !important;
-      height: 24px !important;
-      font-size: 24px !important;
-      line-height: 24px !important;
-      color:c.$Szürke;
-      transform: translate(-2px, -2px );
-      pointer-events: none;
     }
   }
 }

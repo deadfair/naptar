@@ -15,7 +15,9 @@
       </app-view-swapper>
     </section>
 
-    <section class="calendar-container" >
+    <section class="calendar-container"
+    [ngClass]="{'month-view-height': selectedView==='Month'? true:false}"
+    >
       <section *ngIf="'Year'=== selectedView">
         <app-year-view
           [year]="selectYear"

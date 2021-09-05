@@ -41,6 +41,8 @@
   }
 }
 
+
+
 ::ng-deep{
   .main-calendar-body-from-child{
     display: flex;
@@ -85,10 +87,16 @@
   @media (min-width:767px) {
     @include rate(c.$datapickerRate_767px,3);
     @include eventsViewRate(c.$datapickerRate_1946px);
+    .month-view-height{
+      height: 600px;
+    }
   }
   @media (min-width:992px) {
     @include rate(c.$datapickerRate_992px,4);
     @include eventsViewRate(c.$datapickerRate_1946px);
+    .month-view-height{
+      height: 700px;
+    }
   }
   @media (min-width:1200px) {
     @include rate(c.$datapickerRate_1200px,4);
