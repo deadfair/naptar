@@ -1,96 +1,103 @@
 
 @use '../../assets/constants' as c;
 
-::ng-deep{
 
+
+@mixin eventWindowOpenUp($multiple){
   .event-window-open-up{
-    transform: translate(calc(-456px/2 + 115px/2 + 3px),calc(-212.91px - 26px));
+    transform: translate(calc(-456px/2*#{$multiple} + 115px/2*#{$multiple} + 3px*#{$multiple}),calc(-212.91px*#{$multiple} - 26px*#{$multiple}));
     //         width/2 + Eventwidth/2,                        -height - Nyilheight
     &::after, &::before{
       content: "";
       position: absolute;
-      width: 28px;
-      height: 13px;
-      left: calc(50% - 28px/2 - 4.4px);
-      bottom: -11px;
+      width: 28px*$multiple;
+      height: 13px*$multiple;
+      left: calc(50% - 28px/2*#{$multiple} - 4.4px*#{$multiple});
+      bottom: -11px*$multiple;
       background: c.$Sötétszürke;
-      backdrop-filter: blur(81.5485px);
+      backdrop-filter: blur(81.5485px*$multiple);
       /* Note: backdrop-filter has minimal browser support */
-      border-radius: 13px;
+      border-radius: 13px*$multiple;
       transform: rotate(54deg) ;
       z-index: -1;
     }
     &::after{
-      left: calc(50% - 28px/2 + 4.4px);
+      left: calc(50% - 28px/2*#{$multiple} + 4.4px*#{$multiple});
       transform: rotate(-54deg) ;
     }
   }
+}
 
+@mixin eventWindowOpenRight($multiple){
   .event-window-open-right{
-    transform: translate(calc(140px + 18px - 14px),calc(-212.91px/2 + 22px/2));
+    transform: translate(calc(140px*#{$multiple} + 18px*#{$multiple} - 14px*#{$multiple}),calc(-212.91px/2*#{$multiple} + 22px/2*#{$multiple}));
     &::after, &::before{
       z-index: -1;
-      @include c.arrow;
-      top: 97px;
+      @include c.arrow($multiple);
+      top: 97px*$multiple;
     }
     &::before{
-      top: 106px;
+      top: 106px*$multiple;
       transform: rotate(36deg)
     }
   }
+}
 
+@mixin eventWindowOpenLeft($multiple){
   .event-window-open-left{
-    transform: translate(calc(-456px - 18px - 14px), calc(-212.91px/2 + 22px/2));
+    transform: translate(calc(-456px*#{$multiple} - 18px*#{$multiple} - 14px*#{$multiple}), calc(-212.91px/2*#{$multiple} + 22px/2*#{$multiple}));
     &::after, &::before{
       z-index: -1;
-      @include c.arrow;
-      top: 106px;
-      right: -16px;
+      @include c.arrow($multiple);
+      top: 106px*$multiple;
+      right: -16px*$multiple;
       left: auto;
     }
     &::after{
-      top: 97px;
+      top: 97px*$multiple;
       transform: rotate(-144deg)
     }
   }
+}
 
+@mixin cardInfoWindow($multiple){
   .mat-card.infowindow{
     @include c.ZIndex(2);
-    @include c.robotoNormal_fs_ls_lh_fw;
+    @include c.robotoNormal_fs_ls_lh_fw(17px*$multiple,-0.408px*$multiple,22px*$multiple,normal);
     background: c.$Sötétszürke;
     color: c.$Fehér;
     box-sizing: border-box;
     position: absolute;
-    backdrop-filter: blur(81.5485px);
-    border-radius: 13px ;
-    width: 456px !important;
-    height: 212.91px !important;
-    padding: 17px 0 0 0;
+    backdrop-filter: blur(81.5485px*$multiple);
+    border-radius: 13px*$multiple ;
+    width: 456px*$multiple !important;
+    height: 212.91px*$multiple !important;
+    padding: 17px*$multiple 0 0 0;
 
     .mat-card-title{
       position: relative;
       margin-bottom: 0;
       button{
         position: absolute;
-        right: 18px;
+        right: 18px*$multiple;
         top: 0px;
-        width: 24px !important;
-        height: 24px !important;
-        line-height: 24px !important;
-        font-size: 24px !important;
+        width: 24px*$multiple !important;
+        height: 24px*$multiple !important;
+        line-height: 24px*$multiple !important;
+        font-size: 24px*$multiple !important;
         .mat-icon{
-          width: 24px !important;
-          height: 24px !important;
-          line-height: 24px !important;
-          font-size: 24px !important;
+          width: 24px*$multiple !important;
+          height: 24px*$multiple !important;
+          line-height: 24px*$multiple !important;
+          font-size: 24px*$multiple !important;
         }
         &:nth-child(2){
-          transform: translateX(-24px - 25px);
+          transform: translateX(-24px*$multiple - 25px*$multiple);
         }
       }
       h1{
         margin-bottom: 0px;
-        @include c.robotoNormal_fs_ls_lh_fw;
+        @include c.robotoNormal_fs_ls_lh_fw(17px*$multiple,-0.408px*$multiple,22px*$multiple,normal);
         color: c.$Fehér;
         text-align: center;
         text-decoration-line: underline;
@@ -98,60 +105,102 @@
     }
 
     .mat-card-content{
-      margin:5px 14px 0 8.78px;
+      margin:5px*$multiple 14px*$multiple 0 8.78px*$multiple;
       .time-container{
-        @include c.robotoNormal_fs_ls_lh_fw;
+        @include c.robotoNormal_fs_ls_lh_fw(17px*$multiple,-0.408px*$multiple,22px*$multiple,normal);
         position: static;
-        width: 318px;
-        height: 22px;
-        left: 10px;
-        top: 10px;
+        width: 318px*$multiple;
+        height: 22px*$multiple;
+        left: 10px*$multiple;
+        top: 10px*$multiple;
         span:nth-child(2){
-          font-size: 12px;
-          margin-left: 14px;
+          font-size: 12px*$multiple;
+          margin-left: 14px*$multiple;
         }
       }
     }
     .text-container{
       display: flex;
       flex-flow: row nowrap;
-      margin-top: 6px;
+      margin-top: 6px*$multiple;
       .rectangle{
         position: static;
-        width: 24px;
-        height: 24px;
-        left: 10px;
-        top: 10px;
+        width: 24px*$multiple;
+        height: 24px*$multiple;
+        left: 10px*$multiple;
+        top: 10px*$multiple;
         background: c.$SötétZöld;
-        @include c.insideAutoLayout(0,0,10px,0,1.22px);
+        @include c.insideAutoLayout(0,0,10px*$multiple,0,1.22px*$multiple);
 
       }
       .text{
         margin: 0px;
         position: static;
-        width: 398px;
-        height: 66px;
-        left: 44px;
-        top: 10px;
-        @include c.robotoNormal_fs_ls_lh_fw;
+        width: 398px*$multiple;
+        height: 66px*$multiple;
+        left: 44px*$multiple;
+        top: 10px*$multiple;
+        @include c.robotoNormal_fs_ls_lh_fw(17px*$multiple,-0.408px*$multiple,22px*$multiple,normal);
         overflow-y:hidden;
       }
 
     }
     .pictures{
-      margin-left: 43.66px - 8.78px;
-      margin-top: 8.9px;
+      margin-left: 43.66px*$multiple - 8.78px*$multiple;
+      margin-top: 8.9px*$multiple;
       display: flex;
       flex-flow: row wrap;
       img{
         border-radius: 50%;
-        width: 25px ;
-        height: 25px;
-        margin-right: 5px;
+        width: 25px*$multiple ;
+        height: 25px*$multiple;
+        margin-right: 5px*$multiple;
       }
     }
 
   }
+
 }
+::ng-deep{
+  @include eventWindowOpenUp(1);
+  @include eventWindowOpenRight(1);
+  @include eventWindowOpenLeft(1);
+  @include cardInfoWindow(1);
+
+
+
+  @media (min-width:767px) {
+    @include eventWindowOpenUp(c.$datapickerRate_1200px);
+    @include eventWindowOpenRight(c.$datapickerRate_1200px);
+    @include eventWindowOpenLeft(c.$datapickerRate_1200px);
+    @include cardInfoWindow(c.$datapickerRate_1200px);
+  }
+  @media (min-width:992px) {
+    @include eventWindowOpenUp(c.$datapickerRate_1400px);
+    @include eventWindowOpenRight(c.$datapickerRate_1400px);
+    @include eventWindowOpenLeft(c.$datapickerRate_1400px);
+    @include cardInfoWindow(c.$datapickerRate_1400px);
+  }
+  @media (min-width:1200px) {
+    @include eventWindowOpenUp(c.$datapickerRate_1200px);
+    @include eventWindowOpenRight(c.$datapickerRate_1200px);
+    @include eventWindowOpenLeft(c.$datapickerRate_1200px);
+    @include cardInfoWindow(c.$datapickerRate_1200px);
+  }
+  @media (min-width:1400px) {
+    @include eventWindowOpenUp(c.$datapickerRate_1400px);
+    @include eventWindowOpenRight(c.$datapickerRate_1400px);
+    @include eventWindowOpenLeft(c.$datapickerRate_1400px);
+    @include cardInfoWindow(c.$datapickerRate_1400px);
+  }
+  @media (min-width:1946px) {
+    @include eventWindowOpenUp(c.$datapickerRate_1946px);
+    @include eventWindowOpenRight(c.$datapickerRate_1946px);
+    @include eventWindowOpenLeft(c.$datapickerRate_1946px);
+    @include cardInfoWindow(c.$datapickerRate_1946px);
+  }
+}
+
+
 
 

@@ -131,16 +131,16 @@ $datapickerRate_1946px:1;
 
 
 // arrow kéne séma
-@mixin arrow() {
+@mixin arrow($multiple:1) {
   content: '';
   position: absolute;
-  left: -16px;
-  width: 28px;
-  height: 13px;
+  left: -16px*$multiple;
+  width: 28px*$multiple;
+  height: 13px*$multiple;
   background: $Sötétszürke;
-  backdrop-filter: blur(81.5485px);
+  backdrop-filter: blur(81.5485px*$multiple);
   /* Note: backdrop-filter has minimal browser support*/
-  border-radius: 13px;
+  border-radius: 13px*$multiple;
   transform: rotate(-36deg);
   //      &::after{top: 16px;}   &::before{top: 25px; transform: rotate(36deg)}
   //      topok közti különbség 9
