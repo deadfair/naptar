@@ -65,4 +65,4 @@ minwith logika:
 
 
 700->900 ig a nap és hét view
-+ eventwindow,moreeventwindow
+

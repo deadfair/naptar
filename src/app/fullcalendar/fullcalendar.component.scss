@@ -219,7 +219,7 @@ $dayAndWeekviewLeftMargin:48px;
 @mixin DayAndWeekViewContainerLess992px(){
   ::ng-deep{
     .fullcalendar-day-view-container, .fullcalendar-week-view-container{
-      transform: translateX(-104px);
+      transform: translateX(-24px);
     }
   }
 }
@@ -503,18 +503,19 @@ $dayAndWeekviewLeftMargin:48px;
   }
 }
 
-@include dayAndWeekViewRate(c.$datapickerRate_1400px);
-@include manualBackgroundWidth_1400px();
+@include dayAndWeekViewRate(c.$datapickerRate_1200px);
+@include manualBackgroundWidth_1200px();
 @include DayAndWeekViewContainerLess1200px();
 @include DayAndWeekViewContainerLess992px();
 @include monthView(c.$datapickerRate_1400px);
 @include monthViewSizeAndPozitionLess1200px(c.$datapickerRate_1400px);
 
 @media (min-width:767px) {
-  @include dayAndWeekViewRate(c.$datapickerRate_1400px);
-  @include manualBackgroundWidth_1400px();
+  @include dayAndWeekViewRate(c.$datapickerRate_1200px);
+  @include manualBackgroundWidth_1200px();
   @include DayAndWeekViewContainerLess1200px();
   @include DayAndWeekViewContainerLess992px();
+
   @include monthView(c.$datapickerRate_1200px);
   @include monthViewSizeAndPozitionLess1200px(c.$datapickerRate_1200px);
   @include monthMarginAndWidthLess992px();
