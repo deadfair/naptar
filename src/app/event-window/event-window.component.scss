@@ -167,8 +167,6 @@
   @include eventWindowOpenLeft(1);
   @include cardInfoWindow(1);
 
-
-
   @media (min-width:767px) {
     @include eventWindowOpenUp(c.$datapickerRate_1200px);
     @include eventWindowOpenRight(c.$datapickerRate_1200px);

@@ -1,50 +1,89 @@
 @use '../../assets/constants' as c;
 
-::ng-deep{
+
+
+@mixin moreEventWindow($multiple){
   .mat-card.onlyevents{
     @include c.ZIndex(1);
     display: block !important;
     position: absolute;
-    @include c.fonts1;
     background: c.$Sötétszürke;
-    backdrop-filter: blur(81.5485px);
-    border-radius: 13px ;
-    width: 140px !important;
+    backdrop-filter: blur(81.5485px*$multiple);
+    border-radius: 13px *$multiple;
+    width: 140px*$multiple !important;
     color: c.$Fehér;
-    min-height: 40px;
-    padding: 26px 0 11px 0;
-    transform: translate(calc(140px + 18px - 9px), calc(22px/2 - 25px));
+    min-height: 40px*$multiple;
+    padding: 26px*$multiple 0 11px*$multiple 0;
+    transform: translate(calc(140px*#{$multiple} + 18px*#{$multiple} - 9px*#{$multiple}), calc(22px/2*#{$multiple} - 25px*#{$multiple}));
 
 
     .close{
-      width: 0px;
-      height: 0px;
-      top:-6px;
-      right: 34px;
+      $buttonsize:22px;
+      width: $buttonsize*$multiple !important;
+      height: $buttonsize*$multiple !important;
+      line-height: $buttonsize*$multiple !important;
+      font-size: $buttonsize*$multiple !important;
+      .mat-icon{
+        width: $buttonsize*$multiple !important;
+        height: $buttonsize*$multiple !important;
+        line-height: $buttonsize*$multiple !important;
+        font-size: $buttonsize*$multiple !important;
+      }
+      top: (9px - 6px)*$multiple;
+      right: (19px - 6px)*$multiple;
       position: absolute;
       }
 
     .mat-card-content{
+      @include c.robotoNormal_fs_ls_lh_fw(17px*$multiple,-0.408px*$multiple,22px*$multiple,normal);
       .event-box{
-        width: 114px;
-        height: 22px;
+        width: 114px*$multiple;
+        height: 22px*$multiple;
         background-color: c.$SötétZöld;
-        margin:5px 12px 0px 14px;
-        border-radius: 8px;
-        padding-left: 5px;
+        margin:5px*$multiple 12px*$multiple 0px 14px*$multiple;
+        border-radius: 8px*$multiple;
+        padding-left: 5px*$multiple;
         cursor: pointer;
       }
     }
 
     &::after, &::before{
-      @include c.arrow;
-      top: 16px;
+      @include c.arrow($multiple);
+      top: 16px*$multiple;
     }
     &::before{
-      top: 25px;
+      top: 25px*$multiple;
       transform: rotate(36deg)
     }
   }
 }
+
+::ng-deep{
+  @include moreEventWindow(1);
+
+
+  @media (min-width:767px) {
+    @include moreEventWindow(c.$datapickerRate_1200px);
+
+  }
+  @media (min-width:992px) {
+    @include moreEventWindow(c.$datapickerRate_1400px);
+
+  }
+  @media (min-width:1200px) {
+    @include moreEventWindow(c.$datapickerRate_1200px);
+
+  }
+  @media (min-width:1400px) {
+    @include moreEventWindow(c.$datapickerRate_1400px);
+
+  }
+  @media (min-width:1946px) {
+    @include moreEventWindow(c.$datapickerRate_1946px);
+
+  }
+}
+
+
 
 
