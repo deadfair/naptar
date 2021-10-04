@@ -3,7 +3,7 @@
 @mixin rate($multiple){
   ::ng-deep{
     .events-view-container-from-child{
-      width:301px*$multiple ;
+      width:100% ;
       margin-top: -10px*$multiple;
       h1{
         @include c.robotoNormal_fs_ls_lh_fw(16px*$multiple,normal,24px*$multiple,normal);
@@ -19,6 +19,10 @@
           top: calc(50% - 0px/2);
         }
       }
+      app-get-events-by-day{
+        width: 100%;
+        display: block;
+      }
     }
   }
 }
@@ -29,25 +33,26 @@
     }
   }
 }
-@include rate(c.$datapickerRate_1946px);
+@include rate(c.$rate_1946px);
 @include eventsViewContainerFromChildMarginTop();
 @media (min-width:767px) {
-  @include rate(c.$datapickerRate_1946px);
   @include eventsViewContainerFromChildMarginTop();
 }
 @media (min-width:992px) {
-  @include rate(c.$datapickerRate_1946px);
   @include eventsViewContainerFromChildMarginTop();
 
 }
 @media (min-width:1200px) {
-  @include rate(c.$datapickerRate_1200px)
+  @include rate(c.$rate_1200px)
 }
 @media (min-width:1400px) {
-  @include rate(c.$datapickerRate_1400px)
+  @include rate(c.$rate_1400px)
+}
+@media (min-width:1620px) {
+  @include rate(c.$rate_1620px)
 }
 @media (min-width:1946px) {
-  @include rate(c.$datapickerRate_1946px)
+  @include rate(c.$rate_1946px)
 }
 
 ::ng-deep{

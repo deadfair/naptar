@@ -3,35 +3,20 @@
 @mixin rate($multiple){
   ::ng-deep{
     .year-view-month-element{
-      flex-basis: 298px*$multiple;
-      margin-bottom: 7px*$multiple;
+      margin: 0 2px*$multiple 7px*$multiple 2px*$multiple;
     }
   }
 }
 
 @include rate(c.$datapickerRate_1946px);
 
-@media (min-width:767px) {
-  @include rate(c.$datapickerRate_767px);
-}
-@media (min-width:992px) {
-  @include rate(c.$datapickerRate_992px);
-}
-@media (min-width:1200px) {
-  @include rate(c.$datapickerRate_1200px)
-}
-@media (min-width:1400px) {
-  @include rate(c.$datapickerRate_1400px)
-}
-@media (min-width:1946px) {
-  @include rate(c.$datapickerRate_1946px)
-}
+
 
 ::ng-deep{
   .year-view-container-from-child{
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 }
 

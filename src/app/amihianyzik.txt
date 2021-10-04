@@ -64,5 +64,5 @@ minwith logika:
 337->233.3
 
 
-700->900 ig a nap és hét view
+
 

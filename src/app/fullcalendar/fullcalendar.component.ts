@@ -75,6 +75,7 @@ export class FullcalendarComponent implements OnInit {
     this.calendarApi.next()
   }
 
+
   closeDeleteWindow(id:string|null){
     this.fullCalendarViewController.eventwindow=false;
     let newhiddenEvents:any[]=[];

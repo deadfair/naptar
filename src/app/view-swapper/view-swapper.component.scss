@@ -3,119 +3,103 @@
 @mixin rate($multiple){
   ::ng-deep{
     .view-swapper{
-      width: 298px*$multiple;
+      width: clamp(1%,298px,100% );
+      margin: auto;
       .mat-selection-list.selection-list-year{
-        box-shadow: 0px 3px*$multiple 5px*$multiple rgba(9, 30, 66, 0.2), 0px 0px 1px rgba(9, 30, 66, 0.31);
-        border-radius: 3px*$multiple;
+        background: c.$Fehér;
+        box-shadow: 0px 3px 5px rgba(9, 30, 66, 0.2), 0px 0px 1px rgba(9, 30, 66, 0.31);
+        border-radius: 3px;
         .mat-list-option{
-          height: 32px*$multiple;
+          width: 100%;
+          height: 32px;
           .list-item{
+            color:c.$Sötétszürke;
             @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,20px*$multiple);
           }
         }
+        .mat-list-option.mat-list-single-selected-option{
+          background-color: c.$Szürke;
+        }
       }
       button[mat-stroked-button]{
-        height: 32px*$multiple;
-        margin: 8px*$multiple 0 3px*$multiple 0;
-        box-shadow: 0px 2px*$multiple 0px rgba(0, 0, 0, 0.016);
-        border-radius: 2px*$multiple;
+        width: 100%;
+        background: c.$Fehér;
+        color: c.$VilágosSzürke;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        margin: 8px auto 3px auto;
+        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+        border-radius: 2px;
         @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,22px*$multiple);
       }
         // mód választó
         .mode-swapper{
           .mat-button-toggle-group{
-            height: 32px*$multiple;
+            height: 32px;
+            width: 100%;
+            flex-flow: row  nowrap;
+            justify-content: center;
+            border: none;
+            border-radius: 0;
+            .mat-button-toggle-checked.mat-button-toggle{
+              border: 1px solid c.$Zöld;
+              color: c.$Zöld;
+            }
             .mat-button-toggle{
+              background: c.$Fehér;
+              color: c.$VilágosSzürke;
+              box-sizing: border-box;
+              border: 1px solid c.$VilágosSzürke;
+              @include c.autoLayout(row);
               @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,22px*$multiple);
             }
             .mat-button-toggle:nth-child(1){
-              border-radius: 2px*$multiple 0px 0px 2px*$multiple;
-              min-width: 60px*$multiple;
+              border-radius: 2px 0px 0px 2px;
+              width: 20.13%;
             }
             .mat-button-toggle:nth-child(2){
-              min-width: 95px*$multiple;
+              width: 31.88%;
             }
             .mat-button-toggle:nth-child(3){
-              min-width: 69px*$multiple;
-              border-radius: 0px 2px*$multiple 2px*$multiple 0px;
+              width: 23.15%;
+              border-radius: 0px 2px 2px 0px;
             }
             .mat-button-toggle:nth-child(4){
-              min-width: 74px*$multiple;
-              border-radius: 0px 2px*$multiple 2px*$multiple 0px;
+              width: 24.83%;
+              border-radius: 0px 2px 2px 0px;
             }
           }
         }
       }
   }
 }
-@include rate(c.$datapickerRate_1946px);
+
+@include rate(c.$rate_1946px);
 
 @media (min-width:767px) {
-  @include rate(c.$datapickerRate_1946px);
 }
 @media (min-width:992px) {
-  @include rate(c.$datapickerRate_1946px);
 }
 @media (min-width:1200px) {
-  @include rate(c.$datapickerRate_1200px)
+  @include rate(c.$rate_1200px)
 }
 @media (min-width:1400px) {
-  @include rate(c.$datapickerRate_1400px)
+  @include rate(c.$rate_1400px)
+}
+@media (min-width:1620px) {
+  @include rate(c.$rate_1620px)
 }
 @media (min-width:1946px) {
-  @include rate(c.$datapickerRate_1946px)
-}
-
-
-::ng-deep{
-
-.view-swapper{
-  margin: auto;
-  .mat-selection-list.selection-list-year{
-    background: c.$Fehér;
-    .mat-list-option{
-      width: 100%;
-      .list-item{
-        color:c.$Sötétszürke;
-      }
-    }
-    .mat-list-option.mat-list-single-selected-option{
-      background-color: c.$Szürke;
-    }
-  }
-  button[mat-stroked-button]{
-    width: 100%;
-    background: c.$Fehér;
-    color: c.$VilágosSzürke;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-    // mód választó
-    .mode-swapper{
-      .mat-button-toggle-group{
-        width: 100%;
-        flex-flow: row  nowrap;
-        justify-content: center;
-        border: none;
-        border-radius: 0;
-        .mat-button-toggle-checked.mat-button-toggle{
-          border: 1px solid c.$Zöld;
-          color: c.$Zöld;
-        }
-        .mat-button-toggle{
-          background: c.$Fehér;
-          color: c.$VilágosSzürke;
-          box-sizing: border-box;
-          border: 1px solid c.$VilágosSzürke;
-          @include c.autoLayout(row);
-        }
-      }
-    }
-  }
+  @include rate(c.$rate_1946px)
 }
 .focus-button{
   border: 1px solid c.$Zöld;
   color: c.$Zöld !important;
 }
+
+
+
+

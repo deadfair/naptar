@@ -48,6 +48,9 @@ export class TravelEventInfo{
   public get jsEvent():any{
     return this._jsEvent;
   }
+
+
+
 }
 
 

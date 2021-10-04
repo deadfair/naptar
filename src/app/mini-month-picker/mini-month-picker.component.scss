@@ -4,109 +4,107 @@
 @mixin rate($multiple){
   ::ng-deep{
     .mini-month-picker-from-child{
-      margin-top: -35px*$multiple;
-      margin-bottom: 7px*$multiple;
+
+      width: clamp(1%,298px,100% );
+      margin: -35px auto 7px auto;
       .minimonth-container{
-        width: 298px*$multiple;
-        height: 312px*$multiple;
-        padding: 21px*$multiple 31px*$multiple;
+        display: flex;
+        flex-flow: column nowrap;
+        box-sizing: border-box;
+        justify-content: space-between;
+        background-color: c.$VilágosZöld;
+        box-shadow: inset 0px 1px 0px #F0F0F0;
+        margin: 0;
+        width: 100%;
+        padding: 7% 10%;
         .minimonth-rows{
+          color: c.$SötétZöld;
           display: flex;
           flex-flow: row nowrap;
           justify-content: space-between;
           @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,22px*$multiple);
           .minimonth-minicontainer{
-            width: 44px*$multiple;
-            height: 22px*$multiple;
+            width: 14%;
+            height: 7%;
+            display: flex;
+            justify-content: center;
+            p{
+              cursor: pointer;
+              margin: 0 0 4%;
+            }
           }
         }
       }
       .mini-month-picker-btns{
-        margin-bottom: 7px*$multiple;
+        margin-bottom: 7px;
+        display: flex;
+        flex-flow: row;
         .tuday-btn{
-          margin-left: 8px*$multiple;
-          margin-right: 9px*$multiple;
-          width: 67px*$multiple;
-          height: 28px*$multiple;
-          border-radius: 20px*$multiple !important;
+          margin-left: 8px;
+          margin-right: 9px;
+          width: 67px;
+          height: 28px;
+          border-radius: 20px !important;
           color: c.$Light01;
+          box-sizing: border-box;
+          background: c.$SötétZöld !important;
           @include c.robotoNormal_fs_ls_lh_fw(12px*$multiple,normal,12px*$multiple);
         }
         .play-btn{
-          border-radius: 100px*$multiple;
-          height: 28px*$multiple;
-          width: 28px*$multiple;
+          border-radius: 100px;
+          height: 28px;
+          width: 28px;
+          min-width: 0px;
+          line-height: normal;
+          padding: 0;
+
         .play-btn-icon{
-          width: 28px*$multiple;
-          height: 28px*$multiple;
-          font-size:33px*$multiple;
-          transform:translate(-2.5px*$multiple,-2.5px*$multiple);
+          width: 28px;
+          height: 28px;
+          font-size:33px;
+          transform:translate(-2.5px,-2.5px);
+          color: c.$SötétZöld;
+          vertical-align:baseline;
           }
           .play-btn-icon2{
-            transform: matrix(-1, 0, 0, 1, 0, 0) translate(-2.5px*$multiple,-2.5px*$multiple);
+            transform: matrix(-1, 0, 0, 1, 0, 0) translate(-2.5px,-2.5px);
           }
         }
       }
     }
   }
 }
-@include rate(c.$datapickerRate_1946px);
+@include rate(c.$rate_1946px);
 
 @media (min-width:767px) {
-  @include rate(c.$datapickerRate_1946px);
 }
 @media (min-width:992px) {
-  @include rate(c.$datapickerRate_1946px);
 }
 @media (min-width:1200px) {
-  @include rate(c.$datapickerRate_1200px)
+  @include rate(c.$rate_1200px)
 }
 @media (min-width:1400px) {
-  @include rate(c.$datapickerRate_1400px)
+  @include rate(c.$rate_1400px)
+}
+@media (min-width:1620px) {
+  @include rate(c.$rate_1620px)
 }
 @media (min-width:1946px) {
-  @include rate(c.$datapickerRate_1946px)
+  @include rate(c.$rate_1946px)
 }
 ::ng-deep{
-
   .mini-month-picker-from-child{
     .minimonth-container{
-      display: flex;
-      flex-flow: column nowrap;
-      box-sizing: border-box;
-      justify-content: space-between;
-      background-color: c.$VilágosZöld;
-      box-shadow: inset 0px 1px 0px #F0F0F0;
-      margin: 0;
-      .minimonth-rows{
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        color: c.$SötétZöld;
-        .minimonth-minicontainer{
-          display: flex;
-          justify-content: center;
-          p{
-            cursor: pointer;
-          }
-        }
-      }
+      height: clamp(1vw,100vw,312px);
     }
-    .mini-month-picker-btns{
-      display: flex;
-      flex-flow: row;
-      .tuday-btn{
-        box-sizing: border-box;
-        background: c.$SötétZöld !important;
-      }
-      .play-btn{
-        min-width: 0px;
-        line-height: normal;
-        padding: 0;
-        .play-btn-icon{
-          color: c.$SötétZöld;
-          vertical-align:baseline;
-        }
+  }
+}
+
+@media (min-width:1200px) {
+  ::ng-deep{
+    .mini-month-picker-from-child{
+      .minimonth-container{
+        height: clamp(1vw,100vw/5.7,312px);
       }
     }
   }
