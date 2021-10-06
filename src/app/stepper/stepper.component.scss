@@ -217,10 +217,24 @@
   }
 }
 
+
+
+
 @include btns(c.$datapickerRate_1400px);
 @include rate(c.$datapickerRate_1400px);
 @include exitbtn(-11.878px, -0.439px);
 @include peoplebtn767px();
+
+
+
+
+/*
+@media (min-width:576px) {
+  @include btns(c.$rate_576px);
+  @include rate(c.$rate_576px);
+  @include exitbtn(-11.878px, -0.439px);
+  @include peoplebtn767px();
+}*/
 
 
 @media (min-width:767px) {

@@ -1,4 +1,8 @@
 import { Component, OnInit ,Output,Input,EventEmitter,ChangeDetectorRef,ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getselectedYear, getYears } from '../main-calendar/state/main-calendar.selector';
+import { AppState } from '../store/app.state';
 
 
 @Component({
@@ -9,10 +13,15 @@ import { Component, OnInit ,Output,Input,EventEmitter,ChangeDetectorRef,ChangeDe
 export class YearViewComponent implements OnInit {
   @Output() selectedDate = new EventEmitter<Date | null>();
   @Input() year:number=0;
-  @Input() years:number[]=[];
+  years$!: Observable<number[]>;
+  selectedYear$!: Observable<number>;
+
   clickedDate:Date | null=null;
-  constructor() { }
+  constructor(private store:Store<AppState>) { }
   ngOnInit(): void {
+    this.years$ = this.store.select(getYears)
+    this.selectedYear$=this.store.select(getselectedYear)
+    this.selectedYear$.subscribe(console.log)
   }
 
   selectDate(date:Date | null){

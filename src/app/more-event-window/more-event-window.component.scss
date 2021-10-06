@@ -59,8 +59,12 @@
 }
 
 ::ng-deep{
-  @include moreEventWindow(1);
+  @include moreEventWindow(0.251);
 
+  @media (min-width:576px) {
+    @include moreEventWindow(c.$rate_576px);
+
+  }
 
   @media (min-width:767px) {
     @include moreEventWindow(c.$datapickerRate_1200px);

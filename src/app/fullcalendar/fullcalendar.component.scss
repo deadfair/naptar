@@ -12,8 +12,10 @@ $dayAndWeekviewLeftMargin:48px;
       margin-top: -105px*$multiple;
     }
     .fullcalendar-day-view-container, .fullcalendar-week-view-container{
-      margin-left:  $dayAndWeekviewLeftMargin*$multiple;
-// 2 Arrow  ---------------------------------------------------
+      //margin-left:  $dayAndWeekviewLeftMargin*$multiple;
+      margin-left: auto;
+      margin-right: auto;
+      // 2 Arrow  ---------------------------------------------------
       .arrow-btn{
         height: 80px*$multiple;
         width: 80px*$multiple;
@@ -44,7 +46,7 @@ $dayAndWeekviewLeftMargin:48px;
         }
 //   heti napi nézet----------------------------------------------------------------------------
         .fc-view-harness {
-          height: 1200px*$multiple;
+          height: 1200px*$multiple ;
           .fc-timeGridDay-view, .fc-timeGridWeek-view{
             .fc-scrollgrid-section{
               height: 17px*$multiple;
@@ -147,6 +149,34 @@ $dayAndWeekviewLeftMargin:48px;
   }
 }
 
+@mixin manualBackgroundWidth_576px(){
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      .background-cells{
+        left: 38.863px;
+        top: 43.137px;
+        .col{
+          min-width: 29.719px;
+          margin-left: 5.3px;
+        }
+      }
+    }
+  }
+}
+@mixin manualBackgroundWidth_767px(){
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      .background-cells{
+        left: 37.763px;
+        top: 60.137px;
+        .col{
+          min-width: 57.7px;
+          margin-left: 8.1px;
+        }
+      }
+    }
+  }
+}
 @mixin manualBackgroundWidth_992px(){
   ::ng-deep{
     .fullcalendar-day-view-container, .fullcalendar-week-view-container{
@@ -211,7 +241,7 @@ $dayAndWeekviewLeftMargin:48px;
   ::ng-deep{
     .fullcalendar-day-view-container, .fullcalendar-week-view-container{
       margin:10px auto 0 auto;
-      transform: translateX(-29px);
+      //transform: translateX(-29px);
       height: 1000px;
     }
   }
@@ -219,7 +249,7 @@ $dayAndWeekviewLeftMargin:48px;
 @mixin DayAndWeekViewContainerLess992px(){
   ::ng-deep{
     .fullcalendar-day-view-container, .fullcalendar-week-view-container{
-      transform: translateX(-24px);
+      //transform: translateX(-24px);
     }
   }
 }
@@ -453,7 +483,9 @@ $dayAndWeekviewLeftMargin:48px;
     .fullcalendar-month-view-container{
       width: 1222px*$multiple;
       margin-top: -105px*$multiple;
-      margin-left: $dayAndWeekviewLeftMargin*$multiple + 31px;
+      //margin-left: $dayAndWeekviewLeftMargin*$multiple + 31px;
+      margin-left: auto;
+      margin-right: auto;
       .fc-scrollgrid-sync-table{
         height: 732px*$multiple !important; // kissebnek kell lenni mint a kis cellák magassága eggyütt v egyenlő
         width: 1106px*$multiple !important; // a meghatározó szélesség
@@ -497,18 +529,60 @@ $dayAndWeekviewLeftMargin:48px;
 @mixin monthMarginAndWidthLess992px(){
 ::ng-deep{
   .fullcalendar-month-view-container{
-    margin-left: 0;
+    //margin-left: 0;
     width: 734.546px;
     }
   }
 }
 
-@include dayAndWeekViewRate(c.$datapickerRate_1200px);
-@include manualBackgroundWidth_1200px();
+@include dayAndWeekViewRate(c.$rate_mobile);
+@include manualBackgroundWidth_576px();
 @include DayAndWeekViewContainerLess1200px();
 @include DayAndWeekViewContainerLess992px();
+/*
 @include monthView(c.$datapickerRate_1400px);
 @include monthViewSizeAndPozitionLess1200px(c.$datapickerRate_1400px);
+*/
+@include monthView(c.$rate_mobile);
+@include monthViewSizeAndPozitionLess1200px(c.$rate_mobile);
+::ng-deep{
+  .fc{
+    .fc-view-harness{
+      height: 255px;
+    }
+  }
+}
+::ng-deep{
+  .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+    margin:10px auto 0 auto;
+    //transform: translateX(-29px);
+    height: 400px;
+  }
+}
+
+@media (min-width:576px) {
+  @include monthView(c.$rate_576px);
+  @include monthViewSizeAndPozitionLess1200px(c.$rate_576px);
+
+
+
+  @include dayAndWeekViewRate(c.$rate_576px);
+  @include manualBackgroundWidth_767px();
+
+
+  @include DayAndWeekViewContainerLess1200px();
+  @include DayAndWeekViewContainerLess992px();
+  ::ng-deep{
+    .fullcalendar-day-view-container, .fullcalendar-week-view-container{
+      margin:10px auto 0 auto;
+      //transform: translateX(-29px);
+      height: 700px;
+    }
+  }
+
+}
+
+
 
 @media (min-width:767px) {
   @include dayAndWeekViewRate(c.$datapickerRate_1200px);
@@ -525,6 +599,7 @@ $dayAndWeekviewLeftMargin:48px;
   @include dayAndWeekViewRate(c.$datapickerRate_1400px);
   @include manualBackgroundWidth_1400px();
   @include DayAndWeekViewContainerLess1200px();
+
   @include monthView(c.$datapickerRate_1400px);
   @include monthViewSizeAndPozitionLess1200px(c.$datapickerRate_1400px);
 
@@ -532,6 +607,7 @@ $dayAndWeekviewLeftMargin:48px;
 @media (min-width:1200px) {
   @include dayAndWeekViewRate(c.$datapickerRate_1200px);
   @include manualBackgroundWidth_1200px();
+
   @include monthView(c.$datapickerRate_1200px);
 
 }
@@ -545,6 +621,7 @@ $dayAndWeekviewLeftMargin:48px;
 @media (min-width:1946px) {
   @include dayAndWeekViewRate(c.$datapickerRate_1946px);
   @include manualBackgroundWidth_1946px();
+
   @include monthView(c.$datapickerRate_1946px);
 
 }

@@ -22,8 +22,8 @@
   <mat-selection-list
     class="selection-list-year"
     [multiple]="false"
-    (selectionChange)="selectedYearChange($event)">
-    <mat-list-option *ngFor="let year of years"
+    (selectionChange)="onSelectedYearChange($event)">
+    <mat-list-option *ngFor="let year of (years$ | async)"
       [value]="year"
       [selected]="defaultSelectedValue===year ? true : false">
       <span class="list-item">{{year}}</span>

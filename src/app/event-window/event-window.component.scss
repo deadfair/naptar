@@ -162,11 +162,17 @@
 
 }
 ::ng-deep{
-  @include eventWindowOpenUp(1);
-  @include eventWindowOpenRight(1);
-  @include eventWindowOpenLeft(1);
-  @include cardInfoWindow(1);
+  @include eventWindowOpenUp(c.$rate_mobile);
+  @include eventWindowOpenRight(c.$rate_mobile);
+  @include eventWindowOpenLeft(c.$rate_mobile);
+  @include cardInfoWindow(c.$rate_mobile);
 
+  @media (min-width:576px) {
+    @include eventWindowOpenUp(c.$rate_576px);
+    @include eventWindowOpenRight(c.$rate_576px);
+    @include eventWindowOpenLeft(c.$rate_576px);
+    @include cardInfoWindow(c.$rate_576px);
+  }
   @media (min-width:767px) {
     @include eventWindowOpenUp(c.$datapickerRate_1200px);
     @include eventWindowOpenRight(c.$datapickerRate_1200px);

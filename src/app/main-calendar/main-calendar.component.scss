@@ -106,7 +106,7 @@
       width: calc(1/5*100% - 4%);
     }
     .calendar-container{
-      width:3/5*100%;
+      width:calc(3/5*100% + 1%);
     }
     .events-view{
       width:calc(1/5*100% - 1%);

@@ -167,7 +167,7 @@ export class FullcalendarComponent implements OnInit {
     firstDay:1,           // Monday as first day of week
     weekends: true,       // a hétvégét nem mutatja
     dayMaxEvents:true,
-    contentHeight: 1302,  // ez CSAK a táblázat magassága
+    //contentHeight: 1302,  // ez CSAK a táblázat magassága
     aspectRatio: 1,       // a magasság/szélesség arány contentHeight/contentWidth
     events: this.eventService.getAllEvents()
   };

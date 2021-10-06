@@ -39,6 +39,9 @@ import { FullcalendarComponent } from './fullcalendar/fullcalendar.component';
 import { GetEventsByDayComponent } from './get-events-by-day/get-events-by-day.component';
 import { EventsViewSectionComponent } from './events-view-section/events-view-section.component';
 
+//import { StoreModule } from '@ngrx/store';
+import { appReducer } from './store/app.state';
+import { StoreModule } from '@ngrx/store';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -82,7 +85,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     FormsModule,
     MatIconModule,
     MatButtonToggleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(appReducer),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@
     .mini-month-picker-from-child{
 
       width: clamp(1%,298px,100% );
-      margin: -35px auto 7px auto;
+      margin: -35px auto 7px*$multiple auto;
       .minimonth-container{
         display: flex;
         flex-flow: column nowrap;
@@ -36,12 +36,12 @@
         }
       }
       .mini-month-picker-btns{
-        margin-bottom: 7px;
+        margin-bottom: 7px*$multiple;
         display: flex;
         flex-flow: row;
         .tuday-btn{
-          margin-left: 8px;
-          margin-right: 9px;
+          margin-left: 8px*$multiple;
+          margin-right: 9px*$multiple;
           width: 67px;
           height: 28px;
           border-radius: 20px !important;
