@@ -1,8 +1,5 @@
 import { stepperWindowChange } from './../main-calendar/state/main-calendar.actions';
-import { Output } from '@angular/core';
-import { Component, OnInit,  EventEmitter} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatListOption } from '@angular/material/list'
+import { Component, OnInit,  } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { getStepperWindow } from '../main-calendar/state/main-calendar.selector';
@@ -28,9 +25,8 @@ export class StepperComponent implements OnInit {
 
   constructor(private store:Store<AppState>) {}
 
-  onCloseStepper(){
-    this.store.dispatch(stepperWindowChange({stepperWindow:false}))
-  }
+  onCloseStepper(){this.store.dispatch(stepperWindowChange({stepperWindow:false}))}
+
   hibaFgv(){
     console.log("Ez a gomb nem jó")
   }
@@ -61,10 +57,11 @@ export class StepperComponent implements OnInit {
   remInit(sReminder: string[]) {
   this.selectedreminders=sReminder;
   this.newEvent.reminder=this.selectedreminders[0];
-}
-placeInit(sPlace: string[]){
-this.selectedPlace=sPlace;
-this.newEvent.place=this.selectedPlace[0];
-}
+  }
+
+  placeInit(sPlace: string[]){
+  this.selectedPlace=sPlace;
+  this.newEvent.place=this.selectedPlace[0];
+  }
 
 }
