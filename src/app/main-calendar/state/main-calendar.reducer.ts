@@ -1,5 +1,5 @@
 import {createReducer, on} from '@ngrx/store';
-import { eventWindowChange, moreEventWindowChange, selectedDateChange, selectedViewNameChange, selectedYearChange } from './main-calendar.actions';
+import { eventWindowChange, moreEventWindowChange, selectedDateChange, selectedViewNameChange, selectedYearChange, stepperWindowChange } from './main-calendar.actions';
 import { initialState } from './main-calendar.state';
 
 
@@ -32,7 +32,13 @@ const _mainCalendarReducer = createReducer(
   on(eventWindowChange,(state,action)=>{
     return {
         ...state,
-        eventWindow:action.EventWindow,
+        eventWindow:action.eventWindow,
+    }
+}),
+  on(stepperWindowChange,(state,action)=>{
+    return {
+        ...state,
+        stepperWindow:action.stepperWindow,
     }
 }),
 

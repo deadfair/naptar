@@ -1,26 +1,24 @@
 <section [ngClass]="fullCalendarViewController.fullcalendarClassContainer">
-
-<section *ngIf="fullCalendarViewController.fullcalendarClassContainer['fullcalendar-day-view-container']">
-  <div class="arrow-btn">
-    <button mat-icon-button
-    class=""
-    (click)="nextDay()">
-    <mat-icon >forward</mat-icon>
-    </button>
-  </div>
-  <div class="arrow-btn arrow-btn-left">
-    <button mat-icon-button
-    class=""
-    (click)="backDay()">
-    <mat-icon >forward</mat-icon>
-    </button>
-  </div>
-</section>
+  <section *ngIf="fullCalendarViewController.fullcalendarClassContainer['fullcalendar-day-view-container']">
+    <div class="arrow-btn">
+      <button mat-icon-button
+      class=""
+      (click)="nextDay()">
+      <mat-icon >forward</mat-icon>
+      </button>
+    </div>
+    <div class="arrow-btn arrow-btn-left">
+      <button mat-icon-button
+      class=""
+      (click)="backDay()">
+      <mat-icon >forward</mat-icon>
+      </button>
+    </div>
+  </section>
 
   <full-calendar
     #calendar
-    [options]="calendarOptions"
-  >
+    [options]="calendarOptions">
   </full-calendar>
 
   <section class="background-cells" *ngIf="!fullCalendarViewController.fullcalendarClassContainer['fullcalendar-month-view-container']">
@@ -37,29 +35,27 @@
     </div>
   </section>
 
-
 </section>
-<span *ngIf="fullCalendarViewController.eventwindow;then eventWindowOpen"></span>
+
+<span *ngIf="(eventWindow$|async);then eventWindowOpen"></span>
 <ng-template #eventWindowOpen>
   <app-event-window
     (stepperActive)="stepperActive=$event"
     [openWindowInfo]="selectEvent"
-    (closeEventWindow)="closeDeleteWindow($event)"
+    (closeEventWindow)="onCloseDeleteWindow($event)"
   ></app-event-window>
 </ng-template>
 
-<span *ngIf="fullCalendarViewController.moreEventWindow;then moreEventWindowOpen"></span>
+<span *ngIf="(moreEventWindow$|async);then moreEventWindowOpen"></span>
 <ng-template #moreEventWindowOpen>
   <app-more-event-window
     (selectedEvent)="eventInfoFromMoreEventWindow($event)"
     [openWindowInfo]="moreEventWindowInfo"
-    (closeBtnClick)="fullCalendarViewController.moreEventWindow=false; fullCalendarViewController.eventwindow=false "
+    (closeBtnClick)="onChangeMoreEventWindow(false);onChangeEventWindow(false);"
     ></app-more-event-window>
 </ng-template>
 
-<ng-container *ngIf="stepperActive; then stepperComponent"></ng-container>
-<ng-template #stepperComponent>
-<app-stepper (closeStepper)="stepperActive=false"></app-stepper >
-</ng-template>
+
+<app-stepper *ngIf="(stepperWindow$|async)"></app-stepper >
 
 

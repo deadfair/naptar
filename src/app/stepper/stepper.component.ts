@@ -1,7 +1,12 @@
+import { stepperWindowChange } from './../main-calendar/state/main-calendar.actions';
 import { Output } from '@angular/core';
 import { Component, OnInit,  EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatListOption } from '@angular/material/list'
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getStepperWindow } from '../main-calendar/state/main-calendar.selector';
+import { AppState } from '../store/app.state';
 
 @Component({
   selector: 'app-stepper',
@@ -9,7 +14,6 @@ import { MatListOption } from '@angular/material/list'
   styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent implements OnInit {
-  @Output() closeStepper:EventEmitter<null>=new EventEmitter();
 
   typeofReminder: string[] = ['Before 5 minute', 'Before 10 minute', 'Before 30 minute', 'Before 1 hour', 'Before 1 day'];
   typeofStartTime:string[] = ['9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 AM', '12:30 AM', '1:00 PM'];
@@ -20,8 +24,12 @@ export class StepperComponent implements OnInit {
   selectedPeople:string[]=[""];
   selectedPlace:string[]=[""];
 
-  close(){
-    this.closeStepper.emit();
+  stepperWindow$!:Observable<boolean>;
+
+  constructor(private store:Store<AppState>) {}
+
+  onCloseStepper(){
+    this.store.dispatch(stepperWindowChange({stepperWindow:false}))
   }
   hibaFgv(){
     console.log("Ez a gomb nem jó")
@@ -35,10 +43,9 @@ export class StepperComponent implements OnInit {
     color:""
   }
   stepperValue:string="reminder";
-  constructor() { }
 
   ngOnInit(): void {
-
+    this.stepperWindow$=this.store.select(getStepperWindow)
   }
   peopleInit(sPeople: string[]){
   this.selectedPeople=sPeople

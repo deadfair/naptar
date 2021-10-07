@@ -7,10 +7,7 @@
 
     <section class="body-left-side">
       <app-mini-month-picker></app-mini-month-picker>
-      <app-view-swapper
-        class="view-swapper"
-      >
-      </app-view-swapper>
+      <app-view-swapper class="view-swapper"></app-view-swapper>
     </section>
 
     <section class="calendar-container"
@@ -21,7 +18,8 @@
       </section>
       <app-fullcalendar
         [ngStyle]="{'display': (selectedViewName$ | async)==='Year' ? 'none' : 'block'}"
-        (eventsOut)="events=$event">
+        (eventsOut)="events=$event"
+        >
       </app-fullcalendar>
     </section>
 <!--

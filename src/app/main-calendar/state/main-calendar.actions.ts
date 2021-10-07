@@ -14,4 +14,7 @@ export const moreEventWindowChange=createAction('moreEventWindowChange',
 props<{moreEventWindow:boolean}>());
 
 export const eventWindowChange=createAction('eventWindowChange',
-props<{EventWindow:boolean}>());
+props<{eventWindow:boolean}>());
+
+export const stepperWindowChange=createAction('stepperWindowChange',
+props<{stepperWindow:boolean}>());
