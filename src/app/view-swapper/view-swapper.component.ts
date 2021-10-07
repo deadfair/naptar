@@ -29,7 +29,6 @@ export class ViewSwapperComponent implements OnInit {
 
   onSelectedYearChange(year:any){
     this.store.dispatch(selectedYearChange({selectedYear: +year.option.value}))
-
   }
 
   modevalueChange(mode:any){

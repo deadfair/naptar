@@ -34,14 +34,6 @@ export class MainCalendarComponent implements OnInit {
     console.log(this.xxx$.subscribe(e=>e.includes(2021)));
   }
 
-
-
-
-  selectedDateInit(date:Date|null){
-    this.selectedDate=date;
-  }
-
-
   SelectedViewInit(view:string){
     this.selectedView=view;
     if (view!=='Year') {

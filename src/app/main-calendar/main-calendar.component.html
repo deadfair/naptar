@@ -17,9 +17,7 @@
     [ngClass]="{'month-view-height': selectedView==='Month'? true:false}"
     >
       <section *ngIf="'Year'=== selectedView">
-        <app-year-view
-          (selectedDate)="selectedDateInit($event)"
-        ></app-year-view>
+        <app-year-view></app-year-view>
       </section>
       <app-fullcalendar
         [ngStyle]="{'display': selectedView==='Year' ? 'none' : 'block'}"
