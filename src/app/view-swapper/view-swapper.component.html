@@ -15,7 +15,7 @@
   [value]="buttonFocused"
   (click)="buttonFocused=!buttonFocused"
   [ngClass]="{'focus-button':buttonFocused}"
->{{defaultSelectedValue}}</button>
+>{{selectedYear$ |async}}</button>
 
 <ng-container *ngIf="buttonFocused; then thenFocused"></ng-container>
 <ng-template #thenFocused>
@@ -25,7 +25,7 @@
     (selectionChange)="onSelectedYearChange($event)">
     <mat-list-option *ngFor="let year of (years$ | async)"
       [value]="year"
-      [selected]="defaultSelectedValue===year ? true : false">
+      [selected]="(selectedYear$|async)===year ? true : false">
       <span class="list-item">{{year}}</span>
     </mat-list-option>
   </mat-selection-list>

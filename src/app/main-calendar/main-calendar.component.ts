@@ -13,8 +13,6 @@ import { getYears } from './state/main-calendar.selector';
 })
 export class MainCalendarComponent implements OnInit {
   events:any[]=[];
-  selectYear:number=0;
-  year:number=0;
   selectedView:string="";
   constructor(private store:Store<AppState>) { }
   selectedDate:Date|null=new Date();
@@ -42,10 +40,7 @@ export class MainCalendarComponent implements OnInit {
   selectedDateInit(date:Date|null){
     this.selectedDate=date;
   }
-  selectedYearInit(year:number){
-    this.selectYear=year;
-    //this.year=year;
-  }
+
 
   SelectedViewInit(view:string){
     this.selectedView=view;

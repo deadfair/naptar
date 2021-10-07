@@ -1,19 +1,29 @@
-<section [ngSwitch]="selectedYear$ | async">
 
-  <section *ngFor="let item of (years$ |async)">
+<ng-container *ngIf="changer; else elsechanger">
 
-    <section class="year-view-container-from-child" *ngSwitchCase="item">
+  <section class="year-view-container-from-child" >
 
-      <app-datepicker-month *ngFor="let month of ['01','02','03','04','05','06','07','08','09','10','11','12']"
-        [startAt]="(selectedYear$ | async)+'-'+month+'-01'"
-        class="year-view-month-element"
-        [clickedDate]="clickedDate"
-        (selectedDate)="selectDate($event)"
-        >
-      </app-datepicker-month>
-
-    </section>
+    <app-datepicker-month *ngFor="let month of ['01','02','03','04','05','06','07','08','09','10','11','12']"
+      class="year-view-month-element"
+      [startAtMonthDay]="'-'+month+'-01'"
+    >
+    </app-datepicker-month>
 
   </section>
 
-</section>
+</ng-container>
+
+
+<ng-template #elsechanger>
+
+  <section class="year-view-container-from-child" >
+
+    <app-datepicker-month *ngFor="let month of ['01','02','03','04','05','06','07','08','09','10','11','12']"
+      class="year-view-month-element"
+      [startAtMonthDay]="'-'+month+'-01'"
+    >
+    </app-datepicker-month>
+
+  </section>
+
+</ng-template>

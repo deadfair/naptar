@@ -36,7 +36,4 @@ export class DatepickerMonthHeaderComponent <D> implements OnDestroy {
         .format(this._calendar.activeDate, this._dateFormats.display.monthYearLabel)
         .toLocaleUpperCase();
   }
-
-
-
 }

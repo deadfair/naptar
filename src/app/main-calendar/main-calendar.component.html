@@ -18,7 +18,6 @@
     >
       <section *ngIf="'Year'=== selectedView">
         <app-year-view
-          [year]="selectYear"
           (selectedDate)="selectedDateInit($event)"
         ></app-year-view>
       </section>

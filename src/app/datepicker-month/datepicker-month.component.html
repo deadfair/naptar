@@ -1,12 +1,12 @@
 
+
 <section >
   <mat-card class="datepicker-month">
     <mat-calendar
-      (selectedChange)="selectChange($event)"
-      [startAt]="startDate"
-      matSuffix
+      (selectedChange)="onSelectedDate($event)"
+      [startAt]="startAtDate$ |async"
       [headerComponent]="datepickerMonthComponent"
-      [(selected)]="clickedDate"
+      [selected]="selectedDate$ | async"
   ></mat-calendar>
   </mat-card>
 </section>

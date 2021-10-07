@@ -1,10 +1,17 @@
 
 export interface MainCalendarState{
-years:number[];
-selectedYear:number;
+  years:number[];
+  selectedYear:number;
+  selectedDate:Date;
 }
 
+const YEARS:number[]=[2020,2021,2022,2023,2024,2025];
+const SELECTED_YEAR:number=YEARS.includes(Number(new Date().getFullYear()))?
+  Number(new Date().getFullYear()):YEARS[Math.floor(YEARS.length/2)];
+
+
 export const initialState:MainCalendarState={
-  years:[2020,2021,2022,2023,2024,2025],
-  selectedYear:Number(new Date().getFullYear())
+  years:YEARS,
+  selectedYear:SELECTED_YEAR,
+  selectedDate:new Date(),
 }
