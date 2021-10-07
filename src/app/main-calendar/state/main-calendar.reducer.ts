@@ -1,5 +1,5 @@
 import {createReducer, on} from '@ngrx/store';
-import { selectedDateChange, selectedYearChange } from './main-calendar.actions';
+import { selectedDateChange, selectedViewNameChange, selectedYearChange } from './main-calendar.actions';
 import { initialState } from './main-calendar.state';
 
 
@@ -15,6 +15,12 @@ const _mainCalendarReducer = createReducer(
     return {
         ...state,
         selectedDate:action.selectedDate,
+    }
+}),
+  on(selectedViewNameChange,(state,action)=>{
+    return {
+        ...state,
+        selectedViewName:action.selectedViewName,
     }
 }),
 

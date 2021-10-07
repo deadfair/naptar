@@ -3,25 +3,24 @@
   <header></header>
 
   <section class="body-main-container"
-  [ngStyle]="{'padding-top':selectedView==='Year'?'59px':'120px'}">
+  [ngStyle]="{'padding-top':(selectedViewName$ | async)==='Year'?'59px':'120px'}">
 
     <section class="body-left-side">
       <app-mini-month-picker></app-mini-month-picker>
       <app-view-swapper
         class="view-swapper"
-        (selectedMode)="SelectedViewInit($event)">
+      >
       </app-view-swapper>
     </section>
 
     <section class="calendar-container"
-    [ngClass]="{'month-view-height': selectedView==='Month'? true:false}"
+    [ngClass]="{'month-view-height': (selectedViewName$ | async)==='Month'? true:false}"
     >
-      <section *ngIf="'Year'=== selectedView">
+      <section *ngIf="'Year'=== (selectedViewName$ | async)">
         <app-year-view></app-year-view>
       </section>
       <app-fullcalendar
-        [ngStyle]="{'display': selectedView==='Year' ? 'none' : 'block'}"
-        [selectedView]='selectedView'
+        [ngStyle]="{'display': (selectedViewName$ | async)==='Year' ? 'none' : 'block'}"
         (eventsOut)="events=$event">
       </app-fullcalendar>
     </section>

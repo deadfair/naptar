@@ -3,9 +3,10 @@
   <section class="mode-swapper">
     <mat-button-toggle-group
     (change)="modevalueChange($event)"
-    aria-label="Font Style">
+    aria-label="Font Style"
+    [value]="selectedViewName$ | async">
     <mat-button-toggle disableRipple value="Year">Év</mat-button-toggle>
-    <mat-button-toggle disableRipple checked value="Month">Hónap</mat-button-toggle>
+    <mat-button-toggle disableRipple value="Month">Hónap</mat-button-toggle>
     <mat-button-toggle disableRipple value="Week">Hét</mat-button-toggle>
     <mat-button-toggle disableRipple value="Day">Nap</mat-button-toggle>
   </mat-button-toggle-group>

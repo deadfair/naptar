@@ -1,6 +1,6 @@
-import { getSelectedYear } from './../main-calendar/state/main-calendar.selector';
-import { Component, OnInit ,Output,EventEmitter,Input} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { selectedViewNameChange } from './../main-calendar/state/main-calendar.actions';
+import { getselectedViewName, getSelectedYear } from './../main-calendar/state/main-calendar.selector';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectedYearChange } from '../main-calendar/state/main-calendar.actions';
@@ -13,25 +13,26 @@ import { AppState } from '../store/app.state';
   styleUrls: ['./view-swapper.component.scss']
 })
 export class ViewSwapperComponent implements OnInit {
-  @Output() selectedMode = new EventEmitter<string>();
 
   years$!: Observable<number[]>;
   selectedYear$!:Observable<number>;
+  selectedViewName$!:Observable<string>;
+
+  buttonFocused=false;
 
   constructor(private store:Store<AppState>) { }
-  buttonFocused=false;
 
   ngOnInit(): void {
     this.selectedYear$=this.store.select(getSelectedYear)
     this.years$ = this.store.select(getYears)
-    this.selectedMode.emit("Month");
+    this.selectedViewName$=this.store.select(getselectedViewName)
   }
 
   onSelectedYearChange(year:any){
     this.store.dispatch(selectedYearChange({selectedYear: +year.option.value}))
   }
 
-  modevalueChange(mode:any){
-    this.selectedMode.emit(mode.value)
+  modevalueChange(event:any){
+    this.store.dispatch(selectedViewNameChange({selectedViewName:event.value}))
   }
 }

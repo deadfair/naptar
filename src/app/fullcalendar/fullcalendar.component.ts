@@ -8,16 +8,19 @@ import { style } from '@angular/animations';
 import { EventServiceService } from '../services/event-service.service';
 import { FullCalendarViewController } from '../interface/fullCalendarViewController';
 import { EventEmitter } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.state';
+import { Observable } from 'rxjs';
+import { getselectedViewName } from '../main-calendar/state/main-calendar.selector';
 @Component({
   selector: 'app-fullcalendar',
   templateUrl: './fullcalendar.component.html',
   styleUrls: ['./fullcalendar.component.scss']
 })
 export class FullcalendarComponent implements OnInit {
-  @Input() selectedView:string="";
   @Output() eventsOut:EventEmitter<any[]>=new EventEmitter();
 
-  constructor(private eventService:EventServiceService) { }
+  constructor(private eventService:EventServiceService,private store:Store<AppState>) { }
   firstInitView:string="dayGridMonth";
 
   stepperActive:boolean=false;
@@ -26,16 +29,26 @@ export class FullcalendarComponent implements OnInit {
   @ViewChild('calendar')
   calendarComponent!: FullCalendarComponent;
   calendarApi!:Calendar;
+  selectedViewName$!:Observable<string>;
 
   selectEvent!:TravelEventInfo;
   moreEventWindowInfo:TravelPlusEventsInfo={jsEvent:null,plusEvents:[]};
   hiddenSegs:any[]=[];
 
   ngOnInit(): void {
-    this.fullCalendarViewController=new FullCalendarViewController(this.selectedView);
+
+    this.selectedViewName$=this.store.select(getselectedViewName)
+    this.selectedViewName$.forEach((value)=>{
+    this.fullCalendarViewController=new FullCalendarViewController(value);
+    if (this.calendarApi!==undefined && value!=="Year") {
+      this.changeView();
+    }
+    })
+
+    //this.fullCalendarViewController=new FullCalendarViewController(this.selectedView);
     this.eventsOut.emit(this.eventService.getAllEvents())
   }
-
+/*
   ngDoCheck(): void {
     if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
     && this.selectedView!=='Year') {
@@ -47,7 +60,7 @@ export class FullcalendarComponent implements OnInit {
     && this.selectedView==='Year'){
       this.fullCalendarViewController.setView(this.selectedView);
     }
-  }
+  }*/
 
   ngAfterViewInit(): void {
     this.calendarApi = this.calendarComponent.getApi();
