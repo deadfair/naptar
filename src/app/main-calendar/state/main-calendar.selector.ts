@@ -12,6 +12,12 @@ export const getSelectedYear=createSelector(getMainCalendarState,state=>{
 export const getSelectedDate=createSelector(getMainCalendarState,state=>{
     return state.selectedDate;
 })
-export const getselectedViewName=createSelector(getMainCalendarState,state=>{
+export const getSelectedViewName=createSelector(getMainCalendarState,state=>{
     return state.selectedViewName;
+})
+export const getEventWindow=createSelector(getMainCalendarState,state=>{
+    return state.eventWindow;
+})
+export const getMoreEventWindow=createSelector(getMainCalendarState,state=>{
+    return state.moreEventWindow;
 })

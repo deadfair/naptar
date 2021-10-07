@@ -4,6 +4,8 @@ export interface MainCalendarState{
   selectedYear:number;
   selectedDate:Date;
   selectedViewName:string;    // Year Month Week Day
+  eventWindow:boolean;
+  moreEventWindow:boolean
 }
 
 const YEARS:number[]=[2020,2021,2022,2023,2024,2025];
@@ -15,7 +17,9 @@ export const initialState:MainCalendarState={
   years:YEARS,
   selectedYear:SELECTED_YEAR,
   selectedDate:new Date(),
-  selectedViewName:"Month"
+  selectedViewName:"Month",
+  eventWindow:false,
+  moreEventWindow:false,
 }
 
 

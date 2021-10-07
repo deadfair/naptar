@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { from, Observable, of } from 'rxjs';
 import { every } from 'rxjs/operators';
 import { AppState } from '../store/app.state';
-import { getselectedViewName, getYears } from './state/main-calendar.selector';
+import { getSelectedViewName, getYears } from './state/main-calendar.selector';
 
 @Component({
   selector: 'app-main-calendar',
@@ -19,7 +19,7 @@ export class MainCalendarComponent implements OnInit {
   selectedViewName$!:Observable<string>;
 
   ngOnInit(): void {
-    this.selectedViewName$=this.store.select(getselectedViewName)
+    this.selectedViewName$=this.store.select(getSelectedViewName)
   }
 /*
   SelectedViewInit(view:string){

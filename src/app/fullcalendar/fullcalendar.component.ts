@@ -11,7 +11,7 @@ import { EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
 import { Observable } from 'rxjs';
-import { getselectedViewName } from '../main-calendar/state/main-calendar.selector';
+import { getSelectedViewName } from '../main-calendar/state/main-calendar.selector';
 @Component({
   selector: 'app-fullcalendar',
   templateUrl: './fullcalendar.component.html',
@@ -36,31 +36,15 @@ export class FullcalendarComponent implements OnInit {
   hiddenSegs:any[]=[];
 
   ngOnInit(): void {
-
-    this.selectedViewName$=this.store.select(getselectedViewName)
+    this.selectedViewName$=this.store.select(getSelectedViewName)
     this.selectedViewName$.forEach((value)=>{
     this.fullCalendarViewController=new FullCalendarViewController(value);
     if (this.calendarApi!==undefined && value!=="Year") {
       this.changeView();
     }
     })
-
-    //this.fullCalendarViewController=new FullCalendarViewController(this.selectedView);
     this.eventsOut.emit(this.eventService.getAllEvents())
   }
-/*
-  ngDoCheck(): void {
-    if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
-    && this.selectedView!=='Year') {
-      this.fullCalendarViewController.setView(this.selectedView);
-      this.changeView();
-      // + ma és tegnap események beállítása
-    }
-    if (this.fullCalendarViewController.previousSelectedView!==this.selectedView
-    && this.selectedView==='Year'){
-      this.fullCalendarViewController.setView(this.selectedView);
-    }
-  }*/
 
   ngAfterViewInit(): void {
     this.calendarApi = this.calendarComponent.getApi();

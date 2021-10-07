@@ -1,5 +1,5 @@
 import { selectedViewNameChange } from './../main-calendar/state/main-calendar.actions';
-import { getselectedViewName, getSelectedYear } from './../main-calendar/state/main-calendar.selector';
+import { getSelectedViewName, getSelectedYear } from './../main-calendar/state/main-calendar.selector';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -25,7 +25,7 @@ export class ViewSwapperComponent implements OnInit {
   ngOnInit(): void {
     this.selectedYear$=this.store.select(getSelectedYear)
     this.years$ = this.store.select(getYears)
-    this.selectedViewName$=this.store.select(getselectedViewName)
+    this.selectedViewName$=this.store.select(getSelectedViewName)
   }
 
   onSelectedYearChange(year:any){
