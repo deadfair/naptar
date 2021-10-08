@@ -40,8 +40,8 @@
 
 <app-delete-event *ngIf="deleteWindow$ | async"
   [eventId]="selectedEvent.id"
-  (deletedEventId)="closeDeletetWindow($event)"
-  [aktEvent]="selectedEvent.calendarEvent">
+  (deletedEventId)="onCloseDeletetWindow($event)"
+  [selectedEvent]="selectedEvent.calendarEvent">
 </app-delete-event >
 
 

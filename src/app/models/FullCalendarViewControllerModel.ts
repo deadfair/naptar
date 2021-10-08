@@ -1,5 +1,4 @@
-
-export class FullCalendarViewController{
+export class FullCalendarViewControllerModel{
 
   static _dataMap:any={
     'Day':{
@@ -41,20 +40,20 @@ export class FullCalendarViewController{
 
   private setFullcalendarClassContainer(view:string):any{
     this._fullcalendarClassContainer={
-      [FullCalendarViewController._dataMap['Day'].class]:   view===FullCalendarViewController._dataMap['Day'].viewName    ? true:false,
-      [FullCalendarViewController._dataMap['Week'].class]:  view===FullCalendarViewController._dataMap['Week'].viewName   ? true:false,
-      [FullCalendarViewController._dataMap['Month'].class]: view===FullCalendarViewController._dataMap['Month'].viewName  ? true:false,
+      [FullCalendarViewControllerModel._dataMap['Day'].class]:   view===FullCalendarViewControllerModel._dataMap['Day'].viewName    ? true:false,
+      [FullCalendarViewControllerModel._dataMap['Week'].class]:  view===FullCalendarViewControllerModel._dataMap['Week'].viewName   ? true:false,
+      [FullCalendarViewControllerModel._dataMap['Month'].class]: view===FullCalendarViewControllerModel._dataMap['Month'].viewName  ? true:false,
     }
   }
 
   private setFullcalendarViewName(view:string){
     let result:string='';
     switch (view) {
-      case FullCalendarViewController._dataMap['Day'].viewName:  result=FullCalendarViewController._dataMap['Day'].fullcalendarViewName;
+      case FullCalendarViewControllerModel._dataMap['Day'].viewName:  result=FullCalendarViewControllerModel._dataMap['Day'].fullcalendarViewName;
         break;
-      case FullCalendarViewController._dataMap['Week'].viewName:  result=FullCalendarViewController._dataMap['Week'].fullcalendarViewName;
+      case FullCalendarViewControllerModel._dataMap['Week'].viewName:  result=FullCalendarViewControllerModel._dataMap['Week'].fullcalendarViewName;
         break;
-      case FullCalendarViewController._dataMap['Month'].viewName:  result=FullCalendarViewController._dataMap['Month'].fullcalendarViewName;
+      case FullCalendarViewControllerModel._dataMap['Month'].viewName:  result=FullCalendarViewControllerModel._dataMap['Month'].fullcalendarViewName;
         break;
       default:
         break;

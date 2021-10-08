@@ -2,23 +2,20 @@ import { eventWindowRenderPointChange } from './../main-calendar/state/main-cale
 import { DirectionModel } from './../models/directionModel';
 import {  initialState } from './../main-calendar/state/main-calendar.state';
 import { getEventWindow, getMoreEventWindow, getStepperWindow } from './../main-calendar/state/main-calendar.selector';
-import { Direction } from './../interface/direction';
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { TravelEventInfo } from './../interface/travelEventInfo';
+import { Component, OnInit, Output } from '@angular/core';
 import { Calendar, CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import { ViewChild } from '@angular/core';
 import { EventServiceService } from '../services/event-service.service';
-import { FullCalendarViewController } from '../interface/fullCalendarViewController';
 import { EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
-import { Observable, pipe } from 'rxjs';
+import { Observable } from 'rxjs';
 import { getSelectedViewName } from '../main-calendar/state/main-calendar.selector';
 import { eventWindowChange, moreEventWindowChange, moreEventWindowRenderPointChange, stepperWindowChange } from '../main-calendar/state/main-calendar.actions';
-import { first, take } from 'rxjs/operators';
 import { RenderPointModel } from '../models/renderPointModel';
 import { MoreEventsModel } from '../models/moreEventsModel';
 import { EventModel } from '../models/eventModel';
+import { FullCalendarViewControllerModel } from '../models/FullCalendarViewControllerModel';
 @Component({
   selector: 'app-fullcalendar',
   templateUrl: './fullcalendar.component.html',
@@ -27,10 +24,7 @@ import { EventModel } from '../models/eventModel';
 export class FullcalendarComponent implements OnInit {
   @Output() eventsOut:EventEmitter<any[]>=new EventEmitter();
 
-
-  constructor(private eventService:EventServiceService,private store:Store<AppState>) {}
-
-  fullCalendarViewController: FullCalendarViewController= new FullCalendarViewController(initialState.selectedViewName);
+  fullCalendarViewControllerModel: FullCalendarViewControllerModel= new FullCalendarViewControllerModel(initialState.selectedViewName);
 
   @ViewChild('calendar')
   calendarComponent!: FullCalendarComponent;
@@ -44,6 +38,8 @@ export class FullcalendarComponent implements OnInit {
   selectEvent!:EventModel;
   moreEventsModel:MoreEventsModel={moreEvents:[]};
 
+  constructor(private eventService:EventServiceService,private store:Store<AppState>) {}
+
   ngOnInit(): void {
     this.eventWindow$=this.store.select(getEventWindow)
     this.moreEventWindow$=this.store.select(getMoreEventWindow)
@@ -51,26 +47,24 @@ export class FullcalendarComponent implements OnInit {
     this.stepperWindow$=this.store.select(getStepperWindow)
 
     this.selectedViewName$.forEach((value)=>{
-    this.fullCalendarViewController=new FullCalendarViewController(value);
+    this.fullCalendarViewControllerModel=new FullCalendarViewControllerModel(value);
     if (this.calendarApi!==undefined && value!=="Year") {
       this.changeView();
     }})
     this.eventsOut.emit(this.eventService.getAllEvents());
   }
 
-  ngAfterViewInit(): void {
-    this.calendarApi = this.calendarComponent.getApi();
-  }
+  ngAfterViewInit(): void {this.calendarApi = this.calendarComponent.getApi()}
 
   numSequence(n: number): Array<number> {return Array(n).fill(1)}
 
   changeView(){
-    if (this.fullCalendarViewController.fullcalendarViewName==='dayGridMonth') {
+    if (this.fullCalendarViewControllerModel.fullcalendarViewName==='dayGridMonth') {
       this.calendarApi.setOption('contentHeight', 807);
     } else {
       this.calendarApi.setOption('contentHeight', 1302);
     }
-    this.calendarApi.changeView(this.fullCalendarViewController.fullcalendarViewName);
+    this.calendarApi.changeView(this.fullCalendarViewControllerModel.fullcalendarViewName);
     // mert nem akart így => calendarApi.updateSize(); működni
     setTimeout(()=>this.calendarApi.updateSize(), 0);
   }
@@ -90,7 +84,6 @@ export class FullcalendarComponent implements OnInit {
     this.store.dispatch(eventWindowChange({eventWindow:value}))
   }
 
-
   onCloseDeleteWindow(id:string|null){
     this.onChangeEventWindow(false)
     let newhiddenEvents:any[]=[];
@@ -104,12 +97,14 @@ export class FullcalendarComponent implements OnInit {
       }
     }
     this.moreEventsModel.moreEvents=newhiddenEvents;
+    if (this.moreEventsModel.moreEvents.length<=1) {
+      this.onChangeMoreEventWindow(false);
+    }
   }
 
   eventInfoFromMoreEventWindow(selectedEventFromMoreEventWindow:EventModel){
     this.selectEvent=selectedEventFromMoreEventWindow;
   }
-
 
   calendarOptions: CalendarOptions = {
     headerToolbar:{
@@ -152,7 +147,7 @@ export class FullcalendarComponent implements OnInit {
       day: {// options apply to dayGridDay and timeGridDay views
       }
     },
-    initialView: this.fullCalendarViewController.fullcalendarViewName,
+    initialView: this.fullCalendarViewControllerModel.fullcalendarViewName,
     editable: true,
     moreLinkClick:(info)=>{
       this.moreEventsModel={moreEvents:info.hiddenSegs}
@@ -163,7 +158,6 @@ export class FullcalendarComponent implements OnInit {
     eventClick: (info) =>{
       this.selectEvent= new EventModel(DirectionModel.Up,info);
       this.store.dispatch(eventWindowRenderPointChange({eventWindowRenderPoint:new RenderPointModel(info.jsEvent)}))
-      console.log(this.selectEvent)
       this.onChangeEventWindow(true);
       this.onChangeMoreEventWindow(false);
     },
@@ -171,7 +165,7 @@ export class FullcalendarComponent implements OnInit {
     firstDay:1,           // Monday as first day of week
     weekends: true,       // a hétvégét nem mutatja
     dayMaxEvents:true,
-    contentHeight: this.fullCalendarViewController.fullcalendarViewName!=="dayGridMonth"?1302:807,  // ez CSAK a táblázat magassága
+    contentHeight: this.fullCalendarViewControllerModel.fullcalendarViewName!=="dayGridMonth"?1302:807,  // ez CSAK a táblázat magassága
     aspectRatio: 1,         // a magasság/szélesség arány contentHeight/contentWidth
     events: this.eventService.getAllEvents()
   };
