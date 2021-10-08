@@ -1,3 +1,5 @@
+import { eventWindowRenderPointChange } from './../main-calendar/state/main-calendar.actions';
+import { DirectionModel } from './../models/directionModel';
 import {  initialState } from './../main-calendar/state/main-calendar.state';
 import { getEventWindow, getMoreEventWindow, getStepperWindow } from './../main-calendar/state/main-calendar.selector';
 import { Direction } from './../interface/direction';
@@ -16,6 +18,7 @@ import { eventWindowChange, moreEventWindowChange, moreEventWindowRenderPointCha
 import { first, take } from 'rxjs/operators';
 import { RenderPointModel } from '../models/renderPointModel';
 import { MoreEventsModel } from '../models/moreEventsModel';
+import { EventModel } from '../models/eventModel';
 @Component({
   selector: 'app-fullcalendar',
   templateUrl: './fullcalendar.component.html',
@@ -38,7 +41,7 @@ export class FullcalendarComponent implements OnInit {
   moreEventWindow$!:Observable<boolean>;
   stepperWindow$!:Observable<boolean>;
 
-  selectEvent!:TravelEventInfo;
+  selectEvent!:EventModel;
   moreEventsModel:MoreEventsModel={moreEvents:[]};
 
   ngOnInit(): void {
@@ -103,7 +106,7 @@ export class FullcalendarComponent implements OnInit {
     this.moreEventsModel.moreEvents=newhiddenEvents;
   }
 
-  eventInfoFromMoreEventWindow(selectedEventFromMoreEventWindow:TravelEventInfo){
+  eventInfoFromMoreEventWindow(selectedEventFromMoreEventWindow:EventModel){
     this.selectEvent=selectedEventFromMoreEventWindow;
   }
 
@@ -158,7 +161,9 @@ export class FullcalendarComponent implements OnInit {
       this.onChangeMoreEventWindow(true);
     },
     eventClick: (info) =>{
-      this.selectEvent= new TravelEventInfo(Direction.Up,info);
+      this.selectEvent= new EventModel(DirectionModel.Up,info);
+      this.store.dispatch(eventWindowRenderPointChange({eventWindowRenderPoint:new RenderPointModel(info.jsEvent)}))
+      console.log(this.selectEvent)
       this.onChangeEventWindow(true);
       this.onChangeMoreEventWindow(false);
     },

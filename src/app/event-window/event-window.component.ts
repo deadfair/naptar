@@ -6,7 +6,9 @@ import { Component, Input, OnInit,Output ,EventEmitter} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
 import { Observable } from 'rxjs';
-import { getDeleteWindow, getStepperWindow } from '../main-calendar/state/main-calendar.selector';
+import { getDeleteWindow, getEventWindowRenderPoint, getStepperWindow } from '../main-calendar/state/main-calendar.selector';
+import { EventModel } from '../models/eventModel';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event-window',
@@ -17,8 +19,10 @@ export class EventWindowComponent implements OnInit {
 
   constructor(private store:Store<AppState>) {}
   //Inputs
-  @Input() openWindowInfo!:TravelEventInfo;
+  @Input() selectedEvent!:EventModel;
   renderPoint:RenderPoint=new RenderPoint();
+  renderPoint_X$!:Observable<number>;
+  renderPoint_Y$!:Observable<number>;
   event: any;
   openPosition={
     'event-window-open-up':false,
@@ -44,11 +48,13 @@ export class EventWindowComponent implements OnInit {
 
   ngOnInit(): void {
     this.deleteWindow$=this.store.select(getDeleteWindow)
+    this.renderPoint_X$=this.store.select(getEventWindowRenderPoint).pipe(map(point=>point.x))
+    this.renderPoint_Y$=this.store.select(getEventWindowRenderPoint).pipe(map(point=>point.y))
   }
 
   ngDoCheck(): void {
-    this.event=this.openWindowInfo.calendarEvent;
-    this.renderPoint=new RenderPoint(this.openWindowInfo.jsEvent)
+    this.event=this.selectedEvent.calendarEvent;
+    //this.renderPoint=new RenderPoint(this.openWindowInfo.jsEvent)
     this.eventWindowPositionChange();
   }
   closeDeletetWindow(id:null|string){
@@ -56,21 +62,21 @@ export class EventWindowComponent implements OnInit {
     this.closeEventWindow.emit(id);
   }
   eventWindowPositionChange(){
-    if (this.openWindowInfo.openPosition===Direction.Up) {
+    if (this.selectedEvent.openPosition===Direction.Up) {
       this.openPosition={
         'event-window-open-up':true,
         'event-window-open-right':false,
         'event-window-open-left':false,
       }
     }
-    if (this.openWindowInfo.openPosition===Direction.Right) {
+    if (this.selectedEvent.openPosition===Direction.Right) {
       this.openPosition={
         'event-window-open-up':false,
         'event-window-open-right':true,
         'event-window-open-left':false,
       }
     }
-    if (this.openWindowInfo.openPosition===Direction.Left) {
+    if (this.selectedEvent.openPosition===Direction.Left) {
       this.openPosition={
         'event-window-open-up':false,
         'event-window-open-right':false,

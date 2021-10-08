@@ -39,7 +39,7 @@
 
 
 <app-event-window *ngIf="(eventWindow$|async)"
-  [openWindowInfo]="selectEvent"
+  [selectedEvent]="selectEvent"
   (closeEventWindow)="onCloseDeleteWindow($event)"
 ></app-event-window>
 

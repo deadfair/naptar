@@ -1,8 +1,8 @@
 <mat-card class="infowindow"
-  [ngStyle]="{'top':renderPoint.y+'px' ,'left':renderPoint.x+'px'  }"
+  [ngStyle]="{'top':(renderPoint_Y$|async)+'px' ,'left':(renderPoint_X$|async)+'px'  }"
   [ngClass]="openPosition">
   <mat-card-title>
-    <h1>{{event.title}}</h1>
+    <h1>{{selectedEvent.calendarEvent.title}}</h1>
       <button mat-icon-button
         class="delete"
         (click)="onDeleteWindowOpen()">
@@ -17,20 +17,20 @@
   <mat-card-content>
         <section class="time-container">
           <span class="time">
-            {{event.start | date:'HH:mm'}} -
-            {{event.end === null ? (event.start | date:'HH:mm') : event.end | date:'HH:mm'}}
+            {{selectedEvent.calendarEvent.start | date:'HH:mm'}} -
+            {{selectedEvent.calendarEvent.end === null ? (selectedEvent.calendarEvent.start | date:'HH:mm') : selectedEvent.calendarEvent.end | date:'HH:mm'}}
           </span>
           <span>
-            {{event.start | date:'y.MM.dd'}}
+            {{selectedEvent.calendarEvent.start | date:'y.MM.dd'}}
           </span>
         </section>
         <section class="text-container">
-          <div class="rectangle" [ngStyle]="{'background':event.backgroundColor}"></div>
-          <section class="text">{{event.extendedProps.eventText}}</section>
+          <div class="rectangle" [ngStyle]="{'background':selectedEvent.calendarEvent.backgroundColor}"></div>
+          <section class="text">{{selectedEvent.calendarEvent.extendedProps.eventText}}</section>
         </section>
         <section class="pictures">
           <section
-            *ngFor="let people of event.extendedProps.peoples">
+            *ngFor="let people of selectedEvent.calendarEvent.extendedProps.peoples">
             <img src="{{people.peopleUrl}}" alt="pplimage">
           </section>
         </section>
@@ -39,9 +39,9 @@
 
 
 <app-delete-event *ngIf="deleteWindow$ | async"
-  [eventId]="openWindowInfo.id"
+  [eventId]="selectedEvent.id"
   (deletedEventId)="closeDeletetWindow($event)"
-  [aktEvent]="openWindowInfo.calendarEvent">
+  [aktEvent]="selectedEvent.calendarEvent">
 </app-delete-event >
 
 
