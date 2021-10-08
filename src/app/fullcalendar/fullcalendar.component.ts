@@ -4,7 +4,6 @@ import { Direction } from './../interface/direction';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { TravelEventInfo } from './../interface/travelEventInfo';
 import { Calendar, CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
-import { TravelPlusEventsInfo } from '../interface/travelPlusEventsInfo';
 import { ViewChild } from '@angular/core';
 import { EventServiceService } from '../services/event-service.service';
 import { FullCalendarViewController } from '../interface/fullCalendarViewController';
@@ -13,8 +12,10 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
 import { Observable, pipe } from 'rxjs';
 import { getSelectedViewName } from '../main-calendar/state/main-calendar.selector';
-import { eventWindowChange, moreEventWindowChange, stepperWindowChange } from '../main-calendar/state/main-calendar.actions';
+import { eventWindowChange, moreEventWindowChange, moreEventWindowRenderPointChange, stepperWindowChange } from '../main-calendar/state/main-calendar.actions';
 import { first, take } from 'rxjs/operators';
+import { RenderPointModel } from '../models/renderPointModel';
+import { MoreEventsModel } from '../models/moreEventsModel';
 @Component({
   selector: 'app-fullcalendar',
   templateUrl: './fullcalendar.component.html',
@@ -26,7 +27,6 @@ export class FullcalendarComponent implements OnInit {
 
   constructor(private eventService:EventServiceService,private store:Store<AppState>) {}
 
-  stepperActive:boolean=false;
   fullCalendarViewController: FullCalendarViewController= new FullCalendarViewController(initialState.selectedViewName);
 
   @ViewChild('calendar')
@@ -39,8 +39,7 @@ export class FullcalendarComponent implements OnInit {
   stepperWindow$!:Observable<boolean>;
 
   selectEvent!:TravelEventInfo;
-  moreEventWindowInfo:TravelPlusEventsInfo={jsEvent:null,plusEvents:[]};
-  hiddenSegs:any[]=[];
+  moreEventsModel:MoreEventsModel={moreEvents:[]};
 
   ngOnInit(): void {
     this.eventWindow$=this.store.select(getEventWindow)
@@ -93,20 +92,19 @@ export class FullcalendarComponent implements OnInit {
     this.onChangeEventWindow(false)
     let newhiddenEvents:any[]=[];
     if (id!==null) {
-      for (let index = 0,j=0; index < this.moreEventWindowInfo.plusEvents.length ; index++,j++) {
-        if (this.moreEventWindowInfo.plusEvents[index].event._def.publicId!==id) {
-          newhiddenEvents[j]=this.moreEventWindowInfo.plusEvents[index];
+      for (let index = 0,j=0; index < this.moreEventsModel.moreEvents.length ; index++,j++) {
+        if (this.moreEventsModel.moreEvents[index].event._def.publicId!==id) {
+          newhiddenEvents[j]=this.moreEventsModel.moreEvents[index];
         }else{
           j--;
         }
       }
     }
-    this.moreEventWindowInfo.plusEvents=newhiddenEvents;
+    this.moreEventsModel.moreEvents=newhiddenEvents;
   }
 
   eventInfoFromMoreEventWindow(selectedEventFromMoreEventWindow:TravelEventInfo){
     this.selectEvent=selectedEventFromMoreEventWindow;
-    this.onChangeEventWindow(true);
   }
 
 
@@ -128,7 +126,6 @@ export class FullcalendarComponent implements OnInit {
                 aria-hidden="true" data-mat-icon-type="font">add_circle</mat-icon>`
           node.setAttribute('value',info.date.toString())
           node.onclick=()=> {
-            this.stepperActive=true;
             this.store.dispatch(stepperWindowChange({stepperWindow:true}))
           }
           info.el.children[0].children[0].appendChild(node)
@@ -155,12 +152,10 @@ export class FullcalendarComponent implements OnInit {
     initialView: this.fullCalendarViewController.fullcalendarViewName,
     editable: true,
     moreLinkClick:(info)=>{
+      this.moreEventsModel={moreEvents:info.hiddenSegs}
+      this.store.dispatch(moreEventWindowRenderPointChange({moreEventWindowRenderPoint:new RenderPointModel(info.jsEvent)}))
       this.onChangeEventWindow(false);
       this.onChangeMoreEventWindow(true);
-      this.moreEventWindowInfo={
-          jsEvent:info.jsEvent,
-          plusEvents:info.hiddenSegs
-      }
     },
     eventClick: (info) =>{
       this.selectEvent= new TravelEventInfo(Direction.Up,info);
@@ -177,3 +172,4 @@ export class FullcalendarComponent implements OnInit {
   };
 
 }
+

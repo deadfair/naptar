@@ -24,3 +24,16 @@ export const getMoreEventWindow=createSelector(getMainCalendarState,state=>{
 export const getStepperWindow=createSelector(getMainCalendarState,state=>{
     return state.stepperWindow;
 })
+export const getDeleteWindow=createSelector(getMainCalendarState,state=>{
+    return state.deleteWindow;
+})
+export const getMoreEventWindowRenderPoint=createSelector(getMainCalendarState,state=>{
+    return state.moreEventWindowRenderPoint;
+})
+export const getEventWindowRenderPoint=createSelector(getMainCalendarState,state=>{
+    return state.eventWindowRenderPoint;
+})
+
+
+
+

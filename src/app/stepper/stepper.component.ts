@@ -21,8 +21,6 @@ export class StepperComponent implements OnInit {
   selectedPeople:string[]=[""];
   selectedPlace:string[]=[""];
 
-  stepperWindow$!:Observable<boolean>;
-
   constructor(private store:Store<AppState>) {}
 
   onCloseStepper(){this.store.dispatch(stepperWindowChange({stepperWindow:false}))}
@@ -40,9 +38,7 @@ export class StepperComponent implements OnInit {
   }
   stepperValue:string="reminder";
 
-  ngOnInit(): void {
-    this.stepperWindow$=this.store.select(getStepperWindow)
-  }
+  ngOnInit(): void {}
   peopleInit(sPeople: string[]){
   this.selectedPeople=sPeople
   this.newEvent.people=this.selectedPeople[0];

@@ -37,23 +37,18 @@
 
 </section>
 
-<span *ngIf="(eventWindow$|async);then eventWindowOpen"></span>
-<ng-template #eventWindowOpen>
-  <app-event-window
-    (stepperActive)="stepperActive=$event"
-    [openWindowInfo]="selectEvent"
-    (closeEventWindow)="onCloseDeleteWindow($event)"
-  ></app-event-window>
-</ng-template>
 
-<span *ngIf="(moreEventWindow$|async);then moreEventWindowOpen"></span>
-<ng-template #moreEventWindowOpen>
-  <app-more-event-window
-    (selectedEvent)="eventInfoFromMoreEventWindow($event)"
-    [openWindowInfo]="moreEventWindowInfo"
-    (closeBtnClick)="onChangeMoreEventWindow(false);onChangeEventWindow(false);"
-    ></app-more-event-window>
-</ng-template>
+<app-event-window *ngIf="(eventWindow$|async)"
+  [openWindowInfo]="selectEvent"
+  (closeEventWindow)="onCloseDeleteWindow($event)"
+></app-event-window>
+
+
+<app-more-event-window *ngIf="(moreEventWindow$|async)"
+  (selectedEvent)="eventInfoFromMoreEventWindow($event)"
+  [moreEventsModel]="moreEventsModel"
+></app-more-event-window>
+
 
 
 <app-stepper *ngIf="(stepperWindow$|async)"></app-stepper >

@@ -5,12 +5,12 @@
     <h1>{{event.title}}</h1>
       <button mat-icon-button
         class="delete"
-        (click)="deleteActive=true">
+        (click)="onDeleteWindowOpen()">
         <mat-icon >delete</mat-icon>
       </button>
       <button mat-icon-button
         class="edit"
-        (click)="stepperActiveToTrue()">
+        (click)="onStepperOpen()">
         <mat-icon >edit</mat-icon>
       </button>
   </mat-card-title>
@@ -37,12 +37,12 @@
   </mat-card-content>
 </mat-card>
 
-<ng-container *ngIf="deleteActive; then deleteComponent"></ng-container>
-<ng-template #deleteComponent>
-<app-delete-event
+
+<app-delete-event *ngIf="deleteWindow$ | async"
   [eventId]="openWindowInfo.id"
-  (closeDeletetWindow)="closeDeletetWindow($event)"
-  [aktEvent]="openWindowInfo.calendarEvent"></app-delete-event >
-</ng-template>
+  (deletedEventId)="closeDeletetWindow($event)"
+  [aktEvent]="openWindowInfo.calendarEvent">
+</app-delete-event >
+
 
 

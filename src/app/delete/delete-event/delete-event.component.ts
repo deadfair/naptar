@@ -1,5 +1,9 @@
 import { EventServiceService } from './../../services/event-service.service';
 import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { deleteWindowChange } from 'src/app/main-calendar/state/main-calendar.actions';
 
 @Component({
   selector: 'app-delete-event',
@@ -8,19 +12,20 @@ import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 })
 export class DeleteEventComponent implements OnInit {
   @Input() eventId:string="0";
-  @Output() closeDeletetWindow:EventEmitter<null|string> = new EventEmitter();
+  @Output() deletedEventId:EventEmitter<string> = new EventEmitter();
   @Input()  aktEvent:any;  // target event
 
-  constructor(private eventServices:EventServiceService) { }
+  constructor(private eventServices:EventServiceService,private store:Store<AppState>) { }
 
   ngOnInit(): void {
   }
-  delete(id:string){
-    this.closeDeletetWindow.emit(id);
+  deleteEventById(id:string){
+    this.deletedEventId.emit(id);
     this.aktEvent.remove();
     this.eventServices.deleteEventById(id);
   }
-  close(){
-    this.closeDeletetWindow.emit();
+  onClose(){
+    this.store.dispatch(deleteWindowChange({deleteWindow:false}));
+   // this.closeDeletetWindow.emit();
   }
 }

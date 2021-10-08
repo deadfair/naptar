@@ -1,12 +1,20 @@
+import { RenderPointModel } from './../../models/renderPointModel';
 
 export interface MainCalendarState{
   years:number[];
   selectedYear:number;
   selectedDate:Date;
   selectedViewName:string;    // ["Year", "Month", "Week", "Day"]
-  eventWindow:boolean;
-  moreEventWindow:boolean;
+
+
   stepperWindow:boolean;
+  deleteWindow:boolean;
+
+  eventWindow:boolean;
+  eventWindowRenderPoint:RenderPointModel;
+
+  moreEventWindow:boolean;
+  moreEventWindowRenderPoint:RenderPointModel;
 }
 
 
@@ -20,29 +28,15 @@ export const initialState:MainCalendarState={
   selectedYear:SELECTED_YEAR,
   selectedDate:new Date(),
   selectedViewName:"Month",
-  eventWindow:false,
-  moreEventWindow:false,
   stepperWindow:false,
+  deleteWindow:false,
+
+  eventWindow:false,
+  eventWindowRenderPoint:new RenderPointModel(),
+
+  moreEventWindow:false,
+  moreEventWindowRenderPoint:new RenderPointModel(),
 }
 
 
 
-
-
-/*export class calendarView{
-  viewName:string;
-  fullcalendarViewName:string;
-  viewClassName:string;
-  constructor(){
-    this.viewName="Month";
-    this.viewClassName="fullcalendar-"+this.viewName.toLowerCase()+"-view-containe";
-    this.fullcalendarViewName=fullcalendarViewName[this.viewName];
-  }
-}
-
-export enum fullcalendarViewName{
-  Month="dayGridMonth",
-  Week="timeGridWeek",
-  Day="timeGridDay",
-  Year="monthGridYear"
-}  */

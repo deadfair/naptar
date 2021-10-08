@@ -1,8 +1,15 @@
+import { eventWindowRenderPointChange } from './../main-calendar/state/main-calendar.actions';
+import { getMoreEventWindowRenderPoint } from './../main-calendar/state/main-calendar.selector';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Direction } from './../interface/direction';
-import { TravelPlusEventsInfo } from './../interface/travelPlusEventsInfo';
 import { TravelEventInfo } from './../interface/travelEventInfo';
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { RenderPoint } from '../interface/point';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MoreEventsModel } from '../models/moreEventsModel';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.state';
+import { eventWindowChange, moreEventWindowChange } from '../main-calendar/state/main-calendar.actions';
+import { RenderPointModel } from '../models/renderPointModel';
 
 @Component({
   selector: 'app-more-event-window',
@@ -10,35 +17,29 @@ import { RenderPoint } from '../interface/point';
   styleUrls: ['./more-event-window.component.scss']
 })
 export class MoreEventWindowComponent implements OnInit {
+  @Input() moreEventsModel:MoreEventsModel={moreEvents:[]};
+  @Output() selectedEvent = new EventEmitter<TravelEventInfo>()
+  renderPoint_X$!:Observable<number>;
+  renderPoint_Y$!:Observable<number>;
+  constructor(private store:Store<AppState>) { }
 
-  constructor() { }
-  //Inputs
-  @Input() openWindowInfo:TravelPlusEventsInfo={jsEvent:null,plusEvents:[]};
-  renderPoint:RenderPoint=new RenderPoint();
-  //Outputs
-  @Output() closeBtnClick = new EventEmitter()  // bezáráshoz
-  @Output() selectedEvent = new EventEmitter<TravelEventInfo>()  // fel
-
-  // új abblakhoz
-  eventWindow:boolean=false;
-
-
-  ngOnInit(): void {}
-
-  ngDoCheck(): void {
-    this.renderPoint=new RenderPoint(this.openWindowInfo.jsEvent)
+  ngOnInit(): void {
+    this.renderPoint_X$=this.store.select(getMoreEventWindowRenderPoint).pipe(map(point=>point.x))
+    this.renderPoint_Y$=this.store.select(getMoreEventWindowRenderPoint).pipe(map(point=>point.y))
   }
 
-  close(){
-    this.closeBtnClick.emit();
+  onClose(){
+    this.store.dispatch(moreEventWindowChange({moreEventWindow:false}))
+    this.store.dispatch(eventWindowChange({eventWindow:false}))
   }
 
   openEventWindow(calendarEvent:any,jsEvent:any){
-    console.log(calendarEvent.start.getDay())
-  if (calendarEvent.start.getDay() === 6 || calendarEvent.start.getDay() === 0) {
-    this.selectedEvent.emit(new TravelEventInfo(Direction.Left,calendarEvent,jsEvent))
-  } else {
-    this.selectedEvent.emit(new TravelEventInfo(Direction.Right,calendarEvent,jsEvent))
-  }
+    this.store.dispatch(eventWindowChange({eventWindow:true}))
+    this.store.dispatch(eventWindowRenderPointChange({eventWindowRenderPoint:new RenderPointModel(jsEvent)}))
+    if (calendarEvent.start.getDay() === 6 || calendarEvent.start.getDay() === 0) {
+      this.selectedEvent.emit(new TravelEventInfo(Direction.Left,calendarEvent,jsEvent))
+    } else {
+      this.selectedEvent.emit(new TravelEventInfo(Direction.Right,calendarEvent,jsEvent))
+    }
   }
 }

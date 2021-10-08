@@ -1,10 +1,10 @@
 <mat-card class="onlyevents"
-  [ngStyle]="{'top':renderPoint.y+'px' ,'left':renderPoint.x+'px'}">
-    <button mat-icon-button class="close" (click)=close()>
+  [ngStyle]="{'top':(renderPoint_Y$|async)+'px' ,'left':(renderPoint_X$|async)+'px'}">
+    <button mat-icon-button class="close" (click)=onClose()>
       <mat-icon >close</mat-icon>
     </button>
   <mat-card-content>
-    <section class="event-box" *ngFor="let item of openWindowInfo.plusEvents"
+    <section class="event-box" *ngFor="let item of moreEventsModel.moreEvents"
       (click)="openEventWindow(item,$event)"
       [ngStyle]="{'background':item.event.backgroundColor ,
                   'border-color':item.event.borderColor,
