@@ -7,20 +7,15 @@
     </h1>
   </section>
 
-
-  <app-get-events-by-day *ngIf="isYesterday"
-    [selectedDate]='yesterday'
+  <app-get-events-by-day *ngIf="isYesterday$ | async"
+    [date]='yesterday'
     [events]="events"
     [dayName]="'yesterday'">
   </app-get-events-by-day>
 
-
-
   <app-get-events-by-day
-    [selectedDate]='selectedDate'
+    [date]='selectedDate$ | async'
     [events]="events"
     [dayName]="'today'">
   </app-get-events-by-day>
-
-
 </section>

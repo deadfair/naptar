@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { addDays, asCleanDays, Calendar, CalendarOptions, DayCellContent, FullCalendarComponent } from '@fullcalendar/angular';
 import { Store } from '@ngrx/store';
-import { from, Observable, of } from 'rxjs';
-import { every } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { AppState } from '../store/app.state';
-import { getSelectedViewName, getYears } from './state/main-calendar.selector';
+import { getSelectedViewName } from './state/main-calendar.selector';
 
 @Component({
   selector: 'app-main-calendar',
@@ -12,20 +10,12 @@ import { getSelectedViewName, getYears } from './state/main-calendar.selector';
   styleUrls: ['./main-calendar.component.scss']
 })
 export class MainCalendarComponent implements OnInit {
-  events:any[]=[];
-  selectedView:string="";
-  constructor(private store:Store<AppState>) { }
-  selectedDate:Date|null=new Date();
+  events!:any[];
   selectedViewName$!:Observable<string>;
+  constructor(private store:Store<AppState>) { }
 
   ngOnInit(): void {
     this.selectedViewName$=this.store.select(getSelectedViewName)
   }
-/*
-  SelectedViewInit(view:string){
-    this.selectedView=view;
-    if (view!=='Year') {
-      this.selectedDate=new Date();
-    }
-  }*/
+  setEvents(events:any[]){this.events=events}
 }

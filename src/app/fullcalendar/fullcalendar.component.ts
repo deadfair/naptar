@@ -1,6 +1,6 @@
 import { eventWindowRenderPointChange } from './../main-calendar/state/main-calendar.actions';
 import { DirectionModel } from './../models/directionModel';
-import {  initialState } from './../main-calendar/state/main-calendar.state';
+import { initialState } from './../main-calendar/state/main-calendar.state';
 import { getEventWindow, getMoreEventWindow, getStepperWindow } from './../main-calendar/state/main-calendar.selector';
 import { Component, OnInit, Output } from '@angular/core';
 import { Calendar, CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
@@ -51,7 +51,10 @@ export class FullcalendarComponent implements OnInit {
     if (this.calendarApi!==undefined && value!=="Year") {
       this.changeView();
     }})
-    this.eventsOut.emit(this.eventService.getAllEvents());
+
+    let allEvents=this.eventService.getAllEvents()
+    this.eventsOut.emit(allEvents);
+    this.calendarOptions.events=allEvents;
   }
 
   ngAfterViewInit(): void {this.calendarApi = this.calendarComponent.getApi()}
@@ -167,7 +170,6 @@ export class FullcalendarComponent implements OnInit {
     dayMaxEvents:true,
     contentHeight: this.fullCalendarViewControllerModel.fullcalendarViewName!=="dayGridMonth"?1302:807,  // ez CSAK a táblázat magassága
     aspectRatio: 1,         // a magasság/szélesség arány contentHeight/contentWidth
-    events: this.eventService.getAllEvents()
   };
 
 }

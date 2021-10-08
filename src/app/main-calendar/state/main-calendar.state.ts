@@ -6,7 +6,6 @@ export interface MainCalendarState{
   selectedDate:Date;
   selectedViewName:string;    // ["Year", "Month", "Week", "Day"]
 
-
   stepperWindow:boolean;
   deleteWindow:boolean;
 
@@ -28,6 +27,7 @@ export const initialState:MainCalendarState={
   selectedYear:SELECTED_YEAR,
   selectedDate:new Date(),
   selectedViewName:"Month",
+
   stepperWindow:false,
   deleteWindow:false,
 

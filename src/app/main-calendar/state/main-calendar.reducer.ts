@@ -2,7 +2,6 @@ import {createReducer, on} from '@ngrx/store';
 import { deleteWindowChange, eventWindowChange, moreEventWindowChange,eventWindowRenderPointChange, moreEventWindowRenderPointChange, selectedDateChange, selectedViewNameChange, selectedYearChange, stepperWindowChange } from './main-calendar.actions';
 import { initialState } from './main-calendar.state';
 
-
 const _mainCalendarReducer = createReducer(
   initialState,
   on(selectedYearChange,(state,action)=>{
@@ -50,9 +49,6 @@ const _mainCalendarReducer = createReducer(
         ...state,
         eventWindowRenderPoint:action.eventWindowRenderPoint,
     }}),
-
-
-
 )
 export function mainCalendarReducer(state:any,action:any){
     return _mainCalendarReducer(state,action);

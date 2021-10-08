@@ -11,27 +11,21 @@
     </section>
 
     <section class="calendar-container"
-    [ngClass]="{'month-view-height': (selectedViewName$ | async)==='Month'? true:false}"
-    >
+    [ngClass]="{'month-view-height': (selectedViewName$ | async)==='Month'? true:false}">
       <section *ngIf="'Year'=== (selectedViewName$ | async)">
         <app-year-view></app-year-view>
       </section>
       <app-fullcalendar
         [ngStyle]="{'display': (selectedViewName$ | async)==='Year' ? 'none' : 'block'}"
-        (eventsOut)="events=$event"
+        (eventsOut)="setEvents($event)"
         >
       </app-fullcalendar>
     </section>
-<!--
-  <app-events-view [selectedDate]="selectedDate" class="events-view"></app-events-view>
--->
 
     <app-events-view-section
-      [selectedDate]="selectedDate"
       class="events-view"
       [events]=events>
     </app-events-view-section>
-
 
   </section>
 </section>

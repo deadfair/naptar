@@ -3,7 +3,7 @@
     {{dayName | uppercase}}
   </span>
   <span>
-    {{currentDate | date:'M/dd/yyyy'}}
+    {{date | date:'M/dd/yyyy'}}
   </span>
   <span>
     55°
@@ -12,7 +12,6 @@
     /40°
   </span>
 </section>
-
 
 <section *ngIf="selectEvents.length===0;then noEvents else haveEvents"></section>
 
@@ -24,7 +23,6 @@
     <img src="../../assets/nincsSemmi.png" alt="nincsSemmikép">
   </section>
 </ng-template>
-
 
 <ng-template #haveEvents>
   <section class="events" *ngFor="let event of selectEvents">
