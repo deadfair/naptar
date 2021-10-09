@@ -2,95 +2,76 @@
 
 
 ::ng-deep{
-
   .ignore-bcg{
     @include c.ZIndex(100);
-
-    position: absolute;
-    left: -0.1%;
-    right: 0%;
-    top: 85px;
-    bottom: 0%;
+    @include c.positionTopRightBotLeft(absolute,85px,0,0,-0.1%);
     background: linear-gradient(0deg, #1E2025, #1E2025);
     opacity: 0.4;
+    height: calc(100% + 85px);
   }
   .delete-event.mat-card{
     @include c.ZIndex(100);
-    @include c.autoLayout;
-    padding: 0px;
-    position: absolute;
+    @include c.displayFlexCenter;
+    @include c.positionTopRightBotLeft(fixed,calc(50% - 111px/2),calc(50% - 300px/2));
+    padding: 0;
     width: 300px ;
     height: 111px ;
-    left: calc(50% - 300px/2);
-    top: calc(85px + 341px);
     background: c.$Fehér;
     border-radius: 10px;
     .mat-card-title{
-      position: static;
-      left: 6.25%;
-      right: 6.25%;
-      top: 19.61%;
-      bottom: 33.33%;
-      @include c.fonts2;
+      @include c.alataNormal_fs_ls_lh_fw;
+      @include c.orderMarginTopMrightMbotMleft(0,16.5px,0,16.5px,0);
+      @include c.positionTopRightBotLeft(static,19.61%,6.25%,33.33%,6.25%);
       color: c.$SötétZöld;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-      margin: 16.5px 0px;
     }
     .mat-card-actions{
-      flex-direction: row;
-      align-items: center;
-      padding: 0px 0px;
-      display: flex;
+      padding: 0;
+      @include c.displayFlexCenter(row);
       button{
+        @include c.displayFlexCenter;
+        @include c.positionTopRightBotLeft(static,0,0,0,0);
+        @include c.orderMarginTopMrightMbotMleft(0,0,10px,0,0px);
         width: 77px;
         height: 32px;
-        position: static;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 0%;
         background: c.$SötétZöld;
         border: 1px solid c.$Light;
         box-sizing: border-box;
         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
         border-radius: 8px;
-        @include c.insideAutoLayout(0,0,10px,0,0px);
-        @include c.autoLayout;
         justify-content: center;
-
         &:nth-child(2){
+          @include c.orderMarginTopMrightMbotMleft(1,0,0,0,10px);
           width: 76px;
           height: 32px;
+          box-sizing: border-box;
           left: 177.5px;
           top: 0px;
           background: c.$Light;
           border: 1px solid c.$SötétZöld;
-          box-sizing: border-box;
           border-radius: 8px;
-          @include c.insideAutoLayout(1,0,0,0,10px);
           .mat-button-wrapper{
             color:c.$SötétZöld;
             }
           }
         .mat-button-wrapper{
-          position: static;
-          left: 24px;
-          right: 24px;
-          top: 9px;
-          bottom: 9px;
+          @include c.workSansNormal_fs_ls_lh_fw();
+          @include c.orderMarginTopMrightMbotMleft;
+          @include c.positionTopRightBotLeft(static,9px,24px,9px,24px);
           text-align: center;
           text-transform: uppercase;
           font-feature-settings: 'pnum' on, 'lnum' on;
           color: c.$Light;
-          @include c.fonts3;
-          @include c.insideAutoLayout;
         }
       }
     }
   }
+  .stop-scroll {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+  }
 }
+
 
 
 

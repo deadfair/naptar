@@ -16,7 +16,9 @@ export class DeleteEventComponent implements OnInit {
 
   constructor(private eventServices:EventServiceService,private store:Store<AppState>) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.disableBodyScroll(document.querySelector("body"))
+  }
 
   deleteEventById(id:string){
     this.deletedEventId.emit(id);
@@ -27,5 +29,16 @@ export class DeleteEventComponent implements OnInit {
 
   onClose(){
     this.store.dispatch(deleteWindowChange({deleteWindow:false}));
+    this.enableBodyScroll(document.querySelector("body"))
+  }
+
+  disableBodyScroll(element:any){
+    if (!element) {return}
+    element.classList.add("stop-scroll");
+  }
+
+  enableBodyScroll(element:any){
+    if (!element) {return}
+    element.classList.remove("stop-scroll");
   }
 }

@@ -15,8 +15,9 @@
 <button mat-stroked-button
   [value]="buttonFocused"
   (click)="buttonFocused=!buttonFocused"
-  [ngClass]="{'focus-button':buttonFocused}"
->{{selectedYear$ |async}}</button>
+  [ngClass]="{'focus-button':buttonFocused}">
+  {{selectedYear$ |async}}
+</button>
 
 <ng-container *ngIf="buttonFocused; then thenFocused"></ng-container>
 <ng-template #thenFocused>

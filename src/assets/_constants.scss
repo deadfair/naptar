@@ -85,13 +85,13 @@ $datapickerRate_1946px:1;
   letter-spacing: $letterspacing;
 }
 
-
-@mixin fonts2 {
+@mixin alataNormal_fs_ls_lh_fw($fontsize:18px,$letterspacing:normal,$lineh:24px,$fweight:normal){
   font-family: Alata;
   font-style: normal;
-  font-weight: normal;
-  font-size: 18px !important;
-  line-height: 24px;
+  font-size: $fontsize;
+  letter-spacing: $letterspacing;
+  line-height: $lineh;
+  font-weight: $fweight;
 }
 
 @mixin fonts3{
@@ -136,8 +136,27 @@ $datapickerRate_1946px:1;
   align-items: center;
 }
 
+@mixin orderMarginTopMrightMbotMleft($order:0,$marginTop:0px,$marginRight:0px,$marginBottom:0px,$marginLeft:0px){
+  flex: none;
+  order: $order;
+  flex-grow: 0;
+  margin: $marginTop $marginRight $marginBottom $marginLeft;
+}
 
 
+@mixin displayFlexCenter($column:column){
+  display: flex;
+  flex-direction: $column;
+  align-items: center;
+}
+
+@mixin positionTopRightBotLeft($position:static,$top:auto,$right:auto,$bottom:auto,$left:auto){
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
 
 // arrow kéne séma
 @mixin arrow($multiple:1) {
