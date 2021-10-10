@@ -83,7 +83,7 @@
       }
     }
     .input-field{
-      width: 864.18px*$multiple;
+      width:100%;
       box-sizing: border-box;
     }
 //-----------------------------------------------------------
@@ -189,7 +189,6 @@
     background-color: c.$Grey1;
     border-radius: 0;
     height: 56.3px*$multiple;
-    width: 864.18px*$multiple;
     padding: 14.7px*$multiple;
     @include c.robotoNormal_fs_ls_lh_fw(19.7044px*$multiple,normal,28px*$multiple);
     margin-top: 26.57px*$multiple - 12.5px*$multiple;
@@ -317,12 +316,24 @@
 ::ng-deep{
 @include btns(c.$rate_576px);
 @include rate(c.$rate_576px);
+.stepper .stepper-container {
+  width: 90%;
+}
+.input-field{
+max-width: 100%;
+}
+.mat-raised-button {
+  width:clamp(1%,20%,116px*#{c.$rate_576px});
+  min-width:unset;
+}
 
 @media (min-width:576px) {
   @include btns(c.$rate_576px);
   @include rate(c.$rate_576px);
   @include peoplebtn576px();
-
+  .mat-raised-button {
+    max-width: unset;
+  }
 }
 
 
