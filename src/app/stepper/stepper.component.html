@@ -52,13 +52,11 @@
             placeholder="15"
             [(ngModel)]="newEvent.reminder">
           <mat-selection-list
-            class="selection-list"
             [multiple]="false"
             [(ngModel)]="selectedreminders"
             (ngModelChange)="remInit($event)">
-            <mat-list-option *ngFor="let rem of typeofReminder"
-              [value]="rem">
-              <span class="list-item">{{rem}}</span>
+            <mat-list-option *ngFor="let rem of typeofReminder" [value]="rem">
+              {{rem}}
             </mat-list-option>
           </mat-selection-list>
       </section>
@@ -72,35 +70,30 @@
           placeholder="2:18 PM"
           [(ngModel)]="newEvent.startTime">
         <mat-selection-list
-          class="selection-list"
           [multiple]="false"
           [(ngModel)]="selectedStartTime"
           (ngModelChange)="startTimeInit($event)">
           <mat-list-option *ngFor="let time of typeofStartTime"
             [value]="time">
-            <span class="list-item">{{time}}</span>
+            {{time}}
           </mat-list-option>
         </mat-selection-list>
       </section>
 
-      <section class="people-list" *ngSwitchCase="'people'">
-  <!--  <label for="people" class="label">Add people</label>-->
-  <!--    id="people" -->
+      <section class="people-list-container" *ngSwitchCase="'people'">
         <input
-          class="input-field"
           matInput
+          class="input-field"
           placeholder="Add people"
           [(ngModel)]="newEvent.people">
-
-        <button mat-icon-button class="people-btn"
-          (click)="hibaFgv()" >
-          <mat-icon >close</mat-icon>
-        </button>
-
         <input
           matInput
           class="search-people"
           placeholder="Search for people">
+        <button mat-icon-button class="people-btn"
+            (click)="hibaFgv()" >
+          <mat-icon >close</mat-icon>
+        </button>
         <mat-selection-list
           class="selection-list "
           [multiple]="false"
@@ -108,17 +101,15 @@
           (ngModelChange)="peopleInit($event)">
           <mat-list-option *ngFor="let people of typeofPeople"
             [value]="people">
-            <span class="list-item">{{people}}</span>
+            {{people}}
           </mat-list-option>
         </mat-selection-list>
       </section>
 
-      <section *ngSwitchCase="'place'" class="placeMenuitem-list">
-  <!--  <label for="place" class="label">place</label>
-          id="place"-->
+      <section *ngSwitchCase="'place'" class="placeMenuitem-list-container">
         <input
-          class="input-field"
           matInput
+          class="input-field"
           placeholder="Menu item"
           [(ngModel)]="newEvent.place">
         <mat-selection-list
@@ -128,11 +119,9 @@
           (ngModelChange)="placeInit($event)">
           <mat-list-option  *ngFor="let place of typeofPlace"
             [value]="place">
-            <div class="place-box">
               <mat-icon class="location">location_on_24px</mat-icon>
-              <span class="list-item">{{place}}</span>
+              {{place}}
               <mat-icon class="close">close_24px</mat-icon>
-            </div>
           </mat-list-option>
         </mat-selection-list>
       </section>

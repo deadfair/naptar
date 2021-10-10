@@ -2,29 +2,26 @@
 
 @mixin btns($multiple){
   .green{
+    @include c.workSansNormal_fs_ls_lh_fw(20px*$multiple,normal,23px*$multiple,800);
     background: c.$Zöld;
     border: 1px*$multiple solid c.$Fehér;
     box-sizing: border-box;
     box-shadow: 0px 4px*$multiple 4px*$multiple rgba(0, 0, 0, 0.25), 0px 1px*$multiple 2px*$multiple #B4B4BB, 0px 2px*$multiple 4px*$multiple #D2D2D6;
     border-radius: 8px*$multiple;
-    padding: 8px*$multiple 16px*$multiple;
     height: 40px*$multiple;
     width: 116px*$multiple;
-    @include c.workSansNormal_fs_ls_lh_fw(20px*$multiple,normal,23px*$multiple,800);
+    padding: 8px*$multiple 16px*$multiple;
+    margin: 0 7.5px*$multiple;
     text-align: center;
     text-transform: uppercase;
     color: c.$Fehér;
-    margin: 0 7.5px*$multiple;
-    box-sizing: border-box;
   }
   .dark-green{
     background-color: c.$SötétZöld;
   }
   .btn-group{
-    display: flex;
-    flex-direction: row;
+    @include c.displayFlexCenter(row);
     justify-content: center;
-    align-items: center;
     width: 100%;
     margin: 12.5px*$multiple 0;
     box-sizing: border-box;
@@ -32,177 +29,267 @@
   .btn-group2{
     justify-content: flex-end;
     margin:  30px*$multiple 0 0 0;
-    box-sizing: border-box;
   }
 }
 
 @mixin rate($multiple){
-  ::ng-deep{
-    .stepper-active{
-      min-width: 930px*$multiple;
+  @include stepperBackground();
+  .stepper{
+    *{
+      box-sizing: border-box;
     }
-    .stepper{
-      min-width: 930px*$multiple;
-      top:176px*$multiple + 85px;
-      .stepper-container{
-        width: 930px*$multiple;
-        .header{
-          height: 61.96px*$multiple;
-          padding: 14px*$multiple 28px*$multiple 14px*$multiple 14px*$multiple;
-          .exit-btn{
-            line-height: 24px*$multiple !important;
-            font-size: 24px*$multiple !important;
-            height: 24px*$multiple !important;
-            width: 24px*$multiple !important;
-          }
-        }
-        .main{
-          padding: 0 33px*$multiple 20.8px*$multiple 33px*$multiple;
-          .input-field{
-            width: 864.18px*$multiple;
-          }
-          .selection-list{
-            box-shadow: 0px 3px*$multiple 5px*$multiple rgba(9, 30, 66, 0.2), 0px 0px 1px*$multiple rgba(9, 30, 66, 0.31);
-            border-radius: 3px*$multiple;
-            .list-item{
-              @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,20px*$multiple,normal);
-              height: 20px*$multiple;
-              margin-left: 16px*$multiple;
-            }
-          }
-  //-----------------------------------------------------------
-          .people-list{
-            .input-field{
-              height: 56.3px*$multiple;
-              width: 864.18px*$multiple;
-              padding: 14.7px*$multiple;
-              @include c.robotoNormal_fs_ls_lh_fw(19.7044px*$multiple,normal,28px*$multiple);
-              margin-top: 26.57px*$multiple - 12.5px*$multiple;
-              margin-bottom: 14.04px*$multiple;
-            }
-            .people-btn{
-              line-height: 24px*$multiple !important;
-              font-size: 24px*$multiple !important;
-              height: 24px*$multiple !important;
-              width: 24px*$multiple !important;
+    @include c.ZIndex(100);
+    @include c.positionTopRightBotLeft(absolute,calc(176px*#{$multiple} + 85px),0,0,0);
+    padding: 0;
+    .stepper-container{
+      width: 930px*$multiple;
+      margin: auto;
+      background: c.$Grey3;
+      @include stepperHeader($multiple);
+      @include stepperMain($multiple);
+    }
+  }
+}
 
-            }
-            .search-people{
-              width: 636px*$multiple;
-              height: 53px*$multiple;
-              margin: 0px auto 19px*$multiple auto;
-              padding-left: 32px*$multiple;
-              border: 2px*$multiple solid c.$Dark3;
-              border-radius: 4px*$multiple;
-            }
-            .mat-list-base{
-              width: 636px*$multiple;
-              .mat-list-item, .mat-list-option {
-                height: 45px*$multiple;
-                margin-top: 10px*$multiple;
-              }
-            }
-          }
-  //------------------------------------------------------------
-          .placeMenuitem-list{
-            .input-field{
-              padding: 14.07px*$multiple;
-              border: 2.81491px*$multiple solid #0172CB !important;
-              height: 56.3px*$multiple !important;
-              margin-bottom: 7.04px*$multiple !important;
-              @include c.robotoNormal_fs_ls_lh_fw(19.7044px*$multiple,normal,28px*$multiple);
-            }
-            .mat-list-item{
-              height: 56.3px*$multiple !important;
-              .mat-list-text{
-                .place-box{
-                  .list-item{
-                    @include c.interNormal_fs_ls_lh_fw(22.5193px*$multiple,normal,34px*$multiple,normal) ;
-                    font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
-                    margin-left: 50.67px*$multiple !important;
-                  }
-                }
-              }
-            }
-            .place-box{
-              .location{
-                left: 12px*$multiple;
-                top:5%*$multiple;
-                height: 28.15px*$multiple !important;
-                width: 19.7px*$multiple !important;
-                line-height: 28.15px*$multiple !important;
-                font-size: 28px*$multiple !important;
-              }
-              .close{
-                top:17%*$multiple;
-                height: 19.7px*$multiple !important;
-                width: 19.7px*$multiple !important;
-                line-height: 19.7px*$multiple !important;
-                font-size:28px*$multiple !important;
-              }
-              .list-item{
-                margin-left: 38px*$multiple;
-              }
-            }
-          }
-  //---------------------------------------------
-          .colors-bigcontainer{
-            width: 292px*$multiple;
-            height: 98px*$multiple;
-            margin-top: 47.6px*$multiple - 12.5px*$multiple;
-            margin-bottom: 73.2px*$multiple - 40px*$multiple;
-            .label{
-              margin-left: 17.85px*$multiple;
-              height: 19.7px*$multiple;
-              @include c.robotoNormal_fs_ls_lh_fw(16.8895px*$multiple,normal,20px*$multiple,bold);
-            }
-            .colors-container{
-              .colors{
-                width: 25.33px*$multiple;
-                height: 25.33px*$multiple;
-                border-radius: 5.62983px*$multiple;
-                margin:4px*$multiple;
-              }
-              .bonus-color{
-                @include c.robotoNormal_fs_ls_lh_fw(16.8895px*$multiple,normal,20px*$multiple,bold);
-              }
-            }
-          }
-  //---------------------------------------------
-          .start-time-container, .reminder-container{
-            .label{
-              @include c.robotoNormal_fs_ls_lh_fw(12px*$multiple,normal,16px*$multiple,900);
-              height: 16px*$multiple ;
-              margin-bottom: 4px*$multiple;
-              .mat-list-item, .mat-list-option{
-                height: 32px*$multiple;
-              }
-            }
-            .input-field{
-              height: 40px*$multiple;
-              padding-left: 9px*$multiple;
-              margin-bottom: 16px*$multiple;
-              border: 2px*$multiple solid c.$SötétZöld;
-              border-radius: 3px*$multiple;
-            }
-          }
+@mixin stepperBackground(){
+  .stepper-active{
+    @include c.ZIndex(100);
+    @include c.positionTopRightBotLeft(absolute,85px,0,0,0);
+    background: linear-gradient(0deg, #1E2025, #1E2025);
+    opacity: 0.4;
+    position: absolute;
+    height: calc(100% + 85px);
+  }
+}
+//-----------------------------------------------------------
+@mixin stepperMain($multiple){
+  .main{
+    padding: 0 33px*$multiple 20.8px*$multiple 33px*$multiple;
+    .mat-list-single-selected-option{
+      background-color: c.$Szürke;
+    }
+    mat-selection-list{
+      padding-top: 8px*$multiple;
+      background: c.$Fehér;
+      box-shadow: 0px 3px*$multiple 5px*$multiple rgba(9, 30, 66, 0.2), 0px 0px 1px*$multiple rgba(9, 30, 66, 0.31);
+      border-radius: 3px*$multiple;
+      mat-list-option{
+        height: 32px*$multiple ;
+        .mat-list-text{
+          @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,20px*$multiple,normal);
+          height: 20px*$multiple;
+          margin-left: 16px*$multiple;
         }
+      }
+    }
+    .input-field{
+      width: 864.18px*$multiple;
+      box-sizing: border-box;
+    }
+//-----------------------------------------------------------
+    .start-time-container, .reminder-container{
+      @include stepperReminder($multiple);
+    }
+//-----------------------------------------------------------
+    .people-list-container{
+      @include stepperPeopleList($multiple);
+    }
+  //------------------------------------------------------------
+    .placeMenuitem-list-container{
+     @include placeMenuitemList($multiple)
+    }
+  //---------------------------------------------
+    .colors-bigcontainer{
+      width: 292px*$multiple;
+      height: 98px*$multiple;
+      margin-top: 47.6px*$multiple - 12.5px*$multiple;
+      margin-bottom: 73.2px*$multiple - 40px*$multiple;
+      margin: auto;
+      box-sizing: border-box;
+      .label{
+        color: c.$Grey4;
+
+        margin-left: 17.85px*$multiple;
+        height: 19.7px*$multiple;
+        @include c.robotoNormal_fs_ls_lh_fw(16.8895px*$multiple,normal,20px*$multiple,bold);
+      }
+      .colors-container{
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+        .colors{
+          width: 25.33px*$multiple;
+          height: 25.33px*$multiple;
+          border-radius: 5.62983px*$multiple;
+          margin:4px*$multiple;
+          cursor: pointer;
+
+        }
+        .bonus-color{
+          background-color: c.$Grey4;
+          color: c.$Fehér;
+          text-align: center;
+          @include c.robotoNormal_fs_ls_lh_fw(16.8895px*$multiple,normal,20px*$multiple,bold);
+        }
+      }
+    }
+  //---------------------------------------------
+
+  }
+}
+
+@mixin stepperHeader($multiple){
+  .header{
+    background: c.$SötétZöld;
+    position: relative;
+    height: 61.96px*$multiple;
+    padding: 14px*$multiple 28px*$multiple 14px*$multiple 14px*$multiple;
+    .exit-btn{
+      @include c.btnAndIconReSizeFrom_24px($multiple);
+      transform: translate(-59%, 17%);
+      mat-icon{
+        @include c.btnAndIconReSizeFrom_24px($multiple);
+      }
+      position: absolute;
+      right: 0px;
+      color: c.$Fehér;
+    }
+  }
+}
+
+
+@mixin stepperReminder($multiple){
+  .input-field{
+    @include c.robotoNormal_fs_ls_lh_fw(14px*$multiple,normal,20px*$multiple,normal);
+    background: c.$Fehér;
+    height: 40px*$multiple;
+    padding-left: 9px*$multiple;
+    margin-bottom: 16px*$multiple;
+    border: 2px*$multiple solid c.$SötétZöld;
+    border-radius: 3px*$multiple;
+    &:focus{
+      outline: 3px*$multiple solid c.$SötétZöld;
+    }
+  }
+  .label{
+    @include c.robotoNormal_fs_ls_lh_fw(12px*$multiple,normal,16px*$multiple,900);
+    color: c.$SötétZöld;
+    display: block;
+    height: 16px*$multiple ;
+    margin-bottom: 4px*$multiple;
+  }
+}
+
+@mixin stepperPeopleList($multiple){
+  position: relative; // btn miatt
+  .input-field{
+    border: none;
+    outline: none;
+    color: c.$Grey7;
+    background-color: c.$Grey1;
+    border-radius: 0;
+    height: 56.3px*$multiple;
+    width: 864.18px*$multiple;
+    padding: 14.7px*$multiple;
+    @include c.robotoNormal_fs_ls_lh_fw(19.7044px*$multiple,normal,28px*$multiple);
+    margin-top: 26.57px*$multiple - 12.5px*$multiple;
+    margin-bottom: 14.04px*$multiple;
+    &::placeholder{
+      color: c.$Grey7;
+    }
+  }
+  .people-btn{
+    @include c.btnAndIconReSizeFrom_24px($multiple);
+    position: absolute;
+    color: c.$Light01;
+    mat-icon{
+      @include c.btnAndIconReSizeFrom_24px($multiple);
+    }
+  }
+  .search-people{
+    width: 636px*$multiple;
+    height: 53px*$multiple;
+    margin: 0px auto 19px*$multiple auto;
+    padding-left: 32px*$multiple;
+    border: 2px*$multiple solid c.$Dark3;
+    border-radius: 4px*$multiple;
+    background: c.$Light3;
+    box-sizing: border-box;
+    display: block;
+  }
+  .mat-list-base{
+    width: 636px*$multiple;
+    margin: auto;
+    padding: 0;
+    background-color: c.$Grey3;
+    border: none;
+    box-shadow: none;
+    mat-list-option{
+      height: 45px*$multiple;
+      margin-top: 10px*$multiple;
+      background-color: c.$Fehér;
+    }
+  }
+}
+
+
+
+@mixin placeMenuitemList($multiple){
+  .input-field{
+    background-color: c.$Grey1;
+    border-radius: 0 ;
+    margin-top: 0;
+    color: c.$Grey7;
+    padding: 14.07px*$multiple;
+    border: 2.81491px*$multiple solid #0172CB ;
+    height: 56.3px*$multiple ;
+    margin-bottom: 7.04px*$multiple ;
+    @include c.robotoNormal_fs_ls_lh_fw(19.7044px*$multiple,normal,28px*$multiple);
+    &:focus{
+      outline: 2.81491px*$multiple solid #0172CB;
+    }
+  }
+  mat-selection-list{
+    padding-top: 0 ;
+    box-shadow: none;
+  }
+  mat-list-option{
+    height: 56.3px*$multiple ;
+    .mat-list-text{
+      position: relative;
+      @include c.interNormal_fs_ls_lh_fw(22.5193px*$multiple,normal,34px*$multiple,normal) ;
+      font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
+      margin-left: 50.67px*$multiple ;
+      color: c.$Black;
+      overflow: visible;
+      .location{
+        left: -4.5%;
+        top: 0%;
+        height: 28.15px*$multiple !important;
+        width: 19.7px*$multiple !important;
+        line-height: 28.15px*$multiple !important;
+        font-size: 28px*$multiple !important;
+        position: absolute;
+        color: rgba(0, 0, 0, 0.54);
+      }
+      .close{
+        top:17%*$multiple;
+        height: 19.7px*$multiple !important;
+        width: 19.7px*$multiple !important;
+        line-height: 19.7px*$multiple !important;
+        font-size:28px*$multiple !important;
+        position: absolute;
+        right: 2%;
+        color: rgba(0, 0, 0, 0.54);
       }
     }
   }
 }
-@mixin exitbtn($x,$y){
-  ::ng-deep{
-    .stepper .stepper-container .header .exit-btn {
 
-    transform: translate($x, $y);
-    }
-  }
-}
 
 @mixin peoplebtn992px(){
   ::ng-deep{
-    .stepper .stepper-container .main .people-list .people-btn {
+    .stepper .stepper-container .main .people-list-container .people-btn {
       left: 118px;
       top: 96.91px;
     }
@@ -210,37 +297,38 @@
 }
 @mixin peoplebtn767px(){
   ::ng-deep{
-    .stepper .stepper-container .main .people-list .people-btn {
-      left: 82.892px;
-      top: 67.719px;
+    .stepper .stepper-container .main .people-list-container .people-btn {
+      left: 84.892px;
+      top: 69.519px;
     }
   }
 }
 
 
+@mixin peoplebtn576px(){
+  ::ng-deep{
+    .stepper .stepper-container .main .people-list-container .people-btn {
+      left: 52.892px;
+      top: 42.519px;
+    }
+  }
+}
 
+::ng-deep{
+@include btns(c.$rate_576px);
+@include rate(c.$rate_576px);
 
-@include btns(c.$datapickerRate_1400px);
-@include rate(c.$datapickerRate_1400px);
-@include exitbtn(-11.878px, -0.439px);
-@include peoplebtn767px();
-
-
-
-
-/*
 @media (min-width:576px) {
   @include btns(c.$rate_576px);
   @include rate(c.$rate_576px);
-  @include exitbtn(-11.878px, -0.439px);
-  @include peoplebtn767px();
-}*/
+  @include peoplebtn576px();
+
+}
 
 
 @media (min-width:767px) {
   @include btns(c.$datapickerRate_1400px);
   @include rate(c.$datapickerRate_1400px);
-  @include exitbtn(-11.878px, -0.439px);
   @include peoplebtn767px();
 
 }
@@ -248,166 +336,20 @@
 @media (min-width:992px) {
   @include btns(c.$datapickerRate_1946px);
   @include rate(c.$datapickerRate_1946px);
-  @include exitbtn(-12px,3px);
   @include peoplebtn992px();
+
+}
 
 }
 
 
 
-
-
 //-------------------------------------------
 ::ng-deep{
-  .stepper-active{
-    background: linear-gradient(0deg, #1E2025, #1E2025);
-    opacity: 0.4;
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 85px;
-    bottom: 0%;
-    @include c.ZIndex(100);
-  }
-
-  .stepper{
-    @include c.ZIndex(100);
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    bottom: 0%;
-    padding: 0px;
-    .stepper-container{
-      margin: auto;
-      background: c.$Grey3;
-      box-sizing: border-box;
-      .header{
-        background: c.$SötétZöld;
-        box-sizing: border-box;
-        position: relative;
-        .exit-btn{
-          position: absolute;
-          right: 0px;
-          color: c.$Fehér;
-        }
-      }
-      .main{
-        box-sizing: border-box;
-        .mat-list-single-selected-option{
-          background-color: c.$Szürke;
-        }
-        .input-field{
-          box-sizing: border-box;
-        }
-        .selection-list{
-          background: c.$Fehér;
-        }
-//-----------------------------------------------------------
-        .people-list{
-          position: relative;
-          .input-field{
-            border: none;
-            outline: none;
-            color: c.$Grey7;
-            background-color: c.$Grey1;
-            border-radius: 0;
-          }
-          .input-field::placeholder{
-            color: c.$Grey7;
-          }
-          .people-btn{
-            position: absolute;
-            color: c.$Light01;
-          }
-          .search-people{
-            background: c.$Light3;
-            box-sizing: border-box;
-            display: block;
-          }
-          .mat-list-base{
-            margin: auto;
-            padding: 0;
-            background-color: c.$Grey3;
-            border: none;
-            box-shadow: none;
-            .mat-list-item, .mat-list-option {
-              background-color: c.$Fehér;
-            }
-          }
-        }
-//------------------------------------------------------------
-        .placeMenuitem-list{
-          .input-field{
-            background-color: c.$Grey1 !important;
-            border-radius: 0 !important;
-            margin-top: 0;
-            color: c.$Grey7;
-            &:focus{
-              outline: none;
-            }
-          }
-          .mat-list-base{
-            padding-top: 0 ;
-          }
-          .mat-list-item{
-            .mat-list-text{
-              .place-box{
-                .list-item{
-                  color: c.$Black;
-                }
-              }
-            }
-          }
-          .place-box{
-            position: relative;
-            .location{
-              position: absolute;
-              color: rgba(0, 0, 0, 0.54);
-            }
-            .close{
-              position: absolute;
-              right: 0px;
-              color: rgba(0, 0, 0, 0.54);
-            }
-
-          }
-        }
-//---------------------------------------------
-        .colors-bigcontainer{
-          margin: auto;
-          box-sizing: border-box;
-          .label{
-            color: c.$Grey4;
-          }
-          .colors-container{
-            display: flex;
-            justify-content: center;
-            flex-flow: row wrap;
-            .colors{
-              cursor: pointer;
-            }
-            .bonus-color{
-              background-color: c.$Grey4;
-              color: c.$Fehér;
-              text-align: center;
-            }
-          }
-        }
-//---------------------------------------------
-        .start-time-container, .reminder-container{
-          .label{
-            color: c.$SötétZöld;
-            display: block;
-          }
-          .input-field{
-            background: c.$Fehér;
-            &:focus{
-              outline-color: c.$SötétZöld;
-            }
-          }
-        }
-      }
-    }
+  .stop-scroll-x{
+    overflow-x: hidden;
+    margin: 0;
+    height: 100%;
   }
 }
 

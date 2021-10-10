@@ -1,6 +1,5 @@
 @use '../../../assets/constants' as c;
 
-
 ::ng-deep{
   .ignore-bcg{
     @include c.ZIndex(100);

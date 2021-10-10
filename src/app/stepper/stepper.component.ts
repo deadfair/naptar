@@ -1,8 +1,6 @@
 import { stepperWindowChange } from './../main-calendar/state/main-calendar.actions';
 import { Component, OnInit,  } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { getStepperWindow } from '../main-calendar/state/main-calendar.selector';
 import { AppState } from '../store/app.state';
 
 @Component({
@@ -23,6 +21,30 @@ export class StepperComponent implements OnInit {
 
   constructor(private store:Store<AppState>) {}
 
+  ngOnInit(): void {
+    this.onScrollToStepper(document.querySelector('.stepper'))
+    // vmiért overfloolódik az egész body mikor a stepper aktív lesz, a nagy semmi jelenik meg jobbra x px szélességgel, nem jöttem rá miért :(
+    this.disableBodyScrollX(document.querySelector("body"))
+
+  }
+  ngOnDestroy(): void {
+    this.enableBodyScrollX(document.querySelector("body"))
+  }
+
+  onScrollToStepper(element:any){
+    if (!element) {return}
+    window.scroll({top:element.offsetTop - 30,behavior: 'smooth'});
+  }
+
+  disableBodyScrollX(element:any){
+    if (!element) {return}
+    element.classList.add("stop-scroll-x");
+  }
+  enableBodyScrollX(element:any){
+    if (!element) {return}
+    element.classList.remove("stop-scroll-x");
+  }
+
   onCloseStepper(){this.store.dispatch(stepperWindowChange({stepperWindow:false}))}
 
   hibaFgv(){
@@ -38,7 +60,6 @@ export class StepperComponent implements OnInit {
   }
   stepperValue:string="reminder";
 
-  ngOnInit(): void {}
   peopleInit(sPeople: string[]){
   this.selectedPeople=sPeople
   this.newEvent.people=this.selectedPeople[0];

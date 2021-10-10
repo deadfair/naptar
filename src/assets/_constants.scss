@@ -158,6 +158,13 @@ $datapickerRate_1946px:1;
   left: $left;
 }
 
+@mixin btnAndIconReSizeFrom_24px($multiple){
+  line-height: 24px*$multiple !important;
+  font-size: 24px*$multiple !important;
+  height: 24px*$multiple !important;
+  width: 24px*$multiple !important;
+}
+
 // arrow kéne séma
 @mixin arrow($multiple:1) {
   content: '';
